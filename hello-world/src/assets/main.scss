@@ -1,0 +1,84 @@
+* {
+  image-rendering: -webkit-optimize-contrast !important;
+  image-rendering: -moz-crisp-edges !important;
+  image-rendering: -o-crisp-edges !important;
+  image-rendering: crisp-edges !important ;
+  image-rendering: pixelated !important;
+  -ms-interpolation-mode: nearest-neighbor ;
+}
+.pointer {
+  cursor: pointer;
+}
+.center {
+  align-items: center;
+  justify-content: center;
+}
+.flex {
+  display: flex;
+}
+//        DISPLAY-FLEX           //
+.flex-col {
+  display: flex;
+  flex-direction:column;
+  // padding: 0;
+}
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+
+//        JUSTIFY           //
+
+.JF-start {
+  justify-content: flex-start;
+}
+.JF-end {
+  justify-content: flex-end;
+}
+.JF-center {
+  justify-content: center;
+}
+.JF-spaceAR {
+    justify-content: space-around;
+}
+.JF-spaceBE {
+    justify-content: space-between;
+}
+
+//        JUSTIFY           //
+
+.AL-start {
+  align-items: flex-start;
+}
+.AL-end {
+  align-items: flex-end;
+}
+.AL-center {
+  align-items: center;
+}
+.AL-spaceAR {
+  align-items: space-around;
+}
+.AL-BE {
+  align-items: space-between;
+}
+
+//        fonts                 //
+
+.alias {
+  font-smooth: none;
+  -webkit-font-smoothing : none;
+
+}
+
+.back-icon {
+  position: absolute;
+  top: 1.5rem;
+  right: 2rem;
+  font-size: 2rem;
+
+}
+.forms-label {
+  font-size: 1.4rem;
+}

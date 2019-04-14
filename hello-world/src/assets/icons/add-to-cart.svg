@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="218" height="16" viewBox="0 0 218 16">
+  <title>add_to_cart_svg</title>
+  <g>
+    <g>
+      <polygon points="28 4 40 4 40 0 24 0 24 16 40 16 40 12 28 12 28 4" fill="#fff"/>
+      <rect x="40" y="4" width="4" height="8" fill="#fff"/>
+    </g>
+    <g>
+      <polygon points="52 4 64 4 64 0 48 0 48 16 64 16 64 12 52 12 52 4" fill="#fff"/>
+      <rect x="64" y="4" width="4" height="8" fill="#fff"/>
+    </g>
+    <rect x="115" y="4" width="4" height="8" fill="#fff"/>
+    <rect x="99" y="4" width="4" height="8" fill="#fff"/>
+    <rect x="103" width="12" height="4" fill="#fff"/>
+    <rect x="103" y="12" width="12" height="4" fill="#fff"/>
+    <polygon points="76 0 76 4 84 4 84 16 88 16 88 4 96 4 96 0 76 0" fill="#fff"/>
+    <polygon points="198 0 198 4 206 4 206 16 210 16 210 4 218 4 218 0 198 0" fill="#fff"/>
+    <polygon points="179 4 191 4 191 0 175 0 175 12 175 16 179 16 179 12 179 12 191 12 191 8 179 8 179 4" fill="#fff"/>
+    <rect x="191" y="4" width="4" height="4" fill="#fff"/>
+    <polygon points="191 16 195 16 195 12 195 12 191 12 191 12 191 16" fill="#fff"/>
+    <g>
+      <polygon points="16 8 4 8 4 4 0 4 0 16 4 16 4 12 16 12 16 16 20 16 20 4 16 4 16 8" fill="#fff"/>
+      <rect x="4" width="12" height="4" fill="#fff"/>
+    </g>
+    <polygon points="167 8 155 8 155 4 151 4 151 16 155 16 155 12 167 12 167 16 171 16 171 4 167 4 167 8" fill="#fff"/>
+    <rect x="155" width="12" height="4" fill="#fff"/>
+    <g>
+      <rect x="127" y="4" width="4" height="8" fill="#fff"/>
+      <rect x="131" width="16" height="4" fill="#fff"/>
+      <rect x="131" y="12" width="16" height="4" fill="#fff"/>
+    </g>
+  </g>
+</svg>
