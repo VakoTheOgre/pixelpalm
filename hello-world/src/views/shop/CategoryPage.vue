@@ -1,17 +1,14 @@
 <script>
 import StoreTemplate from '@/components/store/StoreTemplate'
 export default {
-  components: {
-    StoreTemplate
-  },
+    components: {
+        StoreTemplate
+    }
 }
 </script>
 
 <template>
-  <div class="flex">
-    HATS
-    <!-- <store-template></store-template> -->
-  </div>
+    <store-template />
 </template>
 
 <style lang="scss" scoped>

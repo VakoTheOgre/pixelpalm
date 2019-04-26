@@ -1,10 +1,14 @@
 <script>
 import Cookie from 'js-cookie'
 import sidebar from '@/components/navigation/SideBar'
+import ViewportListener from '@/helpers/mixins/ViewportListener.js'
+import Navbar from '@/1_mobile/components/Navbar'
 export default {
   components: {
-    sidebar
+    sidebar,
+    Navbar
   },
+  mixins: [ViewportListener],
   async mounted () {
     try {
       let res = await this.$axios.post('/auth/login', {
@@ -21,9 +25,9 @@ export default {
 </script>
 
 <template>
-  <div id="app" class="flex">
-    <sidebar></sidebar>
-    
+  <div id="app">
+    <sidebar v-if='device == "desktop"'></sidebar>
+    <navbar v-if='device == "mobile"'></navbar>
     <router-view/>
   </div>
 </template>

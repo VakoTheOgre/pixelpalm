@@ -6,9 +6,16 @@ export default {
   },
   computed: {
     products() {
-      return this.$store.getters['products/getAllProducts']
+      if (this.$route.params.category) {
+        return this.$store.getters['products/getAllProducts'].filter(product => (
+          product.category === this.$route.params.category
+        ))
+      } else {
+        return this.$store.getters['products/getAllProducts']
+      }
     }
   },
+
 }
 </script>
 

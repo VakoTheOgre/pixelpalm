@@ -6,11 +6,11 @@ computed: {
   },
   legalsIcon() {
     if(!this.legalsState) {
-      let legalsIcon = require("@/assets/icons/gray-area-icon.svg")
+      let legalsIcon = "https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/gray-area-icon.svg"
 
       return legalsIcon
     } else {
-      let legalsIcon = require("@/assets/icons/close-icon.svg")
+      let legalsIcon = "https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/close-icon.svg"
 
       return legalsIcon
     }

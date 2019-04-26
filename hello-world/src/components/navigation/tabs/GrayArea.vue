@@ -1,6 +1,6 @@
 <script>
 import grayIcon from './GrayAreaIcon'
-import menus from '@/components/helpers/navigation.json'
+import menus from '@/helpers/navigation.json'
 export default {
   components: {
     grayIcon
@@ -17,16 +17,16 @@ export default {
 <div class="main-menu">
   <div class="product-menu">
     <router-link tag="div" v-for="(category, index) in menus.grayarea" :key="`${index}`"  
-    :to="`grayarea/${category.name.toLowerCase()}`"  class="product-menu_item">
-      <img :src="require(category.svg)" alt="icon" class="menu-icon pointer">
+    :to="`/grayarea/${category.name.toLowerCase()}`"  class="product-menu_item">
+      <img :src="category.svg" alt="icon" class="menu-icon pointer">
       <span class="menu-option pointer"> {{ category.name }} </span>
     </router-link>
   </div>
   <div class="socials flex JF-spaceBE">
-    <img src="../../../assets/icons/pinterest-icon.svg" alt="Pinterest-icon" class="pointer">
-    <img src="../../../assets/icons/twitter-icon.svg" alt="Twitter-icon" class="pointer">
-    <img src="../../../assets/icons/facebook-icon.svg" alt="Facebook-icon" class="pointer">
-    <img src="../../../assets/icons/instagram-icon.svg" alt="Instagram-icon" class="pointer">
+    <img src="https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/pinterest-icon.svg" alt="Pinterest-icon" class="pointer">
+    <img src="https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/twitter-icon.svg" alt="Twitter-icon" class="pointer">
+    <img src="https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/facebook-icon.svg" alt="Facebook-icon" class="pointer">
+    <img src="https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/instagram-icon.svg" alt="Instagram-icon" class="pointer">
     <grayIcon></grayIcon>
   </div>
 </div>

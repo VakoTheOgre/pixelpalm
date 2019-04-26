@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22">
-  <title>full_checkbox_icon</title>
-  <g>
-    <path d="M20,0H0V22H22V0Zm0,20H2V2H20Z"/>
-    <path d="M2,20H20V2H2ZM4,8H6v2H8v2h2V10h2V8h2V6h2V4h2v6H16v2H14v2H12v2H10v2H8V16H6V14H4Z" fill="#fff"/>
-    <polygon points="6 16 8 16 8 18 10 18 10 16 12 16 12 14 14 14 14 12 16 12 16 10 18 10 18 4 16 4 16 6 14 6 14 8 12 8 12 10 10 10 10 12 8 12 8 10 6 10 6 8 4 8 4 14 6 14 6 16"/>
-  </g>
-</svg>

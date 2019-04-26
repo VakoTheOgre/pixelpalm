@@ -1,45 +1,32 @@
 <script>
+import menus from '@/helpers/navigation.json'
 import grayIcon from './GrayAreaIcon'
 export default {
-components: {
-  grayIcon
-}
+  components: {
+    grayIcon
+  },
+  data() {
+    return {
+      menus
+    }
+  }
 }
 </script>
 
 <template>
 <div class="main-menu">
   <div class="product-menu">
-    <router-link tag="div" to="/shop/t-shirts" class="product-menu_item">
-      <img src="" alt="T-shits icon" class="menu-icon pointer">
-      <span class="menu-option pointer">T-SHIRTS</span>
-    </router-link>
-    <router-link tag="div" to="/shop/tanktops" class="product-menu_item">
-      <img src="" alt="Tanktops icon" class="menu-icon pointer">
-      <span class="menu-option pointer">TANKTOPS</span>
-    </router-link>
-    <router-link tag="div" to="/shop/hoodies" class="product-menu_item">
-      <img src="" alt="Hoodies icons" class="menu-icon pointer">
-      <span class="menu-option pointer">HOODIES</span>
-    </router-link>
-    <router-link tag="div" to="/shop/sweaters" class="product-menu_item">
-      <img src="" alt="Sweaters icon" class="menu-icon pointer">
-      <span class="menu-option pointer">SWEATERS</span>
-    </router-link>
-    <router-link tag="div" to="/shop/hats-caps" class="product-menu_item">
-      <img src="" alt="Caps icon" class="menu-icon pointer">
-      <span class="menu-option pointer">HATS&CAPS</span>
-    </router-link>
-    <router-link tag="div" to="/shop/beanies" class="product-menu_item">
-      <img src="" alt="Beanies icon" class="menu-icon pointer">
-      <span class="menu-option pointer">BEANIES</span>
+    <router-link tag="div" v-for="(category, index) in menus.main" :key="`${index}`"  
+    :to="`/shop/${category.name.toLowerCase()}`"  class="product-menu_item">
+      <img :src="category.svg" alt="icon" class="menu-icon pointer">
+      <span class="menu-option pointer"> {{ category.name }} </span>
     </router-link>
   </div>
   <div class="socials flex JF-spaceBE">
-    <img src="../../../assets/icons/pinterest-icon.svg" alt="Pinterest-icon" class="pointer">
-    <img src="../../../assets/icons/twitter-icon.svg" alt="Twitter-icon" class="pointer">
-    <img src="../../../assets/icons/facebook-icon.svg" alt="Facebook-icon" class="pointer">
-    <img src="../../../assets/icons/instagram-icon.svg" alt="Instagram-icon" class="pointer">
+    <img src="https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/pinterest-icon.svg" alt="Pinterest-icon" class="pointer">
+    <img src="https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/twitter-icon.svg" alt="Twitter-icon" class="pointer">
+    <img src="https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/facebook-icon.svg" alt="Facebook-icon" class="pointer">
+    <img src="https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/instagram-icon.svg" alt="Instagram-icon" class="pointer">
     <grayIcon></grayIcon>
   </div>
 </div>

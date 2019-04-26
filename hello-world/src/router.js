@@ -11,14 +11,8 @@ const About = () => import('./views/studio/About.vue')
 const Projects = () => import('./views/studio/Projects.vue')
 const Blog = () => import('./views/studio/Blog.vue')
 const Contact = () => import('./views/studio/Contact.vue')
-const Tshirts = () => import('./views/shop/categories/T-shirts.vue')
-const Tanktops = () => import('./views/shop/categories/Tanktops.vue')
-const Hoodies = () => import('./views/shop/categories/Hoodies.vue')
-const Sweaters = () => import('./views/shop/categories/Sweaters.vue')
-const HatsnCaps = () => import('./views/shop/categories/HatsnCaps.vue')
-const Beanies = () => import('./views/shop/categories/Beanies.vue')
 const SingleProduct = () => import('./views/shop/SingleProduct.vue')
-
+const CategoryPage = () => import('./views/shop/CategoryPage.vue')
 
 Vue.use(Router)
 export default new Router({
@@ -80,38 +74,13 @@ export default new Router({
       name: 'contact',
       component: Contact
     },
-    // {
-    //   path: '/shop/:category',
-    //   component: 
-    // }
+    {
+      path: '/shop/:category',
+      component: CategoryPage
+    },
     {
       path: '/shop/:category/:id',
       component: SingleProduct
-    },
-    {
-      path: '/shop/tanktops',
-      name: 'tanktops',
-      component: Tanktops
-    },
-    {
-      path: '/shop/hoodies',
-      name: 'hoodies',
-      component: Hoodies
-    },
-    {
-      path: '/shop/sweaters',
-      name: 'sweaters',
-      component: Sweaters
-    },
-    {
-      path: '/shop/hats&caps',
-      name: 'hatsncaps',
-      component: HatsnCaps
-    },
-    {
-      path: '/shop/beanies',
-      name: 'beanies',
-      component: Beanies
     }
   ]
 })

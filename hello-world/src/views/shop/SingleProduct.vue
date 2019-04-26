@@ -10,9 +10,9 @@ export default {
     }
   },
   computed: {
-    ...mapGetters({
-      cart: 'cart/getCart'
-    }),
+    // ...mapGetters({
+    //   cart: 'cart/getCart'
+    // }),
 
     price() {
       if(!this.selectedVariant) {
@@ -26,11 +26,11 @@ export default {
   methods: {
     async getProduct() {
       try {
-        let res = await this.$http.get(`/shop/products/${this.$route.query.id}`)
+        let res = await this.$axios.get(`/shop/products/${this.$route.params.id}`)
         this.product = res.data.product
-        this.checkCart(this.product)
+        // this.checkCart(this.product)
       } catch (e) {
-        console.log(e.response.statusText)
+        
         this.$router.push('/404')
       }
     },
@@ -44,10 +44,10 @@ export default {
         this.error = 'Please select a size first'
         return
       }
-      this.$store.commit('cart/addToCart', {
-        product: this.product,
-        variant: this.selectedVariant
-      })
+      // this.$store.commit('cart/addToCart', {
+      //   product: this.product,
+      //   variant: this.selectedVariant
+      // })
       this.addedToCart = true
     },
     checkout() {
@@ -75,8 +75,10 @@ export default {
 </script>
 
 
-<template>
-  
+<template> 
+  <div class="wrapper">
+    
+  </div>
 </template>
 
 

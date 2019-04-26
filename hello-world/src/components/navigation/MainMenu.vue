@@ -26,55 +26,55 @@ export default {
     },
     menuIcon() {
       if(!this.menuState) {
-        let menuIcon = require("@/assets/icons/menu-icon.svg")
+        let menuIcon = "https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/menu-icon.svg"
 
         return menuIcon
       } else {
-        let menuIcon = require("@/assets/icons/close-icon.svg")
+        let menuIcon = "https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/close-icon.svg"
 
         return menuIcon
       }
     },
     exploreIcon() {
       if(!this.exploreState) {
-        let exploreIcon = require("@/assets/icons/palmtree-icon.svg")
+        let exploreIcon = "https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/palmtree-icon.svg"
 
         return exploreIcon
       } else {
-        let exploreIcon = require("@/assets/icons/close-icon.svg")
+        let exploreIcon = "https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/close-icon.svg"
 
         return exploreIcon
       }
     },
     searchIcon() {
       if(!this.searchState) {
-        let searchIcon = require("@/assets/icons/search-icon.svg")
+        let searchIcon = "https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/search-icon.svg"
 
         return searchIcon
       } else {
-        let searchIcon = require("@/assets/icons/close-icon.svg")
+        let searchIcon = "https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/close-icon.svg"
 
         return searchIcon
       }
     },
     accountIcon() {
       if(!this.accountState) {
-        let accountIcon = require("@/assets/icons/login-icon.svg")
+        let accountIcon = "https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/login-icon.svg"
 
         return accountIcon
       } else {
-        let accountIcon = require("@/assets/icons/close-icon.svg")
+        let accountIcon = "https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/close-icon.svg"
 
         return accountIcon
       }
     },
     cartIcon() {
       if(!this.cartState) {
-        let cartIcon = require("@/assets/icons/cart-icon.svg")
+        let cartIcon = "https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/cart-icon.svg"
 
         return cartIcon
       } else {
-        let cartIcon = require("@/assets/icons/close-icon.svg")
+        let cartIcon = "https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/close-icon.svg"
 
         return cartIcon
       }
@@ -147,11 +147,11 @@ export default {
 
 <template>
   <div class="nav flex JF-spaceBE">
-    <img @click="toggleMenu" :src="menuIcon"     title="Menu" alt="" class="pointer">
+    <img @click="toggleMenu" :src="menuIcon"       title="Menu"    alt="" class="pointer">
     <img @click="toggleExplore" :src="exploreIcon" title="Explore" alt="" class="pointer">
-    <img @click="toggleSearch" :src="searchIcon"   title="Search" alt="" class="pointer">
-    <img @click="toggleAccount" :src="accountIcon"  title="Account" alt="" class="pointer">
-    <img @click="toggleCart" :src="cartIcon"     title="Cart" alt="" class="pointer">
+    <img @click="toggleSearch" :src="searchIcon"   title="Search"  alt="" class="pointer">
+    <img @click="toggleAccount" :src="accountIcon" title="Account" alt="" class="pointer">
+    <img @click="toggleCart" :src="cartIcon"       title="Cart"    alt="" class="pointer">
   </div>
 </template>
 

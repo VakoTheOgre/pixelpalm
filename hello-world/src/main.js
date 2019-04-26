@@ -4,6 +4,8 @@ import router from './router'
 import store from './store/store'
 import '@/assets/main.scss'
 import axios from 'axios'
+import ViewportListener from './helpers/mixins/ViewportListener'
+Vue.mixin(ViewportListener)
 
 axios.defaults.baseURL = 'http://192.168.1.137:5000/api'
 

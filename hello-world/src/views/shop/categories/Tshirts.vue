@@ -9,7 +9,8 @@ export default {
 
 <template>
   <div class="flex">
-    <store-template></store-template>
+    T-SHIRTSS
+    <!-- <store-template></store-template> -->
   </div>
 </template>
 

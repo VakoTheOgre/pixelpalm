@@ -86,7 +86,8 @@ export default {
 <template>
 <form class="inner-form flex-col">
   <input autocomplete="username" v-model="firstName" type="text" placeholder="FIRSTNAME*" class="input">
-
+  <span v-model="nameErr" class="error"> {{ nameErr }} </span>
+  
   <input v-model="lastName" type="text" placeholder="LASTNAME*" class="input">
   <span v-model="nameErr" class="error"> {{ nameErr }} </span>
 
@@ -99,7 +100,7 @@ export default {
   
   <div class="terms flex AL-center">
     <div @click="checkUncheck" class="checkbox">
-      <img  v-if="boxChecked" src="../../../../assets/icons/tick.svg" alt="&#10003" class="checkbox-tick">
+      <img  v-if="boxChecked" src="https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/tick.svg" alt="&#10003" class="checkbox-tick">
     </div>
     <span class="agree-txt">I Agree to the Terms of Use</span>
   </div>

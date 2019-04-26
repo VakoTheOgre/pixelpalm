@@ -1,0 +1,68 @@
+{
+  "main": [
+    {
+      "name": "T-SHIRTS",
+      "svg": "https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/t-shirts-icon.svg"
+    },
+    {
+      "name": "TANKTOPS",
+      "svg": "https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/tanktops-icon.svg"
+    },
+    {
+      "name": "HOODIES",
+      "svg": "https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/hoodies-icon.svg"
+    },
+    {
+      "name": "SWEATERS",
+      "svg": "https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/sweaters-icon.svg"
+    },
+    {
+      "name": "HATS&CAPS",
+      "svg": "https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/caps-icon.svg"
+    },
+    {
+      "name": "BEANIES",
+      "svg": "https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/beanies-icon.svg"
+    }
+  ],
+  "explore": [
+    {
+      "name": "ABOUT",
+      "svg": "https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/about-icon.svg"
+    },
+    {
+      "name": "PROJECTS",
+      "svg": "https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/projects-icon.svg"
+    },
+    {
+      "name": "BLOG",
+      "svg": "https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/blog-icon.svg"
+    },
+    {
+      "name": "CONTACT",
+      "svg": "https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/contact-icon.svg"
+    }
+  ],
+  "grayarea": [
+    {
+      "name": "RETURNS",
+      "svg": "https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/returns-icon.svg"
+    },
+    {
+      "name": "SHIPPING",
+      "svg": "https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/shipping-icon.svg"
+    },
+    {
+      "name": "PAYMENT",
+      "svg": "https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/payment-icon.svg"
+    },
+    {
+      "name": "POLICIES",
+      "svg": "https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/policies-icon.svg"
+    },
+    {
+      "name": "LEGAL",
+      "svg": "https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/legal-icon.svg"
+    }
+  ] 
+}
