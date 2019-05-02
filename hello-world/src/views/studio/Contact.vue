@@ -85,4 +85,71 @@ export default {
 	margin-top: 2rem;
 	font-size: 2rem;
 }
+@media only screen and (max-width: 1400px) {
+.form {
+	width: 100vw;
+	justify-content: flex-start !important;
+  background-color: white;
+	height: auto;
+	padding-bottom: 2rem;
+}
+.heading {
+	font-size: 1.8rem;
+	padding-top: 3rem;
+	width: 100vw;
+	text-align: left;
+	padding-left: 1rem;
+	padding-bottom: 1rem;
+}
+.names-wrapper {
+	width: calc(100vw - 2rem);
+	flex-direction: column !important;
+	margin-left: 0;
+}
+.input {
+	border: 0.2rem solid black;
+	height: 4rem;
+	margin-bottom: 2rem;
+	&::placeholder {
+    font-size: 1.4rem;
+    color: black;
+  }
+  &:enabled {
+    padding-left: 1rem;
+  }
+
+}
+.names {
+	width: calc(100vw - 2rem);
+}
+.mail {
+	width: calc(100vw - 2rem); 
+}
+.subject {
+	width: calc(100vw - 2rem);
+}
+.text-box {
+	width: calc(100vw - 2rem);
+	height: 20rem; 
+	border: 0.2rem solid black;
+	&::placeholder {
+    font-size: 1.4rem;
+    color: black;
+  }
+  &:enabled {
+    padding-left: 1rem;
+		padding-top: 1.6rem;
+		padding-right: 0.4rem;
+  }
+	resize: none;
+}
+.submit {
+	width: calc(100vw - 2rem);
+	background-color: black;
+	height: 4rem;
+	color: white;
+	margin-top: 2rem;
+	font-size: 2rem;
+}
+}
 </style>
