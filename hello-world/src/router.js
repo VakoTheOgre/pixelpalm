@@ -83,7 +83,7 @@ export default new Router({
     {
       path: '/shop/:category',
       component: CategoryPage
-    },
+    },  
     {
       path: '/shop/:category/:id',
       component: SingleProduct

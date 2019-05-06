@@ -11,6 +11,16 @@ export default {
     return {
       menus
     }
+  },
+  computed: {
+    exploreState() {
+        return this.$store.getters['exploreIcon/exploreState']
+    }
+  },
+  methods: {
+    closeExplore() {
+      this.$store.commit("exploreIcon/close")
+    }
   }
 }
 </script>
@@ -19,18 +29,18 @@ export default {
 <div class="main-menu">
   <div class="explore-menu">
     <router-link tag="div" v-for="(category, index) in menus.explore" :key="`${index}`"  
-    :to="`/studio/${category.name.toLowerCase()}`" class="explore-menu_item">
-      <img :src="category.svg" alt="icon" class="menu-icon pointer">
-      <span class="menu-option pointer"> {{ category.name }} </span>
+    :to="`/studio/${category.name.toLowerCase()}`" @click="closeExplore" class="explore-menu_item">
+      <img @click="closeExplore" :src="category.svg" alt="icon" class="menu-icon pointer">
+      <span @click="closeExplore" class="menu-option pointer"> {{ category.name }} </span>
     </router-link>
   </div>
   <div class="socials flex JF-spaceBE">
     <studioIcon id="studioIcon"></studioIcon>
     <div class="socials-icons flex JF-spaceBE">
-        <img src="https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/pinterest-icon.svg" alt="Pinterest-icon" class="left pointer">
-        <img src="https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/twitter-icon.svg" alt="Twitter-icon" class="left pointer">
-        <img src="https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/facebook-icon.svg" alt="Facebook-icon" class="pointer">
-        <img src="https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/instagram-icon.svg" alt="Instagram-icon" class="right pointer">
+        <img src="https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/pinterest-icon.svg" alt="Pinterest-icon" class=" left pointer">
+        <img src="https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/twitter-icon.svg" alt="Twitter-icon" class=" left pointer">
+        <img src="https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/facebook-icon.svg" alt="Facebook-icon" class=" pointer">
+        <img src="https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/instagram-icon.svg" alt="Instagram-icon" class=" right pointer">
     </div>
     <grayIcon id="grayIcon"></grayIcon>
   </div>
@@ -39,15 +49,16 @@ export default {
 
 <style lang="scss" scoped>
 .main-menu {
+  width: 100vw;
   background-color: white;
-  min-height: calc(100vh - 7rem);
+  min-height: calc(100vh - 11rem);
   position: absolute;
-  top: 7rem;
+  top: 11rem;
   left: 0;
 }
 .explore-menu {
   padding-left: 1rem;
-  padding-top: 1rem;
+  padding-top:  2rem;
   &_item {
     display: flex;
     height: 100%;
@@ -77,10 +88,10 @@ export default {
     padding-left: 1rem;
 }
 #grayIcon {
-    padding-right: 1rem; 
+    padding-right: 1rem;
 }
 #studioIcon {
     padding-left: 1rem;
-}
+} 
 </style>
 

@@ -7,19 +7,19 @@ export default {
     grayIcon,
     StudioIcon
   },
-  data () {
+  data() {
     return {
       menus
     }
   },
   computed: {
-    menuState() {
-        return this.$store.getters['menuIcon/menuState']
+    legalsState() {
+        return this.$store.getters['legalsIcon/legalsState']
     }
   },
   methods: {
-    closeMenu() {
-      this.$store.commit('menuIcon/close')
+    closeLegals() {
+      this.$store.commit("legalsIcon/close")
     }
   }
 }
@@ -28,10 +28,10 @@ export default {
 <template>
 <div class="main-menu">
   <div class="product-menu">
-    <router-link tag="div" v-for="(category, index) in menus.main" :key="`${index}`"  
-    :to="`/shop/${category.name.toLowerCase()}`" @click="closeMenu" class="product-menu_item">
-      <img @click="closeMenu" :src="category.svg" alt="icon" class="menu-icon pointer">
-      <span @click="closeMenu" class="menu-option pointer"> {{ category.name }} </span>
+    <router-link tag="div" v-for="(category, index) in menus.grayarea" :key="`${index}`"  
+    :to="`/grayarea/${category.name.toLowerCase()}`" @click="closeLegals" class="product-menu_item">
+      <img @click="closeLegals" :src="category.svg" alt="icon" class="menu-icon pointer">
+      <span @click="closeLegals" class="menu-option pointer"> {{ category.name }} </span>
     </router-link>
   </div>
   <div class="socials flex JF-spaceBE">
@@ -94,3 +94,4 @@ export default {
     padding-left: 1rem;
 }
 </style>
+  

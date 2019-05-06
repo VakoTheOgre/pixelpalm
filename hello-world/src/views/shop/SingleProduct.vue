@@ -1,5 +1,4 @@
 <script>
-import { mapGetters } from 'vuex'
 export default {
   data() {
     return {
@@ -95,7 +94,6 @@ export default {
 
 
 <style lang="scss" scoped>
-
 .carousel-navigation_dot.active-image {
   opacity: 1;
 }

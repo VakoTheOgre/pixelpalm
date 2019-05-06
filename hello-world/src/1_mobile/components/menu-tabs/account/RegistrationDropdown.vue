@@ -100,7 +100,7 @@ export default {
   
   <div class="terms flex AL-center">
     <div @click="checkUncheck" class="checkbox">
-      <img  v-if="boxChecked" src="https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/tick.svg" alt="Agreed" class="checkbox-tick">
+      <img  v-if="boxChecked" src="https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/tick.svg" alt="&#10003" class="checkbox-tick">
     </div>
     <span class="agree-txt">I Agree to the Terms of Use</span>
   </div>

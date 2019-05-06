@@ -3,10 +3,12 @@ import Cookie from 'js-cookie'
 import sidebar from '@/components/navigation/SideBar'
 import ViewportListener from '@/helpers/mixins/ViewportListener.js'
 import Navbar from '@/1_mobile/components/Navbar'
+import Footer from '@/1_mobile/components/Footer'
 export default {
   components: {
     sidebar,
-    Navbar
+    Navbar,
+    Footer
   },
   mixins: [ViewportListener],
   async mounted () {
@@ -29,6 +31,8 @@ export default {
     <sidebar v-if='device == "desktop" && $route.name != "admin"'></sidebar>
     <navbar v-if='device == "mobile"'></navbar>
     <router-view/>
+    <!-- <div class="spacer"></div> -->
+    <Footer v-if='device == "mobile"'></Footer>
   </div>
 </template>
 
