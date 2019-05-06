@@ -8,7 +8,7 @@ export default {
     products() {
       if (this.$route.params.category) {
         return this.$store.getters['products/getAllProducts'].filter(product => (
-          product.category === this.$route.params.category
+          product.subcategory.toLowerCase() === this.$route.params.category.toLowerCase()
         ))
       } else {
         return this.$store.getters['products/getAllProducts']

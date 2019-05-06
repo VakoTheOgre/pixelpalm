@@ -7,6 +7,7 @@ import accountIcon from './navigation/accountIcon'
 import legalsIcon from './navigation/legalsIcon'
 import cartIcon from './navigation/cartIcon'
 import products from './Products/products'
+import admin from './navigation/admin/admin'
 Vue.use(Vuex)
 
 export default new Vuex.Store({
@@ -17,7 +18,8 @@ export default new Vuex.Store({
     accountIcon,
     cartIcon,
     products,
-    legalsIcon
+    legalsIcon,
+    admin
   },
   state: {
 

@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 const Home = () => import('./views/Home.vue')
+const Admin = () => import('./views/admin/Admin.vue')
 const Legal = () => import('./views/gray-area/Legal.vue')
 const Payment = () => import('./views/gray-area/Payment.vue')
 const Policies = () => import('./views/gray-area/Policies.vue')
@@ -23,6 +24,11 @@ export default new Router({
       path: "/",
       name: "home",
       component: Home
+    },
+    {
+      path: "/admin",
+      name: "admin",
+      component: Admin
     },
     {
       path: '/grayarea/legal',
@@ -81,6 +87,11 @@ export default new Router({
     {
       path: '/shop/:category/:id',
       component: SingleProduct
+    },
+    {
+      path: '/shop',
+      name: 'shop',
+      component: Home
     }
   ]
 })

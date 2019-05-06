@@ -26,7 +26,7 @@ export default {
 
 <template>
   <div id="app">
-    <sidebar v-if='device == "desktop"'></sidebar>
+    <sidebar v-if='device == "desktop" && $route.name != "admin"'></sidebar>
     <navbar v-if='device == "mobile"'></navbar>
     <router-view/>
   </div>
@@ -40,5 +40,13 @@ export default {
 }
 html {
   font-size: 62.5%;
+}
+.sidbar-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+#app {
+  display: flex;
 }
 </style>

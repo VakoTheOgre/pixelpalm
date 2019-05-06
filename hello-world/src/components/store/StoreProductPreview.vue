@@ -11,7 +11,7 @@ export default {
 
 
 <template>
-  <router-link tag="div" :to="`/shop/${product.category}/${product._id}`" class="product-wrapper flex center">
+  <router-link tag="div" :to="`/shop/${product.subcategory.toLowerCase()}/${product._id}`" class="product-wrapper flex center">
     <!-- <img :src="product.images[0]" alt="img" class="photo"> -->
     {{ product.name }}
   </router-link>

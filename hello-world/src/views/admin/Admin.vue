@@ -1,41 +1,49 @@
 <script>
 import Cookie from 'js-cookie'
+import AdminSideBar from '@/components/admin-navigation/AdminSideBar'
+import AdminProductsList from '@/components/admin-navigation/admin-tabs/AdminProductsList'
+import AdminProductTemplate from '@/components/admin-navigation/admin-tabs/AdminProductTemplate'
+import axios from '@/main.js'
 export default {
-  data() {
-    return {
-      syncProducts: []
-    }
+  components: {
+    AdminSideBar,
+    AdminProductsList,
+    AdminProductTemplate
   },
 
-  async created() {
+
+  async beforeRouteEnter (to, from, next) {
     try {
-      let adminRes = await this.$http.post('/admin/me',{}, { headers: 
+      let adminRes = await axios.post('/admin/me',{}, { headers: 
             { 'Authorization': `Bearer ${Cookie.get('token')}`}
           })
       if(!adminRes.data.isAdmin) {
-        this.$router.push("/404")
+        next("/404")
       }
     } catch(e) {
-      this.$router.push("/404")
+      next("/404")
     }
-    try {
-      let res = await this.$http.get('/admin/products', {headers: { 'Authorization': `Bearer ${Cookie.get('token')}` } })
-      // this.syncProducts = res.data.products.filter(product => !product.category || !product.subcategory) 
-      this.syncProducts = res.data.products
-    } catch(e) {
-      console.log(e)
+    next()
+  },
+
+  async created() {
+    this.$store.dispatch('admin/getProducts')
+  },
+  computed: {
+    currentComponent() {
+      return this.$store.getters["admin/component"]
     }
   }
 }
 </script>
 
-
 <template>
-  <ul>
-    ></>
-  </ul>
+  <div class="root flex">
+    <admin-side-bar></admin-side-bar>
+    <component :is="currentComponent"></component>
+  </div>
 </template>
 
+<style lang="scss" scoped>
 
-<style scoped>
 </style>
