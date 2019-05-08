@@ -1,5 +1,9 @@
 class CartItem {
+  
   constructor(product, variant, amount) {
+    if(!product || !variant) {
+      throw new Error('product or variant missing')
+    }
     this.product = product
     this.variant = variant
     this.amount = amount
@@ -15,10 +19,6 @@ class CartItem {
 
   get in_stock() {
     return this.variant.in_stock
-  }
-
-  get variant_id() {
-    return this.variant_id
   }
 
   get price() {
@@ -53,4 +53,5 @@ class CartItem {
     }
   }
 }
+
 export default CartItem

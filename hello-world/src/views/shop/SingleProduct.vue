@@ -1,18 +1,25 @@
 <script>
+import { mapGetters } from 'vuex'
+import sizes from '@/components/store/Sizes'
+import check from '@/helpers/checkIfInCart'
 export default {
+  components: {
+    sizes
+  },
   data() {
     return {
       product: null,
       selectedVariant: null,
       addedToCart: false,
       error: '',
-      sizes: ['S','M','L','XL','XXL'],
-      currentImage: 0
+      currentImage: 0,
+      selectedSize: null
     }
   },
   computed: {
     ...mapGetters({
-      products: 'products/getAllProducts'
+      products: 'products/getAllProducts',
+      cart: 'cart/getCart'
     }),
   },
 
@@ -26,6 +33,10 @@ export default {
 
   methods: {
 
+    selectSize(p) {
+      this.selectedSize = p
+    },
+    
     getProduct() {
       let p = this.$store.getters['products/getAllProducts'].find(product => product._id === this.$route.params.id)
       if (p) {
@@ -36,14 +47,23 @@ export default {
     },
 
     addToCart() {
-      if(!this.selectedVariant) {
+      if(!this.selectedSize) {
         this.error = 'Please select a size first'
         return
       }
-      // this.$store.commit('cart/addToCart', {
-      //   product: this.product,
-      //   variant: this.selectedVariant
-      // })
+      let selectedVariant
+      for (let variant in this.product.variants) {
+        console.log(variant)
+        if (this.product.variants[variant].size.toLowerCase() === this.selectedSize.toLowerCase()) {
+          selectedVariant = this.product.variants[variant]
+          break
+        }
+      }
+
+      this.$store.commit('cart/addToCart', {
+        product: this.product,
+        variant: selectedVariant
+      })
       this.addedToCart = true
     },
     checkout() {
@@ -61,8 +81,11 @@ export default {
         }
       })
     }
-  }
+  },
 
+  mounted () {
+    this.checkCart()
+  }
 }
 </script>
 
@@ -78,14 +101,18 @@ export default {
     </div>
         
     <div class="details flex-col">
-        <span class="details-short flex AL-center"> {{ product.name }} </span>
-        <span class="details-short flex AL-center"> {{ product.variants[0].price }} </span>
-        <span class="details-short flex AL-center"> SHARE </span>
-      <div class="sizes flex JF-spaceAR AL-center">
-        <div v-for="(size, index) in sizes" :key="`option-${index}`"> {{ size }} </div>
-      </div>
-      <p class="disc"> {{ product.description }} </p>
-      <button @click="addToCart" class="add-to-cart pointer">ADD TO CART</button>
+        <span class="details-short flex AL-center">&nbsp; {{ product.name }} </span>
+        <span class="details-short flex AL-center">&nbsp; ${{ product.variants[0].price }}.00 </span>
+        <span class="details-short flex AL-center">&nbsp; SHARE </span>
+        <div class="disc-wrapper">
+          <p class="disc"> {{ product.description }} </p>
+        </div>
+        <span class="details-short flex AL-center">&nbsp; Select Size </span>
+
+        <sizes @sizeSelect="selectSize" ></sizes>
+      
+      <button v-if="!addedToCart" @click="addToCart" class="add-to-cart pointer">ADD TO CART</button>
+      <div v-else class="add-to-cart pointer flex center">ALREADY IN CART</div>
     </div>
   </div>
   <span v-else>Loading...</span>
@@ -114,6 +141,7 @@ export default {
     width: 100%;
     margin-bottom: 2rem;
     user-select: none;
+    border:0.1rem solid black;
   }
 }
 .image-wrapper {
@@ -142,8 +170,15 @@ export default {
     }
   } 
 }
-.sizes {
-  width: 27rem;
+.disc-wrapper {
+  border: 0.1rem solid black;
+  height: 23.2rem;
+  margin-bottom: 2rem;
+}
+.disc {
+  text-align: justify;
+  padding-left: 1rem; 
+  padding-top: 1rem;
 }
 
 </style>

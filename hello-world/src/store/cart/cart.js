@@ -1,5 +1,4 @@
-import CartItem from './node_modules/@/services/CartService/cartService'
-import axios from './node_modules/axios'
+import CartItem from '../../services/CartService/cartService'
 export default {
   namespaced: true,
 
@@ -25,8 +24,12 @@ export default {
   mutations: {
 
     addToCart(state, payload) {
-      const cartItem = new CartItem(payload.product, payload.variant, 1)
-      state.cart.push(cartItem)
+      try {
+        const cartItem = new CartItem(payload.product, payload.variant, 1)
+        state.cart.push(cartItem)
+      } catch (e) {
+        console.log(e)
+      }
     },
 
     clearCart(state) {
@@ -35,6 +38,14 @@ export default {
 
     removeFromCart(state, payload) {
       state.cart.splice(payload, 1)
+    },
+
+    async checkout() {
+      try {
+        
+      } catch (e) {
+        console.log(e)
+      }
     }
   },
 
