@@ -5,6 +5,7 @@ import GrayAreaTab from './menu-tabs/GrayAreaTab'
 import AccountTab from './menu-tabs/account/AccountTab'
 import Compass from './NavCompass'
 import SearchBar from './SearchBar'
+import CartTab from './menu-tabs/CartTab'
 export default {
     components: {
         MenuTab,    
@@ -12,12 +13,8 @@ export default {
         GrayAreaTab,
         Compass,
         SearchBar,
-        AccountTab
-    },
-    data() {
-        return {
-            compassPosition: 'FREE WORLDWIDE SHIPPING FOR ORDERS ABOVE $100'
-        }
+        AccountTab,
+        CartTab
     },
     computed: {
         menuState() {
@@ -34,6 +31,9 @@ export default {
         },
         legalsState() {
             return this.$store.getters['legalsIcon/legalsState']
+        },
+        cartState() {
+            return this.$store.getters['cartIcon/cartState']
         },
         
         menuIcon() {
@@ -56,36 +56,6 @@ export default {
                 let cartIcon = "https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/close-icon.svg"
                 
                 return cartIcon
-            }
-        }
-    },
-    watch: {
-        menuState: function() {
-            if(this.menuState) {
-                this.compassPosition = ['FREE WORLDWIDE SHIPPING FOR ORDERS ABOVE $100']
-            } else if(!this.menuState && !this.exploreState && !this.legalsState && !this.accountState) {
-                this.urlWatcher()
-            }
-        },
-        exploreState: function() {
-            if(this.exploreState) {
-                this.compassPosition = ['THE STUDIO']
-            } else if(!this.menuState && !this.exploreState && !this.legalsState && !this.accountState) {
-                this.urlWatcher()
-            }
-        },
-        legalsState: function() {
-            if(this.legalsState) {
-                this.compassPosition = ['GRAY AREA']
-            } else if(!this.menuState && !this.exploreState && !this.legalsState && !this.accountState) {
-                this.urlWatcher()
-            }
-        },
-        accountState: function() {
-            if(this.accountState) {
-                this.compassPosition = ['ACCOUNT']
-            } else if(!this.menuState && !this.exploreState && !this.legalsState && !this.accountState) {
-                this.urlWatcher()
             }
         }
     },
@@ -113,20 +83,7 @@ export default {
                 this.$store.commit("menuIcon/close")
                 this.$store.commit("legalsIcon/close")
             }
-        },
-        urlWatcher() {
-            let url = this.$route.fullPath
-            let stripped = url.toUpperCase().split('/')
-            stripped.splice(0, 1, 'HOME')   
-            let i
-            for (i = 0; i < stripped.length - 1; i++) {
-                stripped[i] = stripped[i] + "/"   
-            }
-            this.compassPosition = stripped
         }
-    },
-    mounted() {
-        this.urlWatcher()
     }
 }
 </script>
@@ -134,10 +91,13 @@ export default {
 <template>
     <div class="root">
         <div class="menu-wrapper flex JF-spaceBE AL-center">
-            <img @click="toggleMenu" :src="menuIcon"       title="Menu"    alt="MENU" class="menu-burger pointer">
-            <img @click="toggleCart" :src="cartIcon"       title="Cart"    alt="CART" class="menu-cart pointer">
+            <img @click="toggleMenu" :src="menuIcon"  title="Menu"    alt="MENU" class="menu-burger pointer">
+            <div class="menu-cart pointer flex center">
+                <img @click="toggleCart" :src="cartIcon"  title="Cart" alt="CART" class="cart-img">
+            </div>
+            
         </div>
-        <compass :positions="this.compassPosition" ></compass>
+        <compass></compass>
         <transition name="slideIn2">
             <search-bar v-if="this.menuState || this.exploreState || this.legalsState"></search-bar>
         </transition>
@@ -146,6 +106,7 @@ export default {
             <explore-tab v-else-if="this.exploreState"></explore-tab>
             <gray-area-tab v-else-if="this.legalsState"></gray-area-tab>
             <account-tab v-else-if="this.accountState"></account-tab>
+            <cart-tab v-else-if="this.cartState"></cart-tab>
         </transition>
         
     </div>
@@ -154,11 +115,17 @@ export default {
 <style lang="scss" scoped>
 .root {
     width: 100vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 3;
+    background-color: white;
 }
 .menu {
     &-wrapper {
         width: 100vw;
         height: 5rem;
+        z-index: 10;
     }
     &-burger {
         width: 3rem;

@@ -110,6 +110,7 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+
 .error {
   padding: 0;
   margin: -1.5rem 0 0.5rem 0.5rem;

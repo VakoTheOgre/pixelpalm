@@ -24,7 +24,7 @@ export default {
 
 <template>
     <div class="root flex JF-spaceBE AL-center">
-        <img @click="toggleAccount" src="https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/login-icon.svg" alt="login" class="user-icon">
+        <img @click="toggleAccount" src="https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/login-icon.svg" alt="login" class="user-icon pointer">
         <div class="search-wrapper flex JF-spaceBE">
             <input type="text" placeholder="SEARCH" class="search-input">
             <img src="https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/search_icon_mobile.svg" alt="search" class="search-icon">
@@ -34,9 +34,16 @@ export default {
 
 <style lang="scss" scoped>
 .root {
-    max-width: calc(100vw - 2rem);
-    margin: 1rem 0 1rem 1rem;
+    width: calc(100vw - 2rem);
+    padding-top: 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    margin: 7.4rem 0 0 0 ;
     background-color: white;
+    z-index: 10;
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 .search {
     &-wrapper {
@@ -64,5 +71,9 @@ export default {
         padding-right: 0.4rem;
     } 
 
+}
+.user-icon {
+    width: 3rem; 
+    height: 3rem;
 }
 </style>

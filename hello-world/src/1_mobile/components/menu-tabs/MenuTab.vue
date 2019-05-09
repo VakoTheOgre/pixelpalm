@@ -55,6 +55,7 @@ export default {
   position: absolute;
   top: 11rem;
   left: 0;
+  z-index: 1;
 }
 .product-menu {
   padding-left: 1rem;

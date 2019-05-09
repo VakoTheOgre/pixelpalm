@@ -44,8 +44,24 @@ export default {
     <div class="sidebar-logo flex center">
       PIXELPALM
     </div>
-    <img src="https://cdn4.vectorstock.com/i/1000x1000/51/93/vertical-flat-background-of-geometric-triangle-vector-19385193.jpg" class="add-img">
     <main-menu></main-menu>
+    <carousel :per-page="1" :autoplay="true" :autoplayHoverPause="false" :mouseDrag="false" :touchDrag="false" :autoplayTimeout="1" :loop="true" :paginationEnabled="false" >
+          <slide id="slide">
+            <div class="slide">
+            
+          </div>
+          </slide>
+          <slide id="slide2">
+            <div class="slide">
+            
+          </div>
+          </slide>
+          <slide id="slide3">
+            <div class="slide">
+            
+          </div>
+          </slide>
+    </carousel>
     <account-tab v-if="this.accountState"></account-tab>
     <cart-tab v-if="this.cartState"></cart-tab>
     <explore-tab v-if="this.exploreState"></explore-tab>
@@ -60,18 +76,40 @@ export default {
   width: 33rem;
   min-height: 100vh;
   position: relative;
+  
   &-logo {
     height: 10rem;
     font-size: 3rem;
   }
 }
-.add-img {
-  width: 33rem;
-  height: calc(100vh - 17.2rem);
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  z-index: -1;
+.slideIn-enter-active,
+.slideIn-leave-active,
+.slideIn2-enter-active,
+.slideIn2-leave-active {
+  opacity: 1;
+  transform: translateX(0) scale(1);
+  transition: all 0.5s;
+}
+.slideIn-enter,
+.slideIn-leave-to,
+.slideIn2-enter,
+.slideIn2-leave-to {
+  opacity: 0;
+  transform: translateX(-100%);
+  transition: all 0.5s;
 }
 
+#slide,#slide2,#slide3 {
+  width: 100vw;
+  height: calc(100vh - 17.2rem);
+}
+.slide {
+  display: block;
+  background-image: url(https://images.unsplash.com/photo-1539601591461-2a5e0edb6915?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80);
+  background-size: cover;
+  background-position: center center;
+  width: 33rem;
+  height: calc(100vh - 17.2rem);
+  
+}
 </style>

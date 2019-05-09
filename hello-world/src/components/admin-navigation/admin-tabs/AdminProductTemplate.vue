@@ -26,6 +26,12 @@ export default {
    this.setProperties()
   },
 
+  watch: {
+    price(v) {
+      v = `${v}.00`
+    }
+  },
+
   methods: {
     setProperties () {
       if (this.product.subcategory) {
@@ -39,7 +45,7 @@ export default {
       try{
         let body = {subcategory: this.selectedOption}
         if (this.price) {
-          body.price = this.price
+          body.price = this.price + '.00'
         }
         if (this.name) {
           body.name = this.name

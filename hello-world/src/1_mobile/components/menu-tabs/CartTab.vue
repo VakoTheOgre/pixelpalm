@@ -71,13 +71,13 @@ export default {
 
 <style lang="scss" scoped>
 .heading {
-  width: 27rem;
+  width: calc(100vw - 2rem) ;
   text-align: left;
   padding-top: 5rem;
 }
 .cart-wrapper {
   background-color: white;
-  height: calc(100vh - 17.2rem);
+  min-height: 100vh;
   // overflow-y: scroll;
   :first-of-type {
     margin-top: 1rem;

@@ -9,7 +9,13 @@ import cartIcon from './navigation/cartIcon'
 import products from './Products/products'
 import admin from './navigation/admin/admin'
 import cart from './cart/cart'
+import VuexPersistence from 'vuex-persist'
 Vue.use(Vuex)
+
+
+const VuexPersist = new VuexPersistence({
+  modules: ['cart','products']
+})
 
 export default new Vuex.Store({
   modules: {
@@ -31,5 +37,6 @@ export default new Vuex.Store({
   },
   actions: {
 
-  }
+  },
+  plugins: [VuexPersist.plugin]
 })

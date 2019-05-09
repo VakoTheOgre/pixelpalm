@@ -8,13 +8,13 @@ export default {
 </script>
 
 <template>
-<div class="category-root flex">
+<div class="shop-root flex">
     <store-template />
 </div>
 </template>
 
 <style lang="scss" scoped>
-.category-root {
+.shop-root {
     padding-top: 7.4rem !important;
 }
 </style>

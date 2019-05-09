@@ -14,6 +14,7 @@ const Blog = () => import('./views/studio/Blog.vue')
 const Contact = () => import('./views/studio/Contact.vue')
 const SingleProduct = () => import('./views/shop/SingleProduct.vue')
 const CategoryPage = () => import('./views/shop/CategoryPage.vue')
+const Shop = () => import('./views/shop/Shop.vue')
 
 Vue.use(Router)
 export default new Router({
@@ -91,7 +92,7 @@ export default new Router({
     {
       path: '/shop',
       name: 'shop',
-      component: Home
+      component: Shop
     }
   ]
 })

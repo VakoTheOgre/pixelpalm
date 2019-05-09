@@ -13,11 +13,11 @@ export default {
   mixins: [ViewportListener],
   async mounted () {
     try {
-      let res = await this.$axios.post('/auth/login', {
-        email: 'keemo@gmail.com',
-        password: '135426'
-      })
-      Cookie.set('token', res.data.token)
+      // let res = await this.$axios.post('/auth/login', {
+      //   email: 'keemo@gmail.com',
+      //   password: '135426'
+      // })
+      // Cookie.set('token', res.data.token)
       await this.$store.dispatch('products/getAllProducts')
     } catch (e) {
       console.log(e)
@@ -52,5 +52,10 @@ html {
 }
 #app {
   display: flex;
+}
+@media only screen and (max-width: 1200px) {
+  #app {
+    flex-direction: column;
+  }
 }
 </style>

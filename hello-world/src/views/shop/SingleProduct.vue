@@ -2,9 +2,11 @@
 import { mapGetters } from 'vuex'
 import sizes from '@/components/store/Sizes'
 import check from '@/helpers/checkIfInCart'
+import checkoutBtn from '@/components/store/CheckoutBtn'
 export default {
   components: {
-    sizes
+    sizes,
+    checkoutBtn
   },
   data() {
     return {
@@ -28,6 +30,9 @@ export default {
       if (v.length > 0) {
         this.getProduct()
       }
+    },
+    product (v) {
+      this.checkCart(v)
     }
   },
 
@@ -72,7 +77,7 @@ export default {
 
     checkCart(product) {
       this.cart.forEach((item, index, cart) => {
-        console.log(check(product._id, item.product._id))
+        console.log(product._id, item.product._id)
         if(check(product._id, item.product._id)) {
           this.addedToCart = true
           return
@@ -82,16 +87,22 @@ export default {
       })
     }
   },
-
   mounted () {
-    this.checkCart()
+    if (this.products.length > 0) {
+        this.getProduct()
+    }
+    if (this.product) {
+        this.checkCart(this.product)
+    }
+     
   }
+
 }
 </script>
 
 
 <template> 
-  <div class="root flex center" v-if="product">
+  <div v-if="product" class="flex root center">
 
     <div class="image-wrapper">
       <img :src="product.images[currentImage]" class="carousel">
@@ -102,83 +113,153 @@ export default {
         
     <div class="details flex-col">
         <span class="details-short flex AL-center">&nbsp; {{ product.name }} </span>
-        <span class="details-short flex AL-center">&nbsp; ${{ product.variants[0].price }}.00 </span>
+        <span class="details-short flex AL-center">&nbsp; ${{ product.variants[0].price }} </span>
         <span class="details-short flex AL-center">&nbsp; SHARE </span>
         <div class="disc-wrapper">
           <p class="disc"> {{ product.description }} </p>
         </div>
         <span class="details-short flex AL-center">&nbsp; Select Size </span>
 
-        <sizes @sizeSelect="selectSize" ></sizes>
+        <sizes @sizeSelect="selectSize"></sizes>
       
-      <button v-if="!addedToCart" @click="addToCart" class="add-to-cart pointer">ADD TO CART</button>
-      <div v-else class="add-to-cart pointer flex center">ALREADY IN CART</div>
+      <div v-if="!addedToCart" @click="addToCart" class="add-btn pointer flex center"><img src="https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/add-to-cart.svg"></div>
+    
+      <checkout-btn v-else backColor="green" margin="0"></checkout-btn>
     </div>
   </div>
   <span v-else>Loading...</span>
- 
 </template>
 
 
 <style lang="scss" scoped>
-.carousel-navigation_dot.active-image {
-  opacity: 1;
-}
-
-.root {
-    min-width: calc(100vw - 33rem);
-    min-height: 100vh;
-}
-.details {
-  justify-content: flex-start;
-  height: 56rem;
-  font-size: 1.6rem;
-  width: 27rem;
-  margin-right: 33rem;
-  margin-left: 2rem;
-  &-short {
-    height: 4rem;
-    width: 100%;
+  .carousel-navigation_dot.active-image {
+    opacity: 1;
+  }
+  .root {
+      min-width: calc(100vw - 33rem);
+      min-height: 100vh;
+  }
+  .details {
+    justify-content: flex-start;
+    height: 56rem;
+    font-size: 1.6rem;
+    width: 27rem;
+    margin-right: 33rem;
+    margin-left: 2rem;
+    &-short {
+      height: 4rem;
+      width: 100%;
+      margin-bottom: 2rem;
+      user-select: none;
+      border:0.1rem solid black;
+    }
+  }
+  .image-wrapper {
+    width: 56rem;
+    height: 56rem;
+    position: relative;
+  }
+  .carousel {
+    width: 56rem;
+    height: 56rem;
+    &-navigation {
+      position: absolute;
+      left: 50%;
+      bottom: 2rem;
+      transform: translate(-50%, -50%);
+      margin-left: 1rem;
+      z-index: 3;
+      &_dot {
+        margin-right: 1rem;
+        background-color: black;
+        height: 2rem;
+        width: 2rem;
+        opacity: 0.5;
+        cursor: pointer;
+        user-select: none;
+      }
+    } 
+  }
+  .disc-wrapper {
+    border: 0.1rem solid black;
+    height: 23.2rem;
     margin-bottom: 2rem;
-    user-select: none;
-    border:0.1rem solid black;
+  }
+  .disc {
+    text-align: justify;
+    padding-left: 1rem; 
+    padding-top: 1rem;
+  }
+  .add-btn {
+    width: 100%;
+    height: 4rem;
+    background-color: black;
+  }
+  @media only screen and (max-width: 1200px) {
+    .carousel-navigation_dot.active-image {
+    opacity: 1;
+  }
+
+  .root {
+      min-width: calc(100vw - 33rem);
+      min-height: 100vh;
+      flex-direction: column;
+  }
+  .details {
+    justify-content: flex-start;
+    height: 56rem;
+    font-size: 1.6rem;
+    width: 27rem;
+    margin-right: 33rem;
+    margin-left: 2rem;
+    &-short {
+      height: 4rem;
+      width: 100%;
+      margin-bottom: 2rem;
+      user-select: none;
+      border:0.1rem solid black;
+    }
+  }
+  .image-wrapper {
+    width: calc(100vw - 2rem);
+    height: 56rem;
+    position: relative;
+  }
+  .carousel {
+    width: 56rem;
+    height: 56rem;
+    &-navigation {
+      position: absolute;
+      left: 50%;
+      bottom: 2rem;
+      transform: translate(-50%, -50%);
+      margin-left: 1rem;
+      z-index: 3;
+      &_dot {
+        margin-right: 1rem;
+        background-color: black;
+        height: 2rem;
+        width: 2rem;
+        opacity: 0.5;
+        cursor: pointer;
+        user-select: none;
+      }
+    } 
+  }
+  .disc-wrapper {
+    border: 0.1rem solid black;
+    height: 23.2rem;
+    margin-bottom: 2rem;
+  }
+  .disc {
+    text-align: justify;
+    padding-left: 1rem; 
+    padding-top: 1rem;
+  }
+  .add-btn {
+    width: 100%;
+    height: 4rem;
+    background-color: black;
   }
 }
-.image-wrapper {
-  width: 56rem;
-  height: 56rem;
-  position: relative;
-}
-.carousel {
-  width: 56rem;
-  height: 56rem;
-  &-navigation {
-    position: absolute;
-    left: 50%;
-    bottom: 2rem;
-    transform: translate(-50%, -50%);
-    margin-left: 1rem;
-    z-index: 3;
-    &_dot {
-      margin-right: 1rem;
-      background-color: black;
-      height: 2rem;
-      width: 2rem;
-      opacity: 0.5;
-      cursor: pointer;
-      user-select: none;
-    }
-  } 
-}
-.disc-wrapper {
-  border: 0.1rem solid black;
-  height: 23.2rem;
-  margin-bottom: 2rem;
-}
-.disc {
-  text-align: justify;
-  padding-left: 1rem; 
-  padding-top: 1rem;
-}
-
 </style>

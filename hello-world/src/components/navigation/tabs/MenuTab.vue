@@ -35,7 +35,8 @@ export default {
 <style lang="scss" scoped>
 .main-menu {
   background-color: white;
-  height: calc(100vh - 17.2rem);
+  min-height: calc(100vh - 17.2rem);
+  width: 33rem;
 }
 .product-menu {
   padding-left: 3rem;

@@ -43,8 +43,8 @@ export default {
 </script>
 
 <template>
-<div class="root">
-  <form class="form flex-col">
+<div class="root-account">
+  <form class="form-outer flex-col">
     <span class="new-customer-title">
         NEW CUSTOMER
     </span>
@@ -55,26 +55,28 @@ export default {
       </button>
     </div>
     <registration v-else></registration>
-    <hr>
-    <span class="registered">REGISTERED CUSTOMERS</span>
-    <input v-model="email" type="email" placeholder="EMAIL ADRESS*" class="mail">
-    <span class="error">{{ emailErr }}</span>
-    <input v-model="password" type="password" placeholder="PASSWORD*" class="pass">
-    <span class="forgot-pass">FORGOT YOUR PASSWORD?</span>
-    <button @click.prevent="login" class="btn login pointer">LOGIN</button>
-    <span class="error">{{ error }}</span>
+    <hr v-if="!this.registerPressed">
+    <span v-if="!this.registerPressed" class="registered">REGISTERED CUSTOMERS</span>
+    <input v-if="!this.registerPressed" v-model="email" type="email" placeholder="EMAIL ADRESS*" class="mail">
+    <span v-if="!this.registerPressed" class="error">{{ emailErr }}</span>
+    <input v-if="!this.registerPressed" v-model="password" type="password" placeholder="PASSWORD*" class="pass">
+    <span v-if="!this.registerPressed" class="forgot-pass">FORGOT YOUR PASSWORD?</span>
+    <button v-if="!this.registerPressed" @click.prevent="login" class="btn login pointer">LOGIN</button>
+    <span v-if="!this.registerPressed" class="error">{{ error }}</span>
   </form>
 </div>
 </template>
 
 <style lang="scss" scoped>
-.root {
+.root-account{
   width: 100vw;
   background-color: white;
   padding-top: 3rem;
-  min-height: calc(100vh - 6.9rem);
+  min-height: calc(100vh - 7.4rem);
+  overflow: scroll;
+  // height: 100%;
   position: absolute;
-  top: 6.9rem;
+  top: 7.4rem;
   left: 0;
 }
 .error {
@@ -89,7 +91,7 @@ hr {
   border-color: black;
   margin-left: -1rem;
 }
-.form {
+.form-outer {
   padding: 0 1rem 0 1rem;
   background-color: white;
   
