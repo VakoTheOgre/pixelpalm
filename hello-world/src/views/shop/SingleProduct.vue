@@ -71,10 +71,6 @@ export default {
       })
       this.addedToCart = true
     },
-    checkout() {
-
-    },
-
     checkCart(product) {
       this.cart.forEach((item, index, cart) => {
         console.log(product._id, item.product._id)
@@ -107,7 +103,7 @@ export default {
     <div class="image-wrapper">
       <img :src="product.images[currentImage]" class="carousel">
       <div class="carousel-navigation flex JF-spaceBE">
-        <div :key="index" @click="currentImage = index" v-for="(thumbnail, index) in product.images" class="carousel-navigation_dot" :class="{'active-image': currentImage === index}">DOT</div>
+        <div :key="index" @click="currentImage = index" v-for="(thumbnail, index) in product.images" class="carousel-navigation_dot" :class="{'active-image': currentImage === index}">.</div>
       </div>
     </div>
         
@@ -142,7 +138,10 @@ export default {
   .details {
     justify-content: flex-start;
     height: 56rem;
-    font-size: 1.6rem;
+    text-rendering: geometricPrecision;
+    font-family: 'Pixelpalm-category-font';
+    font-smooth: never;
+    -webkit-font-smoothing: none;
     width: 27rem;
     margin-right: 33rem;
     margin-left: 2rem;
@@ -162,6 +161,7 @@ export default {
   .carousel {
     width: 56rem;
     height: 56rem;
+    border: 0.1rem solid black;
     &-navigation {
       position: absolute;
       left: 50%;
@@ -177,6 +177,7 @@ export default {
         opacity: 0.5;
         cursor: pointer;
         user-select: none;
+        color: transparent;
       }
     } 
   }

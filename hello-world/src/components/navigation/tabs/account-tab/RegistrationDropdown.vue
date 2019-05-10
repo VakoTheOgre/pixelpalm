@@ -56,9 +56,6 @@ export default {
     }
   },
   methods: {
-    closeCurrentTab() {
-      this.$emit('closeCurrentTab')
-    },
 
     async register() {
       if(!(this.firstName || this.lastName || this.email || this.password || this.password2) || (this.nameErr || this.passwordErr || this.passwordErr)) {

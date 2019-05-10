@@ -31,11 +31,11 @@ export default {
   min-width: 144rem;
   display: grid;
   grid-template-columns: 24rem 24rem 24rem 24rem 24rem 24rem;
-  column-gap: 1.6rem !important;
+  column-gap: 1.6rem;
   grid-row-gap: 1.6rem;
   grid-auto-rows: 24rem;
   margin-left: 3.5rem;
-  margin-top: 10rem;
+  margin-top: 12.6rem;
 }
 .store-item {
   // background-color: black;
@@ -45,22 +45,32 @@ export default {
   margin: 0;
   padding: 0;
 }
+.photo {
+    // background-color: black;
+    border: 0.1rem solid black;
+    width: 24rem;
+    height: 24rem;
+    margin: 0;
+    padding: 0;
+}
 @media only screen and (max-width: 1200px) {
   .whole-store {
     min-width: 32rem;
     display: grid;
-    grid-template-columns: 50% 50% ;
-    column-gap: 1rem !important;
+    grid-template-columns: calc(50vw - 1.5rem) calc(50vw - 1.5rem);
+    column-gap: 1rem;
     grid-row-gap: 1rem;
-    grid-auto-rows: 100vw;
-    margin-left: 1rem;
-    margin-right: 1.6rem;
+    grid-auto-rows: calc(50vw - 1.5rem);
+    margin-left: 0.9rem;
+    margin-right: 2rem;
     margin-top: 1rem;
+    margin-bottom: 1rem;
   }
   .photo {
     // background-color: black;
     // border: 0.1rem solid black;
-    width: calc(50vw - 1.5rem);
+    width: calc(50vw - 1.25rem);
+    height: auto;
     margin: 0;
     padding: 0;
   }

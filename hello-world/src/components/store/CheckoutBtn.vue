@@ -1,5 +1,6 @@
 
 <script>
+import { mapGetters } from 'vuex'
 export default {
     props: {
         backColor: {
@@ -17,6 +18,10 @@ export default {
         }
     },
     computed: {
+        ...mapGetters({
+            cart: 'cart/getCart'
+
+        }),
         cart() {
            return this.$store.getters['cart/getCart']
         },
@@ -26,6 +31,9 @@ export default {
             } else {
                 return true
             }
+        },
+        checkout() {
+        
         }
     }
     
@@ -33,10 +41,11 @@ export default {
 </script>
 
 <template>
-    <div v-if="!cartItems" :style="{ backgroundColor: backColor, marginTop: margin + 'rem' }" class="root-btn pointer flex center">
+    <router-link v-if="this.$route.name != 'checkout' && !cartItems" tag="div" to="/checkout" @click="checkout" :style="{ backgroundColor: backColor, marginTop: margin + 'rem' }" class="root-btn pointer flex center">
         <img style="margin: 0 !important;" src="https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/checkout.svg">
-    </div>
-    <div v-else style="font-size: 1.6rem;">Oops your cart is empty...</div>
+    </router-link>
+    <div v-else-if="this.$route.name != 'checkout' || cartItems " style="font-size: 1.6rem;">Oops your cart is empty...</div>
+
 </template>
 
 <style lang="scss" scoped>

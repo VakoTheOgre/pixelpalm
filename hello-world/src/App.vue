@@ -13,11 +13,11 @@ export default {
   mixins: [ViewportListener],
   async mounted () {
     try {
-      // let res = await this.$axios.post('/auth/login', {
-      //   email: 'keemo@gmail.com',
-      //   password: '135426'
-      // })
-      // Cookie.set('token', res.data.token)
+      let res = await this.$axios.post('/auth/login', {
+        email: 'keemo@gmail.com',
+        password: '135426'
+      })
+      Cookie.set('token', res.data.token)
       await this.$store.dispatch('products/getAllProducts')
     } catch (e) {
       console.log(e)
@@ -28,6 +28,9 @@ export default {
 
 <template>
   <div id="app">
+    <div v-if='device == "desktop"' class="fake-sidebar">
+      .
+    </div>
     <sidebar v-if='device == "desktop" && $route.name != "admin"'></sidebar>
     <navbar v-if='device == "mobile"'></navbar>
     <router-view/>
@@ -52,6 +55,13 @@ html {
 }
 #app {
   display: flex;
+}
+.fake-sidebar {
+  color: transparent;
+  display: block;
+  user-select: none;
+  width: 33rem;
+  min-height: 100vh;
 }
 @font-face {
     font-family: 'Pixelpalm-category-font';

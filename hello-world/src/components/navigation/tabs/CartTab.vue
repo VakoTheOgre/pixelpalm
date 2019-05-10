@@ -37,7 +37,7 @@ export default {
 
 <template>
 <div class="cart-wrapper flex-col AL-center">
-  <span class="heading"> CART</span>
+  <span id="cart-id" class="heading"> CART</span>
       <div :key="index" v-for="(item,index) in cart" class="cart-item flex ">
           <img :src="item.product.images[0]" class="thumb">
 
@@ -66,10 +66,26 @@ export default {
           </div> -->
       </div>
       <checkout-btn backColor="red" margin="3"></checkout-btn>
+
+      <span class="subtotal">SUBTOTAL: ${{ subtotal }}.00 </span>
+      <span class="total">ORDER TOTAL: ${{ subtotal }}.00 </span>
   </div>
 </template>
 
 <style lang="scss" scoped>
+.subtotal {
+  padding-top: 4rem;
+  width: 100%;
+  text-align: left;
+  font-size: 1.6rem;
+}
+.total {
+  padding-top: 1rem;
+  width: 100%;
+  text-align: left;
+  font-size: 1.6rem;
+}
+
 .heading {
   width: 27rem;
   text-align: left;

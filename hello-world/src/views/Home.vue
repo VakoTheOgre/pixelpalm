@@ -41,7 +41,6 @@ export default {
 @media only screen and (max-width: 1200px) {
   .home {
     flex-direction: column;
-    padding-bottom: 17rem;
     padding-top: 7.4rem;
   }
   #slide,#slide2,#slide3 {

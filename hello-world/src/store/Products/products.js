@@ -1,5 +1,4 @@
 import axios from '../../main'
-import mockProducts from '../../mocks/mock.js' 
 export default {
   namespaced: true,
 
@@ -13,18 +12,20 @@ export default {
   },
   mutations: {
     setAllProducts (state, payload) {
-      state.products = payload
+      for (let i = 0; i < 15; i++) {
+        state.products.push(...payload)
+      }
+      // state.products = payload
     }
   },
   actions: {
     async getAllProducts ({ commit }) {
       try {
-        //let res = await axios.get('/shop/products/')
-        // commit('setAllProducts', res.data.products)
-        commit('setAllProducts', mockProducts)
-        // return Promise.resolve(true)
+        let res = await axios.get('/shop/products/')
+        commit('setAllProducts', res.data.products)
+        return Promise.resolve(true)
       } catch (e) {
-        // return Promise.reject(e)
+        return Promise.reject(e)
       }
     }
   }

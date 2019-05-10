@@ -78,7 +78,9 @@ export default {
 .sidebar {
   width: 33rem;
   min-height: 100vh;
-  position: relative;
+  position: fixed;
+  top:0;
+  left:0;
   &-logo {
     height: 5.6rem;
     font-size: 3rem;

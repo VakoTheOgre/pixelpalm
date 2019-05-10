@@ -125,4 +125,9 @@ button {
 .bin {
   font-size: 1.2rem;
 }
+@media only screen and (max-width: 1200px) {
+  .cart-item {
+    width: calc(100vw - 2rem);
+  }
+}
 </style>

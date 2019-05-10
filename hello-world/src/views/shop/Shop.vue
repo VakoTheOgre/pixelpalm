@@ -8,7 +8,7 @@ export default {
 </script>
 
 <template>
-<div class="shop-root flex">
+<div class="shop-root">
     <store-template />
 </div>
 </template>
