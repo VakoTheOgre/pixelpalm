@@ -1,9 +1,24 @@
 <script>
-import isHome from '../../helpers/mixins/isHome.js'
+import isShop from '../../helpers/mixins/isShop.js'
 export default {
-  mixins: [isHome],
+  mixins: [isShop],
 
   computed: {
+    menuState() {
+        return this.$store.getters['menuIcon/menuState']
+    },
+    exploreState() {
+        return this.$store.getters['exploreIcon/exploreState']
+    },
+    accountState() {
+        return this.$store.getters['accountIcon/accountState']
+    },
+    cartState() {
+        return this.$store.getters['cartIcon/cartState']
+    },
+    legalsState() {
+        return this.$store.getters['legalsIcon/legalsState']
+    },
     crumbs() {
       try {
         let crumbs = this.$route.fullPath.split('/').filter(val => val != '')
@@ -37,10 +52,10 @@ export default {
 
 
 <template>
-  <div :class="{'center': isHome}" class="bread-wrapper flex AL-center">
-    <span v-if="isHome" class="bread-home">FREE WORLDWIDE SHIPPING FOR ORDERS ABOVE 100$</span>
-    <div v-if="!isHome && $route.name != 'error'" class="breadcrumbs">
-      <router-link tag="span" to="/" class="pointer bread-font" >HOME | </router-link>
+  <div :class="{'center': isShop}" class="bread-wrapper flex AL-center">
+    <span v-if="!isShop" class="bread-home">FREE WORLDWIDE SHIPPING FOR ORDERS ABOVE $50</span>
+    <div v-if="isShop" class="breadcrumbs">
+      <router-link tag="span" to="/" class="pointer bread-font"> HOME | </router-link>
       <router-link :key="index" tag="span" v-for="(crumb, index) in crumbs" :to="createCrumb(index)" class="pointer bread-font" >{{ crumb.toUpperCase() }} | </router-link>
     </div>
   </div>
@@ -51,15 +66,23 @@ export default {
   .bread {
     &-wrapper {
       width: 100%;
-      height: 2.4rem;
+      height: 2.5rem;
       background-color: black;
       padding-bottom: 2px;
+      line-height: 1;
+      padding-top: 1.5px;
+      text-rendering: geometricPrecision;
+      font-family: 'Pixelpalm-category-font';
+      font-smooth: never;
+      -webkit-font-smoothing: none;
     }
 
     &-home,
     &crumbs {
       text-align: center;
       color: white;
+      width: 100%;
+      font-size: 0.5rem !important;
     }
 
     &crumbs {
@@ -67,9 +90,13 @@ export default {
     }
     
   }
-  @media only screen and (max-width: 360px) {
+  @media only screen and (max-width: 1200px) {
     .bread-font {
-      font-size: 0.9rem;
+      text-rendering: geometricPrecision;
+      font-family: 'Pixelpalm-category-font';
+      font-smooth: never;
+      -webkit-font-smoothing: none;
+      font-size: 1rem;
     }
   }
 </style>

@@ -15,6 +15,9 @@ export default {
   computed: {
     exploreState() {
         return this.$store.getters['exploreIcon/exploreState']
+    },
+    socialsState() {
+    return this.$store.getters['socialIcons/socialsState']
     }
   },
   methods: {
@@ -28,13 +31,13 @@ export default {
 <template>
 <div class="main-menu">
   <div class="explore-menu">
-    <router-link tag="div" v-for="(category, index) in menus.explore" :key="`${index}`"  
+    <router-link tag="span" v-for="(category, index) in menus.explore" :key="`${index}`"  
     :to="`/studio/${category.name.toLowerCase()}`" @click="closeExplore" class="explore-menu_item">
       <img @click="closeExplore" :src="category.svg" alt="icon" class="menu-icon pointer">
       <span @click="closeExplore" class="menu-option pointer"> {{ category.name }} </span>
     </router-link>
   </div>
-  <div class="socials flex JF-spaceBE">
+  <div v-if="!this.socialsState" class="socials flex JF-spaceBE">
     <studioIcon id="studioIcon"></studioIcon>
     <div class="socials-icons flex JF-spaceBE">
         <img src="https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/pinterest-icon.svg" alt="Pinterest-icon" class=" left pointer">
@@ -72,8 +75,11 @@ export default {
   max-height: 3rem;
 }
 .menu-option {
-  font-size: 3.2rem;
+  font-size: 2rem;
   padding-left: 1rem;
+  font-family: 'Pixelpalm-category-font';
+  font-smooth: never;
+	-webkit-font-smoothing : none;
 }
 .socials {
   position: fixed;

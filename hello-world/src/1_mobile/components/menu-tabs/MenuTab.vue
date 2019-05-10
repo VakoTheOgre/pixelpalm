@@ -15,6 +15,9 @@ export default {
   computed: {
     menuState() {
         return this.$store.getters['menuIcon/menuState']
+    },
+    socialsState() {
+    return this.$store.getters['socialIcons/socialsState']
     }
   },
   methods: {
@@ -34,7 +37,7 @@ export default {
       <span @click="closeMenu" class="menu-option pointer"> {{ category.name }} </span>
     </router-link>
   </div>
-  <div class="socials flex JF-spaceBE">
+  <div v-if="!this.socialsState" class="socials flex JF-spaceBE">
     <studioIcon id="studioIcon"></studioIcon>
     <div class="socials-icons flex JF-spaceBE">
         <img src="https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/pinterest-icon.svg" alt="Pinterest-icon" class="left pointer">
@@ -73,8 +76,11 @@ export default {
   max-height: 3rem;
 }
 .menu-option  {
-  font-size: 3.2rem;
+  font-size: 2rem;
   padding-left: 1rem;
+  font-family: 'Pixelpalm-category-font';
+  font-smooth: never;
+	-webkit-font-smoothing : none;
 }
 .socials {
   position: fixed;

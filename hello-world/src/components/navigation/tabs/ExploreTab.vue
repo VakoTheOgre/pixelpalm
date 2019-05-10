@@ -35,7 +35,11 @@ export default {
 <style lang="scss" scoped>
 .main-menu {
   background-color: white;
-  height: calc(100vh - 17.2rem);
+  min-height: calc(100vh - 12.8rem);
+  width: 33rem;
+  position: absolute;
+  top: 12.8rem;
+  left: 0;
 }
 .explore-menu {
   padding-left: 3rem;
@@ -53,8 +57,11 @@ export default {
   max-height: 3rem;
 }
 .menu-option {
-  font-size: 3.2rem;
+  font-size: 2rem;
   padding-left: 1rem;
+  font-family: 'Pixelpalm-category-font';
+  font-smooth: never;
+	-webkit-font-smoothing : none;
 }
 .socials {
   position: absolute;

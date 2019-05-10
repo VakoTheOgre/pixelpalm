@@ -53,6 +53,20 @@ html {
 #app {
   display: flex;
 }
+@font-face {
+    font-family: 'Pixelpalm-category-font';
+    src: 
+      url(https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/fonts/menu-fonts/Pixelpalm-category-font.svg) format('svg'),
+      url(https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/fonts/menu-fonts/Pixelpalm-category-font.eot) format('embedded-opentype'),
+      url(https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/fonts/menu-fonts/Pixelpalm-category-font.eot#iefix) format('embedded-opentype'),
+      url(https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/fonts/menu-fonts/Pixelpalm-category-font.woff2) format('woff2'),
+      url(https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/fonts/menu-fonts/Pixelpalm-category-font.woff) format('woff'),
+      url(https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/fonts/menu-fonts/Pixelpalm-category-font.ttf) format('truetype');
+        
+    font-weight: normal;
+    font-style: normal;
+}
+
 @media only screen and (max-width: 1200px) {
   #app {
     flex-direction: column;

@@ -1,6 +1,6 @@
 <script>
 export default {
-
+  
 
 }
 </script>
@@ -18,7 +18,11 @@ export default {
 <style lang="scss" scoped>
 .root {
   background-color: white;
-  height: calc(100vh - 17.2rem);
+  min-height: calc(100vh - 12.8rem);
+  width: 33rem;
+  position: absolute;
+  top: 12.8rem;
+  left: 0;
 }
 .search-input {
   height: 4rem;
@@ -34,15 +38,18 @@ export default {
   }
 }
 .title {
-  font-size: 1.8rem;
   width: calc(100% - 6rem);
   text-align: left;
-  margin-top: 5rem;
-  margin-bottom: 0.6rem;
+  padding-top: 3rem;
+  padding-bottom: 1rem;
+  font-size: 1.5rem;
+  font-family: 'Pixelpalm-category-font';
+  font-smooth: never;
+	-webkit-font-smoothing : none;
 }
 .search-img {
   position: absolute;
   right: 3.5rem;
-  top: 25.4rem;
+  top: 6.6rem;
 }
 </style>

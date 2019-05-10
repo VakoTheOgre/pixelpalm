@@ -37,7 +37,7 @@ export default {
 
 <template>
 <div class="cart-wrapper flex-col AL-center">
-  <h2 class="heading">CART</h2>
+  <span class="heading">CART</span>
       <div :key="index" v-for="(item,index) in cart" class="cart-item flex ">
           <img :src="item.product.images[0]" class="thumb">
 
@@ -73,7 +73,13 @@ export default {
 .heading {
   width: calc(100vw - 2rem) ;
   text-align: left;
-  padding-top: 5rem;
+  padding-top: 3rem;
+  padding-bottom: 1rem;
+  margin-top: 0 !important;
+  font-size: 1.5rem !important;
+  font-family: 'Pixelpalm-category-font';
+  font-smooth: never;
+  -webkit-font-smoothing : none;
 }
 .cart-wrapper {
   background-color: white;

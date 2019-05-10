@@ -7,7 +7,6 @@ const Payment = () => import('./views/gray-area/Payment.vue')
 const Policies = () => import('./views/gray-area/Policies.vue')
 const Returns = () => import('./views/gray-area/Returns.vue')
 const Shipping = () => import('./views/gray-area/Shipping.vue')
-const Sitemap = () => import('./views/gray-area/Sitemap.vue')
 const About = () => import('./views/studio/About.vue')
 const Projects = () => import('./views/studio/Projects.vue')
 const Blog = () => import('./views/studio/Blog.vue')
@@ -52,11 +51,6 @@ export default new Router({
       component: Returns
     },
     {
-      path: '/grayarea/sitemap',
-      name: 'sitemap',
-      component: Sitemap
-    },
-    {
       path: '/grayarea/shipping',
       name: 'shipping',
       component: Shipping
@@ -83,10 +77,12 @@ export default new Router({
     },
     {
       path: '/shop/:category',
+      name: 'shopCat',
       component: CategoryPage
     },  
     {
       path: '/shop/:category/:id',
+      name: 'shopProd',
       component: SingleProduct
     },
     {

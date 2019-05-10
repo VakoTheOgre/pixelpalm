@@ -164,6 +164,10 @@ export default {
   color: white;
   margin-bottom: 4rem;
   position: relative;
+  font-size: 1.5rem;
+  font-family: 'Pixelpalm-category-font';
+  font-smooth: never;
+  -webkit-font-smoothing : none;
 }
 .terms {
   padding-top: 1rem;

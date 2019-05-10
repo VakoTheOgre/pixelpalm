@@ -1,4 +1,5 @@
 <script>
+import { mapGetters } from 'vuex'
 export default {
   data() {
     return {
@@ -6,6 +7,9 @@ export default {
     }
   },
   computed: {
+    ...mapGetters({
+      cart: 'cart/getCart'
+    }),
     menuState() {
       return this.$store.getters['menuIcon/menuState']
     },
@@ -151,7 +155,10 @@ export default {
     <img @click="toggleExplore" :src="exploreIcon" title="Explore" alt="" class="pointer">
     <img @click="toggleSearch" :src="searchIcon"   title="Search"  alt="" class="pointer">
     <img @click="toggleAccount" :src="accountIcon" title="Account" alt="" class="pointer">
-    <img @click="toggleCart" :src="cartIcon"       title="Cart"    alt="" class="pointer">
+    <div class="pointer flex center">
+        <span v-if="!this.cartState" class="cart-nums">{{ this.cart.length }}</span>
+        <img @click="toggleCart" :src="cartIcon"  title="Cart" alt="CART" class="cart-img">
+    </div>
   </div>
 </template>
 
@@ -164,5 +171,10 @@ export default {
     height: 3rem;
     width: 3rem;
   }
+}
+.cart-nums{
+    position: absolute;
+    font-size: 1.2rem;
+    z-index: -1;
 }
 </style>

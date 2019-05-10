@@ -41,11 +41,12 @@ export default {
 
 <template>
   <div class="sidebar">
-    <div class="sidebar-logo flex center">
-      PIXELPALM
+    <div class="sidebar-logo flex-col AL-center">
+      <router-link tag="img"  to="/" src="https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/pixelpalm_logo_big.svg" 
+                          alt="PIXELPALM-LOGO" class="text-logo pointer"></router-link>
     </div>
     <main-menu></main-menu>
-    <carousel :per-page="1" :autoplay="true" :autoplayHoverPause="false" :mouseDrag="false" :touchDrag="false" :autoplayTimeout="1" :loop="true" :paginationEnabled="false" >
+    <carousel :per-page="1" :autoplay="true" :autoplayHoverPause="false" :mouseDrag="false" :touchDrag="false" :autoplayTimeout="3000" :loop="true" :paginationEnabled="false" >
           <slide id="slide">
             <div class="slide">
             
@@ -62,12 +63,14 @@ export default {
           </div>
           </slide>
     </carousel>
-    <account-tab v-if="this.accountState"></account-tab>
-    <cart-tab v-if="this.cartState"></cart-tab>
-    <explore-tab v-if="this.exploreState"></explore-tab>
-    <menu-tab v-if="this.menuState"></menu-tab>
-    <search-tab v-if="this.searchState"></search-tab>
-    <grayArea v-if="this.legalsState"></grayArea>
+    <transition name="slideIn">
+      <account-tab v-if="this.accountState"></account-tab>
+      <cart-tab v-if="this.cartState"></cart-tab>
+      <explore-tab v-if="this.exploreState"></explore-tab>
+      <menu-tab v-if="this.menuState"></menu-tab>
+      <search-tab v-if="this.searchState"></search-tab>
+      <grayArea v-if="this.legalsState"></grayArea>
+    </transition>
   </div>
 </template>
 
@@ -76,10 +79,10 @@ export default {
   width: 33rem;
   min-height: 100vh;
   position: relative;
-  
   &-logo {
-    height: 10rem;
+    height: 5.6rem;
     font-size: 3rem;
+    justify-content: flex-end;
   }
 }
 .slideIn-enter-active,
@@ -101,7 +104,7 @@ export default {
 
 #slide,#slide2,#slide3 {
   width: 100vw;
-  height: calc(100vh - 17.2rem);
+  height: calc(100vh - 12.8rem);
 }
 .slide {
   display: block;
@@ -109,7 +112,7 @@ export default {
   background-size: cover;
   background-position: center center;
   width: 33rem;
-  height: calc(100vh - 17.2rem);
+  height: calc(100vh - 12.8rem);
   
 }
 </style>

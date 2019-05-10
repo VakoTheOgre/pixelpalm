@@ -1,4 +1,5 @@
 <script>
+import { mapGetters } from 'vuex'
 import MenuTab from './menu-tabs/MenuTab'
 import ExploreTab from './menu-tabs/ExploreTab'
 import GrayAreaTab from './menu-tabs/GrayAreaTab'
@@ -17,6 +18,9 @@ export default {
         CartTab
     },
     computed: {
+        ...mapGetters({
+        cart: 'cart/getCart'
+        }),
         menuState() {
             return this.$store.getters['menuIcon/menuState']
         },
@@ -31,9 +35,6 @@ export default {
         },
         legalsState() {
             return this.$store.getters['legalsIcon/legalsState']
-        },
-        cartState() {
-            return this.$store.getters['cartIcon/cartState']
         },
         
         menuIcon() {
@@ -92,10 +93,12 @@ export default {
     <div class="root">
         <div class="menu-wrapper flex JF-spaceBE AL-center">
             <img @click="toggleMenu" :src="menuIcon"  title="Menu"    alt="MENU" class="menu-burger pointer">
+            <router-link tag="img"  to="/" src="https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/pixelpalm_logo_big.svg" 
+                          alt="PIXELPALM-LOGO" class="text-logo pointer"></router-link>
             <div class="menu-cart pointer flex center">
+                <span v-if="!this.cartState" class="cart-nums">{{ this.cart.length }}</span>
                 <img @click="toggleCart" :src="cartIcon"  title="Cart" alt="CART" class="cart-img">
             </div>
-            
         </div>
         <compass></compass>
         <transition name="slideIn2">
@@ -138,7 +141,15 @@ export default {
         margin-right: 1rem;
     }
 }
-
+.cart-nums{
+    position: absolute;
+    font-size: 1.2rem;
+    z-index: -1;
+}
+.text-logo {
+    height: 3rem;
+    width: auto;
+}
 .slideIn-enter-active,
 .slideIn-leave-active,
 .slideIn2-enter-active,

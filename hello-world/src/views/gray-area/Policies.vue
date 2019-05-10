@@ -72,4 +72,17 @@ please upgrade your browser.</p>
   margin-top: 10rem;
   font-size: 1.4rem;
 }
+@media only screen and (max-width: 1200px) {
+  .text-root {
+    width: calc(100vw - 2rem);
+  }
+  .text-block {
+    padding: 0;
+    width: calc(100vw - 2rem);
+    margin-top: 8.4rem;
+    margin-left: 1.6rem;
+    margin-bottom:1rem;
+  }
+
+}
 </style>

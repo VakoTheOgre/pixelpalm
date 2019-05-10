@@ -16,7 +16,7 @@ export default {
 <template>
 <div class="main-menu">
   <div class="product-menu">
-    <router-link tag="div" v-for="(category, index) in menus.grayarea" :key="`${index}`"  
+    <router-link tag="span" v-for="(category, index) in menus.grayarea" :key="`${index}`"  
     :to="`/grayarea/${category.name.toLowerCase()}`"  class="product-menu_item">
       <img :src="category.svg" alt="icon" class="menu-icon pointer">
       <span class="menu-option pointer"> {{ category.name }} </span>
@@ -35,7 +35,11 @@ export default {
 <style lang="scss" scoped>
 .main-menu {
   background-color: white;
-  height: calc(100vh - 17.2rem);
+  min-height: calc(100vh - 12.8rem);
+  width: 33rem;
+  position: absolute;
+  top: 12.8rem;
+  left: 0;
 }
 .product-menu {
   padding-left: 3rem;
@@ -53,8 +57,11 @@ export default {
   max-height: 3rem;
 }
 .menu-option  {
-  font-size: 3.2rem;
+  font-size: 2rem;
   padding-left: 1rem;
+  font-family: 'Pixelpalm-category-font';
+  font-smooth: never;
+	-webkit-font-smoothing : none;
 }
 .socials {
   position: absolute;

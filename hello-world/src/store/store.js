@@ -5,6 +5,7 @@ import exploreIcon from './navigation/exploreIcon'
 import searchIcon from './navigation/searchIcon'
 import accountIcon from './navigation/accountIcon'
 import legalsIcon from './navigation/legalsIcon'
+import socialIcons from './navigation/socialIcons'
 import cartIcon from './navigation/cartIcon'
 import products from './Products/products'
 import admin from './navigation/admin/admin'
@@ -27,7 +28,8 @@ export default new Vuex.Store({
     products,
     legalsIcon,
     admin,
-    cart
+    cart,
+    socialIcons
   },
   state: {
 

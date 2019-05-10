@@ -51,7 +51,7 @@ export default {
     <div v-if="!this.registerPressed" class="new-customer flex-col">
       
       <button @click="registerRequest" class="btn pointer">
-        CREATE ACCOUNT
+        <span class="sharp-span">CREATE ACCOUNT</span>
       </button>
     </div>
     <registration v-else></registration>
@@ -70,7 +70,11 @@ export default {
 <style lang="scss" scoped>
 .root {
   background-color: white;
-  height: calc(100vh - 17.2rem);
+  min-height: calc(100vh - 12.8rem);
+  width: 33rem;
+  position: absolute;
+  top: 12.8rem;
+  left: 0;
 }
 .error {
   padding: 0;
@@ -93,19 +97,38 @@ hr {
   padding-bottom: 3rem;
   &-title {
     padding-bottom: 1rem;
-    font-size: 1.8rem;
+    font-size: 1.5rem;
+    font-family: 'Pixelpalm-category-font';
+    font-smooth: never;
+    -webkit-font-smoothing : none;
   }
+}
+.sharp-span {
+  color: white;
+  font-size: 1.5rem;
+  // height: 2.1rem;
+  font-family: 'Pixelpalm-category-font';
+  font-smooth: never;
+  -webkit-font-smoothing : none;
 }
 .btn {
   height: 4rem; 
   border: none;
   background-color: black;
   color: white;
+  font-size: 1.5rem;
+  font-family: 'Pixelpalm-category-font';
+  font-smooth: never;
+  -webkit-font-smoothing : none;
 }
 .registered {
   padding-top: 3rem;
   padding-bottom: 1rem;
-  font-size: 1.8rem;
+  font-size: 1.5rem;
+  font-family: 'Pixelpalm-category-font';
+  font-smooth: never;
+	-webkit-font-smoothing : none;
+  // white-space: nowrap;
 }
 .mail {
   height: 4rem; 

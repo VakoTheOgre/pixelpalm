@@ -3,6 +3,10 @@ export default {
     computed: {
         accountState() {
             return this.$store.getters['accountIcon/accountState']
+        },
+        
+        socialsState() {
+        return this.$store.getters['socialIcons/socialsState']
         }
     },
     methods: {
@@ -17,24 +21,33 @@ export default {
                 this.$store.commit("menuIcon/close")
                 this.$store.commit("legalsIcon/close")
             }
-        } 
+        },
+        toggleSocials() {
+            
+            if(this.socialsState) {
+                this.$store.commit('socialIcons/close')
+            } else {
+                this.$store.commit('socialIcons/open')
+            }
+        }
     }
 }
 </script>
 
 <template>
-    <div class="root flex JF-spaceBE AL-center">
+    <div class="root-search flex JF-spaceBE AL-center">
         <img @click="toggleAccount" src="https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/login-icon.svg" alt="login" class="user-icon pointer">
         <div class="search-wrapper flex JF-spaceBE">
-            <input type="text" placeholder="SEARCH" class="search-input">
+            <input @focus="toggleSocials" @blur="toggleSocials" type="text" placeholder="SEARCH" class="search-input">
             <img src="https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/search_icon_mobile.svg" alt="search" class="search-icon">
         </div>
     </div>
 </template>
 
 <style lang="scss" scoped>
-.root {
-    width: calc(100vw - 2rem);
+.root-search
+ {
+    width: 100vw;
     padding-top: 1rem;
     padding-left: 1rem;
     padding-right: 1rem;
@@ -47,7 +60,7 @@ export default {
 }
 .search {
     &-wrapper {
-        height: 3rem;
+        height: 3.1rem;
         border: 0.2rem solid black;
         width: calc(100vw - 3rem);
         margin-left: 1rem;
@@ -57,10 +70,17 @@ export default {
         height: 2.6rem;
         border: none;
         width: 100%;
+        &:focus {
+            outline-color: transparent;
+            outline-width: 0;
+        }
         &::placeholder {
-            font-size: 1.4rem;
-            font-weight: bold;
             color: black;
+            text-rendering: geometricPrecision;
+            font-family: 'Pixelpalm-category-font';
+            font-smooth: never;
+            -webkit-font-smoothing: none;
+            font-size: 1rem !important;
         }
         &:enabled {
             padding-left: 1rem;

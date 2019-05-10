@@ -7,11 +7,71 @@ export default {
 
 
 <template>
-<div class="ROOT">
-  RETURNS
+<div class="text-root flex root center">
+  <p class="text-block">
+  
+  RETURNS POLICY
+  <br><br>
+  Our goal is for you to be 100% satisfied with your purchase from PIXELPALM.CO. If for any reason you are not satisfied we would be happy to assist you.
+  We strongly advise you to contact us before returning any products.
+  <br><br>
+  Any claims for misprinted/damaged/defective items must be submitted within 48 hours after the product has been received. For packages lost in transit, all claims must be submitted no later than 2 weeks after the estimated delivery date. Claims deemed an error on our part are covered at our expense.
+  <br><br>
+  The cost of return shipping is at the customer’s expense and is non-refundable. Item(s) purchased from PIXELPALM.CO must be returned in as-new, unused condition with original tags still attached, Item(s) must be returned to back to us within 14 days of receiving the shipment, in order to receive a refund. Item(s) must be in their original packaging, in as-new condition with printed receipts. In as-new condition is defined as unworn, unwashed, undamaged (beyond what is noted if exchanging due to factory defect), and unused with all original tags attached. All packaging must accompany the product and must also be in new condition. We reserve the right to refuse an exchange if the merchandise does not meet this criterion. We recommend returning items through traceable mail, as any returned items that are not received by PIXELPALM will not be issued a refund. We also recommend that customers ask for proof of postage at the time of posting returned items. Exchanges are not available for any product returned to us after the 14 day window. Please allow 3-5 business days for refunds to process once we receive the exchange back at our warehouse. You will receive an email when we have issued a refund to your account. A refund will be issued in the original form of payment. Please note that we can not refund the original shipping charge with the exception of faulty or incorrectly shipped items. To return an item(s) for a refund just send it to the address below with a copy of the original invoice and a written explanation of why the item(s) is being returned. 
+  <br><br>
+  Returns should be shipped via insured traceable mail in a secure package to the following address:
+  <br><br>
+  11025 Westlake Drive, Charlotte, NC 28273.
+  <br><br>
+  When we receive a returned shipment, an automated email notification will be sent to you. Unclaimed returns get donated to charity after 4 weeks.
+  <br><br>
+  Reasons for Returns
+  Wrong Address - If you provide an address that is considered insufficient by the courier, the shipment will be returned to our facility. You will be liable for reshipment costs once we have confirmed an updated address with you.
+  <br><br>
+  Unclaimed - Shipments that go unclaimed are returned to our facility and you will be liable for the cost of a reshipment to yourself.
+  <br><br>
+  We do not refund orders for buyer's remorse and mistaken size.
+  <br><br>
+  <br><br>
+  RETURNS FOR "SALE" ITEMS
+  <br><br>
+  All sales are final. No refunds accepted, no returns honored. 
+  *Already discounted merchandise is FINAL SALE and not available for exchange.
+  <br><br>
+  *Items purchased online cannot be returned at our physical stores.
+  <br><br>
+  <br><br>
+  Notification for EU consumers: According to Article 16(c) of the Directive 2011/83/EU of the European Parliament and of the Council of 25 October 2011 on consumer rights, the right of withdrawal may not be provided for the supply of goods made to the consumer's specifications or clearly personalized, therefore Pixelpalm reserves rights to refuse returns at its sole discretion.
+  </p>
 </div>
 </template>
 
 
-<style scoped>
+<style lang="scss" scoped>
+.text-root {
+  width: calc(100vw - 33rem);
+}
+.text-block {
+  padding-right:2rem;
+  padding-left:2rem;
+  padding-bottom:2rem;
+  width: 96rem;
+  text-align: justify;
+  // margin-left: 33rem;
+  margin-top: 10rem;
+  font-size: 1.4rem;
+}
+@media only screen and (max-width: 1200px) {
+  .text-root {
+    width: calc(100vw - 2rem);
+  }
+  .text-block {
+    padding: 0;
+    width: calc(100vw - 2rem);
+    margin-top: 8.4rem;
+    margin-left: 1.6rem;
+    margin-bottom:1rem;
+  }
+
+}
 </style>

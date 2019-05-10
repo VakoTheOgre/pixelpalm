@@ -100,7 +100,10 @@ hr {
   padding-bottom: 3rem;
   &-title {
     padding-bottom: 1rem;
-    font-size: 1.8rem;
+    font-size: 1.5rem;
+    font-family: 'Pixelpalm-category-font';
+    font-smooth: never;
+    -webkit-font-smoothing : none;
   }
 }
 .btn {
@@ -108,11 +111,18 @@ hr {
   border: none;
   background-color: black;
   color: white;
+  font-size: 1.5rem;
+  font-family: 'Pixelpalm-category-font';
+  font-smooth: never;
+  -webkit-font-smoothing : none;
 }
 .registered {
   padding-top: 3rem;
   padding-bottom: 1rem;
-  font-size: 1.8rem;
+  font-size: 1.5rem;
+  font-family: 'Pixelpalm-category-font';
+  font-smooth: never;
+  -webkit-font-smoothing : none;
 }
 .mail {
   height: 4rem; 

@@ -58,7 +58,7 @@ watch: {
 .newsletter {
     &-input {
         width: 100%;
-        height: 4rem;
+        height: 3.4rem;
         border: none;
         &:enabled {
             padding-left: 1rem;
