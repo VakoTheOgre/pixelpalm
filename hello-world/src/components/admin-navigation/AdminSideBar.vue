@@ -1,8 +1,8 @@
 <script>
 export default {
     methods: {
-        changeComponent() {
-            this.$store.commit("admin/component",'admin-products-list')
+        changeComponent(component) {
+            this.$store.commit("admin/component", component)
         }
     }
 }
@@ -10,9 +10,9 @@ export default {
 
 <template>
     <div class="root flex-col AL-center">
-        <span @click="changeComponent" class="link pointer">PRODUCTS</span>
-        <span       class="link"></span>
-        <span       class="link"></span>
+        <span @click="changeComponent('admin-products-list')" class="link pointer">PRODUCTS</span>
+        <span      @click="changeComponent('admin-blogs')" class="link pointer">BLOG</span>
+        <span       class="link pointer"></span>
     </div>    
 </template>
 

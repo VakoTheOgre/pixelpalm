@@ -3,12 +3,18 @@ import Cookie from 'js-cookie'
 import AdminSideBar from '@/components/admin-navigation/AdminSideBar'
 import AdminProductsList from '@/components/admin-navigation/admin-tabs/AdminProductsList'
 import AdminProductTemplate from '@/components/admin-navigation/admin-tabs/AdminProductTemplate'
+import AdminBlogs from '@/components/admin-navigation/admin-tabs/AdminBlogs'
+import AdminBlogEdit from '@/components/admin-navigation/admin-tabs/AdminBlogEdit'
+import AdminNewBlog from '@/components/admin-navigation/admin-tabs/AdminNewBlog'
 import axios from '@/main.js'
 export default {
   components: {
     AdminSideBar,
     AdminProductsList,
-    AdminProductTemplate
+    AdminProductTemplate,
+    AdminBlogs,
+    AdminBlogEdit,
+    AdminNewBlog
   },
 
 
