@@ -18,6 +18,7 @@ export default {
         password: '135426'
       })
       Cookie.set('token', res.data.token)
+      await this.$store.dispatch('auth/me')
       await this.$store.dispatch('products/getAllProducts')
     } catch (e) {
       console.log(e)

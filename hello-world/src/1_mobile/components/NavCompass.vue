@@ -23,9 +23,13 @@ export default {
       try {
         let crumbs = this.$route.fullPath.split('/').filter(val => val != '')
         crumbs.forEach((crumb, index) => {
-          let splitCrumb = crumb.split('?')
-          if(splitCrumb[1]) {
-            crumbs[index] = decodeURIComponent(splitCrumb[0])
+          if (crumb.length > 15) {
+            this.$store.getters['products/getAllProudcts'].forEach(product => {
+              if (product._id == crumb) {
+                crumbs[index] = product.name
+                return
+              }
+            })
           }
         })
         

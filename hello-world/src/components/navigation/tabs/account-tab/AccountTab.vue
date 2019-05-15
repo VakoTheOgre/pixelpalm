@@ -29,8 +29,7 @@ export default {
     },
     async login() {
       try{
-        let ret = await this.$store.dispatch('auth/login', {email: this.email, password: this.password})
-        this.error = 'All good'
+        this.$store.dispatch('auth/login', {email: this.email, password: this.password})
       } catch(e) {
         this.error = e.response.data.message
       }
