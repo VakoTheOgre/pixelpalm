@@ -151,13 +151,13 @@ export default {
 
 <template>
   <div class="nav flex JF-spaceBE">
-    <img @click="toggleMenu" :src="menuIcon"       title="Menu"    alt="" class="pointer">
-    <img @click="toggleExplore" :src="exploreIcon" title="Explore" alt="" class="pointer">
-    <img @click="toggleSearch" :src="searchIcon"   title="Search"  alt="" class="pointer">
-    <img @click="toggleAccount" :src="accountIcon" title="Account" alt="" class="pointer">
+    <img @click="toggleMenu" :src="menuIcon"       title="Menu"    alt="" class="pointer pixecon">
+    <img @click="toggleExplore" :src="exploreIcon" title="Explore" alt="" class="pointer pixecon">
+    <img @click="toggleSearch" :src="searchIcon"   title="Search"  alt="" class="pointer pixecon">
+    <img @click="toggleAccount" :src="accountIcon" title="Account" alt="" class="pointer pixecon">
     <div class="pointer flex center">
         <span v-if="!this.cartState" class="cart-nums">{{ this.cart.length }}</span>
-        <img @click="toggleCart" :src="cartIcon"  title="Cart" alt="CART" class="cart-img">
+        <img @click="toggleCart" :src="cartIcon"  title="Cart" alt="CART" class="cart-img pixecon">
     </div>
   </div>
 </template>

@@ -65,13 +65,16 @@ export default {
             </button>
           </div> -->
       </div>
+      <div class="spacer"></div>
       <checkout-btn backColor="red" margin="3"></checkout-btn>
 
   </div>
 </template>
 
 <style lang="scss" scoped>
-
+.spacer {
+  height: 2rem;
+}
 
 .heading {
   width: 27rem;

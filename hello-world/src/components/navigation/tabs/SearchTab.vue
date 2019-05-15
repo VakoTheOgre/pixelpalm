@@ -10,7 +10,7 @@ export default {
 <div class="root flex-col AL-center">
   <span class="title">SEARCH</span>
   <input type="text" placeholder="ENTER KEYWORD" class="search-input">
-  <img src="https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/search-icon.svg" alt="" class="search-img">
+  <img src="https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/search-icon.svg" alt="" class="search-img pixecon">
 </div>
 </template>
 

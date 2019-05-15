@@ -1,10 +1,12 @@
 <script>
 import cartDesktop from '@/components/navigation/tabs/CartTab'
 import SubtotalCheckout from '@/components/navigation/tabs/SubtotalCheckout'
+import Autocomplete from '@/components/store/Autocomplete.vue'
 export default {
     components: {
         cartDesktop,
-        SubtotalCheckout
+        SubtotalCheckout,
+        Autocomplete
     },
     data() {
     return {
@@ -97,7 +99,7 @@ export default {
                 </div>
 
                 <div >
-                  <input v-model="address1" type="text" placeholder="STREET NAME*" :class="{ errorBorder: this.address1Err != '' }" class="input">
+                  <input v-model="address1" type="text" placeholder="STREET NAME*" :class="{ errorBorder: this.address1Err != '' }" class="input-street">
                 </div>
                 
 
@@ -108,7 +110,8 @@ export default {
                 </div>
                 
                 <div class="horizontal-wrap flex JF-spaceBE">
-                    
+                    <autocomplete :type="'country'"></autocomplete>
+                    <autocomplete :type="'state'"></autocomplete>
                 </div>
                 
                 <div class="horizontal-wrap flex JF-spaceBE">
@@ -137,7 +140,7 @@ export default {
     min-height: 100vh;
 }
 .wrapper {
-    min-width: 85rem;
+    
     min-height: 53rem;
     // border: 0.1rem solid black;
 
@@ -146,6 +149,7 @@ export default {
     width: 56rem;
     height: 34rem;
     // border: 0.1rem solid black;
+    margin-right: 2rem;
 }
 .order-sum {
     // border: 0.1rem solid black;
@@ -159,16 +163,23 @@ export default {
 }
 .input {
     border: 0.2rem solid black;
-    width: 100%;
+    width: 27rem;
     height: 4rem;
     margin-bottom: 2rem;
     position: relative;
     &:enabled {
         padding-left: 1rem;
+        
+    }
+    &-street {
+      width: 56rem;
+      border: 0.2rem solid black;
+      height: 4rem;
+      margin-bottom: 2rem;
     }
     &-h {
         border: 0.2rem solid black;
-        width: 50%;
+        width: 27rem;
         height: 4rem;
         position: relative;
         &:enabled {
@@ -176,7 +187,7 @@ export default {
         }
         &-l {
             border: 0.2rem solid black;
-            width: 50%;
+            width: 27rem;
             margin-right: 2rem;
             height: 4rem;
             &:enabled {

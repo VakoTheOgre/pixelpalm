@@ -13,11 +13,11 @@ export default {
   mixins: [ViewportListener],
   async mounted () {
     try {
-      // let res = await this.$axios.post('/auth/login', {
-      //   email: 'keemo@gmail.com',
-      //   password: '135426'
-      // })
-      // Cookie.set('token', res.data.token)
+      let res = await this.$axios.post('/auth/login', {
+        email: 'keemo@gmail.com',
+        password: '135426'
+      })
+      Cookie.set('token', res.data.token)
       await this.$store.dispatch('products/getAllProducts')
     } catch (e) {
       console.log(e)
@@ -47,6 +47,16 @@ export default {
 }
 html {
   font-size: 62.5%;
+  overflow-y: scroll
+}
+@media only screen and (min-width: 1200px) and (max-height: 872px) {
+  html {
+    font-size: 42.5%;
+  }
+  .pixecon {
+    width: 20px;
+    height: 20px;
+  }
 }
 .sidbar-wrapper {
   position: absolute;
@@ -55,6 +65,7 @@ html {
 }
 #app {
   display: flex;
+  overflow: hidden;
 }
 .fake-sidebar {
   color: transparent;

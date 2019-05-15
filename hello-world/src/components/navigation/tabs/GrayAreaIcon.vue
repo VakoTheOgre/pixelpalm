@@ -34,7 +34,7 @@ methods: {
 </script>
 
 <template>
-<img @click="toggleLegals" :src="legalsIcon" alt="Grayarea-icon" class="pointer">
+<img @click="toggleLegals" :src="legalsIcon" alt="Grayarea-icon" class="pointer pixecon">
 </template>
 
 <style lang="scss" scoped>

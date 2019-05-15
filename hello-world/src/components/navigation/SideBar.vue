@@ -46,7 +46,7 @@ export default {
                           alt="PIXELPALM-LOGO" class="text-logo pointer"></router-link>
     </div>
     <main-menu></main-menu>
-    <carousel :per-page="1" :autoplay="true" :autoplayHoverPause="false" :mouseDrag="false" :touchDrag="false" :autoplayTimeout="3000" :loop="true" :paginationEnabled="false" >
+    <carousel id="carousela" :per-page="1" :autoplay="true" :autoplayHoverPause="false" :mouseDrag="false" :touchDrag="false" :autoplayTimeout="3000" :loop="true" :paginationEnabled="false" >
           <slide id="slide">
             <div class="slide">
             
@@ -75,6 +75,9 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+#carousela {
+  z-index: -1;
+}
 .sidebar {
   width: 33rem;
   min-height: 100vh;
@@ -86,6 +89,10 @@ export default {
     font-size: 3rem;
     justify-content: flex-end;
   }
+}
+.text-logo {
+  width: 25.8rem;
+  height: 3.6rem
 }
 .slideIn-enter-active,
 .slideIn-leave-active,
