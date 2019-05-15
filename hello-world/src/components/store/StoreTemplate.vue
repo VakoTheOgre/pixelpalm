@@ -196,23 +196,21 @@ export default {
     padding: 0;
   }
 }
-@media only screen and (min-width: 1900px) {
+@media only screen and (min-width: 1920px) {
   .whole-store {
     min-width: 32rem;
     display: grid;
-    grid-template-columns: calc(50vw - 1.5rem) calc(50vw - 1.5rem);
-    column-gap: 1rem;
-    grid-row-gap: 1rem;
-    grid-auto-rows: calc(50vw - 1.5rem);
-    margin-left: 0.9rem;
-    margin-right: 2rem;
+    grid-template-columns: calc(15vw - 3rem) calc(15vw - 3rem) calc(15vw - 3rem) calc(15vw - 3rem) calc(15vw - 3rem) calc(15vw - 3rem)  ;
+    column-gap: 1.8rem;
+    grid-auto-rows: calc(15vw - 1.2rem);
+    margin-left: 2.4vw;
     margin-top: 1rem;
     margin-bottom: 1rem;
   }
   .photo {
     // background-color: black;
     // border: 0.1rem solid black;
-    width: calc(50vw - 1.25rem);
+    width: calc(17vw - 3rem);
     height: auto;
     margin: 0;
     padding: 0;
