@@ -13,7 +13,7 @@ export default {
       product: null,
       selectedVariant: null,
       addedToCart: false,
-      error: '',
+      error: 'E',
       currentImage: 0,
       selectedSize: null
     }
@@ -37,7 +37,9 @@ export default {
   },
 
   methods: {
-
+    handleError(event) {
+      this.error = this.event
+    },
     selectSize(p) {
       this.selectedSize = p
     },
@@ -53,9 +55,9 @@ export default {
 
     addToCart() {
       if(!this.selectedSize) {
-        this.error = 'Please select a size first'
+        this.error = 'E'
         return
-      }
+      } 
       let selectedVariant
       for (let variant in this.product.variants) {
         console.log(variant)
@@ -118,8 +120,11 @@ export default {
 
         <sizes @sizeSelect="selectSize"></sizes>
       
-      <div v-if="!addedToCart" @click="addToCart" class="add-btn pointer flex center"><img src="https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/add-to-cart.svg"></div>
-    
+      <div v-if="!addedToCart" @interface="handleError" 
+                              :class="{ lowOpacity: this.error != '' }"
+                              @click="addToCart" class="add-btn pointer flex center">
+        <img src="https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/add-to-cart.svg"></div>
+      
       <checkout-btn v-else backColor="green" margin="0"></checkout-btn>
     </div>
   </div>
@@ -128,6 +133,9 @@ export default {
 
 
 <style lang="scss" scoped>
+.lowOpacity {
+  opacity: 0.8;
+}
   .carousel-navigation_dot.active-image {
     opacity: 1;
   }
@@ -165,15 +173,15 @@ export default {
     &-navigation {
       position: absolute;
       left: 50%;
-      bottom: 2rem;
+      bottom: 0.6rem;
       transform: translate(-50%, -50%);
       margin-left: 1rem;
       z-index: 3;
       &_dot {
         margin-right: 1rem;
         background-color: black;
-        height: 2rem;
-        width: 2rem;
+        height: 1rem;
+        width: 1rem;
         opacity: 0.5;
         cursor: pointer;
         user-select: none;
@@ -195,6 +203,7 @@ export default {
     width: 100%;
     height: 4rem;
     background-color: black;
+    cursor: not-allowed;
   }
   @media only screen and (max-width: 1200px) {
     .carousel-navigation_dot.active-image {

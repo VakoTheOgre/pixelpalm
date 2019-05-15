@@ -16,7 +16,7 @@ Vue.use(Vuex)
 
 
 const VuexPersist = new VuexPersistence({
-  modules: ['cart','products']
+  modules: ['cart']
 })
 
 export default new Vuex.Store({

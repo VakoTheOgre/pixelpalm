@@ -47,6 +47,16 @@ export default {
 }
 html {
   font-size: 62.5%;
+  overflow-y: scroll
+}
+@media only screen and (min-width: 1200px) and (max-height: 872px) {
+  html {
+    font-size: 42.5%;
+  }
+  .pixecon {
+    width: 20px;
+    height: 20px;
+  }
 }
 .sidbar-wrapper {
   position: absolute;
@@ -55,6 +65,7 @@ html {
 }
 #app {
   display: flex;
+  overflow: hidden;
 }
 .fake-sidebar {
   color: transparent;

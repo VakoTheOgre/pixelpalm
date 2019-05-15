@@ -1,5 +1,11 @@
 <script>
 export default {
+    props: {
+        error: {
+            type: String,
+            required: true
+        }
+    },
     data() {
         return {
             sizes: {
@@ -24,7 +30,7 @@ export default {
                     checked: "https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/extra-extra-large-chosen.svg"
                 }
             },
-            checked: [false,false,false,false,false]
+            checked: [false,false,false,false,false],
         }
     },
 
@@ -33,6 +39,10 @@ export default {
     },
 
     methods: {
+        emmitError() {
+            this.error = 'N/A'
+            this.$emit('interface', this.error)
+        },
         check (what) {
             (function(v) {
                 v.checked.forEach((el, i) => {
@@ -66,11 +76,11 @@ export default {
 
 <template>
     <div class="sizes flex JF-spaceBE AL-center">
-        <img id="size-0" @click="check(0)" alt="S" class="pointer">
-        <img id="size-1" @click="check(1)" alt="M" class="pointer">
-        <img id="size-2" @click="check(2)" alt="L" class="pointer">
-        <img id="size-3" @click="check(3)" alt="XL" class="pointer">
-        <img id="size-4" @click="check(4)" alt="XXL" class="pointer">
+        <img id="size-0" @click="check(0), emitError()" alt="S" class="pointer">
+        <img id="size-1" @click="check(1), emitError()" alt="M" class="pointer">
+        <img id="size-2" @click="check(2), emitError()" alt="L" class="pointer">
+        <img id="size-3" @click="check(3), emitError()" alt="XL" class="pointer">
+        <img id="size-4" @click="check(4), emitError()" alt="XXL" class="pointer">
     </div>
 </template>
 

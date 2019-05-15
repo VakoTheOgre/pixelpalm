@@ -44,6 +44,7 @@ export default {
 
 <template>
 <div class="root">
+  <div class="white-back">.</div>
   <form class="form flex-col">
     <span class="new-customer-title">
         NEW CUSTOMER
@@ -58,23 +59,31 @@ export default {
     <hr>
     <span class="registered">REGISTERED CUSTOMERS</span>
     <input v-model="email" type="email" placeholder="EMAIL ADRESS*" class="mail">
-    <span class="error">{{ emailErr }}</span>
+    <!-- <span class="error">{{ emailErr }}</span> -->
     <input v-model="password" type="password" placeholder="PASSWORD*" class="pass">
     <span class="forgot-pass">FORGOT YOUR PASSWORD?</span>
     <button @click.prevent="login" class="btn pointer">LOGIN</button>
-    <span class="error">{{ error }}</span>
+    <!-- <span class="error">{{ error }}</span> -->
   </form>
 </div>
 </template>
 
 <style lang="scss" scoped>
 .root {
-  background-color: white;
-  min-height: calc(100vh - 12.8rem);
+  // background-color: white;
   width: 33rem;
   position: absolute;
   top: 12.8rem;
   left: 0;
+}
+.white-back {
+  background-color: white;
+  min-height: calc(100vh - 12.8rem);
+  width: 33rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
 }
 .error {
   padding: 0;
@@ -90,8 +99,10 @@ hr {
 }
 .form {
   padding: 3rem 3rem 0 3rem;
-  background-color: white;
+  // background-color: white;
+  min-height: 81.2rem; 
   
+  z-index: 2;
 }
 .new-customer {
   padding-bottom: 3rem;
@@ -159,8 +170,9 @@ hr {
 }
 .forgot-pass {
   width: 100%;
+  line-height: 1;
   text-align: end;
-  padding-top: 0.5rem;
-  padding-bottom: 3rem;
+  padding-top: 0.7rem;
+  padding-bottom: 2.3rem;
 }
 </style>

@@ -1,8 +1,12 @@
 <script>
 import cartDesktop from '@/components/navigation/tabs/CartTab'
+import SubtotalCheckout from '@/components/navigation/tabs/SubtotalCheckout'
+import Autocomplete from '@/components/store/Autocomplete.vue'
 export default {
     components: {
-        cartDesktop
+        cartDesktop,
+        SubtotalCheckout,
+        Autocomplete
     },
     data() {
     return {
@@ -18,7 +22,7 @@ export default {
 
       nameErr: '',
       lastNameErr: '',
-      streetNameErr: '',
+      address1Err: '',
       emailErr: '',
       cityErr: '',
       phoneErr: '',
@@ -29,43 +33,43 @@ export default {
     }
   },
   watch: {
-    firstName(newValue) {
-      if(newValue.split("").length <= 1) {
+    name(newValue) {
+      if(newValue.split("").length == 1 || newValue.split("").length < 1 && !newValue.split("").length == 0) {
         this.nameErr = 'Name too short'
       } else {
         this.nameErr = ''
       }
     },
     lastName(newValue) {
-      if(newValue.split("").length <= 1) {
-        this.nameErr = 'Lastname too short'
+      if(newValue.split("").length == 1 || newValue.split("").length < 1 && !newValue.split("").length == 0) {
+        this.lastNameErr = 'Lastname too short'
       } else {
-        this.nameErr = ''
+        this.lastNameErr = ''
       }
     },
-    streetName(newValue) {
-      if(newValue.split("").length <= 1) {
-        this.streetErr = 'Street name too short'
+    address1(newValue) {
+      if(newValue.split("").length == 1 || newValue.split("").length < 1 && !newValue.split("").length == 0) {
+        this.address1Err = 'Street name too short'
       } else {
-        this.streetErr = ''
+        this.address1Err = ''
       }
     },
-    cityName(newValue) {
-      if(newValue.split("").length <= 1) {
+    city(newValue) {
+      if(newValue.split("").length == 1 || newValue.split("").length < 1 && !newValue.split("").length == 0) {
         this.cityErr = 'City name too short'
       } else {
         this.cityErr = ''
       }
     },
     zip(newValue) {
-      if(newValue.split("").length <= 1) {
-        this.zipErr = 'City name too short'
+      if(newValue.split("").length == 1 || newValue.split("").length < 1 && !newValue.split("").length == 0) {
+        this.zipErr = 'Zip code too short'
       } else {
         this.zipErr = ''
       }
     },
-    phoneNum(newValue) {
-      if(newValue.split("").length <= 1) {
+    phone(newValue) {
+      if(newValue.split("").length == 1 || newValue.split("").length < 1 && !newValue.split("").length == 0) {
         this.phoneErr = 'Phone number too short'
       } else {
         this.phoneErr = ''
@@ -79,7 +83,7 @@ export default {
         this.emailErr = ''
       }
     }
-  },
+  }
 
 }
 </script>
@@ -88,79 +92,120 @@ export default {
     <div class="root-checkout flex center">
         <div class="wrapper flex JF-spaceBE AL-center">
             <form class="form flex-col" autocomplete="on">
-                <div class="horizontal-wrap">
-                    <input  v-model="firstName" type="text" placeholder="FIRSTNAME*" class="input-2">
-                        <span v-model="nameErr" class="error"> {{ nameErr }} </span>
+                <div class="horizontal-wrap flex JF-spaceBE">
+                    <input  v-model="name" type="text" placeholder="FIRSTNAME*" :class="{ errorBorder: this.nameErr != '' }"  class="input-h-l">
 
-                    <input v-model="lastName" type="text" placeholder="LASTNAME*" class="input-2">
-                        <span v-model="lastNameErr" class="error"> {{ lastNameErr }} </span>
+                    <input v-model="lastName" type="text" placeholder="LASTNAME*" :class="{ errorBorder: this.lastNameErr != '' }" class="input-h">
+                </div>
+
+                <div >
+                  <input v-model="address1" type="text" placeholder="STREET NAME*" :class="{ errorBorder: this.address1Err != '' }" class="input-street">
                 </div>
                 
-                <input  v-model="address1" type="text" placeholder="STREET ADRESS*" class="input">
-                    <span v-model="streetNameErr" class="error"> {{ streetNameErr }} </span>
 
-                <div class="horizontal-wrap">
-                    <input v-model="city" type="text" placeholder="CITY*" class="input-2">
-                        <span v-model="cityErr" class="error"> {{ cityErr }} </span>
+                <div class="horizontal-wrap flex JF-spaceBE">
+                    <input v-model="city" type="text" placeholder="CITY*" :class="{ errorBorder: this.cityErr != '' }" class="input-h-l">
 
-                    <input v-model="zip" type="text" placeholder="ZIP/POSTAL CODE*" class="input-2">
-                        <span v-model="zipErr" class="error"> {{ zipErr }} </span>
+                    <input v-model="zip" type="text" placeholder="ZIP/POSTAL CODE*" :class="{ errorBorder: this.zipErr != '' }" class="input-h">
                 </div>
                 
-                <div class="horizontal-wrap">
-                    
+                <div class="horizontal-wrap flex JF-spaceBE">
+                    <autocomplete :type="'country'"></autocomplete>
+                    <autocomplete :type="'state'"></autocomplete>
                 </div>
                 
-                <div class="horizontal-wrap">
+                <div class="horizontal-wrap flex JF-spaceBE">
 
-                    <input v-model="email" type="text" placeholder="EMAIL ADRESS*" class="input-h-l">
-                        <span v-model="emailErr" class="error"> {{ emailErr }} </span>
+                    <input v-model="email" type="text" placeholder="EMAIL ADRESS*" :class="{ errorBorder: this.emailErr != '' }" title="" class="input-h-l">
 
-                    <input v-model="phone" type="text" placeholder="PHONE NUMBER*" class="input-h">
-                        <span v-model="phoneErr" class="error"> {{ phoneErr }} </span>
+                    <input v-model="phone" type="text" placeholder="PHONE NUMBER*" :class="{ errorBorder: this.phoneErr != '' }" title="" class="input-h">
 
                 </div>
                 
             </form>
             <div class="order-sum">
                 <cart-desktop v-if="this.device == 'desktop'"></cart-desktop>
+                <subtotal-checkout></subtotal-checkout>
             </div>
         </div>
     </div>
 </template>
     
 <style lang="scss" scoped>
+.errorBorder {
+  border: 0.2rem solid red !important;
+}
 .root-checkout {
     min-width: calc(100vw - 33rem);
     min-height: 100vh;
 }
 .wrapper {
-    min-width: 83rem;
-    min-height: 100vh;
+    
+    min-height: 53rem;
+    // border: 0.1rem solid black;
+
 }
 .form {
     width: 56rem;
     height: 34rem;
-    border: 0.1rem solid black;
+    // border: 0.1rem solid black;
+    margin-right: 2rem;
 }
 .order-sum {
-    border: 0.1rem solid black;
+    // border: 0.1rem solid black;
     height: 100%;
+    width: 28rem;
+    margin-bottom: 3.2rem;
+}
+.horizontal-wrap {
+    width: 56rem;
+    margin-bottom: 2rem;
+}
+.input {
+    border: 0.2rem solid black;
+    width: 27rem;
+    height: 4rem;
+    margin-bottom: 2rem;
+    position: relative;
+    &:enabled {
+        padding-left: 1rem;
+        
+    }
+    &-street {
+      width: 56rem;
+      border: 0.2rem solid black;
+      height: 4rem;
+      margin-bottom: 2rem;
+    }
+    &-h {
+        border: 0.2rem solid black;
+        width: 27rem;
+        height: 4rem;
+        position: relative;
+        &:enabled {
+            padding-left: 1rem;
+        }
+        &-l {
+            border: 0.2rem solid black;
+            width: 27rem;
+            margin-right: 2rem;
+            height: 4rem;
+            &:enabled {
+                padding-left: 1rem;
+            }
+        }
+    }
+}
+.error {
+    position: absolute;
 }
 //===========================================================================CARTS CSS===================================================================================
-.subtotal {
-    border-top: 0.2rem solid black ;
-  padding-top: 3rem;
-  width: 100%;
-  text-align: left;
-  font-size: 1.6rem;
-}
+
 .cart-wrapper {
   background-color: white;
   min-height: 24rem;
-  height: 24rem;
+  margin-bottom: 10rem;
   width: 27rem;
-  margin-bottom: 13.2rem;
   position: static;
   :first-of-type {
     margin-top: 0;

@@ -53,7 +53,8 @@ export default {
   margin-top: 3rem !important;
   width: 27rem;
   height: 4rem;
-  padding: 0;
+  padding: 0 !important;
+  margin: 0 !important;
 }
 @media only screen and (max-width: 1200px) {
     .root-btn {
