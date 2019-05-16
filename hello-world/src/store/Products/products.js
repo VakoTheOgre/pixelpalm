@@ -21,14 +21,9 @@ export default {
   actions: {
     async getAllProducts ({ commit }) {
       try {
-        console.log(process.env)
-        if (process.env.NODE_ENV === "production") {
-          let res = await axios.get('/shop/products/')
-          commit('setAllProducts', res.data.products)
-        } else if (process.env.NODE_ENV === "development") {
-          let res = await axios.get('https://api.myjson.com/bins/gjzgq')
-          commit('setAllProducts', res.data.products)
-        }
+				let res = await axios.get('/shop/products/')
+				commit('setAllProducts', res.data.products)
+        
         return Promise.resolve(true)
       } catch (e) {   
         return Promise.reject(e)
