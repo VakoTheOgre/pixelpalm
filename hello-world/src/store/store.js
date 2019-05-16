@@ -11,6 +11,10 @@ import products from './Products/products'
 import admin from './navigation/admin/admin'
 import cart from './cart/cart'
 import auth from './user/user.js'
+import history from './user/history.js'
+import information from './user/information.js'
+import loggedUser from './user/loggedUser.js'
+import password from './user/password.js'
 import checkout from './cart/checkout'
 import VuexPersistence from 'vuex-persist'
 Vue.use(Vuex)
@@ -33,7 +37,11 @@ export default new Vuex.Store({
     cart,
     socialIcons,
     checkout,
-		auth
+    auth,
+    history,
+    password,
+    information,
+    loggedUser
   },
   state: {
 

@@ -1,46 +1,69 @@
 <script>
+import Information from '@/components/navigation/tabs/account-tab/AccountInformation'
+import Password from '@/components/navigation/tabs/account-tab/AccountPassword'
+import History from '@/components/navigation/tabs/account-tab/AccountHistory'
 export default {
-  computed: {
-     user () {
-         return this.$store.getters['auth/user']
-      } 
+    components: {
+        Information,
+        Password,
+        History
     },
-    methods: {
-        info () {
-
-        },
-        orders () {
-
+  computed: {
+        history () {
+            return this.$store.getters['history/historyState']
         },
         pass () {
-
+            return this.$store.getters['password/passState']
+        },
+        info () {
+            return this.$store.getters['information/infoState']
+        },
+        logged () {
+            return this.$store.getters['loggedUser/loggedState']
+        }
+    },
+    methods: {
+        toggleInfo () {
+            this.$store.commit('information/open')
+            this.$store.commit('loggedUser/close')
+        },
+        toggleHistory () {
+            this.$store.commit('history/open')
+            this.$store.commit('loggedUser/close')
+        },
+        togglePass () {
+            this.$store.commit('password/open')
+            this.$store.commit('loggedUser/close')
         }
     }
 }
 </script>
 
 <template>
-<div class="logged-root flex-col">
+<div v-if="this.logged" class="logged-root flex-col">
     <div class="name-wrapper flex pointer">
         <img src="https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/account-logged-in-icon.svg">
         <span class="username flex AL-center"> {{ user.name }} </span>
     </div>
     <span class="option-span">ACCOUNT INFORMATION</span>
-    <div @click="info" class="option-btn flex center pointer">
+    <div @click="toggleInfo" class="option-btn flex center pointer">
         VIEW DETAILS
     </div>
     <hr class="hr">
     <span class="option-span">ACCOUNT HISTORY</span>
-    <div @click="orders" class="option-btn flex center pointer">
+    <div @click="toggleHistory" class="option-btn flex center pointer">
         SHOW ORDERS
     </div>
     <hr class="hr">
     <span class="option-span">ACCOUNT PASSWORD</span>
-    <div @click="pass" class="option-btn flex center pointer">
+    <div @click="togglePass" class="option-btn flex center pointer">
         CHANGE PASSWORD
     </div>
 
 </div>
+<information v-else-if="this.info"></information>
+<password v-else-if="this.pass"></password>
+<history v-else></history>
 </template>
 
 <style lang="scss" scoped>
