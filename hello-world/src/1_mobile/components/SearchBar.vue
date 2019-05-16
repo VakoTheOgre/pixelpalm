@@ -29,7 +29,11 @@ export default {
             } else {
                 this.$store.commit('socialIcons/open')
             }
-        }
+        },
+
+      search(e) {
+        console.log(e)
+      }
     }
 }
 </script>
@@ -38,7 +42,7 @@ export default {
     <div class="root-search flex JF-spaceBE AL-center">
         <img @click="toggleAccount" src="https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/login-icon.svg" alt="login" class="user-icon pointer">
         <div class="search-wrapper flex JF-spaceBE">
-            <input @focus="toggleSocials" @blur="toggleSocials" type="text" placeholder="SEARCH" class="search-input">
+            <input @change="search" @focus="toggleSocials" @blur="toggleSocials" type="text" placeholder="SEARCH" class="search-input">
             <img src="https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/search_icon_mobile.svg" alt="search" class="search-icon">
         </div>
     </div>
