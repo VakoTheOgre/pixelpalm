@@ -66,9 +66,12 @@ export default {
 <template>
   <div :class="{'center': isShop}" class="bread-wrapper flex AL-center">
     <span v-if="!isShop" class="bread-home">FREE WORLDWIDE SHIPPING FOR ORDERS ABOVE $50</span>
-    <div v-if="isShop" class="breadcrumbs">
+    <div v-if="isShop && !injectedCrumbs" class="breadcrumbs">
       <router-link tag="span" to="/" class="pointer bread-font"> HOME | </router-link>
       <router-link :key="index" tag="span" v-for="(crumb, index) in crumbs" :to="createCrumb(index)" class="pointer bread-font" >{{ crumb.toUpperCase() }} | </router-link>
+    </div>
+    <div v-else>
+      <span :key="index" v-for="(crumb, index) in crumbs"> {{ crumb }}</span>
     </div>
   </div>
 </template>
