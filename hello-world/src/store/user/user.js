@@ -5,7 +5,8 @@ export default {
 
   state: {
     user: null,
-    token: ""
+    token: "",
+		history: []
   },
   getters: {
     user (state) {
@@ -13,7 +14,11 @@ export default {
     },
     token (state) {
         return state.token
-    }
+    },
+
+		history (state) {
+			return state.history
+		}
   },
   mutations: {
     setUser(state, payload) {
@@ -21,7 +26,11 @@ export default {
     },
     setToken(state, payload) {
         state.token = payload
-    }
+    },
+
+		setHistory(state, paylaod) {
+			state.history = payload
+		}
   },
   actions: {
     async login ({ commit }, payload) {
@@ -74,6 +83,19 @@ export default {
           return Promise.resolve(false)
         }
       }
+		},
+
+		getHistory ({ commit, state }) {
+			return new Promise(async (resolve,reject) => {
+				try {
+					let res = await axios.get(`/user/getOrders/${state.user._id}`, { headers: { 'Authorization': `Bearer ${state.token}` } })
+					commit('setHistory', res.data.orders)
+					resolve(true)
+				} catch (e) {
+					console.log(e.response.data.message)
+					reject(e)
+				}
+			})
 		}
   }
 }
