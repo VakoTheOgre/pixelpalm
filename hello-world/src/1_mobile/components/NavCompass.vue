@@ -2,7 +2,7 @@
 import isShop from '../../helpers/mixins/isShop.js'
 export default {
   mixins: [isShop],
-
+  
   computed: {
     menuState() {
         return this.$store.getters['menuIcon/menuState']
@@ -19,7 +19,15 @@ export default {
     legalsState() {
         return this.$store.getters['legalsIcon/legalsState']
     },
+
+    injectedCrumbs () {
+      return this.$store.getters['accountIcon/crumbs']
+    }
+
     crumbs() {
+      if (this.injectedCrumbs) {
+        return this.injectedCrumbs
+      }
       try {
         let crumbs = this.$route.fullPath.split('/').filter(val => val != '')
         crumbs.forEach((crumb, index) => {
