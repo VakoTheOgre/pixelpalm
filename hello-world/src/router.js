@@ -15,6 +15,10 @@ const SingleProduct = () => import('./views/shop/SingleProduct.vue')
 const CategoryPage = () => import('./views/shop/CategoryPage.vue')
 const CheckoutPage = () => import('./views/shop/CheckoutPage.vue')
 const Shop = () => import('./views/shop/Shop.vue')
+const Confirm = () => import('./views/account/confirm.vue')
+const ResetPassword = () => import('./views/account/reset-password.vue')
+const ForgotPassword = () => import('./views/account/forgot-password.vue')
+
 
 Vue.use(Router)
 export default new Router({
@@ -95,6 +99,18 @@ export default new Router({
       path: '/checkout',
       name: 'checkout',
       component: CheckoutPage
+    },
+    {
+      path: '/users/verify/:token',
+      component: Confirm
+    },
+    {
+      path: '/users/reset/:token',
+      component: ResetPassword
+    },
+    {
+      path: '/users/forgot-password',
+      component: ForgotPassword
     }
   ]
 })

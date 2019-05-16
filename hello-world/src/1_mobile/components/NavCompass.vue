@@ -22,7 +22,7 @@ export default {
 
     injectedCrumbs () {
       return this.$store.getters['accountIcon/crumbs']
-    }
+    },
 
     crumbs() {
       if (this.injectedCrumbs) {

@@ -46,9 +46,9 @@ export default {
             <span class="spans pointer"> {{ item.variant.size }} </span>
             <span class="spans pointer"> {{ item.amount }} </span>
             <span class="spans pointer"> ${{ item.variant.price }} </span>
-            <div @click="remove(index)" class="bin spans pointer">
-              X
-            </div>
+          
+            <img @click="remove(index)" src="https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/delete-icon.svg" alt="X" class="bin spans pointer">
+            
           </div>
           <!-- <div class="quantity-row flex-row AL-center JF-spaceBE">
             <span>Quantity:</span>
@@ -112,8 +112,14 @@ export default {
   }
 }
 .spans {
-  padding: 0.2rem;
+  padding: 0.3rem 0.2rem 0.2rem 0.2rem;
+  font-size: 2rem;
+  font-family: 'Pixelpalm-text';
+  text-rendering: geometricPrecision;
+  font-smooth: never;
+	-webkit-font-smoothing: none;
 }
+
 .thumb {
   height: 5.6rem;
   width: 5.6rem;
@@ -135,6 +141,9 @@ button {
   border: none;
 }
 .bin {
-  font-size: 1.2rem;
+  width: 1rem;
+  height: 1rem;
+  padding: 0;
+  margin: 0 0.6rem 0.2rem 0;
 }
 </style>

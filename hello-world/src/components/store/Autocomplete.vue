@@ -7,6 +7,22 @@
   width: 27rem !important;
   border: 0.2rem solid black;
   height: 4rem;
+  font-size: 2rem;
+  color: black;
+  opacity: 1;
+  font-family: 'Pixelpalm Pro-Input';
+  text-rendering: geometricPrecision;
+  font-smooth: never;
+  -webkit-font-smoothing: none;
+  ::placeholder {
+    font-size: 2rem;
+    color: gray;
+    opacity: 1;
+    font-family: 'Pixelpalm Pro-Input';
+    text-rendering: geometricPrecision;
+    font-smooth: never;
+    -webkit-font-smoothing: none;
+  }
   &:enabled {
     padding-left: 1rem;
   }
@@ -33,6 +49,16 @@ export default {
     type: {
       type: String,
       required: true
+    },
+
+    country: {
+      type: String,
+      required: false
+    },
+
+    state: {
+      type: String,
+      required: false
     }
   },
   data() {
@@ -68,6 +94,9 @@ export default {
       );
       console.log(res);
       this.items = res.data;
+    }
+    if (this.country) {
+      this.userInput = this.country
     }
   }
 };

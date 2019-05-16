@@ -117,9 +117,9 @@ export default {
         <share  v-if="this.device == 'desktop'" ></share>
         <disc   v-if="this.device == 'desktop'" :discription="product.description"></disc>
 
-        <span   v-if="this.device == 'desktop' && !this.addedText" class="select-size flex AL-center">SELECT SIZE </span>
+        <span   v-if="this.device == 'desktop' && !this.addedText" class="select-size flex AL-center">Select Size </span>
         <transition name="slideIn">
-          <span   v-if="this.device == 'desktop' && this.addedText" class="select-size-small flex center">Item Added To Cart </span>
+          <span   v-if="this.device == 'desktop' && this.addedText" class="select-size-small flex AL-center">Item Added To Cart </span>
         </transition>
         <sizes  v-if="this.device == 'desktop' && !this.addedText" @sizeSelect="selectSize"></sizes>
         <transition name="slideIn">
@@ -134,7 +134,7 @@ export default {
         </div>
           <span   v-if="this.device == 'mobile' && !this.addedText" class="select-size flex AL-center">Select Size </span>
         <transition name="slideIn">
-          <span   v-if="this.device == 'mobile' && this.addedText" class="select-size-small flex center">Item Added To Cart </span>
+          <span   v-if="this.device == 'mobile' && this.addedText" class="select-size-small AL-center">Item Added To Cart </span>
         </transition>
         
         <sizes  v-if="this.device == 'mobile'" @sizeSelect="selectSize"></sizes>
@@ -188,21 +188,29 @@ export default {
     text-align: left;
     border: 0.1rem solid black;
     margin-bottom: 2rem;
-    font-size: 1.2rem;
+    font-family: 'Pixelpalm-text';
+    font-size: 2rem;
+    padding-top: 0.3rem;
     text-rendering: geometricPrecision;
-    font-family: 'Pixelpalm-category-font';
-    font-weight: normal;
+    font-smooth: never;
+    padding-left: 1rem;
+    -webkit-font-smoothing: none;
     padding-left: 1rem;
     &-small {
       width: 100%; 
       height: 4rem;
-      text-align: center;
+      text-align: left;
       border: 0.1rem solid black;
       margin-bottom: 2rem;
-      font-size: 1rem;
       margin-left: 50%;
       transform: translateX(-50%);
-    }
+      font-family: 'Pixelpalm-text';
+      font-size: 2rem;
+      padding-top: 0.3rem;
+      padding-left: 1rem;
+      text-rendering: geometricPrecision;
+      font-smooth: never;
+      }
   }
   #carousela {
     width: 56rem;
@@ -269,14 +277,24 @@ export default {
     text-align: left;
     border: 0.1rem solid black;
     margin-bottom: 2rem;
-    font-size: 1.6rem; 
+    font-family: 'Pixelpalm-text';
+    font-size: 2rem;
+    padding-top: 0.3rem;
+    text-rendering: geometricPrecision;
+    font-smooth: never;
+    padding-left: 1rem;
     &-small {
       width: 100%; 
       height: 4rem;
       text-align: center;
       border: 0.1rem solid black;
       margin-bottom: 2rem;
-      font-size: 1rem;
+      font-family: 'Pixelpalm-text';
+      font-size: 2rem;
+      padding-top: 0.3rem;
+      text-rendering: geometricPrecision;
+      padding-left: 1rem;
+      font-smooth: never;
       margin-left: 50%;
       transform: translateX(-50%);
     }

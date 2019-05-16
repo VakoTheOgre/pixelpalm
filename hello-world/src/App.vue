@@ -13,11 +13,6 @@ export default {
   mixins: [ViewportListener],
   async mounted () {
     try {
-      let res = await this.$axios.post('/auth/login', {
-        email: 'keemo@gmail.com',
-        password: '135426'
-      })
-      Cookie.set('token', res.data.token)
       await this.$store.dispatch('auth/me')
       await this.$store.dispatch('products/getAllProducts')
     } catch (e) {
@@ -83,11 +78,88 @@ html {
       url(https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/fonts/menu-fonts/Pixelpalm-category-font.woff2) format('woff2'),
       url(https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/fonts/menu-fonts/Pixelpalm-category-font.woff) format('woff'),
       url(https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/fonts/menu-fonts/Pixelpalm-category-font.ttf) format('truetype');
-        
     font-weight: normal;
     font-style: normal;
 }
+@font-face {
+    font-family: 'Pixelpalm-text';
+    src:
+      url(https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/fonts/regular-font/Pixelpalm-text-regular.svg) format('svg'),
+      url(https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/fonts/regular-font/Pixelpalm-text-regular.eot) format('embedded-opentype'),
+      url(https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/fonts/regular-font/Pixelpalm-text-regular.eot#iefix) format('embedded-opentype'),
+      url(https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/fonts/regular-font/Pixelpalm-text-regular.woff2) format('woff2'),
+      url(https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/fonts/regular-font/Pixelpalm-text-regular.woff) format('woff'),
+      url(https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/fonts/regular-font/Pixelpalm-text-regular.ttf) format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Pixelpalm Pro';
+    src:
+      url(https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/fonts/bold-font/PixelpalmProBold.svg) format('svg'),
+      url(https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/fonts/bold-font/PixelpalmProBold.eot) format('embedded-opentype'),
+      url(https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/fonts/bold-font/PixelpalmProBold.eot#iefix) format('embedded-opentype'),
+      url(https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/fonts/bold-font/PixelpalmProBold.woff2) format('woff2'),
+      url(https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/fonts/bold-font/PixelpalmProBold.woff) format('woff'),
+      url(https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/fonts/bold-font/PixelpalmProBold.ttf) format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'new_cart_font';
+    src:
+      url(https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/fonts/cart-font/newcartfont.svg) format('svg'),
+      url(https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/fonts/cart-font/newcartfont.eot) format('embedded-opentype'),
+      url(https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/fonts/cart-font/newcartfont.eot#iefix) format('embedded-opentype'),
+      url(https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/fonts/cart-font/newcartfont.woff2) format('woff2'),
+      url(https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/fonts/cart-font/newcartfont.woff) format('woff'),
+      url(https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/fonts/cart-font/newcartfont.ttf) format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Pixelpalm Pro-Input';
+    src:
+      url(https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/fonts/input-font/PixelpalmProRegular.svg) format('svg'),
+      url(https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/fonts/input-font/PixelpalmProRegular.eot) format('embedded-opentype'),
+      url(https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/fonts/input-font/PixelpalmProRegular.eot#iefix) format('embedded-opentype'),
+      url(https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/fonts/input-font/PixelpalmProRegular.woff2) format('woff2'),
+      url(https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/fonts/input-font/PixelpalmProRegular.woff) format('woff'),
+      url(https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/fonts/input-font/PixelpalmProRegular.ttf) format('truetype');
+    font-weight: 100;
+    font-style: normal;
+}
 
+
+
+/* 
+
+  font-family: 'Pixelpalm-category-font';
+  text-rendering: geometricPrecision;
+  font-smooth: never;
+	-webkit-font-smoothing: none;
+
+  font-family: 'Pixelpalm-text';
+  text-rendering: geometricPrecision;
+  font-smooth: never;
+	-webkit-font-smoothing: none;
+
+  font-family: 'Pixelpalm Pro';
+  text-rendering: geometricPrecision;
+  font-smooth: never;
+	-webkit-font-smoothing: none;
+
+  font-family: 'new_cart_font';
+  text-rendering: geometricPrecision;
+  font-smooth: never;
+	-webkit-font-smoothing: none;
+
+  font-family: 'Pixelpalm Pro-Input';
+  text-rendering: geometricPrecision;
+  font-smooth: never;
+	-webkit-font-smoothing: none;
+
+*/
 @media only screen and (max-width: 1200px) {
   #app {
     flex-direction: column;

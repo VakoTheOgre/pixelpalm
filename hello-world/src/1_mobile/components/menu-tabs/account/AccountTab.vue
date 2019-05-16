@@ -13,6 +13,11 @@ export default {
       registerPressed: false
     }
   },
+  computed: {
+    userSignedIn () {
+      return !!this.$store.getters['auth/user']
+    }
+  },
   watch: {
     email(newValue) {
       var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
@@ -60,7 +65,7 @@ export default {
     <input  v-model="email" type="email" placeholder="EMAIL ADRESS*" class="mail">
     <span  class="error">{{ emailErr }}</span>
     <input  v-model="password" type="password" placeholder="PASSWORD*" class="pass">
-    <span  class="forgot-pass">FORGOT YOUR PASSWORD?</span>
+    <router-link tag="span" to="/users/forgot-password" class="forgot-pass pointer">FORGOT YOUR PASSWORD?</router-link>
     <button  @click.prevent="login" class="btn login pointer">LOGIN</button>
     <span  class="error">{{ error }}</span>
   </form>
@@ -158,7 +163,9 @@ hr {
   width: 100%;
   text-align: end;
   padding-top: 0.5rem;
+  user-select: none !important;
   padding-bottom: 3rem;
+  cursor: pointer !important;
 }
 .login {
   margin-bottom: 1rem;

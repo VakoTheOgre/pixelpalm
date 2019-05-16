@@ -65,9 +65,17 @@ export default {
         this.error = ''
       }
 
+      if (!this.boxChecked) {
+        this.error = 'Please agree to the terms of use'
+      }
+
+      if (this.password != this.password2) {
+        this.error = "Passwords don't match"
+      }
+
       try {
-        let ret = await this.$store.dispatch('auth/register', {email: this.email, password: this.password, fullName: `${this.firstName} ${this.lastName}`})
-        this.error = 'All good'
+        let ret = await this.$store.dispatch('auth/register', {email: this.email, password: this.password, name: `${this.firstName} ${this.lastName}`})
+        this.error = ret.data.message
       } catch(e) {
         this.error = e.response.data.message
       }
@@ -82,17 +90,17 @@ export default {
 
 <template>
 <form class="inner-form flex-col">
-  <input autocomplete="username" v-model="firstName" type="text" placeholder="FIRSTNAME*" class="input">
+  <input autocomplete="username" v-model="firstName" type="text" placeholder="First Name*" class="input">
   <!-- <span v-model="nameErr" class="error"> {{ nameErr }} </span> -->
   
-  <input v-model="lastName" type="text" placeholder="LASTNAME*" class="input">
+  <input v-model="lastName" type="text" placeholder="Last Name*" class="input">
   <!-- <span v-model="nameErr" class="error"> {{ nameErr }} </span> -->
 
-  <input v-model="email" type="email" placeholder="EMAIL ADRESS*" class="input">
+  <input v-model="email" type="email" placeholder="Email Address*" class="input">
   <!-- <span v-model="emailErr" class="error"> {{ emailErr }} </span> -->
 
-  <input autocomplete="password"  v-model="password" type="password" placeholder="PASSWORD*" class="input">
-  <input autocomplete="password"  v-model="password2" type="password" placeholder="CONFIRM PASSWORD*" class="input">
+  <input autocomplete="password"  v-model="password" type="password" placeholder="Password*" class="input">
+  <input autocomplete="password"  v-model="password2" type="password" placeholder="Confirm Password*" class="input">
   <!-- <span v-model="passwordErr" class="error"> {{ passwordErr }} </span> -->
   
   <div class="terms flex AL-center">
@@ -124,11 +132,21 @@ export default {
   background-color: transparent;
   color: black;
   margin-bottom: 2rem;
+  font-size: 2rem;
+  opacity: 1;
+  font-family: 'Pixelpalm Pro-Input';
+  text-rendering: geometricPrecision;
+  font-smooth: never;
+  -webkit-font-smoothing: none;
   padding: 0;
-    font-size: 1.2rem;
   &::placeholder {
-    font-size: 1.2rem;
-    color: black;
+    font-size: 2rem;
+    color: gray;
+    opacity: 1;
+    font-family: 'Pixelpalm Pro-Input';
+    text-rendering: geometricPrecision;
+    font-smooth: never;
+    -webkit-font-smoothing: none;
   }
   &:enabled {
     padding-left: 1rem;
@@ -149,10 +167,14 @@ export default {
 .agree-txt {
   width: 100%;
   text-align: start;
-  font-size: 1.2rem;
   margin-bottom: 1.8rem;
-  line-height: 1;
   padding-left: 1rem;
+  line-height: 1;
+  font-family: 'Pixelpalm-text';
+  text-rendering: geometricPrecision;
+  font-smooth: never;
+  font-size: 1rem;
+	-webkit-font-smoothing: none;
 }
 .btn {
   height: 4rem; 

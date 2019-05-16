@@ -28,6 +28,9 @@ export default {
     legalsState() {
     return this.$store.getters['legalsIcon/legalsState']
     },
+    userSignedIn () {
+      return !!this.$store.getters['auth/user']
+    },
     menuIcon() {
       if(!this.menuState) {
         let menuIcon = "https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/menu-icon.svg"
@@ -62,10 +65,14 @@ export default {
       }
     },
     accountIcon() {
-      if(!this.accountState) {
+      if(!this.accountState && !this.userSignedIn) {
         let accountIcon = "https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/login-icon.svg"
 
         return accountIcon
+      } else if (!this.accountState && this.userSignedIn) {
+        let accountIcon = "https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/account-logged-in-icon.svg"
+
+        return accountIcon 
       } else {
         let accountIcon = "https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/close-icon.svg"
 
@@ -131,6 +138,9 @@ export default {
         this.$store.commit("menuIcon/close")
         this.$store.commit("cartIcon/close")
         this.$store.commit("legalsIcon/close")
+        if (this.userSignedIn) {
+          this.$store.commit('accountIcon/setCrumbs', ['ACCOUNT'])
+        }
       }
     },
     toggleCart() {
@@ -174,7 +184,11 @@ export default {
 }
 .cart-nums{
     position: absolute;
-    font-size: 1.2rem;
+    font-size: 1rem;
     z-index: -1;
+    font-family: 'new_cart_font';
+    text-rendering: geometricPrecision;
+    font-smooth: never;
+    -webkit-font-smoothing: none;
 }
 </style>
