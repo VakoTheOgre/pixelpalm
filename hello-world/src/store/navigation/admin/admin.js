@@ -6,7 +6,8 @@ export default {
     state: {
       component: "admin-products-list",
       products: [],
-      currentProduct: null
+      currentProduct: null,
+			currentBlog: null
     },
   
     getters: {
@@ -18,7 +19,11 @@ export default {
       },
       currentProduct (state) {
         return state.currentProduct
-      }
+      },
+
+			currentBlog (state) {
+				return state.currentBlog
+			}
     },
   
     mutations: {
@@ -30,7 +35,11 @@ export default {
       },
       currentProduct (state, payload) {
         state.currentProduct = payload
-      }
+      },
+
+			blog (state, payload) {
+				state.currentBlog = payload
+			}
     },
 
     actions: {

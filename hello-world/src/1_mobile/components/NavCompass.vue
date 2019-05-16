@@ -2,7 +2,7 @@
 import isShop from '../../helpers/mixins/isShop.js'
 export default {
   mixins: [isShop],
-
+  
   computed: {
     menuState() {
         return this.$store.getters['menuIcon/menuState']
@@ -19,13 +19,25 @@ export default {
     legalsState() {
         return this.$store.getters['legalsIcon/legalsState']
     },
+
+    injectedCrumbs () {
+      return this.$store.getters['accountIcon/crumbs']
+    }
+
     crumbs() {
+      if (this.injectedCrumbs) {
+        return this.injectedCrumbs
+      }
       try {
         let crumbs = this.$route.fullPath.split('/').filter(val => val != '')
         crumbs.forEach((crumb, index) => {
-          let splitCrumb = crumb.split('?')
-          if(splitCrumb[1]) {
-            crumbs[index] = decodeURIComponent(splitCrumb[0])
+          if (crumb.length > 15) {
+            this.$store.getters['products/getAllProudcts'].forEach(product => {
+              if (product._id == crumb) {
+                crumbs[index] = product.name
+                return
+              }
+            })
           }
         })
         
@@ -54,9 +66,12 @@ export default {
 <template>
   <div :class="{'center': isShop}" class="bread-wrapper flex AL-center">
     <span v-if="!isShop" class="bread-home">FREE WORLDWIDE SHIPPING FOR ORDERS ABOVE $50</span>
-    <div v-if="isShop" class="breadcrumbs">
+    <div v-if="isShop && !injectedCrumbs" class="breadcrumbs">
       <router-link tag="span" to="/" class="pointer bread-font"> HOME | </router-link>
       <router-link :key="index" tag="span" v-for="(crumb, index) in crumbs" :to="createCrumb(index)" class="pointer bread-font" >{{ crumb.toUpperCase() }} | </router-link>
+    </div>
+    <div v-else>
+      <span :key="index" v-for="(crumb, index) in crumbs"> {{ crumb }}</span>
     </div>
   </div>
 </template>

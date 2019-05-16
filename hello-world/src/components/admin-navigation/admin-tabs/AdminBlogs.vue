@@ -12,6 +12,11 @@ export default {
         } catch (e) {
           console.log(e)
         }
+      },
+
+      editBlog(blog) {
+        this.$store.commit('admin/component', 'admin-blog-edit')
+        this.$store.commit('admin/blog', blog)
       }
     },
 
@@ -32,7 +37,7 @@ export default {
   <div>
     <button @click="newPost">NEW POST</button>
     <div>
-      <span v-html="blog.title" v-for="(blog, i) in blogs" :key="i"></span>
+      <span @click="editBlog(blog)" v-html="blog.title" v-for="(blog, i) in blogs" :key="i"></span>
     </div>
   </div>
 </template>

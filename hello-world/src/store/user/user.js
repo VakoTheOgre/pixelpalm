@@ -31,8 +31,8 @@ export default {
             password: payload.password
         })
 
-        commit('serUser', res.data.user)
-        commit('serToken', res.data.token)
+        commit('setUser', res.data.user)
+        commit('setToken', res.data.token)
 
         Cookie.set("token", res.data.token)
 
@@ -40,14 +40,29 @@ export default {
       } catch (e) {
         return Promise.reject(e)
       }
-    }
-  },
-  async register ( { commit }, payload) {
+    },
+		async register ( { commit }, payload) {
       try {
-          let res = await axios.post('/auth/login', {
-              
+          let res = await axios.post('/auth/register', {
+						email: payload.email,
+						name: payload.name,
+						password: payload.password
           })
-      }
-  }
+			} catch (e) {
+				console.log(e)
+			}
+		},
 
+		async me ( { commit } ) {
+			try {
+				await axios.post('/auth/me', {}, { headers: { 'Authorization': `Bearer ${Cookie.get('token')}` } })
+				Promise.resolve(true)
+			} catch (e) {
+				Cookie.set('token', null)
+				commit('setUser', null)
+				commit('setToken', null)
+				console.log(e)
+			}
+		}
+  }
 }
