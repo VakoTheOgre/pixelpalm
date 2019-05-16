@@ -3,9 +3,11 @@ import { mapState } from 'vuex'
 import { mapGetters } from 'vuex'
 import CartItem from '@/services/CartService/cartService'
 import checkoutBtn from '@/components/store/CheckoutBtn'
+import SubtotalCheckout from '@/components/navigation/tabs/SubtotalCheckout'
 export default {
   components: {
-    checkoutBtn
+    checkoutBtn,
+    SubtotalCheckout
   },
   computed: {
     ...mapState('cart', {
@@ -65,11 +67,16 @@ export default {
             </button>
           </div> -->
       </div>
+      <subtotal-checkout></subtotal-checkout>
+      <div class="spacer"></div>
       <checkout-btn backColor="red" margin="3"></checkout-btn>
   </div>
 </template>
 
 <style lang="scss" scoped>
+.spacer {
+  height: 2rem;
+}
 .heading {
   width: calc(100vw - 2rem) ;
   text-align: left;
@@ -84,6 +91,7 @@ export default {
 .cart-wrapper {
   background-color: white;
   min-height: 100vh;
+  // z-index: 5;
   // overflow-y: scroll;
   :first-of-type {
     margin-top: 1rem;

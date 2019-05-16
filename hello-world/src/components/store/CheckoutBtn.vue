@@ -19,11 +19,14 @@ export default {
     },
     computed: {
         ...mapGetters({
-            cart: 'cart/getCart'
-
+            cart: 'cart/getCart',
+            cartIcon: 'cartIcon/cartState'
         }),
         cart() {
            return this.$store.getters['cart/getCart']
+        },
+        cartIcon() {
+           return this.$store.getters['cartIcon/cartState']
         },
         cartItems() {
             if (this.cart.length > 0) {
@@ -42,9 +45,8 @@ export default {
 
 <template>
     <router-link v-if="this.$route.name != 'checkout' && !cartItems" tag="div" to="/checkout" @click="checkout" :style="{ backgroundColor: backColor, marginTop: margin + 'rem' }" class="root-btn pointer flex center">
-        <img style="margin: 0 !important;" src="https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/checkout.svg">
+        <img style="margin: 0 !important;" src="https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/check-out.svg">
     </router-link>
-    <div v-else-if="this.$route.name != 'checkout' || cartItems " style="font-size: 1.6rem;">Oops your cart is empty...</div>
 
 </template>
 
@@ -54,12 +56,13 @@ export default {
   width: 27rem;
   height: 4rem;
   padding: 0 !important;
+  background-color: #15CD72 !important;
   margin: 0 !important;
 }
 @media only screen and (max-width: 1200px) {
     .root-btn {
         width: calc(100vw - 2rem);
-        margin-top: 6rem !important;
+        margin-top: 0rem !important;
     }
 }
 </style>

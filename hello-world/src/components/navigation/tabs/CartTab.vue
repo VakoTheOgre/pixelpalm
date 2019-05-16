@@ -79,6 +79,7 @@ export default {
 .heading {
   width: 27rem;
   text-align: left;
+  position: relative;
   padding-top: 3rem;
   padding-bottom: 1rem;
   margin-top: 0 !important;
@@ -94,6 +95,7 @@ export default {
   position: absolute;
   top: 12.8rem;
   left: 0;
+  z-index: 4;
   // overflow-y: scroll;
   :first-of-type {
     margin-top: 1rem;
@@ -104,7 +106,7 @@ export default {
   height: 6rem;
   border: 0.2rem solid black;
   position: relative;
-  margin-top: 3rem;
+  margin-top: 2rem;
   :first-of-type {
     margin-top: 0;
   }

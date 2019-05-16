@@ -55,14 +55,14 @@ export default {
       </button>
     </div>
     <registration v-else></registration>
-    <hr v-if="!this.registerPressed">
-    <span v-if="!this.registerPressed" class="registered">REGISTERED CUSTOMERS</span>
-    <input v-if="!this.registerPressed" v-model="email" type="email" placeholder="EMAIL ADRESS*" class="mail">
-    <span v-if="!this.registerPressed" class="error">{{ emailErr }}</span>
-    <input v-if="!this.registerPressed" v-model="password" type="password" placeholder="PASSWORD*" class="pass">
-    <span v-if="!this.registerPressed" class="forgot-pass">FORGOT YOUR PASSWORD?</span>
-    <button v-if="!this.registerPressed" @click.prevent="login" class="btn login pointer">LOGIN</button>
-    <span v-if="!this.registerPressed" class="error">{{ error }}</span>
+    <hr>
+    <span  class="registered">REGISTERED CUSTOMERS</span>
+    <input  v-model="email" type="email" placeholder="EMAIL ADRESS*" class="mail">
+    <span  class="error">{{ emailErr }}</span>
+    <input  v-model="password" type="password" placeholder="PASSWORD*" class="pass">
+    <span  class="forgot-pass">FORGOT YOUR PASSWORD?</span>
+    <button  @click.prevent="login" class="btn login pointer">LOGIN</button>
+    <span  class="error">{{ error }}</span>
   </form>
 </div>
 </template>
@@ -72,7 +72,10 @@ export default {
   width: 100vw;
   background-color: white;
   padding-top: 3rem;
-  min-height: calc(100vh - 7.4rem);
+  min-height: 100vh;
+  padding-bottom: 20rem;
+  overflow-y: scroll;
+  max-height: 100%;
   overflow: scroll;
   // height: 100%;
   position: absolute;

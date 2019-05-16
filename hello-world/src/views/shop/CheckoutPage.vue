@@ -1,10 +1,10 @@
 <script>
-import cartDesktop from '@/components/navigation/tabs/CartTab'
+import checkoutCart from '@/components/navigation/tabs/CheckoutCartTab'
 import SubtotalCheckout from '@/components/navigation/tabs/SubtotalCheckout'
 import Autocomplete from '@/components/store/Autocomplete.vue'
 export default {
     components: {
-        cartDesktop,
+        checkoutCart,
         SubtotalCheckout,
         Autocomplete
     },
@@ -90,6 +90,7 @@ export default {
 
 <template>
     <div class="root-checkout flex center">
+      <span class="title">CHECKOUT</span>
         <div class="wrapper flex JF-spaceBE AL-center">
             <form class="form flex-col" autocomplete="on">
                 <div class="horizontal-wrap flex JF-spaceBE">
@@ -114,17 +115,19 @@ export default {
                     <autocomplete :type="'state'"></autocomplete>
                 </div>
                 
-                <div class="horizontal-wrap flex JF-spaceBE">
+                <div v-if="this.device == 'desktop'" class="horizontal-wrap flex JF-spaceBE">
 
                     <input v-model="email" type="text" placeholder="EMAIL ADRESS*" :class="{ errorBorder: this.emailErr != '' }" title="" class="input-h-l">
 
                     <input v-model="phone" type="text" placeholder="PHONE NUMBER*" :class="{ errorBorder: this.phoneErr != '' }" title="" class="input-h">
 
                 </div>
-                
+                <div class="final-btn flex center">
+                  <span>PURCHASE NOW</span>
+                </div>
             </form>
             <div class="order-sum">
-                <cart-desktop v-if="this.device == 'desktop'"></cart-desktop>
+                <checkout-cart v-if="this.device == 'desktop'"></checkout-cart>
                 <subtotal-checkout></subtotal-checkout>
             </div>
         </div>
@@ -132,12 +135,25 @@ export default {
 </template>
     
 <style lang="scss" scoped>
+.title {
+  font-size: 3rem;
+  position: absolute;
+  width: 27rem;
+  text-align: center;
+  top: 7.6rem;
+  left: calc(50% - 0.5rem);
+  transform: translateX(-50%);
+  border-bottom: 0.2rem solid black;
+  padding: 1rem;
+  line-height: 1;
+}
 .errorBorder {
   border: 0.2rem solid red !important;
 }
 .root-checkout {
     min-width: calc(100vw - 33rem);
     min-height: 100vh;
+    position: relative;
 }
 .wrapper {
     
@@ -150,6 +166,14 @@ export default {
     height: 34rem;
     // border: 0.1rem solid black;
     margin-right: 2rem;
+    margin-bottom: 4rem;
+}
+.final-btn {
+  width: 100%;
+  height: 4rem;
+  font-size: 2rem;
+  background-color: black;
+  color: white;
 }
 .order-sum {
     // border: 0.1rem solid black;
@@ -176,6 +200,7 @@ export default {
       border: 0.2rem solid black;
       height: 4rem;
       margin-bottom: 2rem;
+      padding-left: 1rem;
     }
     &-h {
         border: 0.2rem solid black;
@@ -199,53 +224,5 @@ export default {
 .error {
     position: absolute;
 }
-//===========================================================================CARTS CSS===================================================================================
 
-.cart-wrapper {
-  background-color: white;
-  min-height: 24rem;
-  margin-bottom: 10rem;
-  width: 27rem;
-  position: static;
-  :first-of-type {
-    margin-top: 0;
-  }
-}
-.cart-item {
-  width: 27rem;
-  height: 6rem;
-  border: 0.2rem solid black;
-  position: relative;
-  margin-top: 3rem;
-  :first-of-type {
-    margin-top: 0;
-  }
-}
-.spans {
-  padding: 0.2rem;
-}
-.thumb {
-  height: 5.6rem;
-  width: 5.6rem;
-  border-right: 0.2rem solid black;
-}
-.details {
-  width: 100%;
-  font-size: 1.2rem;
-}
-.quantity-number {
-  font-size: 1.2rem;
-  padding-left: 0.3rem;
-  height: 1.8rem;
-  font-family: 'pixelcart';
-  text-align: center;
-}
-button {
-  background-color: transparent;
-  border: none;
-}
-.bin {
-  font-size: 1.2rem;
-}
-//===========================================================================CARTS CSS===================================================================================
 </style>

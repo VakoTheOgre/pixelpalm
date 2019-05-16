@@ -86,17 +86,17 @@ export default {
 <template>
 <form class="inner-form flex-col">
   <input autocomplete="username" v-model="firstName" type="text" placeholder="FIRSTNAME*" class="input">
-  <span v-model="nameErr" class="error"> {{ nameErr }} </span>
+  <!-- <span v-model="nameErr" class="error"> {{ nameErr }} </span> -->
   
   <input v-model="lastName" type="text" placeholder="LASTNAME*" class="input">
-  <span v-model="nameErr" class="error"> {{ nameErr }} </span>
+  <!-- <span v-model="nameErr" class="error"> {{ nameErr }} </span> -->
 
   <input v-model="email" type="email" placeholder="EMAIL ADRESS*" class="input">
-  <span v-model="emailErr" class="error"> {{ emailErr }} </span>
+  <!-- <span v-model="emailErr" class="error"> {{ emailErr }} </span> -->
 
   <input autocomplete="password"  v-model="password" type="password" placeholder="PASSWORD*" class="input">
   <input autocomplete="password"  v-model="password2" type="password" placeholder="CONFIRM PASSWORD*" class="input">
-  <span v-model="passwordErr" class="error"> {{ passwordErr }} </span>
+  <!-- <span v-model="passwordErr" class="error"> {{ passwordErr }} </span> -->
   
   <div class="terms flex AL-center">
     <div @click="checkUncheck" class="checkbox">
@@ -105,7 +105,7 @@ export default {
     <span class="agree-txt">I Agree to the Terms of Use</span>
   </div>
   <button @click.prevent="register" class="btn pointer">SUBMIT</button>
-  <span class="btn-error"> {{error}} </span>
+  <!-- <span class="btn-error"> {{error}} </span> -->
 </form>
 </template>
 

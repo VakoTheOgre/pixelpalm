@@ -44,7 +44,6 @@ export default {
 
 <template>
 <div class="root">
-  <div class="white-back">.</div>
   <form class="form flex-col">
     <span class="new-customer-title">
         NEW CUSTOMER
@@ -62,28 +61,33 @@ export default {
     <!-- <span class="error">{{ emailErr }}</span> -->
     <input v-model="password" type="password" placeholder="PASSWORD*" class="pass">
     <span class="forgot-pass">FORGOT YOUR PASSWORD?</span>
-    <button @click.prevent="login" class="btn pointer">LOGIN</button>
+    <button @click.prevent="login" class="btn  padding-bot pointer">LOGIN</button>
     <!-- <span class="error">{{ error }}</span> -->
   </form>
 </div>
 </template>
 
 <style lang="scss" scoped>
+@media only screen and (min-height: 879px) {
+  .root {
+    overflow: hidden !important;
+  }
+}
 .root {
   // background-color: white;
   width: 33rem;
+  background-color: white;
+  overflow-y: scroll;
+  min-height: calc(100vh - 12.8rem);
+  max-height: 100%;
+  overflow-x: hidden;
+  // height: 100%;
   position: absolute;
   top: 12.8rem;
   left: 0;
 }
-.white-back {
-  background-color: white;
-  min-height: calc(100vh - 12.8rem);
-  width: 33rem;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: -1;
+.padding-bot {
+  margin-bottom: 14rem;
 }
 .error {
   padding: 0;
