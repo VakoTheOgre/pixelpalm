@@ -9,7 +9,7 @@ export default {
 <template>
 <div class="root flex-col AL-center">
   <span class="title">SEARCH</span>
-  <input type="text" placeholder="ENTER KEYWORD" class="search-input">
+  <input type="text" placeholder="Enter Keyword" class="search-input">
   <img src="https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/search-icon.svg" alt="" class="search-img pixecon">
 </div>
 </template>
@@ -27,13 +27,22 @@ export default {
 .search-input {
   height: 4rem;
   width: calc(100% - 6rem);
-  font-size: 1.2rem;
+  font-size: 2rem;
+  font-family: 'Pixelpalm Pro-Input';
+  text-rendering: geometricPrecision;
+  font-smooth: never;
+	-webkit-font-smoothing: none;
+  color: black;
   // margin-top: 6rem;
   border: 0.2rem solid black;
   &:enabled {
     padding-left: 1rem;
     &::placeholder {
-      color: black;
+      color: gray;
+      font-family: 'Pixelpalm Pro-Input';
+      text-rendering: geometricPrecision;
+      font-smooth: never;
+      -webkit-font-smoothing: none;
     }
   }
 }

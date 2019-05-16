@@ -1,6 +1,9 @@
 <script>
 import MainMenu from '@/components/navigation/MainMenu'
 import AccountTab from '@/components/navigation/tabs/account-tab/AccountTab'
+import Information from '@/components/navigation/tabs/account-tab/AccountInformation'
+import Password from '@/components/navigation/tabs/account-tab/AccountPassword'
+import History from '@/components/navigation/tabs/account-tab/AccountHistory'
 import CartTab from '@/components/navigation/tabs/CartTab'
 import ExploreTab from '@/components/navigation/tabs/ExploreTab'
 import MenuTab from '@/components/navigation/tabs/MenuTab'
@@ -14,7 +17,10 @@ export default {
     ExploreTab,
     MenuTab,
     SearchTab,
-    grayArea
+    grayArea,
+    Information,
+    Password,
+    History
   },
   computed: {
     menuState() {
@@ -70,6 +76,7 @@ export default {
       <menu-tab v-if="this.menuState"></menu-tab>
       <search-tab v-if="this.searchState"></search-tab>
       <grayArea v-if="this.legalsState"></grayArea>
+      
     </transition>
   </div>
 </template>

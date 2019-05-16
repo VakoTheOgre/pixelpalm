@@ -94,20 +94,20 @@ export default {
         <div class="wrapper flex JF-spaceBE AL-center">
             <form class="form flex-col" autocomplete="on">
                 <div class="horizontal-wrap flex JF-spaceBE">
-                    <input  v-model="name" type="text" placeholder="FIRSTNAME*" :class="{ errorBorder: this.nameErr != '' }"  class="input-h-l">
+                    <input  v-model="name" type="text" placeholder="Firstname*" :class="{ errorBorder: this.nameErr != '' }"  class="input-h-l">
 
-                    <input v-model="lastName" type="text" placeholder="LASTNAME*" :class="{ errorBorder: this.lastNameErr != '' }" class="input-h">
+                    <input v-model="lastName" type="text" placeholder="Lastname*" :class="{ errorBorder: this.lastNameErr != '' }" class="input-h">
                 </div>
 
                 <div >
-                  <input v-model="address1" type="text" placeholder="STREET NAME*" :class="{ errorBorder: this.address1Err != '' }" class="input-street">
+                  <input v-model="address1" type="text" placeholder="Street Name*" :class="{ errorBorder: this.address1Err != '' }" class="input-street">
                 </div>
                 
 
                 <div class="horizontal-wrap flex JF-spaceBE">
-                    <input v-model="city" type="text" placeholder="CITY*" :class="{ errorBorder: this.cityErr != '' }" class="input-h-l">
+                    <input v-model="city" type="text" placeholder="City*" :class="{ errorBorder: this.cityErr != '' }" class="input-h-l">
 
-                    <input v-model="zip" type="text" placeholder="ZIP/POSTAL CODE*" :class="{ errorBorder: this.zipErr != '' }" class="input-h">
+                    <input v-model="zip" type="text" placeholder="Zip/Postal Code*" :class="{ errorBorder: this.zipErr != '' }" class="input-h">
                 </div>
                 
                 <div class="horizontal-wrap flex JF-spaceBE">
@@ -117,9 +117,9 @@ export default {
                 
                 <div v-if="this.device == 'desktop'" class="horizontal-wrap flex JF-spaceBE">
 
-                    <input v-model="email" type="text" placeholder="EMAIL ADRESS*" :class="{ errorBorder: this.emailErr != '' }" title="" class="input-h-l">
+                    <input v-model="email" type="text" placeholder="Email Address*" :class="{ errorBorder: this.emailErr != '' }" title="" class="input-h-l">
 
-                    <input v-model="phone" type="text" placeholder="PHONE NUMBER*" :class="{ errorBorder: this.phoneErr != '' }" title="" class="input-h">
+                    <input v-model="phone" type="text" placeholder="Phone Number*" :class="{ errorBorder: this.phoneErr != '' }" title="" class="input-h">
 
                 </div>
                 <div class="final-btn flex center">
@@ -136,9 +136,13 @@ export default {
     
 <style lang="scss" scoped>
 .title {
-  font-size: 3rem;
+  font-size: 2rem;
   position: absolute;
   width: 27rem;
+  font-family: 'Pixelpalm-category-font';
+  text-rendering: geometricPrecision;
+  font-smooth: never;
+	-webkit-font-smoothing: none;
   text-align: center;
   top: 7.6rem;
   left: calc(50% - 0.5rem);
@@ -174,6 +178,10 @@ export default {
   font-size: 2rem;
   background-color: black;
   color: white;
+  font-family: 'Pixelpalm-category-font';
+  text-rendering: geometricPrecision;
+  font-smooth: never;
+	-webkit-font-smoothing: none;
 }
 .order-sum {
     // border: 0.1rem solid black;
@@ -191,6 +199,22 @@ export default {
     height: 4rem;
     margin-bottom: 2rem;
     position: relative;
+    font-size: 2rem;
+    color: black;
+    opacity: 1;
+    font-family: 'Pixelpalm Pro-Input';
+    text-rendering: geometricPrecision;
+    font-smooth: never;
+    -webkit-font-smoothing: none;
+    &::placeholder {
+        font-size: 2rem;
+        color: gray;
+        opacity: 1;
+        font-family: 'Pixelpalm Pro-Input';
+        text-rendering: geometricPrecision;
+        font-smooth: never;
+        -webkit-font-smoothing: none;
+      }
     &:enabled {
         padding-left: 1rem;
         
@@ -201,12 +225,44 @@ export default {
       height: 4rem;
       margin-bottom: 2rem;
       padding-left: 1rem;
+      font-size: 2rem;
+      color: black;
+      opacity: 1;
+      font-family: 'Pixelpalm Pro-Input';
+      text-rendering: geometricPrecision;
+      font-smooth: never;
+      -webkit-font-smoothing: none;
+      &::placeholder {
+        font-size: 2rem;
+        color: gray;
+        opacity: 1;
+        font-family: 'Pixelpalm Pro-Input';
+        text-rendering: geometricPrecision;
+        font-smooth: never;
+        -webkit-font-smoothing: none;
+      }
     }
     &-h {
         border: 0.2rem solid black;
         width: 27rem;
         height: 4rem;
         position: relative;
+        font-size: 2rem;
+        color: black;
+        opacity: 1;
+        font-family: 'Pixelpalm Pro-Input';
+        text-rendering: geometricPrecision;
+        font-smooth: never;
+        -webkit-font-smoothing: none;
+        &::placeholder {
+          font-size: 2rem;
+          color: gray;
+          opacity: 1;
+          font-family: 'Pixelpalm Pro-Input';
+          text-rendering: geometricPrecision;
+          font-smooth: never;
+          -webkit-font-smoothing: none;
+        }
         &:enabled {
             padding-left: 1rem;
         }
@@ -215,6 +271,22 @@ export default {
             width: 27rem;
             margin-right: 2rem;
             height: 4rem;
+            font-size: 2rem;
+            color: black;
+            opacity: 1;
+            font-family: 'Pixelpalm Pro-Input';
+            text-rendering: geometricPrecision;
+            font-smooth: never;
+            -webkit-font-smoothing: none;
+            &::placeholder {
+              font-size: 2rem;
+              color: gray;
+              opacity: 1;
+              font-family: 'Pixelpalm Pro-Input';
+              text-rendering: geometricPrecision;
+              font-smooth: never;
+              -webkit-font-smoothing: none;
+            }
             &:enabled {
                 padding-left: 1rem;
             }

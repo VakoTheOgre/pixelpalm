@@ -1,8 +1,10 @@
 <script>
 import registration from './RegistrationDropdown'
+import LoggedUserTab from './LoggedInUserTab'
 export default {
   components: {
-    registration
+    registration,
+    LoggedUserTab,
   },
   data() {
     return {
@@ -10,9 +12,18 @@ export default {
       emailErr: '',
       password: '',
       error: '',
-      registerPressed: false
+      registerPressed: false,
+
+      forgotPassword: false
     }
   },
+
+  computed: {
+    userSignedIn () {
+      return !!this.$store.getters['auth/user']
+    }
+  },
+
   watch: {
     email(newValue) {
       var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
@@ -21,7 +32,7 @@ export default {
       } else {
         this.emailErr = ''
       }
-    }
+    },
   },
   methods: {
     closeCurrentTab() {
@@ -29,7 +40,8 @@ export default {
     },
     async login() {
       try{
-        this.$store.dispatch('auth/login', {email: this.email, password: this.password})
+        await this.$store.dispatch('auth/login', {email: this.email, password: this.password})
+        this.error = "Successfully signed in"
       } catch(e) {
         this.error = e.response.data.message
       }
@@ -43,9 +55,9 @@ export default {
 
 <template>
 <div class="root">
-  <form class="form flex-col">
+  <form v-if="!userSignedIn" class="form flex-col">
     <span class="new-customer-title">
-        NEW CUSTOMER
+        NEW CUSTOMERS
     </span>
     <div v-if="!this.registerPressed" class="new-customer flex-col">
       
@@ -54,15 +66,17 @@ export default {
       </button>
     </div>
     <registration v-else></registration>
-    <hr>
+    <hr class="hr">
     <span class="registered">REGISTERED CUSTOMERS</span>
-    <input v-model="email" type="email" placeholder="EMAIL ADRESS*" class="mail">
+    <input v-model="email" type="email" placeholder="Email Address*" class="mail">
     <!-- <span class="error">{{ emailErr }}</span> -->
-    <input v-model="password" type="password" placeholder="PASSWORD*" class="pass">
-    <span class="forgot-pass">FORGOT YOUR PASSWORD?</span>
+    <input v-model="password" type="password" placeholder="Password*" class="pass">
+    <router-link tag="span" to="/users/forgot-password" class="forgot-pass pointer">Forgot Your Password?</router-link>
     <button @click.prevent="login" class="btn  padding-bot pointer">LOGIN</button>
-    <!-- <span class="error">{{ error }}</span> -->
+    <span class="error">{{ error }}</span>
+    <forgot-password v-if="forgotPassword"></forgot-password>
   </form>
+  <logged-user-tab v-else />
 </div>
 </template>
 
@@ -88,10 +102,13 @@ export default {
 .padding-bot {
   margin-bottom: 14rem;
 }
+.hr {
+  border-bottom: 0.1rem solid black;
+}
 .error {
   padding: 0;
   margin: -1.5rem 0 0.5rem 0.5rem;
-  color: white;
+  color: black;
   font-size: 1.2rem;
 }
 hr {
@@ -150,9 +167,16 @@ hr {
   background-color: transparent;
   color: black;
   margin-bottom: 2rem;
+  font-size: 2rem;
+  line-height: 1;
+  font-family: 'Pixelpalm Pro-Input';
+  text-rendering: geometricPrecision;
+  font-smooth: never;
+	-webkit-font-smoothing: none;
   &::placeholder {
-    font-size: 1.2rem;
-    color: black;
+    font-size: 2rem;
+    color: gray;
+    opacity: 1;
   }
   &:enabled {
     padding-left: 1rem;
@@ -163,9 +187,20 @@ hr {
   border: 0.2rem solid black;
   background-color: transparent;
   color: black;
+  font-size: 2rem;
+  line-height: 1;
+  font-family: 'Pixelpalm Pro-Input';
+  text-rendering: geometricPrecision;
+  font-smooth: never;
+	-webkit-font-smoothing: none;
   &::placeholder {
-    font-size: 1.2rem;
-    color: black;
+    font-size: 2rem;
+    color: gray;
+    opacity: 1;
+    font-family: 'Pixelpalm Pro-Input';
+    text-rendering: geometricPrecision;
+    font-smooth: never;
+    -webkit-font-smoothing: none;
   }
   &:enabled {
     padding-left: 1rem;
@@ -175,6 +210,11 @@ hr {
   width: 100%;
   line-height: 1;
   text-align: end;
+  font-family: 'Pixelpalm-text';
+  text-rendering: geometricPrecision;
+  font-smooth: never;
+  font-size: 1rem;
+	-webkit-font-smoothing: none;
   padding-top: 0.7rem;
   padding-bottom: 2.3rem;
 }
