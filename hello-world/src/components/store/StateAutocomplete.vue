@@ -98,55 +98,74 @@
 
 <template>
   <div class="root-dropdowns">
-    <input v-if="!selectedSomething" v-model="userInput" :placeholder="type + '*'" type="text" class="dropdown-inputs mobile-input1">
-    <input v-else @input="tryAgain" v-model="userInput2" :placeholder="type + '*'" type="text" class="dropdown-inputs mobile-input2">
+    <input v-if="!selectedSomething" :disabled="disabled" v-model="userInput" placeholder="State*" type="text" class="dropdown-inputs mobile-input1">
+    <input v-else @input="tryAgain(false)" :disabled="disabled" v-model="userInput2" placeholder="State*" type="text" class="dropdown-inputs mobile-input1">
     <div v-if="filteredItems.length" class="dropdown">
       <div @click="selected(item)" v-for="(item, index) in filteredItems" :key="index" class="item flex JF-spaceBE">
-        <img :src="item.flag" class="flag">
-        {{ item.alpha2Code }}
+        {{ item.name }}
+        {{ item.abbreviation }}
       </div>
     </div>
   </div>
 </template>
 <script>
+import USSTATES from '../../helpers/states_us.json'
+import AUSTATES from '../../helpers/states_ca.json'
+import CASTATES from '../../helpers/states_au.json'
 export default {
   props: {
-    type: {
-      type: String,
-      required: true
-    },
-
-    country: {
-      type: String,
-      required: false
-    },
-
-    state: {
+    selectedCountry: {
       type: String,
       required: false
     }
   },
+
   data() {
     return {
       items: [],
       filteredItems: [],
       selectedSomething: false,
       userInput: "",
-      userInput2: ""
+      userInput2: "",
+      needed: ['US', 'CA', 'AU']
     };
+  },
+
+  computed: {
+    disabled () {
+      if (!this.needed.find(el => el == this.selectedCountry)) {
+        return true
+      } else {
+        return false
+      }
+    },
+    us () {
+      return USSTATES
+    },
+
+    ca () {
+      return CASTATES
+    },
+
+    au () {
+      return AUSTATES
+    }
   },
 
   methods: {
     selected(item) {
       this.selectedSomething = true
       this.userInput2 = item.name
-      this.$emit("selectedCountry", item.alpha2Code);
+      this.$emit("selectedState", item.abbreviation);
       this.filteredItems = []
     },
-
-    tryAgain () {
+    tryAgain (erase) {
       this.selectedSomething = false
-      this.userInput = this.userInput2
+      if(erase) {
+        this.userInput = ''
+      } else {
+        this.userInput = this.userInput2
+      }
     }
   },
 
@@ -159,20 +178,28 @@ export default {
       this.filteredItems = this.items.filter(item => {
         return item.name.toLowerCase().includes(v.toLowerCase());
       });
+    },
+
+    selectedCountry(v, oldV) {
+      console.log(v)
+      this.tryAgain(true)
+      switch(v) {
+        case 'US':
+          this.items = this.us
+          break;
+        case 'AU':
+          this.items = this.au
+          break;
+        case 'CA':
+          this.items = this.ca
+          break;
+      }
     }
   },
 
   async mounted() {
-    if (this.type.toLowerCase() === "country") {
-      let res = await this.$axios.get(
-        "https://restcountries.eu/rest/v2/all?fields=name;alpha2Code;flag;"
-      );
-      console.log(res);
-      this.items = res.data;
-    }
-    if (this.country) {
-      this.userInput = this.country
-    }
+    
   }
 };
 </script>
+
