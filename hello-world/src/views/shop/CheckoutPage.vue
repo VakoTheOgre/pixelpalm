@@ -2,11 +2,13 @@
 import checkoutCart from '@/components/navigation/tabs/CheckoutCartTab'
 import SubtotalCheckout from '@/components/navigation/tabs/SubtotalCheckout'
 import Autocomplete from '@/components/store/Autocomplete.vue'
+import StateAutocomplete from '@/components/store/StateAutocomplete'
 export default {
     components: {
         checkoutCart,
         SubtotalCheckout,
-        Autocomplete
+        Autocomplete,
+        StateAutocomplete
     },
     data() {
     return {
@@ -36,6 +38,14 @@ export default {
   methods: {
     checkUncheck() {
       this.boxChecked = !this.boxChecked
+    },
+
+    selectCountry(e) {
+      this.country_code = e
+    },
+
+    selectState (e) {
+      this.state_code = e
     }
   },
   watch: {
@@ -120,8 +130,8 @@ export default {
                 </div>
                 
                 <div class="horizontal-wrap flex JF-spaceBE">
-                    <autocomplete :type="'Country'"></autocomplete>
-                    <autocomplete :type="'State'"></autocomplete>
+                    <autocomplete @selectedCountry="selectCountry" :type="'Country'"></autocomplete>
+                    <state-autocomplete @selectedState="selectState" :selectedCountry="country_code"></state-autocomplete>
                 </div>
                 
                 <div v-if="this.device == 'desktop'" class="horizontal-wrap flex JF-spaceBE">
