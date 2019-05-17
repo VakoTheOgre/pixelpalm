@@ -34,15 +34,6 @@ export default {
     },
     legalsState() {
       return this.$store.getters['legalsIcon/legalsState']
-    },
-    history () {
-      return this.$store.getters['history/historyState']
-    },
-    pass () {
-      return this.$store.getters['password/passState']
-    },
-    info () {
-      return this.$store.getters['information/infoState']
     }
   }
 }

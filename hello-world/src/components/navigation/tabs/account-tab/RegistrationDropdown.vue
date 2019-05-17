@@ -41,7 +41,7 @@ export default {
       }
     },
     password(newValue) {
-      if(newValue.split("").length < 8) {
+      if(newValue.split("").length < 3) {
         this.passwordErr = 'Passwords need to have 8 or more characters'
       } else {
         this.passwordErr = ''
@@ -194,4 +194,5 @@ export default {
   margin-bottom: -0.6rem;
   // padding-bottom: 0.6rem;
 }
+
 </style>

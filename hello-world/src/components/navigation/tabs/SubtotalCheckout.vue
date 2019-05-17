@@ -22,18 +22,9 @@ export default {
     margin: 0;
     width: 27rem;
 }
-.subtotal {
-  width: 100%;
-  font-size: 2rem;
-  text-align: left;
-  font-family: 'Pixelpalm-text';
-  text-rendering: geometricPrecision;
-  font-smooth: never;
-  -webkit-font-smoothing: none;
-}
 .total {
   padding-top: 0rem;
-  padding-bottom: 4.2rem;
+  padding-bottom: 1.8rem;
   width: 100%;
   text-align: left;
   font-size: 2rem;
@@ -47,19 +38,16 @@ export default {
         border-top: none;
         padding-top: 1rem;
     }
-    .subtotal {
-        width: calc(100vw - 2rem);
-        text-align: right;
-        font-family: 'Pixelpalm-text';
-        text-rendering: geometricPrecision;
-        font-smooth: never;
-        -webkit-font-smoothing: none;
-    }
     .total {
-        padding-top: 0.5rem;
+        padding-top:0rem;
         width: calc(100vw - 2rem);
-        text-align: right;
+        text-align: left;
+        padding-left: 0;
+        margin: 0;
         font-size: 1.6rem;
+        padding-left: 2rem;
+        padding-bottom: 20rem;
+        margin-top: -1rem;
     }
 }
 </style>

@@ -1,14 +1,14 @@
 <style lang="scss" scoped>
 .dropdown {
   max-height: 30rem;
-  max-width: 27rem;
+  width: calc(100% - 2rem);
   overflow-y: scroll;
   overflow-x: hidden;
   position: absolute;
   background-color: white;
 }
 .dropdown-inputs {
-  width: 27rem !important;
+  width: calc(100% - 2rem);
   border: 0.2rem solid black;
   height: 4rem;
   font-size: 2rem;
@@ -32,7 +32,7 @@
   }
 }
 .root-dropdowns {
-  width: 27rem !important;
+  width: 100%;
 }
 .item {
   width: 27rem;
@@ -49,57 +49,12 @@
   height: 3rem;
   width: 6rem;
 }
-@media only screen and (max-width: 1200px) {
-  .root-dropdowns {
-    width: calc(100vw - 2rem) !important;
-  }
-  .dropdown {
-    max-height: 20rem;
-    max-width: calc( 100vw - 2rem);
-    width: calc( 100vw - 2rem);
-    overflow-y: scroll;
-    overflow-x: hidden;
-    position: absolute;
-    background-color: white;
-  }
-  .dropdown-inputs {
-    max-width: auto;
-    width: calc( 100vw - 2rem) !important;
-    border: 0.2rem solid black;
-    
-    height: 4rem;
-    font-size: 2rem;
-    color: black;
-    opacity: 1;
-    font-family: 'Pixelpalm Pro-Input';
-    text-rendering: geometricPrecision;
-    font-smooth: never;
-    -webkit-font-smoothing: none;
-    ::placeholder {
-      font-size: 2rem;
-      color: gray;
-      opacity: 1;
-      font-family: 'Pixelpalm Pro-Input';
-      text-rendering: geometricPrecision;
-      font-smooth: never;
-      -webkit-font-smoothing: none;
-    }
-    &:enabled {
-      padding-left: 1rem;
-    }
-  }
-.mobile-input {
-  &1 {
-    margin-bottom: 2rem;
-  }
-}
-}
 </style>
 
 <template>
   <div class="root-dropdowns">
-    <input v-if="!selectedSomething" v-model="userInput" :placeholder="type + '*'" type="text" class="dropdown-inputs mobile-input1">
-    <input v-else @input="tryAgain" v-model="userInput2" :placeholder="type + '*'" type="text" class="dropdown-inputs mobile-input2">
+    <input v-if="!selectedSomething" v-model="userInput" :placeholder="type + '*'" type="text" class="dropdown-inputs">
+    <input v-else @input="tryAgain" v-model="userInput2" :placeholder="type + '*'" type="text" class="dropdown-inputs">
     <div v-if="filteredItems.length" class="dropdown">
       <div @click="selected(item)" v-for="(item, index) in filteredItems" :key="index" class="item flex JF-spaceBE">
         <img :src="item.flag" class="flag">

@@ -9,6 +9,9 @@ export default {
         History
     },
   computed: {
+      user () {
+          return this.$store.getters['auth/user']
+      },
         history () {
             return this.$store.getters['history/historyState']
         },
@@ -34,17 +37,26 @@ export default {
         togglePass () {
             this.$store.commit('password/open')
             this.$store.commit('loggedUser/close')
+        },
+        toggleLogged () {
+            this.$store.commit('loggedUser/open')
+            this.$store.commit('password/close')
+            this.$store.commit('history/close')
+            this.$store.commit('information/close')
         }
     }
 }
 </script>
 
 <template>
-<div v-if="this.logged" class="logged-root flex-col">
-    <div class="name-wrapper flex pointer">
-        <img src="https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/account-logged-in-icon.svg">
-        <span class="username flex AL-center"> {{ user.name }} </span>
-    </div>
+<div>
+<!-- 
+
+<div @click="toggleLogged" class="name-wrapper flex pointer">
+    <img src="https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/account-logged-in-icon.svg">
+    <span class="username flex AL-center"> {{ user.name }} </span>
+</div>
+<div  class="logged-root flex-col">
     <span class="option-span">ACCOUNT INFORMATION</span>
     <div @click="toggleInfo" class="option-btn flex center pointer">
         VIEW DETAILS
@@ -60,10 +72,11 @@ export default {
         CHANGE PASSWORD
     </div>
 
+</div> -->
+<information v-if="!info"></information>
+<!-- <password v-if="!pass"></password> -->
+<!-- <history v-if="!history"></history> -->
 </div>
-<information v-else-if="this.info"></information>
-<password v-else-if="this.pass"></password>
-<history v-else></history>
 </template>
 
 <style lang="scss" scoped>

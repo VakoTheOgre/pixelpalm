@@ -8,8 +8,9 @@ export default {
 
 <template>
 <div class="text-root flex root center">
-  <p class="text-block">
+  <span class="heading">RETURNS</span>
   
+  <p class="text-block">
   RETURNS POLICY
   <br><br>
   Our goal is for you to be 100% satisfied with your purchase from PIXELPALM.CO. If for any reason you are not satisfied we would be happy to assist you.
@@ -48,18 +49,38 @@ export default {
 
 
 <style lang="scss" scoped>
+.heading {
+	font-size: 2rem;
+  position: absolute;
+  width: 27rem;
+  font-family: 'Pixelpalm-category-font';
+  text-rendering: geometricPrecision;
+  font-smooth: never;
+	-webkit-font-smoothing: none;
+  text-align: center;
+  top: 8.6rem;
+  left: 50%;
+	margin-left: 16.5rem;
+  transform: translateX(-50%);
+  border-bottom: 0.2rem solid black;
+  padding: 1rem;
+  line-height: 1;
+}
 .text-root {
-  width: calc(100vw - 33rem);
+  min-width: calc(100vw - 33rem);
 }
 .text-block {
   padding-right:2rem;
   padding-left:2rem;
   padding-bottom:2rem;
-  width: 96rem;
+  width: 86rem;
   text-align: justify;
   // margin-left: 33rem;
-  margin-top: 10rem;
-  font-size: 1.4rem;
+  font-size: 1rem;
+  font-family: 'Pixelpalm-text';
+  text-rendering: geometricPrecision;
+  font-smooth: never;
+	-webkit-font-smoothing: none;
 }
 @media only screen and (max-width: 1200px) {
   .text-root {

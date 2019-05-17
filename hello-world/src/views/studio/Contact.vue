@@ -6,21 +6,21 @@ export default {
 
 <template>
 	<div class="form flex-col center">
-		<h2 class="heading">DROP US A LINE</h2>
+		<span class="heading">CONTACT</span>
 		<div class="names-wrapper flex-row JF-spaceBE">
-				<input autocomplete="username" v-model="firstName" type="text" placeholder="FIRS TNAME*" class="names input">
-			<span v-model="nameErr" class="error"> {{ nameErr }} </span>
+				<input autocomplete="username" v-model="firstName" type="text" placeholder="First Name*" class="names input">
+			<!-- <span v-model="nameErr" class="error"> {{ nameErr }} </span> -->
 			
-			<input v-model="lastName" type="text" placeholder="LAST NAME*" class="names input">
-			<span v-model="nameErr" class="error"> {{ nameErr }} </span>
+			<input v-model="lastName" type="text" placeholder="Last Name*" class="names input">
+			<!-- <span v-model="nameErr" class="error"> {{ nameErr }} </span> -->
 		</div>
 
-		<input v-model="email" type="email" placeholder="EMAIL*" class="mail input">
-		<span v-model="emailErr" class="error"> {{ emailErr }} </span>
+		<input v-model="email" type="email" placeholder="Email*" class="mail input">
+		<!-- <span v-model="emailErr" class="error"> {{ emailErr }} </span> -->
 
-		<input v-model="message" type="text" placeholder="SUBJECT*" class="subject input">
+		<input v-model="message" type="text" placeholder="Subject*" class="subject input">
 
-		<textarea rows="10"  placeholder="MESSAGE*" class="text-box"></textarea>
+		<textarea rows="10"  placeholder="Message*" class="text-box"></textarea>
 		<div class="submit flex center">
 			SUBMIT
 		</div>
@@ -29,61 +29,119 @@ export default {
 
 <style lang="scss" scoped>
 .form {
-	width: 100%;
-	height: 100vh;
+	min-width: calc(100vw - 33rem);
+	min-height: 100vh;
+	position: static;
 }
 .heading {
-	font-size: 3.8rem;
-	padding-bottom: 3rem;
+	font-size: 2rem;
+  position: absolute;
+  width: 27rem;
+  font-family: 'Pixelpalm-category-font';
+  text-rendering: geometricPrecision;
+  font-smooth: never;
+	-webkit-font-smoothing: none;
+  text-align: center;
+  top: 8.6rem;
+  left: 50%;
+	margin-left: 16.5rem;
+  transform: translateX(-50%);
+  border-bottom: 0.2rem solid black;
+  padding: 1rem;
+  line-height: 1;
 }
 .names-wrapper {
-	width: 57rem;
-	margin-left: 0.8rem;
+	width: 86rem;
 }
 .input {
 	border: 0.2rem solid black;
 	height: 4rem;
 	margin-bottom: 2rem;
+	font-size: 2rem;
+	color: black;
+	opacity: 1;
+	font-family: 'Pixelpalm Pro-Input';
+	text-rendering: geometricPrecision;
+	font-smooth: never;
+	-webkit-font-smoothing: none;
 	&::placeholder {
-    font-size: 1.4rem;
-    color: black;
-  }
+			font-size: 2rem;
+			color: gray;
+			opacity: 1;
+			font-family: 'Pixelpalm Pro-Input';
+			text-rendering: geometricPrecision;
+			font-smooth: never;
+			-webkit-font-smoothing: none;
+		}
   &:enabled {
     padding-left: 1rem;
   }
 
 }
 .names {
-	width: 27rem;
+	width: 42rem;
+	font-size: 2rem;
+    color: black;
+    opacity: 1;
+    font-family: 'Pixelpalm Pro-Input';
+    text-rendering: geometricPrecision;
+    font-smooth: never;
+    -webkit-font-smoothing: none;
+    &::placeholder {
+        font-size: 2rem;
+        color: gray;
+        opacity: 1;
+        font-family: 'Pixelpalm Pro-Input';
+        text-rendering: geometricPrecision;
+        font-smooth: never;
+        -webkit-font-smoothing: none;
+      }
 }
 .mail {
-	width: 56rem;
+	width: 86rem;
 }
 .subject {
-	width: 56rem;
+	width: 86rem;
 }
 .text-box {
-	width: 56rem;
+	width: 86rem;
 	height: 20rem; 
 	border: 0.2rem solid black;
-	&::placeholder {
-    font-size: 1.4rem;
+	font-size: 2rem;
     color: black;
-  }
+    opacity: 1;
+    font-family: 'Pixelpalm Pro-Input';
+    text-rendering: geometricPrecision;
+    font-smooth: never;
+    -webkit-font-smoothing: none;
+		line-height: 1;
+    &::placeholder {
+        font-size: 2rem;
+        color: gray;
+        opacity: 1;
+        font-family: 'Pixelpalm Pro-Input';
+        text-rendering: geometricPrecision;
+        font-smooth: never;
+        -webkit-font-smoothing: none;
+      }
   &:enabled {
     padding-left: 1rem;
-		padding-top: 1.6rem;
+		padding-top: 1rem;
 		padding-right: 0.4rem;
   }
 	resize: none;
 }
 .submit {
-	width: 56rem;
+	width: 86rem;
 	background-color: black;
 	height: 4rem;
 	color: white;
 	margin-top: 2rem;
 	font-size: 2rem;
+	font-family: 'Pixelpalm-category-font';
+  text-rendering: geometricPrecision;
+  font-smooth: never;
+	-webkit-font-smoothing: none;
 }
 @media only screen and (max-width: 1400px) {
 .form {
@@ -149,7 +207,7 @@ export default {
 	height: 4rem;
 	color: white;
 	margin-top: 2rem;
-	font-size: 2rem;
+	font-size: 1.5rem;
 }
 }
 </style>

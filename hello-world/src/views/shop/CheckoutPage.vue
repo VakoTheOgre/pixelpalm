@@ -10,6 +10,7 @@ export default {
     },
     data() {
     return {
+      boxChecked: false,
       name: '',
       lastName: '',
       email: '',
@@ -32,16 +33,23 @@ export default {
       boxChecked: false
     }
   },
+  methods: {
+    checkUncheck() {
+      this.boxChecked = !this.boxChecked
+    }
+  },
   watch: {
     name(newValue) {
-      if(newValue.split("").length == 1 || newValue.split("").length < 1 && !newValue.split("").length == 0) {
+      var re = /^[a-z ,.'-]+$/
+      if(!re.test(newValue)) {
         this.nameErr = 'Name too short'
       } else {
         this.nameErr = ''
       }
     },
     lastName(newValue) {
-      if(newValue.split("").length == 1 || newValue.split("").length < 1 && !newValue.split("").length == 0) {
+      let re = /^[a-z ,.'-]+$/
+      if(!re.test(newValue)) {
         this.lastNameErr = 'Lastname too short'
       } else {
         this.lastNameErr = ''
@@ -69,7 +77,8 @@ export default {
       }
     },
     phone(newValue) {
-      if(newValue.split("").length == 1 || newValue.split("").length < 1 && !newValue.split("").length == 0) {
+      let re = /^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/
+      if(!re.test(newValue)) {
         this.phoneErr = 'Phone number too short'
       } else {
         this.phoneErr = ''
@@ -90,13 +99,13 @@ export default {
 
 <template>
     <div class="root-checkout flex center">
-      <span class="title">CHECKOUT</span>
+      <span v-if="this.device == 'desktop'" class="title">CHECKOUT</span>
         <div class="wrapper flex JF-spaceBE AL-center">
             <form class="form flex-col" autocomplete="on">
                 <div class="horizontal-wrap flex JF-spaceBE">
-                    <input  v-model="name" type="text" placeholder="Firstname*" :class="{ errorBorder: this.nameErr != '' }"  class="input-h-l">
+                    <input  v-model="name" type="text" placeholder="First Name*" id="mobile-input" :class="{ errorBorder: this.nameErr != '' }"  class="input-h-l ">
 
-                    <input v-model="lastName" type="text" placeholder="Lastname*" :class="{ errorBorder: this.lastNameErr != '' }" class="input-h">
+                    <input v-model="lastName" type="text" placeholder="Last Name*" :class="{ errorBorder: this.lastNameErr != '' }" class="input-h">
                 </div>
 
                 <div >
@@ -105,14 +114,14 @@ export default {
                 
 
                 <div class="horizontal-wrap flex JF-spaceBE">
-                    <input v-model="city" type="text" placeholder="City*" :class="{ errorBorder: this.cityErr != '' }" class="input-h-l">
+                    <input v-model="city" type="text" placeholder="City*" id="mobile-input" :class="{ errorBorder: this.cityErr != '' }" class="input-h-l ">
 
                     <input v-model="zip" type="text" placeholder="Zip/Postal Code*" :class="{ errorBorder: this.zipErr != '' }" class="input-h">
                 </div>
                 
                 <div class="horizontal-wrap flex JF-spaceBE">
-                    <autocomplete :type="'country'"></autocomplete>
-                    <autocomplete :type="'state'"></autocomplete>
+                    <autocomplete :type="'Country'"></autocomplete>
+                    <autocomplete :type="'State'"></autocomplete>
                 </div>
                 
                 <div v-if="this.device == 'desktop'" class="horizontal-wrap flex JF-spaceBE">
@@ -128,6 +137,12 @@ export default {
             </form>
             <div class="order-sum">
                 <checkout-cart v-if="this.device == 'desktop'"></checkout-cart>
+                <div v-if="this.device == 'mobile'" class="terms flex AL-center">
+                  <div @click="checkUncheck" class="checkbox">
+                    <img  v-if="boxChecked" src="https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/tick.svg" alt="Agreed" class="checkbox-tick">
+                  </div>
+                  <span class="agree-txt">Save shipping info for future checkouts.</span>
+                </div>
                 <subtotal-checkout></subtotal-checkout>
             </div>
         </div>
@@ -135,6 +150,7 @@ export default {
 </template>
     
 <style lang="scss" scoped>
+
 .title {
   font-size: 2rem;
   position: absolute;
@@ -144,7 +160,7 @@ export default {
   font-smooth: never;
 	-webkit-font-smoothing: none;
   text-align: center;
-  top: 7.6rem;
+  top: 8.6rem;
   left: calc(50% - 0.5rem);
   transform: translateX(-50%);
   border-bottom: 0.2rem solid black;
@@ -158,6 +174,7 @@ export default {
     min-width: calc(100vw - 33rem);
     min-height: 100vh;
     position: relative;
+    // margin-right: 16.5rem;
 }
 .wrapper {
     
@@ -296,5 +313,193 @@ export default {
 .error {
     position: absolute;
 }
+@media only screen and (max-width: 1200px) {
+.agree-txt {
+  width: 100%;
+  text-align: left;
+  margin-bottom: 1.8rem;
+  padding-left: 0.8rem;
+  line-height: 1;
+  font-family: 'Pixelpalm-text';
+  text-rendering: geometricPrecision;
+  font-smooth: never;
+  font-size: 1rem;
+	-webkit-font-smoothing: none;
+}
+.terms {
+  // padding-top: 0.8rem;
+  padding-left: 2rem;
+  
+  margin-top:0;
+  margin-bottom: 0;
+  // padding-bottom: 0.6rem;
+}
+.checkbox {
+  width: 2.4rem;
+  height: 2.2rem;
+  border: 0.2rem solid black;
+  margin-top: -1rem;
+  margin-bottom: 1rem;
+  user-select: none;
+  &-tick {
+    padding-left: 0.2rem;
+    padding-top: 0.2rem;
+  }
+}
+#mobile-input {
+  margin-bottom: 2rem !important;
+}
+.errorBorder {
+  border: 0.2rem solid red !important;
+}
+.root-checkout {
+  flex-direction: column;
+  justify-content: flex-start;
+    min-width: 0;
+    width: 100%;
+    min-height: 0;
+    position: relative;
+}
+.wrapper {
+  flex-direction: column;
+    padding-top: 12.8rem;
+    min-height: auto;
+    // border: 0.1rem solid black;
 
+}
+.form {
+    width: calc(100vw - 2rem);
+    height: auto;
+    margin-left: 2rem;
+    // border: 0.1rem solid black;
+    margin-bottom: 2rem;
+}
+.final-btn {
+  width: 100%;
+  height: 4rem;
+  font-size: 2rem;
+  margin: -2.1rem 0 0 0 ;
+  padding: 0;
+  background-color: black;
+  color: white;
+  font-family: 'Pixelpalm-category-font';
+  text-rendering: geometricPrecision;
+  font-smooth: never;
+	-webkit-font-smoothing: none;
+}
+.order-sum {
+    // border: 0.1rem solid black;
+    height: 100%;
+    width: 100%;
+    margin-bottom: 3.2rem;
+}
+.horizontal-wrap {
+    width: 100%;
+    flex-direction: column;
+    margin-bottom: 2rem;
+}
+.input {
+    border: 0.2rem solid black;
+    width: 100%;
+    height: 4rem;
+    margin-bottom: 2rem;
+    position: relative;
+    font-size: 2rem;
+    color: black;
+    opacity: 1;
+    font-family: 'Pixelpalm Pro-Input';
+    text-rendering: geometricPrecision;
+    font-smooth: never;
+    -webkit-font-smoothing: none;
+    &::placeholder {
+        font-size: 2rem;
+        color: gray;
+        opacity: 1;
+        font-family: 'Pixelpalm Pro-Input';
+        text-rendering: geometricPrecision;
+        font-smooth: never;
+        -webkit-font-smoothing: none;
+      }
+    &:enabled {
+        padding-left: 1rem;
+        
+    }
+    &-street {
+      width: 100%;
+      border: 0.2rem solid black;
+      height: 4rem;
+      margin-bottom: 2rem;
+
+      font-size: 2rem;
+      color: black;
+      opacity: 1;
+      font-family: 'Pixelpalm Pro-Input';
+      text-rendering: geometricPrecision;
+      font-smooth: never;
+      -webkit-font-smoothing: none;
+      &::placeholder {
+        font-size: 2rem;
+        color: gray;
+        opacity: 1;
+        font-family: 'Pixelpalm Pro-Input';
+        text-rendering: geometricPrecision;
+        font-smooth: never;
+        -webkit-font-smoothing: none;
+      }
+    }
+    &-h {
+        border: 0.2rem solid black;
+        width: 100%;
+        height: 4rem;
+        position: relative;
+        font-size: 2rem;
+        color: black;
+        opacity: 1;
+        font-family: 'Pixelpalm Pro-Input';
+        text-rendering: geometricPrecision;
+        font-smooth: never;
+        -webkit-font-smoothing: none;
+        &::placeholder {
+          font-size: 2rem;
+          color: gray;
+          opacity: 1;
+          font-family: 'Pixelpalm Pro-Input';
+          text-rendering: geometricPrecision;
+          font-smooth: never;
+          -webkit-font-smoothing: none;
+        }
+        &:enabled {
+            padding-left: 1rem;
+        }
+        &-l {
+            border: 0.2rem solid black;
+            width: 100%;
+            margin-right: 0;
+            height: 4rem;
+            font-size: 2rem;
+            color: black;
+            opacity: 1;
+            font-family: 'Pixelpalm Pro-Input';
+            text-rendering: geometricPrecision;
+            font-smooth: never;
+            -webkit-font-smoothing: none;
+            &::placeholder {
+              font-size: 2rem;
+              color: gray;
+              opacity: 1;
+              font-family: 'Pixelpalm Pro-Input';
+              text-rendering: geometricPrecision;
+              font-smooth: never;
+              -webkit-font-smoothing: none;
+            }
+            &:enabled {
+                padding-left: 1rem;
+            }
+        }
+    }
+}
+.error {
+    position: absolute;
+}
+}
 </style>

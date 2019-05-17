@@ -1,5 +1,5 @@
 <script>
-import autocomplete from '../../../store/Autocomplete'
+import autocomplete from '../../../store/AutocompleteSidebar'
 export default {
 
   components: {
@@ -77,34 +77,72 @@ export default {
 
 <template>
   <div>
+      <input  v-model="name" type="text" placeholder="First Name*" :class="{ errorBorder: this.nameErr != '' }"  class="input">
 
-      <input  v-model="name" type="text" placeholder="FIRSTNAME*" :class="{ errorBorder: this.nameErr != '' }"  class="input">
+      <input v-model="lastName" type="text" placeholder="Last Name*" :class="{ errorBorder: this.lastNameErr != '' }" class="input">
 
-      <input v-model="lastName" type="text" placeholder="LASTNAME*" :class="{ errorBorder: this.lastNameErr != '' }" class="input">
+      <input v-model="address1" type="text" placeholder="Strert Name*" :class="{ errorBorder: this.address1Err != '' }" class="input">
 
-      <input v-model="address1" type="text" placeholder="STREET NAME*" :class="{ errorBorder: this.address1Err != '' }" class="input">
+      <input v-model="city" type="text" placeholder="City*" :class="{ errorBorder: this.cityErr != '' }" class="input">
 
-      <input v-model="city" type="text" placeholder="CITY*" :class="{ errorBorder: this.cityErr != '' }" class="input">
+      <input v-model="zip" type="text" placeholder="Zip/Postal Code*" :class="{ errorBorder: this.zipErr != '' }" class="input">
 
-      <input v-model="zip" type="text" placeholder="ZIP/POSTAL CODE*" :class="{ errorBorder: this.zipErr != '' }" class="input-">
-
-      <autocomplete @selectedCountry="function (e) { country = e }" :country="country" :type="'country'"></autocomplete>
+      <autocomplete @selectedCountry="function (e) { country = e }" :country="country_code" :type="'Country'" id="component"></autocomplete>
       <!-- <autocomplete :state="state" :type="'state'"></autocomplete> -->
 
-      <input v-model="email" type="text" placeholder="EMAIL ADRESS*" :class="{ errorBorder: this.emailErr != '' }" title="" class="input">
+      <input v-model="email" type="text" placeholder="Email Adress*" :class="{ errorBorder: this.emailErr != '' }" title="" class="input">
 
-      <input v-model="phone" type="text" placeholder="PHONE NUMBER*" :class="{ errorBorder: this.phoneErr != '' }" title="" class="input">
+      <input v-model="phone" type="text" placeholder="Phone Number*" :class="{ errorBorder: this.phoneErr != '' }" title="" class="input">
 
       <span v-if="error">{{ error }}</span>
-      <button @click="changeInfo" class="final-btn flex center">
-        <span>Change Information</span>
-      </button>
+      <span @click="changeInfo" class="final-btn flex center">
+        Save Changes
+      </span>
 
   </div>
 </template>
 
 <style lang='scss' scoped>
+#component {
+  margin-left: 1rem;
+  margin-bottom: 2rem;
+
+}
 .input {
-  
+  font-family: 'Pixelpalm Pro-Input';
+  text-rendering: geometricPrecision;
+  font-smooth: never;
+	-webkit-font-smoothing: none;
+  font-size: 2rem;
+  width: calc(100% - 2rem);
+  color: black;
+  margin-left: 1rem;
+  height: 4rem;
+  margin-bottom: 2rem;
+  border: 0.2rem solid black;
+  &::placeholder {
+    font-family: 'Pixelpalm Pro-Input';
+    text-rendering: geometricPrecision;
+    font-smooth: never;
+    opacity: 1;
+	  -webkit-font-smoothing: none;
+    font-size: 2rem;
+    color: gray;
+  }
+  &:enabled {
+    padding-left: 1rem;
+  }
+}
+.final-btn {
+  width: calc(100% - 2rem);
+  margin-left: 1rem;
+  height: 4rem;
+  font-size: 1.5rem;
+  background-color: black;
+  color: white;
+  font-family: 'Pixelpalm-category-font';
+  text-rendering: geometricPrecision;
+  font-smooth: never;
+	-webkit-font-smoothing: none;
 }
 </style>

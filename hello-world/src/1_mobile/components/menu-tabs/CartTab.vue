@@ -67,7 +67,6 @@ export default {
             </button>
           </div> -->
       </div>
-      <subtotal-checkout></subtotal-checkout>
       <div class="spacer"></div>
       <checkout-btn backColor="red" margin="3"></checkout-btn>
   </div>
@@ -102,7 +101,7 @@ export default {
   height: 6rem;
   border: 0.2rem solid black;
   position: relative;
-  margin-top: 3rem;
+  margin-top: 2rem;
   :first-of-type {
     margin-top: 0;
   }

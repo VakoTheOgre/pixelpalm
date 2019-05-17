@@ -91,9 +91,11 @@ export default {
   min-height: 33.8rem;
   max-height: 33.8rem;
   margin-top: 7.8rem;
-  overflow-y: scroll;
-  overflow-x: scroll;
+  // overflow-x: scroll;
   scrollbar-width: none;
+  ::-webkit-scrollbar { 
+    display: none; 
+  }
   width: 27rem;
   z-index: 4;
   // overflow-y: scroll;

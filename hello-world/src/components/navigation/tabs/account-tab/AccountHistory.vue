@@ -18,7 +18,7 @@ export default {
 </script>
 
 <template>
-
+<div class="root">kaka</div>
 </template>
 
 <style lang='scss' scoped>

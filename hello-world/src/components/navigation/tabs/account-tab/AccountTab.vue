@@ -23,7 +23,11 @@ export default {
       return !!this.$store.getters['auth/user']
     }
   },
-
+  mounted () {
+    if (this.userSignedIn) {
+      this.$store.commit('loggedUser/open')
+    }
+  },
   watch: {
     email(newValue) {
       var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
@@ -55,7 +59,7 @@ export default {
 
 <template>
 <div class="root">
-  <form v-if="!userSignedIn" class="form flex-col">
+  <!-- <form v-if="!userSignedIn" class="form flex-col">
     <span class="new-customer-title">
         NEW CUSTOMERS
     </span>
@@ -70,13 +74,13 @@ export default {
     <span class="registered">REGISTERED CUSTOMERS</span>
     <input v-model="email" type="email" placeholder="Email Address*" class="mail">
     <!-- <span class="error">{{ emailErr }}</span> -->
-    <input v-model="password" type="password" placeholder="Password*" class="pass">
+    <!-- <input v-model="password" type="password" placeholder="Password*" class="pass">
     <router-link tag="span" to="/users/forgot-password" class="forgot-pass pointer">Forgot Your Password?</router-link>
     <button @click.prevent="login" class="btn  padding-bot pointer">LOGIN</button>
     <span class="error">{{ error }}</span>
     <forgot-password v-if="forgotPassword"></forgot-password>
-  </form>
-  <logged-user-tab v-else />
+  </form> -->
+  <logged-user-tab  />
 </div>
 </template>
 
