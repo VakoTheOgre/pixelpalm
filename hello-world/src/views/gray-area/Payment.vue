@@ -11,8 +11,6 @@ export default {
 
   <span class="heading">PAYMENT</span>
   <p class="text-block">
-    PAYMENT POLICY
-    <br><br>
     PAYMENT SECURITY
     <br><br>
     On PIXELPALM, Inc. every purchase is made with maximum security thanks to the use of Trustwave and Geotrust-certified secure servers 
@@ -59,9 +57,14 @@ export default {
   padding-left:2rem;
   padding-bottom:2rem;
   width: 86rem;
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-left: 16.5rem;
   text-align: justify;
   // margin-left: 33rem;
-  font-size: 1rem;
+  font-size: 2rem;
   font-family: 'Pixelpalm-text';
   text-rendering: geometricPrecision;
   font-smooth: never;

@@ -85,9 +85,14 @@ please upgrade your browser.</p>
   padding-left:2rem;
   padding-bottom:2rem;
   width: 86rem;
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-left: 16.5rem;
   text-align: justify;
   // margin-left: 33rem;
-  font-size: 1rem;
+  font-size: 2rem;
   font-family: 'Pixelpalm-text';
   text-rendering: geometricPrecision;
   font-smooth: never;

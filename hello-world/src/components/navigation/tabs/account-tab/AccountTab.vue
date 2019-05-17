@@ -13,7 +13,6 @@ export default {
       password: '',
       error: '',
       registerPressed: false,
-
       forgotPassword: false
     }
   },
@@ -59,7 +58,7 @@ export default {
 
 <template>
 <div class="root">
-  <!-- <form v-if="!userSignedIn" class="form flex-col">
+  <form v-if="!userSignedIn" class="form flex-col">
     <span class="new-customer-title">
         NEW CUSTOMERS
     </span>
@@ -73,13 +72,13 @@ export default {
     <hr class="hr">
     <span class="registered">REGISTERED CUSTOMERS</span>
     <input v-model="email" type="email" placeholder="Email Address*" class="mail">
-    <!-- <span class="error">{{ emailErr }}</span> -->
-    <!-- <input v-model="password" type="password" placeholder="Password*" class="pass">
+    <span class="error">{{ emailErr }}</span>
+    <input v-model="password" type="password" placeholder="Password*" class="pass">
     <router-link tag="span" to="/users/forgot-password" class="forgot-pass pointer">Forgot Your Password?</router-link>
     <button @click.prevent="login" class="btn  padding-bot pointer">LOGIN</button>
     <span class="error">{{ error }}</span>
     <forgot-password v-if="forgotPassword"></forgot-password>
-  </form> -->
+  </form>
   <logged-user-tab  />
 </div>
 </template>

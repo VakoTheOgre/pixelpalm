@@ -53,7 +53,7 @@ export default {
   methods: {
     async changeInfo () {
       try {
-        let res = this.$axios.put(`/user/edit/${this.$store.getters['auth/user']._id}`, {
+        let res = await this.$axios.put(`/user/edit/${this.$store.getters['auth/user']._id}`, {
           name: `${this.name} ${this.lastName}`,
           address1: this.address1,
           city: this.city,
@@ -65,10 +65,13 @@ export default {
         }, {
           headers: { 'Authorization': `Bearer ${this.$store.getters['auth/token']}` }
         })
+        this.$store.commit('information/close')
+        this.$store.commit('loggedUser/open')
         this.error = res.data.message
         this.$store.dispatch('auth/me')
       } catch (e) {
-        this.error = e.response.data.message
+        // this.error = e.response.data.message
+        this.error = ''
       }
     }
   }
@@ -76,12 +79,12 @@ export default {
 </script>
 
 <template>
-  <div>
+  <div style="margin-top: 8rem;">
       <input  v-model="name" type="text" placeholder="First Name*" :class="{ errorBorder: this.nameErr != '' }"  class="input">
 
       <input v-model="lastName" type="text" placeholder="Last Name*" :class="{ errorBorder: this.lastNameErr != '' }" class="input">
 
-      <input v-model="address1" type="text" placeholder="Strert Name*" :class="{ errorBorder: this.address1Err != '' }" class="input">
+      <input v-model="address1" type="text" placeholder="Street Name*" :class="{ errorBorder: this.address1Err != '' }" class="input">
 
       <input v-model="city" type="text" placeholder="City*" :class="{ errorBorder: this.cityErr != '' }" class="input">
 
@@ -95,7 +98,7 @@ export default {
       <input v-model="phone" type="text" placeholder="Phone Number*" :class="{ errorBorder: this.phoneErr != '' }" title="" class="input">
 
       <span v-if="error">{{ error }}</span>
-      <span @click="changeInfo" class="final-btn flex center">
+      <span @click="changeInfo" class="final-btn flex center pointer">
         Save Changes
       </span>
 

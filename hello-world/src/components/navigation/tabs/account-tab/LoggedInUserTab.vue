@@ -50,13 +50,13 @@ export default {
 
 <template>
 <div>
-<!-- 
+
 
 <div @click="toggleLogged" class="name-wrapper flex pointer">
     <img src="https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/account-logged-in-icon.svg">
     <span class="username flex AL-center"> {{ user.name }} </span>
 </div>
-<div  class="logged-root flex-col">
+<div v-if="logged" class="logged-root flex-col">
     <span class="option-span">ACCOUNT INFORMATION</span>
     <div @click="toggleInfo" class="option-btn flex center pointer">
         VIEW DETAILS
@@ -72,10 +72,10 @@ export default {
         CHANGE PASSWORD
     </div>
 
-</div> -->
-<information v-if="!info"></information>
-<!-- <password v-if="!pass"></password> -->
-<!-- <history v-if="!history"></history> -->
+</div>
+<information v-if="info"></information>
+<password v-if="pass"></password>
+<history v-if="history"></history>
 </div>
 </template>
 
@@ -84,6 +84,7 @@ export default {
 .logged-root {
   // background-color: white;
   width: 33rem;
+  margin-top: 1.6rem;
   background-color: white;
   min-height: calc(100vh - 12.8rem);
   max-height: 100%;
