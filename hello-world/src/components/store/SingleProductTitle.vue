@@ -21,9 +21,8 @@ export default {
       width: 100%;
       margin-bottom: 0;
       user-select: none;
-      border:0.1rem solid black;
+      // border:0.1rem solid black;
       text-align: left;
-      padding-left: 1rem;
       margin-top: 0;
       line-height: 1;
       font-size: 2rem;
@@ -36,10 +35,12 @@ export default {
 @media only screen and (max-width: 1200px) {
     .details-short {
       height: 4rem;
+      font-size: 3rem;
       width: 100%;
       margin-bottom: 0;
+      padding-left: 0;
       user-select: none;
-      border: none;
+      // border: none;
       text-align: left;
     }
 }

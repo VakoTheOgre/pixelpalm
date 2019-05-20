@@ -23,6 +23,7 @@ export default {
   methods: {
     closeMenu() {
       this.$store.commit('menuIcon/close')
+      this.$store.commit('accountIcon/close')
     }
   }
 }

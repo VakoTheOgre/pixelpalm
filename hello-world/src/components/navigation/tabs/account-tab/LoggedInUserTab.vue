@@ -43,6 +43,10 @@ export default {
             this.$store.commit('password/close')
             this.$store.commit('history/close')
             this.$store.commit('information/close')
+        },
+        loggout () {
+            this.$store.commit('user/loggout')
+            this.$store.commit('menuIcon/open')
         }
     }
 }
@@ -52,9 +56,10 @@ export default {
 <div>
 
 
-<div @click="toggleLogged" class="name-wrapper flex pointer">
+<div @click="toggleLogged" class="name-wrapper flex pointer JF-spaceBE">
     <img src="https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/account-logged-in-icon.svg">
     <span class="username flex AL-center"> {{ user.name }} </span>
+    <img @click="loggout" src="https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/logout.svg">
 </div>
 <div v-if="logged" class="logged-root flex-col">
     <span class="option-span">ACCOUNT INFORMATION</span>
@@ -99,7 +104,64 @@ export default {
     padding-top: 1rem;
 }
 .username {
-    padding-left: 1rem;
+    font-size: 1.3rem;
+    font-family: 'Pixelpalm-category-font';
+    text-rendering: geometricPrecision;
+    font-smooth: never;
+	-webkit-font-smoothing: none;
+}
+.option {
+    &-span {
+        font-family: 'Pixelpalm-category-font';
+        text-rendering: geometricPrecision;
+        font-smooth: never;
+        -webkit-font-smoothing: none;
+        color: black;
+        width: 27rem;
+        margin-left: 1rem;
+        padding-top: 4rem;
+        font-size: 1rem;
+        
+    }
+    &-btn {
+        font-family: 'Pixelpalm-category-font';
+        text-rendering: geometricPrecision;
+        font-smooth: never;
+        -webkit-font-smoothing: none;
+        color: white;
+        background-color: black;
+        font-size: 1.5rem;
+        width: calc(100% - 2rem);
+        height: 4rem;
+        margin-left: 1rem;
+        margin-bottom: 3rem;
+        margin-top: 1rem
+    }
+}
+.hr {
+    widows: 100%;
+    border-bottom: 0.1rem solid black;
+}
+@media only screen and (max-width: 1200px) {
+
+.logged-root {
+  // background-color: white;
+  width: 100vw;
+  margin-top: 0;
+  background-color: white;
+  min-height: calc(100vh - 12.8rem);
+  max-height: 100%;
+  overflow-x: hidden;
+  // height: 100%;
+  position: absolute;
+  left: 0;
+}
+.name-wrapper {
+    width: calc(100% - 2rem);
+    margin-left: 1rem;
+    padding-top: 1rem;
+}
+.username {
     font-size: 1.3rem;
     font-family: 'Pixelpalm-category-font';
     text-rendering: geometricPrecision;
@@ -137,5 +199,6 @@ export default {
 .hr {
     widows: 100%;
     border-bottom: 0.1rem solid black;
+}
 }
 </style>

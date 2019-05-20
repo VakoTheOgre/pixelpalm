@@ -10,6 +10,7 @@ const Shipping = () => import('./views/gray-area/Shipping.vue')
 const About = () => import('./views/studio/About.vue')
 const Projects = () => import('./views/studio/Projects.vue')
 const Blog = () => import('./views/studio/Blog.vue')
+const SingleBlog = () => import('./views/studio/SingleBlog.vue')
 const Contact = () => import('./views/studio/Contact.vue')
 const SingleProduct = () => import('./views/shop/SingleProduct.vue')
 const CategoryPage = () => import('./views/shop/CategoryPage.vue')
@@ -73,7 +74,12 @@ export default new Router({
     {
       path: '/studio/blog',
       name: 'blog',
-      component: Blog
+      component: Blog,
+    },
+    {
+      path: '/studio/blog/:id',
+      name: 'singleBlog',
+      component: SingleBlog
     },
     {
       path: '/studio/contact',
@@ -102,14 +108,17 @@ export default new Router({
     },
     {
       path: '/users/verify/:token',
+      name: 'confirm-email',
       component: Confirm
     },
     {
       path: '/users/reset/:token',
+      name: 'reset-password',
       component: ResetPassword
     },
     {
       path: '/users/forgot-password',
+      name: 'forgot-password',
       component: ForgotPassword
     }
   ]

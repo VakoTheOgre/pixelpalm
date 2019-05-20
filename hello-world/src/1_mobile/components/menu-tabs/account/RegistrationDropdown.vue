@@ -85,24 +85,24 @@ export default {
 
 <template>
 <form class="inner-form flex-col">
-  <input autocomplete="username" v-model="firstName" type="text" placeholder="FIRSTNAME*" class="input">
+  <input autocomplete="username" v-model="firstName" type="text" placeholder="First Name*" class="input">
   <!-- <span v-model="nameErr" class="error"> {{ nameErr }} </span> -->
   
-  <input v-model="lastName" type="text" placeholder="LASTNAME*" class="input">
+  <input v-model="lastName" type="text" placeholder="Last Name*" class="input">
   <!-- <span v-model="nameErr" class="error"> {{ nameErr }} </span> -->
 
-  <input v-model="email" type="email" placeholder="EMAIL ADRESS*" class="input">
+  <input v-model="email" type="email" placeholder="Email Address*" class="input">
   <!-- <span v-model="emailErr" class="error"> {{ emailErr }} </span> -->
 
-  <input autocomplete="password"  v-model="password" type="password" placeholder="PASSWORD*" class="input">
-  <input autocomplete="password"  v-model="password2" type="password" placeholder="CONFIRM PASSWORD*" class="input">
+  <input autocomplete="password"  v-model="password" type="password" placeholder="Password*" class="input">
+  <input autocomplete="password"  v-model="password2" type="password" placeholder="Confirm Password*" class="input">
   <!-- <span v-model="passwordErr" class="error"> {{ passwordErr }} </span> -->
   
   <div class="terms flex AL-center">
     <div @click="checkUncheck" class="checkbox">
-      <img  v-if="boxChecked" src="https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/tick.svg" alt="&#10003" class="checkbox-tick">
+      <img  v-if="boxChecked" src="https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/tick.svg" alt="ok" class="checkbox-tick">
     </div>
-    <span class="agree-txt">I Agree to the Terms of Use</span>
+    <span class="agree-txt">I Agree to the Terms of Use.</span>
   </div>
   <button @click.prevent="register" class="btn pointer">SUBMIT</button>
   <!-- <span class="btn-error"> {{error}} </span> -->
@@ -126,13 +126,23 @@ export default {
   height: 4rem; 
   border: 0.2rem solid black;
   background-color: transparent;
-  color: black;
   margin-bottom: 2rem;
-    font-size: 1.2rem;
-  &::placeholder {
-    font-size: 1.2rem;
+  font-size: 2rem;
     color: black;
-  }
+    opacity: 1;
+    font-family: 'Pixelpalm Pro-Input';
+    text-rendering: geometricPrecision;
+    font-smooth: never;
+    -webkit-font-smoothing: none;
+    &::placeholder {
+        font-size: 2rem;
+        color: gray;
+        opacity: 1;
+        font-family: 'Pixelpalm Pro-Input';
+        text-rendering: geometricPrecision;
+        font-smooth: never;
+        -webkit-font-smoothing: none;
+      }
   &:enabled {
     padding-left: 1rem;
   }
@@ -152,10 +162,18 @@ export default {
 .agree-txt {
   width: 100%;
   text-align: start;
-  font-size: 1.2rem;
   margin-bottom: 1.8rem;
   line-height: 1;
   padding-left: 1rem;
+  font-size: 2rem;
+  letter-spacing: 0.7;
+    color: black;
+    opacity: 1;
+    font-family: 'Pixelpalm Pro-Input';
+    text-rendering: geometricPrecision;
+    font-smooth: never;
+    -webkit-font-smoothing: none;
+    
 }
 .btn {
   height: 4rem; 
@@ -170,6 +188,9 @@ export default {
   -webkit-font-smoothing : none;
 }
 .terms {
-  padding-top: 1rem;
+  // padding-top: 0.8rem;
+  margin-top: -0.5rem;
+  margin-bottom: -0.6rem;
+  // padding-bottom: 0.6rem;
 }
 </style>

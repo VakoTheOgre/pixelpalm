@@ -1,8 +1,10 @@
 <script>
 import registration from './RegistrationDropdown'
+import LoggedUserTab from '../../../../components/navigation/tabs/account-tab/LoggedInUserTab'
 export default {
   components: {
-    registration
+    registration,
+    LoggedUserTab,
   },
   data() {
     return {
@@ -10,12 +12,19 @@ export default {
       emailErr: '',
       password: '',
       error: '',
-      registerPressed: false
+      registerPressed: false,
+      forgotPassword: false
     }
   },
+
   computed: {
     userSignedIn () {
       return !!this.$store.getters['auth/user']
+    }
+  },
+  mounted () {
+    if (this.userSignedIn) {
+      this.$store.commit('loggedUser/open')
     }
   },
   watch: {
@@ -26,7 +35,7 @@ export default {
       } else {
         this.emailErr = ''
       }
-    }
+    },
   },
   methods: {
     closeCurrentTab() {
@@ -34,14 +43,15 @@ export default {
     },
     async login() {
       try{
-        let ret = await this.$store.dispatch('auth/login', {email: this.email, password: this.password})
-        this.error = 'All good'
+        await this.$store.dispatch('auth/login', {email: this.email, password: this.password})
+        this.error = "Successfully signed in"
       } catch(e) {
         this.error = e.response.data.message
       }
     },
     registerRequest() {
       this.registerPressed = true;
+      
     }
   }
 }
@@ -49,7 +59,7 @@ export default {
 
 <template>
 <div class="root-account">
-  <form class="form-outer flex-col">
+  <form v-if="!userSignedIn" class="form-outer flex-col">
     <span class="new-customer-title">
         NEW CUSTOMER
     </span>
@@ -62,13 +72,12 @@ export default {
     <registration v-else></registration>
     <hr>
     <span  class="registered">REGISTERED CUSTOMERS</span>
-    <input  v-model="email" type="email" placeholder="EMAIL ADRESS*" class="mail">
-    <span  class="error">{{ emailErr }}</span>
-    <input  v-model="password" type="password" placeholder="PASSWORD*" class="pass">
+    <input  v-model="email" type="email" placeholder="Email Address*" class="mail">
+    <input  v-model="password" type="password" placeholder="Password*" class="pass">
     <router-link tag="span" to="/users/forgot-password" class="forgot-pass pointer">FORGOT YOUR PASSWORD?</router-link>
     <button  @click.prevent="login" class="btn login pointer">LOGIN</button>
-    <span  class="error">{{ error }}</span>
   </form>
+  <logged-user-tab v-else />
 </div>
 </template>
 
@@ -76,7 +85,6 @@ export default {
 .root-account{
   width: 100vw;
   background-color: white;
-  padding-top: 3rem;
   min-height: 100vh;
   padding-bottom: 20rem;
   overflow-y: scroll;
@@ -84,7 +92,7 @@ export default {
   overflow: scroll;
   // height: 100%;
   position: absolute;
-  top: 7.4rem;
+  top: 7rem;
   left: 0;
 }
 .error {
@@ -100,7 +108,7 @@ hr {
   margin-left: -1rem;
 }
 .form-outer {
-  padding: 0 1rem 0 1rem;
+  padding: 3rem 1rem 0 1rem;
   background-color: white;
   
 }
@@ -138,10 +146,22 @@ hr {
   background-color: transparent;
   color: black;
   margin-bottom: 2rem;
-  &::placeholder {
-    font-size: 1.2rem;
+  font-size: 2rem;
     color: black;
-  }
+    opacity: 1;
+    font-family: 'Pixelpalm Pro-Input';
+    text-rendering: geometricPrecision;
+    font-smooth: never;
+    -webkit-font-smoothing: none;
+    &::placeholder {
+        font-size: 2rem;
+        color: gray;
+        opacity: 1;
+        font-family: 'Pixelpalm Pro-Input';
+        text-rendering: geometricPrecision;
+        font-smooth: never;
+        -webkit-font-smoothing: none;
+      }
   &:enabled {
     padding-left: 1rem;
   }
@@ -150,11 +170,22 @@ hr {
   height: 4rem; 
   border: 0.2rem solid black;
   background-color: transparent;
-  color: black;
-  &::placeholder {
-    font-size: 1.2rem;
+  font-size: 2rem;
     color: black;
-  }
+    opacity: 1;
+    font-family: 'Pixelpalm Pro-Input';
+    text-rendering: geometricPrecision;
+    font-smooth: never;
+    -webkit-font-smoothing: none;
+    &::placeholder {
+        font-size: 2rem;
+        color: gray;
+        opacity: 1;
+        font-family: 'Pixelpalm Pro-Input';
+        text-rendering: geometricPrecision;
+        font-smooth: never;
+        -webkit-font-smoothing: none;
+      }
   &:enabled {
     padding-left: 1rem;
   }
@@ -166,6 +197,13 @@ hr {
   user-select: none !important;
   padding-bottom: 3rem;
   cursor: pointer !important;
+  font-size: 1rem;
+    color: black;
+    opacity: 1;
+    font-family: 'Pixelpalm Pro-Input';
+    text-rendering: geometricPrecision;
+    font-smooth: never;
+    -webkit-font-smoothing: none;
 }
 .login {
   margin-bottom: 1rem;

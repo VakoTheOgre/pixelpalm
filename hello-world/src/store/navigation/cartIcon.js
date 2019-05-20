@@ -2,7 +2,8 @@ export default {
   namespaced: true,
 
   state: {
-    cartOpen: false
+    cartOpen: false,
+		crumbs: null
   },
 
   getters: {
@@ -14,6 +15,7 @@ export default {
   mutations: {
     close(state) {
       state.cartOpen = false
+      state.crumbs = null
     },
     open(state) {
       state.cartOpen = true

@@ -18,6 +18,14 @@ export default {
         sub += itemTotal
       })
       return sub
+    },
+
+    getAmount (state) {
+      let num = 0 
+      for (let item of state.cart) {
+        num += item.amount
+      }
+      return num
     }
   },
 

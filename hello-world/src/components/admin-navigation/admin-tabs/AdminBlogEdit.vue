@@ -266,7 +266,7 @@ export default {
   top: 0;
   right: 50%;
   transform: translateX(50%);
-  width: 70rem;
+  width: 86rem;
   margin: 0 auto 5rem auto;
   height: 50rem;
   display: flex;

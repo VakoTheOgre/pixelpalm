@@ -27,6 +27,7 @@ methods: {
         this.$store.commit("accountIcon/close")
         this.$store.commit("cartIcon/close")
         this.$store.commit("legalsIcon/close")
+        this.$store.commit("accountIcon/setCrumbs", ['STUDIO'])
         }
     },
 }

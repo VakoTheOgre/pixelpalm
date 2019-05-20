@@ -41,11 +41,11 @@ export default {
 @media only screen and (max-width: 1200px) {
   .home {
     flex-direction: column;
-    padding-top: 7.4rem;
+    padding-top: 7rem;
   }
   #slide,#slide2,#slide3 {
     width: 100vw;
-    height: calc(100vh - 7.4rem);
+    height: calc(100vh - 7rem);
   }
   .carousel-wrapper {
     position: relative;
@@ -56,7 +56,7 @@ export default {
     background-size: cover;
     background-position: center center;
     width: 100vw;
-    height: calc(100vh - 7.4rem);
+    height: calc(100vh - 7rem);
   }
   .logo-float {
     position: absolute !important;

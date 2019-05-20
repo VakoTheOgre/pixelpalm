@@ -162,7 +162,7 @@ export default {
 <template>
   <div class="nav flex JF-spaceBE">
     <img @click="toggleMenu" :src="menuIcon"       title="Menu"    alt="" class="pointer pixecon">
-    <img @click="toggleExplore" :src="exploreIcon" title="Explore" alt="" class="pointer pixecon">
+    <img @click="toggleExplore" :src="exploreIcon" title="Studio" alt="" class="pointer pixecon">
     <img @click="toggleSearch" :src="searchIcon"   title="Search"  alt="" class="pointer pixecon">
     <img @click="toggleAccount" :src="accountIcon" title="Account" alt="" class="pointer pixecon">
     <div class="pointer flex center">

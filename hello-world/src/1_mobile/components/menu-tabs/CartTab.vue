@@ -48,9 +48,7 @@ export default {
             <span class="spans pointer"> {{ item.variant.size }} </span>
             <span class="spans pointer"> {{ item.amount }} </span>
             <span class="spans pointer"> ${{ item.variant.price }} </span>
-            <div @click="remove(index)" class="bin spans pointer">
-              X
-            </div>
+            <img @click="remove(index)" src="https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/delete-icon.svg" alt="X" class="bin spans pointer">
           </div>
           <!-- <div class="quantity-row flex-row AL-center JF-spaceBE">
             <span>Quantity:</span>
@@ -80,7 +78,6 @@ export default {
   width: calc(100vw - 2rem) ;
   text-align: left;
   padding-top: 3rem;
-  padding-bottom: 1rem;
   margin-top: 0 !important;
   font-size: 1.5rem !important;
   font-family: 'Pixelpalm-category-font';
@@ -88,6 +85,10 @@ export default {
   -webkit-font-smoothing : none;
 }
 .cart-wrapper {
+  position: absolute;
+  width: 100vw;
+  top: 7rem;
+  left: 0;
   background-color: white;
   min-height: 100vh;
   // z-index: 5;
@@ -108,6 +109,11 @@ export default {
 }
 .spans {
   padding: 0.2rem;
+  font-size: 2rem;
+  font-family: 'Pixelpalm-text';
+  text-rendering: geometricPrecision;
+  font-smooth: never;
+	-webkit-font-smoothing: none;
 }
 .thumb {
   height: 5.6rem;
@@ -130,7 +136,10 @@ button {
   border: none;
 }
 .bin {
-  font-size: 1.2rem;
+  width: 1rem;
+  height: 1rem;
+  padding: 0;
+  margin: 0 0.6rem 0.2rem 0;
 }
 @media only screen and (max-width: 1200px) {
   .cart-item {

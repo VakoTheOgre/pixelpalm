@@ -26,41 +26,37 @@ export default {
 
 
 <style lang="scss" scoped>
+
 @media only screen and (max-width: 1200px) {
   .marginTop {
-    margin-top: 8.8rem !important; 
+    margin-top: 7.8rem !important; 
   }
-}
-@media only screen and (min-width: 1200px) {
-  .marginTopDesk {
-    margin-top: 12.8rem !important; 
+  .whole-store {
+    min-width: 144rem;
+    display: grid;
+    grid-template-columns: calc(50vw - 1.5rem) calc(50vw - 1.5rem);
+    column-gap: 1rem;
+    grid-row-gap: 1rem;
+    grid-auto-rows: calc(50vw - 1.5rem);
+    margin-left: 2.6667vw;
+    margin-top: 1rem;
+    margin-bottom: 1.4rem;
   }
-}
-.whole-store {
-  min-width: 144rem;
-  display: grid;
-  grid-template-columns: calc(50vw - 1.8rem) calc(50vw - 1.8rem);
-  column-gap: 1rem;
-  grid-row-gap: 1rem;
-  grid-auto-rows: calc(50vw - 1.8rem);
-  margin-left: 3.2vw;
-  margin-top: 1rem;
-  margin-bottom: 1.6rem;
-}
-.store-item {
-  // background-color: black;
-  // border: 0.1rem solid black;
-  
-  margin: 0;
-  padding: 0;
-}
-.photo {
+  .store-item {
     // background-color: black;
-    border: 0.1rem solid black;
-    width: calc(50vw - 1.6rem);
-    height: auto;
+    // border: 0.1rem solid black;
+    
     margin: 0;
     padding: 0;
+  }
+  .photo {
+      // background-color: black;
+      border: 0.1rem solid black;
+      width: calc(50vw - 1.6rem);
+      height: auto;
+      margin: 0;
+      padding: 0;
+  }
 }
 @media only screen and (min-width: 580px) {
   .whole-store {
@@ -84,7 +80,7 @@ export default {
     padding: 0;
   }
 }
-@media only screen and (min-width: 1023px) {
+@media only screen and (max-width: 1023px) {
   .whole-store {
     min-width: 32rem;
     display: grid;
@@ -107,6 +103,9 @@ export default {
   }
 }
 @media only screen and (min-width: 1024px) {
+  .marginTopDesk {
+    padding-top: 12rem;
+  }
   .whole-store {
     min-width: 32rem;
     display: grid;
@@ -128,6 +127,9 @@ export default {
   }
 }
 @media only screen and (min-width: 1200px) {
+  .marginTopDesk {
+    padding-top: 10rem;
+  }
   .whole-store {
     min-width: 32rem;
     display: grid;
@@ -140,7 +142,7 @@ export default {
   }
   .photo {
     // background-color: black;
-    // border: 0.1rem solid black;
+    border: 0.1rem solid black;
     width: calc(17vw - 3.6rem);
     height: auto;
     margin: 0;
@@ -148,6 +150,9 @@ export default {
   }
 }
 @media only screen and (min-width: 1280px) {
+  .marginTopDesk {
+    padding-top: 10rem;
+  }
   .whole-store {
     min-width: 32rem;
     display: grid;
@@ -168,6 +173,9 @@ export default {
   }
 }
 @media only screen and (min-width: 1366px) {
+  .marginTopDesk {
+    padding-top: 10rem;
+  }
   .whole-store {
     min-width: 32rem;
     display: grid;
@@ -188,6 +196,9 @@ export default {
   }
 }
 @media only screen and (min-width: 1580px) {
+  .marginTopDesk {
+    padding-top: 10rem;
+  }
   .whole-store {
     min-width: 32rem;
     display: grid;
@@ -208,6 +219,9 @@ export default {
   }
 }
 @media only screen and (min-width: 1820px) {
+  .marginTopDesk {
+    padding-top: 10rem;
+  }
   .whole-store {
     min-width: 32rem;
     display: grid;
@@ -228,6 +242,9 @@ export default {
   }
 }
 @media only screen and (min-width: 1920px) {
+  .marginTopDesk {
+    padding-top: 11.6rem;
+  }
   .whole-store {
     min-width: 32rem;
     display: grid;

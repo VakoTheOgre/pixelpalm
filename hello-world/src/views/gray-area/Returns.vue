@@ -7,8 +7,8 @@ export default {
 
 
 <template>
-<div class="text-root flex root center">
-  <span class="heading">RETURNS</span>
+<div  class="text-root flex root center">
+  <span v-if="this.device == 'desktop'" class="heading">RETURNS</span>
   
   <p class="text-block">
   RETURNS POLICY
@@ -90,13 +90,24 @@ export default {
 @media only screen and (max-width: 1200px) {
   .text-root {
     width: calc(100vw - 2rem);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
   .text-block {
-    padding: 0;
-    width: calc(100vw - 2rem);
-    margin-top: 8.4rem;
-    margin-left: 1.6rem;
-    margin-bottom:1rem;
+    padding-right: 0;
+    padding-left: 2rem;
+    padding-bottom: 2rem;
+    font-size: 1rem;
+    padding-top: 10rem;
+    width: 100vw;
+    position: static;
+    text-align: justify;
+    top: 0;
+    left: 0;
+    transform: translateX(0);
+    overflow: hidden; 
+    margin-left: 0;
   }
 
 }

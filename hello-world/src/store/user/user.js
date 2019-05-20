@@ -52,6 +52,11 @@ export default {
         }
       })
     },
+    loggout ({ commit }) {
+      commit('setUser', null)
+      commit('setToken', null)
+      Cookie.remove
+    },
 		async register ( { commit }, payload) {
       return new Promise(async (resolve, reject) => {
         try {

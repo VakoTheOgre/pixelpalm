@@ -3,9 +3,11 @@ import { mapState } from 'vuex'
 import { mapGetters } from 'vuex'
 import CartItem from '@/services/CartService/cartService'
 import checkoutBtn from '@/components/store/CheckoutBtn'
+import SubtotalCheckout from '@/components/navigation/tabs/SubtotalCheckout'
 export default {
   components: {
-    checkoutBtn
+    checkoutBtn,
+    SubtotalCheckout
   },
   computed: {
     ...mapState('cart', {
@@ -37,7 +39,7 @@ export default {
 
 <template>
 <div class="cart-wrapper flex-col AL-center">
-  <span id="cart-id" class="heading"> CART</span>
+  <span class="heading">CART</span>
       <div :key="index" v-for="(item,index) in cart" class="cart-item flex ">
           <img :src="item.product.images[0]" class="thumb">
 
@@ -46,9 +48,7 @@ export default {
             <span class="spans pointer"> {{ item.variant.size }} </span>
             <span class="spans pointer"> {{ item.amount }} </span>
             <span class="spans pointer"> ${{ item.variant.price }} </span>
-          
             <img @click="remove(index)" src="https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/delete-icon.svg" alt="X" class="bin spans pointer">
-            
           </div>
           <!-- <div class="quantity-row flex-row AL-center JF-spaceBE">
             <span>Quantity:</span>
@@ -67,7 +67,6 @@ export default {
       </div>
       <div class="spacer"></div>
       <checkout-btn backColor="red" margin="3"></checkout-btn>
-
   </div>
 </template>
 

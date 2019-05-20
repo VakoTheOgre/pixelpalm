@@ -79,7 +79,7 @@ export default {
     <span class="error">{{ error }}</span>
     <forgot-password v-if="forgotPassword"></forgot-password>
   </form>
-  <logged-user-tab  />
+  <logged-user-tab v-else/>
 </div>
 </template>
 

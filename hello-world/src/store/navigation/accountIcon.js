@@ -18,11 +18,11 @@ export default {
   mutations: {
     close(state) {
       state.accountOpen = false
+      state.crumbs = null
     },
     open(state) {
       state.accountOpen = true
     },
-
 		setCrumbs (state, payload) {
 			state.crumbs = payload
 		}

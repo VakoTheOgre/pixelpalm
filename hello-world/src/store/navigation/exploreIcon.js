@@ -2,7 +2,8 @@ export default {
   namespaced: true,
 
   state: {
-    exploreOpen: false
+    exploreOpen: false,
+		crumbs: null
   },
 
   getters: {
@@ -14,6 +15,7 @@ export default {
   mutations: {
     close(state) {
       state.exploreOpen = false
+      state.crumbs = null
     },
     open(state) {
       state.exploreOpen = true

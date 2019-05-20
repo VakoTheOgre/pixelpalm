@@ -78,6 +78,7 @@ export default {
 <style lang="scss" scoped>
 .sizes {
   width: 27rem;
+  height: 4rem;
 //   border: 0.1rem solid black;
   margin-bottom: 2rem;
 }
@@ -86,6 +87,7 @@ export default {
         margin-left: 50%;
         transform: translateX(-50%);
         width: calc(70% - 2rem);
+        margin-bottom: 1rem;
     }
 }
 </style>

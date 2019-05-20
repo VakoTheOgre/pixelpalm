@@ -19,7 +19,8 @@ export default {
     },
     computed: {
         ...mapGetters({
-        cart: 'cart/getCart'
+        cart: 'cart/getCart',
+        amount: 'cart/getAmount'
         }),
         menuState() {
             return this.$store.getters['menuIcon/menuState']
@@ -71,6 +72,7 @@ export default {
                 this.$store.commit("accountIcon/close")
                 this.$store.commit("cartIcon/close")
                 this.$store.commit("legalsIcon/close")
+                this.$store.commit("accountIcon/setCrumbs", ['FREE WORLDWIDE SHIPPING FOR ORDERS ABOVE $50'])
             }
         },
         toggleCart() {
@@ -83,6 +85,7 @@ export default {
                 this.$store.commit("accountIcon/close")
                 this.$store.commit("menuIcon/close")
                 this.$store.commit("legalsIcon/close")
+                this.$store.commit("accountIcon/setCrumbs", ['CART'])
             }
         }
     }
@@ -96,7 +99,7 @@ export default {
             <router-link tag="img"  to="/" src="https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/pixelpalm_logo_big.svg" 
                           alt="PIXELPALM-LOGO" class="text-logo pointer"></router-link>
             <div class="menu-cart pointer flex center">
-                <span v-if="!this.cartState" class="cart-nums">{{ this.cart.length }}</span>
+                <span v-if="!this.cartState" class="cart-nums">{{ this.amount }}</span>
                 <img @click="toggleCart" :src="cartIcon"  title="Cart" alt="CART" class="cart-img">
             </div>
         </div>
@@ -143,8 +146,13 @@ export default {
 }
 .cart-nums{
     position: absolute;
-    font-size: 1.2rem;
+    font-size: 1rem;
     z-index: -1;
+    font-family: 'new_cart_font';
+    text-rendering: geometricPrecision;
+    font-smooth: never;
+	-webkit-font-smoothing: none;
+
 }
 .text-logo {
     height: 3rem;
@@ -154,7 +162,6 @@ export default {
 .slideIn-leave-active,
 .slideIn2-enter-active,
 .slideIn2-leave-active {
-  opacity: 1;
   transform: translateX(0) scale(1);
   transition: all 0.5s;
 }
@@ -162,7 +169,6 @@ export default {
 .slideIn-leave-to,
 .slideIn2-enter,
 .slideIn2-leave-to {
-  opacity: 0;
   transform: translateX(-100%);
   transition: all 0.5s;
 }

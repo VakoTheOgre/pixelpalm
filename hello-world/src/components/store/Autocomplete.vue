@@ -1,11 +1,15 @@
 <style lang="scss" scoped>
 .dropdown {
   max-height: 30rem;
-  max-width: 27rem;
+  width: 100%;
+  max-width: 56rem;
   overflow-y: scroll;
   overflow-x: hidden;
   position: absolute;
   background-color: white;
+  z-index: 3;
+  border: 0.2rem solid black;
+  border-top: none !important;
 }
 .dropdown-inputs {
   width: 27rem !important;
@@ -35,10 +39,14 @@
   width: 27rem !important;
 }
 .item {
-  width: 27rem;
+  width: 100%;
+  height: 4rem;
   font-size: 2rem;
+  padding-left: 1rem;
   color: black;
+  border-bottom: 0.1rem solid black;
   opacity: 1;
+  white-space: nowrap;
   font-family: 'Pixelpalm Pro-Input';
   text-rendering: geometricPrecision;
   font-smooth: never;
@@ -47,6 +55,7 @@
 }
 .flag {
   height: 3rem;
+  border: 0.2rem solid black;
   width: 6rem;
 }
 @media only screen and (max-width: 1200px) {
@@ -61,6 +70,7 @@
     overflow-x: hidden;
     position: absolute;
     background-color: white;
+    
   }
   .dropdown-inputs {
     max-width: auto;
@@ -101,9 +111,8 @@
     <input v-if="!selectedSomething" v-model="userInput" :placeholder="type + '*'" type="text" class="dropdown-inputs mobile-input1">
     <input v-else @input="tryAgain" v-model="userInput2" :placeholder="type + '*'" type="text" class="dropdown-inputs mobile-input2">
     <div v-if="filteredItems.length" class="dropdown">
-      <div @click="selected(item)" v-for="(item, index) in filteredItems" :key="index" class="item flex JF-spaceBE">
-        <img :src="item.flag" class="flag">
-        {{ item.alpha2Code }}
+      <div @click="selected(item)" v-for="(item, index) in filteredItems" :key="index" class="item flex pointer AL-center JF-spaceBE">
+        {{ item.name }}
       </div>
     </div>
   </div>

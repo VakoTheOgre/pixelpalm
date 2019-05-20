@@ -8,8 +8,8 @@ export default {
 
     
 <template>
-<div class="text-root flex root center">
-  <span class="heading">SHIPPING</span>
+<div  class="text-root flex root center">
+  <span v-if="this.device == 'desktop'" class="heading">SHIPPING</span>
   <p class="text-block">
     SHIPPING INFORMATION
     <br><br>
@@ -22,7 +22,7 @@ export default {
     <br><br>
     Orders placed on Pixelpalm.co are processed Monday-Friday (excluding major holidays) and are shipped within 5 business days from when the order is placed, pending payment authorization and verification. Pixelpalm.co ships worldwide. At this time we are unable to ship orders to General Delivery, P.O. Boxes, Poste restante. Orders made to any of these addresses will be cancelled.
     <br><br>
-    ******************************************
+    ***********************
     <br>
     *Please be aware of customs and duty fees the customer will be liable to pay in any destination outside of the USA. We are not responsible for any parcels returned for unpaid customs fees and will not issue refunds under these circumstances. Please also note that our physical stores and offices will not be able to help with any orders placed online. If you have any other delivery questions please contact us at info@pixelpalm.co
   </p>
@@ -61,7 +61,6 @@ export default {
   left: 50%;
   transform: translateX(-50%);
   margin-left: 16.5rem;
-  text-align: justify;
   // margin-left: 33rem;
   font-size: 2rem;
   font-family: 'Pixelpalm-text';
@@ -72,13 +71,24 @@ export default {
 @media only screen and (max-width: 1200px) {
   .text-root {
     width: calc(100vw - 2rem);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
   .text-block {
-    padding: 0;
-    width: calc(100vw - 2rem);
-    margin-top: 8.4rem;
-    margin-left: 1.6rem;
-    margin-bottom:1rem;
+    padding-right: 0;
+    padding-left: 2rem;
+    padding-bottom: 2rem;
+    font-size: 1rem;
+    padding-top: 10rem;
+    width: 100vw;
+    position: static;
+    text-align: justify;
+    top: 0;
+    left: 0;
+    transform: translateX(0);
+    overflow: hidden; 
+    margin-left: 0;
   }
 
 }

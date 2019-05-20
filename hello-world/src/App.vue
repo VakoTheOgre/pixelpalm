@@ -15,6 +15,7 @@ export default {
     try {
       await this.$store.dispatch('auth/me')
       await this.$store.dispatch('products/getAllProducts')
+      await this.$store.dispatch('blogs/GET')
     } catch (e) {
       console.log(e)
     }
@@ -29,7 +30,9 @@ export default {
     </div>
     <sidebar v-if='device == "desktop" && $route.name != "admin"'></sidebar>
     <navbar v-if='device == "mobile"'></navbar>
-    <router-view/>
+    <transition name="slide-right">
+      <router-view/>
+    </transition>
     <!-- <div class="spacer"></div> -->
     <Footer v-if='device == "mobile"'></Footer>
   </div>
@@ -53,11 +56,6 @@ html {
 //     height: 20px;
 //   }
 // }
-.sidbar-wrapper {
-  position: absolute;
-  top: 0;
-  left: 0;
-}
 #app {
   display: flex;
   overflow: hidden;
@@ -128,6 +126,24 @@ html {
       url(https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/fonts/input-font/PixelpalmProRegular.ttf) format('truetype');
     font-weight: 100;
     font-style: normal;
+}
+
+.slide-right-enter-active,
+.slide-right-leave-active {
+  transition-duration: 0.5s;
+  transition-property: height, opacity, transform;
+  transition-timing-function: cubic-bezier(0.55, 0, 0.1, 1);
+  overflow: hidden;
+}
+
+.slide-right-leave-active {
+  opacity: 0;
+  transform: translate(2em, 0);
+}
+
+.slide-right-enter {
+  opacity: 0;
+  transform: translate(-2em, 0);
 }
 
 

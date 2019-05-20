@@ -16,6 +16,7 @@ import information from './user/information.js'
 import loggedUser from './user/loggedUser.js'
 import password from './user/password.js'
 import checkout from './cart/checkout'
+import blogs from './blogs/blogs'
 import VuexPersistence from 'vuex-persist'
 Vue.use(Vuex)
 
@@ -41,7 +42,8 @@ export default new Vuex.Store({
     history,
     password,
     information,
-    loggedUser
+    loggedUser,
+    blogs
   },
   state: {
 

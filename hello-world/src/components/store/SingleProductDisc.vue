@@ -47,10 +47,9 @@ export default {
 
 <style lang="scss" scoped>
 .dropdown-root {
-  max-height: 20.9rem;
+  max-height: 26.9rem;
   height: 100%;
   width: 100%;
-  padding-right: 1rem;
   margin-bottom: 2rem;
   position: relative;
   border: 0.1rem solid black;
@@ -65,7 +64,6 @@ export default {
 }
 .disc-wrapper {
     // border: 0.1rem solid black;
-    padding-left: 1rem;
     height: 4rem;
     width: calc(100% - 2rem);
     margin-bottom: 2rem;
@@ -111,7 +109,7 @@ export default {
     position: relative;
     margin-top: 2rem;
     user-select: none;
-    border: 0.1rem solid black;
+    // border: 0.1rem solid black;
     padding-top: 0;
 
   }

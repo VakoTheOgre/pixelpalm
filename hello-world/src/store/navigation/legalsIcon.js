@@ -2,7 +2,8 @@ export default {
   namespaced: true,
 
   state: {
-    legalsOpen: false
+    legalsOpen: false,
+		crumbs: null
   },
 
   getters: {
@@ -14,6 +15,7 @@ export default {
   mutations: {
     close(state) {
       state.legalsOpen = false
+      state.crumbs = null
     },
     open(state) {
       state.legalsOpen = true

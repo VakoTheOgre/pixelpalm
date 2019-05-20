@@ -21,16 +21,18 @@ export default {
 
 <template>
     <div @click="openCart" class="root-btn pointer flex center">
-        <img  src="https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/view-cart.svg" >
+        <img  src="https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/view-cat.svg" >
     </div>
 </template>
 
 <style lang="scss" scoped>
 .root-btn {
   margin-top: 3rem !important;
-  background-color: black;
+  background-color: white;
   width: 27rem;
-  height: 3rem;
+  
+        outline: 0.2rem solid black;
+  height: 4rem;
   padding: 0 !important;
   margin-top: 0rem !important;
   margin-bottom: 2rem !important;
@@ -40,7 +42,11 @@ export default {
     .root-btn {
         width: calc(100vw - 2rem);
         margin-top: 0rem !important;
-        
+        color: black;
+        background-color: white;
+        outline: 0.2rem solid black;
+        height: 4rem;
     }
+    
 }
 </style>

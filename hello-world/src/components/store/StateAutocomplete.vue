@@ -6,6 +6,9 @@
   overflow-x: hidden;
   position: absolute;
   background-color: white;
+  border: 0.2rem solid black;
+  border-top: none !important;
+  z-index: 2;
 }
 .dropdown-inputs {
   width: 27rem !important;
@@ -30,20 +33,31 @@
   &:enabled {
     padding-left: 1rem;
   }
+  &:disabled {
+    padding-left: 1rem;
+    background-color: white;
+    // opacity: 0.3;
+    border-color: rgba(0, 0, 0, 0.3)
+  }
 }
 .root-dropdowns {
   width: 27rem !important;
 }
 .item {
   width: 27rem;
+  height: 4rem;
   font-size: 2rem;
+  padding-left: 1rem;
   color: black;
+  border-bottom: 0.1rem solid black;
   opacity: 1;
+  white-space: nowrap;
   font-family: 'Pixelpalm Pro-Input';
   text-rendering: geometricPrecision;
   font-smooth: never;
   -webkit-font-smoothing: none;
   padding-right: 5rem;
+
 }
 .flag {
   height: 3rem;
@@ -87,6 +101,9 @@
     &:enabled {
       padding-left: 1rem;
     }
+    &:disabled {
+      padding-left: 1rem;
+    }
   }
 .mobile-input {
   &1 {
@@ -101,7 +118,7 @@
     <input v-if="!selectedSomething" :disabled="disabled" v-model="userInput" placeholder="State*" type="text" class="dropdown-inputs mobile-input1">
     <input v-else @input="tryAgain(false)" :disabled="disabled" v-model="userInput2" placeholder="State*" type="text" class="dropdown-inputs mobile-input1">
     <div v-if="filteredItems.length" class="dropdown">
-      <div @click="selected(item)" v-for="(item, index) in filteredItems" :key="index" class="item flex JF-spaceBE">
+      <div @click="selected(item)" v-for="(item, index) in filteredItems" :key="index" class="item flex pointer AL-center JF-spaceBE">
         {{ item.name }}
         {{ item.abbreviation }}
       </div>

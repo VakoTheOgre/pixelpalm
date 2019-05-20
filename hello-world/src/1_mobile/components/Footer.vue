@@ -23,7 +23,7 @@ watch: {
     <div class="root flex-col AL-center">
         <h3 class="heading">NEWSLETTER</h3>
         <div class="email-wrapper flex JF-spaceBE AL-center">
-            <input v-model="email" type="email" placeholder="Enter your email adress" class="newsletter-input">
+            <input v-model="email" type="email" placeholder="Email" class="newsletter-input">
             <img src="https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/newsletter-icon.svg" alt="Envelope" class="newsletter-icon">
         </div>
         <div class="socials flex JF-spaceBE">
@@ -33,7 +33,7 @@ watch: {
             <img src="https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/instagram-icon.svg" alt="Instagram-icon" class=" right pointer">
         </div>
         <div class="rights">
-            2019 PIXELPALM Trading Limited
+            &#9400;2019 PIXELPALM,Inc. All rights reserved
         </div>
     </div>
 </template>
@@ -43,12 +43,18 @@ watch: {
     width: 100vw;
     background-color: white;
     border-top: 0.2rem solid black;
+
 }
 .heading {
     width: 100vw;
     text-align: center;
-    padding-top: 1rem;
+    font-size: 1.5rem;
+    padding-top: 3rem;
     padding-bottom: 1rem;
+    font-family: 'Pixelpalm-category-font';
+    text-rendering: geometricPrecision;
+    font-smooth: never;
+	-webkit-font-smoothing: none;
 }
 .email-wrapper {
     border: 0.2rem solid black;
@@ -57,15 +63,32 @@ watch: {
 }
 .newsletter {
     &-input {
-        width: 100%;
-        height: 3.4rem;
+        width: 87%;
+        height: 4rem;
         border: none;
+        font-size: 2rem;
+        color: black;
+        opacity: 1;
+        font-family: 'Pixelpalm Pro-Input';
+        text-rendering: geometricPrecision;
+        font-smooth: never;
+        -webkit-font-smoothing: none;
+        &::placeholder {
+            font-size: 2rem;
+            color: gray;
+            opacity: 1;
+            font-family: 'Pixelpalm Pro-Input';
+            text-rendering: geometricPrecision;
+            font-smooth: never;
+            -webkit-font-smoothing: none;
+        }
         &:enabled {
             padding-left: 1rem;
         }
     }
     &-icon {
-        padding-right: 0.4rem;
+        padding-right: 0rem;
+        margin-right: 0.4rem;
         padding-left: 0.4rem;
     }
 }
@@ -83,5 +106,9 @@ watch: {
     text-align: center;
     padding-bottom: 0.5rem;
     margin-top: 2rem; 
+    font-family: 'Pixelpalm-text';
+  text-rendering: geometricPrecision;
+  font-smooth: never;
+	-webkit-font-smoothing: none;
 }
 </style>

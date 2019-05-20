@@ -11,9 +11,22 @@ export default {
         accountState() {
             return this.$store.getters['accountIcon/accountState']
         },
-        
         socialsState() {
         return this.$store.getters['socialIcons/socialsState']
+        },
+        accountIcon() {
+            if(!this.userSignedIn) {
+                let accountIcon = "https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/login-icon.svg"
+
+                return accountIcon
+            } else if (!this.accountState && this.userSignedIn) {
+                let accountIcon = "https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/account-logged-in-icon.svg"
+
+                return accountIcon 
+            }
+        },
+        userSignedIn () {
+        return !!this.$store.getters['auth/user']
         }
     },
     methods: {
@@ -24,9 +37,11 @@ export default {
                 this.$store.commit("accountIcon/open")
                 this.$store.commit("exploreIcon/close")
                 this.$store.commit("searchIcon/close")
-                this.$store.commit("cartIcon/close")
                 this.$store.commit("menuIcon/close")
+                this.$store.commit("cartIcon/close")
                 this.$store.commit("legalsIcon/close")
+                this.$store.commit('accountIcon/setCrumbs', ['ACCOUNT'])
+                
             }
         },
         toggleSocials() {
@@ -53,7 +68,7 @@ export default {
 
 <template>
     <div class="root-search flex JF-spaceBE AL-center">
-        <img @click="toggleAccount" src="https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/login-icon.svg" alt="login" class="user-icon pointer">
+        <img @click="toggleAccount" :src="accountIcon" alt="login" class="user-icon pointer">
         <div class="search-wrapper flex JF-spaceBE">
             <input @input="search" @focus="toggleSocials" @blur="toggleSocials" type="text" placeholder="SEARCH" class="search-input">
             <img src="https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/search_icon_mobile.svg" alt="search" class="search-icon">
@@ -71,7 +86,7 @@ export default {
     padding-top: 1rem;
     padding-left: 1rem;
     padding-right: 1rem;
-    margin: 7.4rem 0 0 0 ;
+    margin: 7rem 0 0 0 ;
     background-color: white;
     z-index: 10;
     position: absolute;
