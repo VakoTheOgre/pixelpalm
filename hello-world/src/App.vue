@@ -30,9 +30,7 @@ export default {
     </div>
     <sidebar v-if='device == "desktop" && $route.name != "admin"'></sidebar>
     <navbar v-if='device == "mobile"'></navbar>
-    <transition name="slide-right">
       <router-view/>
-    </transition>
     <!-- <div class="spacer"></div> -->
     <Footer v-if='device == "mobile"'></Footer>
   </div>
@@ -127,26 +125,6 @@ html {
     font-weight: 100;
     font-style: normal;
 }
-
-.slide-right-enter-active,
-.slide-right-leave-active {
-  transition-duration: 0.5s;
-  transition-property: height, opacity, transform;
-  transition-timing-function: cubic-bezier(0.55, 0, 0.1, 1);
-  overflow: hidden;
-}
-
-.slide-right-leave-active {
-  opacity: 0;
-  transform: translate(2em, 0);
-}
-
-.slide-right-enter {
-  opacity: 0;
-  transform: translate(-2em, 0);
-}
-
-
 
 /* 
 
