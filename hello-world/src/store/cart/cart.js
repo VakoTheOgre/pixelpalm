@@ -75,11 +75,11 @@ export default {
               zip: payload.zip
             },
             items: state.cart.map(item => {
-              return { variant_id: item.variant.order_id, quantity: item.quantity }
+              return { sync_variant_id: item.variant.order_id, quantity: item.amount }
             })
           }, { headers: { 'Authorization': `Bearer ${Cookie.get('token')}` } })
           commit('clearCart')
-          resolve(res)
+          resolve(res.data.approval_url)
         } catch (e) {
           reject(e)
         }

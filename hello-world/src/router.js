@@ -120,6 +120,11 @@ export default new Router({
       path: '/users/forgot-password',
       name: 'forgot-password',
       component: ForgotPassword
+    },
+    {
+      path: '/checkout/success/:token',
+      name: 'successful-checkout',
+      component: () => import('./views/CheckoutSuccess')
     }
   ]
 })

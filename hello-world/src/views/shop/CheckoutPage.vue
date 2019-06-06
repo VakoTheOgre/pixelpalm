@@ -50,7 +50,7 @@ export default {
 
     async checkout() {
       try {
-        await this.$store.dispatch('cart/checkout', {
+        let url = await this.$store.dispatch('cart/checkout', {
           name: this.name + ' ' + this.lastName,
           address: this.address1,
           city: this.city,
@@ -58,6 +58,7 @@ export default {
           country_code: this.country_code,
           zip: this.zip
         })
+        window.location.replace(url)
       } catch (e) {
         console.log(e)
       }
