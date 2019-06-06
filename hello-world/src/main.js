@@ -8,7 +8,7 @@ import ViewportListener from './helpers/mixins/ViewportListener'
 import VueCarousel from 'vue-carousel'
 Vue.mixin(ViewportListener)
 
-axios.defaults.baseURL = 'http://192.168.1.137:5000/api'
+axios.defaults.baseURL = 'https://pixelpalm.co/api'
 
 export default axios
 
