@@ -46,6 +46,21 @@ export default {
 
     selectState (e) {
       this.state_code = e
+    },
+
+    async checkout() {
+      try {
+        await this.$store.dispatch('cart/checkout', {
+          name: this.name + ' ' + this.lastName,
+          address: this.address1,
+          city: this.city,
+          state_code: this.state_code,
+          country_code: this.country_code,
+          zip: this.zip
+        })
+      } catch (e) {
+        console.log(e)
+      }
     }
   },
   watch: {
@@ -141,7 +156,7 @@ export default {
                     <input v-model="phone" type="text" placeholder="Phone Number*" :class="{ errorBorder: this.phoneErr != '' }" title="" class="input-h">
 
                 </div>
-                <div class="final-btn flex center">
+                <div @click="checkout" class="final-btn flex center">
                   <span>PURCHASE NOW</span>
                 </div>
             </form>
