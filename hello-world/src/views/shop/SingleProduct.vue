@@ -157,7 +157,7 @@ export default {
           <img src="https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/add-to-cart.svg">
         </div>
         <checkout-btn v-else backColor="green" margin="0"></checkout-btn>
-        <disc   v-if="this.device == 'mobile'" :discription="product.description"></disc>
+        <disc v-if="this.device == 'mobile'" :discription="product.description"></disc>
                               <!-- :class="{ lowOpacity: this.error != '' }" -->
       
     </div>
@@ -179,6 +179,7 @@ export default {
     align-items: center;
     min-width: calc(100vw - 33rem);
     min-height: 100vh;
+    margin-left: 33rem;
     // flex-direction: column;
   }
   .socials {
@@ -253,7 +254,7 @@ export default {
       transform: translate(-50%, -50%);
       margin-left: 1rem;
       // z-index: 3;
-      z-index: -3;
+      z-index: 3;
       &_dot {
         margin-right: 1rem;
         background-color: black;

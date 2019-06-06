@@ -51,6 +51,16 @@ export default {
     },
     registerRequest() {
       this.registerPressed = true;
+    },
+
+    closeEverything() {
+      console.log('hi')
+      this.$store.commit("menuIcon/close")
+      this.$store.commit("exploreIcon/close")
+      this.$store.commit("searchIcon/close")
+      this.$store.commit("accountIcon/close")
+      this.$store.commit("cartIcon/close")
+      this.$store.commit("legalsIcon/close")
     }
   }
 }
@@ -70,14 +80,15 @@ export default {
     </div>
     <registration v-else></registration>
     <hr class="hr">
-    <span class="registered">REGISTERED CUSTOMERS</span>
-    <input v-model="email" type="email" placeholder="Email Address*" class="mail">
-    <span class="error">{{ emailErr }}</span>
-    <input v-model="password" type="password" placeholder="Password*" class="pass">
-    <router-link tag="span" to="/users/forgot-password" class="forgot-pass pointer">Forgot Your Password?</router-link>
-    <button @click.prevent="login" class="btn  padding-bot pointer">LOGIN</button>
-    <span class="error">{{ error }}</span>
-    <forgot-password v-if="forgotPassword"></forgot-password>
+    <form class="flex-col"> 
+      <span class="registered">REGISTERED CUSTOMERS</span>
+      <input v-model="email" type="email" placeholder="Email Address*" class="mail" :class="{ redError: error }">
+      <!-- <span class="error">{{ emailErr }}</span> -->
+      <input v-model="password" type="password" placeholder="Password*" class="pass">
+      <router-link tag="span" to="/users/forgot-password" @click.native="closeEverything" class="forgot-pass pointer">Forgot Your Password?</router-link>
+      <button @click.prevent="login" class="btn  padding-bot pointer">LOGIN</button>
+    </form>
+    <!-- <span class="error">{{ error }}</span> -->
   </form>
   <logged-user-tab v-else/>
 </div>

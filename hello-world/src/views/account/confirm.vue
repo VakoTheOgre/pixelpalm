@@ -18,11 +18,25 @@ export default {
 </script>
 
 <template>
-    <div v-if="verified">
+    <div v-if="verified" class="root-confirm flex center">
         <span>Your account has been verified successfully</span>
     </div>
 </template>
 
 <style lang='scss' scoped>
-
+.root-confirm {
+  width: 100%;
+  height: 100%;
+  margin-left: 33rem;
+  margin-top: 40rem;
+}
+@media only screen and (max-width: 1200px) {
+  .root-confirm {
+    margin-left: 50%;
+    transform: translateX(-50%);
+    max-width: 30rem;
+    margin-top: 10rem;
+    height: auto;
+  }
+}
 </style>

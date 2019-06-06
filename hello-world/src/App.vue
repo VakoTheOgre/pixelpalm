@@ -19,28 +19,55 @@ export default {
     } catch (e) {
       console.log(e)
     }
+  },
+
+  methods: {
+    acceptCookies () {
+      Cookies.set( 'cookie-policy', 'accept' )
+    }
   }
 }
 </script>
 
 <template>
   <div id="app">
-    <div v-if='device == "desktop"' class="fake-sidebar">
-      .
-    </div>
     <sidebar v-if='device == "desktop" && $route.name != "admin"'></sidebar>
     <navbar v-if='device == "mobile"'></navbar>
       <router-view/>
+      <!-- <div class="cookies">
+        <span>This site uses cookies.Please accept them to proceed</span>
+        <div></div>
+      </div> -->
     <!-- <div class="spacer"></div> -->
     <Footer v-if='device == "mobile"'></Footer>
   </div>
 </template>
 
 <style lang="scss">
+.cookies {
+  width: calc( 100vw - 35rem );
+  height: 10rem;
+  position: absolute;
+  right: 0;
+  top: 1rem;
+}
+.redError {
+  border-color: red !important;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  -webkit-tap-highlight-color: transparent;
+  &:focus {
+    outline-color: transparent !important;
+    outline-width: 0px !important;
+  }
+  &:required:focus {
+    outline-color: transparent !important;
+    outline-width: 0px !important;
+  }
 }
 html {
   font-size: 62.5%;
@@ -57,13 +84,6 @@ html {
 #app {
   display: flex;
   overflow: hidden;
-}
-.fake-sidebar {
-  color: transparent;
-  display: block;
-  user-select: none;
-  width: 33rem;
-  min-height: 100vh;
 }
 @font-face {
     font-family: 'Pixelpalm-category-font';

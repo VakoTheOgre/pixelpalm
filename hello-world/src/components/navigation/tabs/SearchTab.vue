@@ -31,6 +31,10 @@ export default {
             return false
           }
         })
+      },
+
+      clicked(item) {
+        this.$router.push(`/shop/${item.subcategory.toLowerCase()}/${item._id}`)
       }
   }
 
@@ -44,9 +48,9 @@ export default {
   <input @input="search" type="text" placeholder="Enter Keyword" class="search-input">
   <img src="https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/search-icon.svg" alt="" class="search-img pixecon">
   <div v-if="filteredItems.length" class="dropdown">
-    <div @click="selected(item)" v-for="(item, index) in filteredItems" :key="index" class="item flex pointer AL-center JF-spaceBE">
+    <div tag="div" @click="clicked(item)" v-for="(item, index) in filteredItems"  :key="index" class="item flex pointer AL-center JF-spaceBE">
       <img :src="item.images[0]" class="thumb">
-      {{ item.name }}
+        {{ item.name }}
     </div>
   </div>
 </div>

@@ -105,6 +105,12 @@ export default {
         height: 2.6rem;
         border: none;
         width: 100%;
+        font-size: 2rem;
+        padding-top: 0.25rem;
+        font-family: 'Pixelpalm Pro-Input';
+        text-rendering: geometricPrecision;
+        font-smooth: never;
+        -webkit-font-smoothing: none;
         &:focus {
             outline-color: transparent;
             outline-width: 0;

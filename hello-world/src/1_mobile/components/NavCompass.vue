@@ -95,8 +95,8 @@ export default {
 
     <div v-if="isShop && !injectedCrumbs && !menuState && !cartState &&  !accountState && !exploreState && !legalsState" class="flex center">
       <span class="absolute-span">
-          <router-link tag="span" to="/"> &ensp;HOME&ensp; </router-link>
-      <router-link :key="index" tag="span" v-for="(crumb, index) in crumbs" :to="createCrumb(index)" > |&ensp;{{ crumb.toUpperCase() }}&ensp; </router-link>
+          <router-link tag="span" to="/"> &ensp;HOME </router-link>
+      <router-link :key="index" tag="span" v-for="(crumb, index) in crumbs" :to="createCrumb(index)" > |&ensp;{{ crumb.toUpperCase() }} </router-link>
       </span>
     </div>
 
@@ -109,7 +109,7 @@ export default {
     </div>
 
     <div v-else class="flex center"> 
-      <span class="absolute-span">FREE WORLDWIDE SHIPPING FOR ORDERS ABOVE $50</span>
+      <span class="absolute-span">FREE SHIPPING, NO MINIMUM FOR PIXELPALM MEMBERS.</span>
     </div>
 
   </div>
