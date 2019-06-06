@@ -19,6 +19,7 @@ const Shop = () => import('./views/shop/Shop.vue')
 const Confirm = () => import('./views/account/confirm.vue')
 const ResetPassword = () => import('./views/account/reset-password.vue')
 const ForgotPassword = () => import('./views/account/forgot-password.vue')
+const ChangePassword = () => import('./views/account/change-password.vue')
 
 
 Vue.use(Router)
@@ -125,6 +126,11 @@ export default new Router({
       path: '/checkout/success/:token',
       name: 'successful-checkout',
       component: () => import('./views/CheckoutSuccess')
+    },
+    {
+      path: '/users/change-password',
+      name: 'change-password',
+      component: ChangePassword
     }
   ]
 })

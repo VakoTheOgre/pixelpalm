@@ -22,7 +22,7 @@ export default {
             return this.$store.getters['information/infoState']
         },
         logged () {
-            return this.$store.getters['loggedUser/loggedState']
+            return !!this.$store.getters['auth/user']
         }
     },
     methods: {
@@ -35,8 +35,7 @@ export default {
             this.$store.commit('loggedUser/close')
         },
         togglePass () {
-            this.$store.commit('password/open')
-            this.$store.commit('loggedUser/close')
+            this.$router.push( '/users/change-password' )
         },
         toggleLogged () {
             this.$store.commit('loggedUser/open')
@@ -45,8 +44,9 @@ export default {
             this.$store.commit('information/close')
         },
         loggout () {
-            this.$store.commit('user/loggout')
+            this.$store.dispatch('auth/loggout')
             this.$store.commit('menuIcon/open')
+            this.$store.commit('accountIcon/close')
         }
     }
 }

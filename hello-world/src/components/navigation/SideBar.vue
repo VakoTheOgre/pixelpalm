@@ -115,11 +115,24 @@ export default {
   width: 100vw;
   height: calc(100vh - 12.8rem);
 }
-.slide {
-  display: block;
-  background-image: url(https://images.unsplash.com/photo-1539601591461-2a5e0edb6915?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80);
+#slide {
+  background-image: url(https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/sidebar/header-images/index.jpg);
   background-size: cover;
   background-position: center center;
+}
+#slide2 {
+  background-image: url(https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/sidebar/header-images/index2.jpg);
+  background-size: cover;
+  background-position: center center;
+}
+#slide3 {
+  background-image: url(https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/sidebar/header-images/index3.jpg);
+  background-size: cover;
+  background-position: center center;
+}
+.slide {
+  display: block;
+  
   width: 33rem;
   height: calc(100vh - 12.8rem);
   

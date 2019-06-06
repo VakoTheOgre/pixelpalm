@@ -35,13 +35,19 @@ export default {
                 return true
             }
         }
+    },
+
+    methods: {
+      closeCart () {
+        this.$store.commit("cartIcon/close")
+      }
     }
     
 }
 </script>
 
 <template>
-    <router-link v-if="this.$route.name != 'checkout' && !cartItems" tag="div" to="/checkout" :style="{ backgroundColor: backColor, marginTop: margin + 'rem' }" class="root-btn pointer flex center">
+    <router-link v-if="this.$route.name != 'checkout' && !cartItems" tag="div" to="/checkout" @click.native="closeCart" :style="{ backgroundColor: backColor, marginTop: margin + 'rem' }" class="root-btn pointer flex center">
         <img style="margin: 0 !important;" src="https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/check-out.svg">
     </router-link>
 

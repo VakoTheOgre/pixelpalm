@@ -33,7 +33,7 @@ watch: {
             <img src="https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/instagram-icon.svg" alt="Instagram-icon" class=" right pointer">
         </div>
         <div class="rights">
-            &#9400;2019 PIXELPALM,Inc. All rights reserved
+            &copy;2019 PIXELPALM. All rights reserved.
         </div>
     </div>
 </template>
@@ -106,9 +106,9 @@ watch: {
     text-align: center;
     padding-bottom: 0.5rem;
     margin-top: 2rem; 
-    font-family: 'Pixelpalm-text';
-  text-rendering: geometricPrecision;
-  font-smooth: never;
+    font-family: 'Pixelpalm Pro-Input';
+    text-rendering: geometricPrecision;
+    font-smooth: never;
 	-webkit-font-smoothing: none;
 }
 </style>

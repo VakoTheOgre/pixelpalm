@@ -8,7 +8,8 @@ export default {
   },
   computed: {
     ...mapGetters({
-      cart: 'cart/getCart'
+      cart: 'cart/getCart',
+      amount: 'cart/getAmount'
     }),
     menuState() {
       return this.$store.getters['menuIcon/menuState']
@@ -166,7 +167,7 @@ export default {
     <img @click="toggleSearch" :src="searchIcon"   title="Search"  alt="" class="pointer pixecon">
     <img @click="toggleAccount" :src="accountIcon" title="Account" alt="" class="pointer pixecon">
     <div class="pointer flex center">
-        <span v-if="!this.cartState" class="cart-nums">{{ this.cart.length }}</span>
+        <span v-if="!this.cartState" class="cart-nums">{{ this.amount }}</span>
         <img @click="toggleCart" :src="cartIcon"  title="Cart" alt="CART" class="cart-img pixecon">
     </div>
   </div>

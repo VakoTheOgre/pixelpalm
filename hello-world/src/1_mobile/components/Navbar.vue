@@ -72,7 +72,7 @@ export default {
                 this.$store.commit("accountIcon/close")
                 this.$store.commit("cartIcon/close")
                 this.$store.commit("legalsIcon/close")
-                this.$store.commit("accountIcon/setCrumbs", ['FREE WORLDWIDE SHIPPING FOR ORDERS ABOVE $50'])
+                this.$store.commit("accountIcon/setCrumbs", ['FREE SHIPPING, NO MINIMUM FOR PIXELPALM MEMBERS.'])
             }
         },
         toggleCart() {

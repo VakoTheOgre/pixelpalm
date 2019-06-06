@@ -52,6 +52,14 @@ export default {
     registerRequest() {
       this.registerPressed = true;
       
+    },
+    closeEverything() {
+      this.$store.commit("menuIcon/close")
+      this.$store.commit("exploreIcon/close")
+      this.$store.commit("searchIcon/close")
+      this.$store.commit("accountIcon/close")
+      this.$store.commit("cartIcon/close")
+      this.$store.commit("legalsIcon/close")
     }
   }
 }
@@ -72,9 +80,9 @@ export default {
     <registration v-else></registration>
     <hr>
     <span  class="registered">REGISTERED CUSTOMERS</span>
-    <input  v-model="email" type="email" placeholder="Email Address*" class="mail">
+    <input  v-model="email" type="email" placeholder="Email Address*" class="mail" :class="{ redError: emailErr != '' }">
     <input  v-model="password" type="password" placeholder="Password*" class="pass">
-    <router-link tag="span" to="/users/forgot-password" class="forgot-pass pointer">FORGOT YOUR PASSWORD?</router-link>
+    <router-link tag="span" to="/users/forgot-password" @click.native="closeEverything" class="forgot-pass pointer">FORGOT YOUR PASSWORD?</router-link>
     <button  @click.prevent="login" class="btn login pointer">LOGIN</button>
   </form>
   <logged-user-tab v-else />
@@ -194,6 +202,7 @@ hr {
   width: 100%;
   text-align: end;
   padding-top: 0.5rem;
+  z-index: 100;
   user-select: none !important;
   padding-bottom: 3rem;
   cursor: pointer !important;

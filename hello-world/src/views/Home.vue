@@ -37,6 +37,8 @@ export default {
 <style lang="scss" scoped>
 .home {
   display: flex;
+  margin: 0 !important;
+  padding: 0 !important;
 }
 @media only screen and (max-width: 1200px) {
   .home {
