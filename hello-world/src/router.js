@@ -123,6 +123,11 @@ export default new Router({
       component: ForgotPassword
     },
     {
+      path: '/checkout/success/:token',
+      name: 'successful-checkout',
+      component: () => import('./views/CheckoutSuccess')
+    },
+    {
       path: '/users/change-password',
       name: 'change-password',
       component: ChangePassword
