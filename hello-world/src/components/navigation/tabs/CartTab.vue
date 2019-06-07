@@ -14,7 +14,8 @@ export default {
       cart: state => state.cart
     }),
     ...mapGetters({
-      cart: 'cart/getCart'
+      cart: 'cart/getCart',
+      amount: 'cart/getAmount'
     }),
     subtotal() {
       return this.$store.getters['cart/subtotal']
@@ -66,11 +67,19 @@ export default {
           </div> -->
       </div>
       <div class="spacer"></div>
+      <div v-if="amount == 0" class="empty">Opps your cart is empty...</div>
       <checkout-btn backColor="red" margin="3"></checkout-btn>
   </div>
 </template>
 
 <style lang="scss" scoped>
+.empty {
+  font-size: 2rem;
+  font-family: 'Pixelpalm Pro-Input';
+  text-rendering: geometricPrecision;
+  font-smooth: never;
+	-webkit-font-smoothing: none;
+}
 .spacer {
   height: 2rem;
 }
@@ -95,6 +104,7 @@ export default {
   top: 12.8rem;
   left: 0;
   z-index: 4;
+  margin-bottom: 0 !important;
   // overflow-y: scroll;
   :first-of-type {
     margin-top: 1rem;

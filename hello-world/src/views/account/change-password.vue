@@ -2,49 +2,29 @@
 export default {
     data () {
         return {
-            password: '',
-            password2: '',
-            error: '',
-            verified: true
+            email: '',
+            error: ''
         }
     },
 
     methods: {
         async send () {
-            if (this.password != this.password2) {
-                this.error = "Passwords must match"
-                return
-            }
             try {
-                let res = await this.$axios.put(`/user/reset/${this.$route.params.token}`, { password: this.password })
-                this.error = res.data.message + ' redirecting shortly'
-                setTimeout(() => {
-                    this.$router.push('/')
-                }, 3000)                
+                let res = await this.$axios.post(`/user/reset`, { email: this.email })
+                this.error = res.data.message                
             } catch (e) {
-                
                 this.error = e.reponse.data.message
             }
         }
-    },
-
-    // async mounted () {
-    //     try {
-    //         let res = await this.$axios.get(`/user/verifyReset/${this.$route.params.token}`)
-    //         this.verified = true
-    //     } catch (e) {
-    //         this.$router.push('/404')
-    //     }
-    // }
+    }
 }
 </script>
 
 <template>
-    <form v-if="verified" class="root-reset flex-col center">
-        <span v-if="this.device == 'desktop'" class="title">RESET PASSWORD</span>
-        <input v-model="password" type="password" placeholder="Enter new password*" class="input">
-        <input v-model="password2" type="password" placeholder="Confirm Password*" class="input">
-        <button @click.prevent="send" class="btn pointer">SAVE PASSWORD</button>
+    <form class="root-change flex-col center">
+      <span v-if="this.device == 'desktop'" class="title">CHANGE PASSWORD</span>
+        <input type="text" v-model="email" placeholder="Email" class="input">
+        <button @click.prevent="send" class="btn pointer">SEND</button>
         <span>{{ error }}</span>
     </form>
 </template>
@@ -52,23 +32,22 @@ export default {
 <style lang="scss" scoped>
 .title {
   font-size: 2rem;
-  position: fixed;
+  position: absolute;
   white-space: nowrap;
-  width: 36rem;
+  width: 37rem;
   font-family: 'Pixelpalm-category-font';
   text-rendering: geometricPrecision;
   font-smooth: never;
 	-webkit-font-smoothing: none;
   text-align: center;
   top: 8.6rem;
-  margin-left: 33rem;
-  left: calc(50% - 18rem);
+  left: calc(50% + 16rem);
   transform: translateX(-50%);
   border-bottom: 0.2rem solid black;
   padding: 1rem;
   line-height: 1;
 }
-.root-reset {
+.root-change {
   width: 100%;
   height: 100%;
   margin-left: 33rem;
@@ -117,13 +96,12 @@ export default {
   -webkit-font-smoothing : none;
 }
 @media only screen and (max-width: 1200px) {
-  .root-reset {
+  .root-change {
     margin-left: 1rem;
     max-width: calc(100vw - 2rem);
     width: calc(100vw - 2rem);
     margin-top: 10rem;
     height: auto;
-
   }
 }
 </style>

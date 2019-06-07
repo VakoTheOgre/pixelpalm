@@ -1,37 +1,20 @@
 <script>
 export default {
-	data() {
-    return {
-      firstName: '',
-      lastName: '',
-			nameErr: '',
-			message: '',
 
+  data() {
+    return {
       email: '',
       emailErr: '',
-
+      password: '',
       error: ''
     }
   },
+
   watch: {
-    firstName(newValue) {
-      if(newValue.split("").length <= 1) {
-        this.nameErr = 'Name too small'
-      } else {
-        this.nameErr = ''
-      }
-    },
-    lastName(newValue) {
-      if(newValue.split("").length <= 1) {
-        this.nameErr = 'Name too small'
-      } else {
-        this.nameErr = ''
-      }
-    },
     email(newValue) {
       var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
       if(!re.test(newValue)) {
-        this.emailErr = 'Please provide a correct email address'
+        this.emailErr = 'Please provide a correct e-mail'
       } else {
         this.emailErr = ''
       }
@@ -42,16 +25,16 @@ export default {
 
 <template>
 	<div class="form flex-col center">
-		<span v-if="this.device == 'desktop'" class="heading">CONTACT</span>
+		<span v-if="device == 'desktop'" class="heading">CONTACT</span>
 		<div class="names-wrapper flex-row JF-spaceBE">
-				<input autocomplete="username" v-model="firstName" type="text" placeholder="First Name*" class="names input">
+				<input autocomplete="username" v-model="firstName" type="text" placeholder="First Name*" class="names input" >
 			<!-- <span v-model="nameErr" class="error"> {{ nameErr }} </span> -->
 			
-			<input v-model="lastName" type="text" placeholder="Last Name*" class="names input">
+			<input v-model="lastName" type="text" placeholder="Last Name*" class="names input" >
 			<!-- <span v-model="nameErr" class="error"> {{ nameErr }} </span> -->
 		</div>
 
-		<input v-model="email" type="email" placeholder="Email*" class="mail input">
+		<input v-model="email" type="email" placeholder="Email*" class="mail input" :class="{ redError: emailErr }">
 		<!-- <span v-model="emailErr" class="error"> {{ emailErr }} </span> -->
 
 		<input v-model="message" type="text" placeholder="Subject*" class="subject input">
@@ -95,20 +78,22 @@ export default {
 	margin-bottom: 2rem;
 	font-size: 2rem;
 	color: black;
-	opacity: 1;
-	font-family: 'Pixelpalm Pro-Input';
-	text-rendering: geometricPrecision;
-	font-smooth: never;
-	-webkit-font-smoothing: none;
-	&::placeholder {
-			font-size: 2rem;
-			color: gray;
-			opacity: 1;
-			font-family: 'Pixelpalm Pro-Input';
-			text-rendering: geometricPrecision;
-			font-smooth: never;
-			-webkit-font-smoothing: none;
-		}
+  line-height: 1.3;
+  opacity: 1;
+  font-family: 'Pixelpalm Pro-Input';
+  text-rendering: geometricPrecision;
+  font-smooth: never;
+  -webkit-font-smoothing: none;
+  padding: 0;
+  &::placeholder {
+    font-size: 2rem;
+    color: gray;
+    opacity: 1;
+    font-family: 'Pixelpalm Pro-Input';
+    text-rendering: geometricPrecision;
+    font-smooth: never;
+    -webkit-font-smoothing: none;
+  }
   &:enabled {
     padding-left: 1rem;
   }
@@ -144,28 +129,28 @@ export default {
 	height: 20rem; 
 	border: 0.2rem solid black;
 	font-size: 2rem;
-    color: black;
+  padding-top: 1rem;
+  color: black;
+  opacity: 1;
+  font-family: 'Pixelpalm Pro-Input';
+  text-rendering: geometricPrecision;
+  font-smooth: never;
+  -webkit-font-smoothing: none;
+  padding: 0;
+  &::placeholder {
+    font-size: 2rem;
+    color: gray;
     opacity: 1;
     font-family: 'Pixelpalm Pro-Input';
     text-rendering: geometricPrecision;
     font-smooth: never;
     -webkit-font-smoothing: none;
-		line-height: 1;
-    &::placeholder {
-        font-size: 2rem;
-        color: gray;
-        opacity: 1;
-        font-family: 'Pixelpalm Pro-Input';
-        text-rendering: geometricPrecision;
-        font-smooth: never;
-        -webkit-font-smoothing: none;
-      }
+  }
   &:enabled {
     padding-left: 1rem;
-		padding-top: 1rem;
-		padding-right: 0.4rem;
+    padding-top: 1rem;
   }
-	resize: none;
+  resize: none;
 }
 .submit {
 	width: 86rem;
@@ -184,9 +169,17 @@ export default {
 	width: 100vw;
 	justify-content: flex-start !important;
   background-color: white;
-	min-height: auto;
-	margin-top: 13.2rem;
-	padding-bottom: 13rem;
+	height: auto;
+	padding-bottom: 2rem;
+  margin-top: 10rem;
+}
+.heading {
+	font-size: 1.8rem;
+	padding-top: 3rem;
+	width: 100vw;
+	text-align: left;
+	padding-left: 1rem;
+	padding-bottom: 1rem;
 }
 .names-wrapper {
 	width: calc(100vw - 2rem);
@@ -197,22 +190,22 @@ export default {
 	border: 0.2rem solid black;
 	height: 4rem;
 	margin-bottom: 2rem;
-	font-size: 2rem;
-    color: black;
+	color: black;
+  opacity: 1;
+  font-family: 'Pixelpalm Pro-Input';
+  text-rendering: geometricPrecision;
+  font-smooth: never;
+  -webkit-font-smoothing: none;
+  padding: 0;
+  &::placeholder {
+    font-size: 2rem;
+    color: gray;
     opacity: 1;
     font-family: 'Pixelpalm Pro-Input';
     text-rendering: geometricPrecision;
     font-smooth: never;
     -webkit-font-smoothing: none;
-    &::placeholder {
-        font-size: 2rem;
-        color: gray;
-        opacity: 1;
-        font-family: 'Pixelpalm Pro-Input';
-        text-rendering: geometricPrecision;
-        font-smooth: never;
-        -webkit-font-smoothing: none;
-      }
+  }
   &:enabled {
     padding-left: 1rem;
   }
@@ -231,26 +224,24 @@ export default {
 	width: calc(100vw - 2rem);
 	height: 20rem; 
 	border: 0.2rem solid black;
-	font-size: 2rem;
-    color: black;
+	color: black;
+  opacity: 1;
+  font-family: 'Pixelpalm Pro-Input';
+  text-rendering: geometricPrecision;
+  font-smooth: never;
+  -webkit-font-smoothing: none;
+  padding: 0;
+  &::placeholder {
+    font-size: 2rem;
+    color: gray;
     opacity: 1;
     font-family: 'Pixelpalm Pro-Input';
     text-rendering: geometricPrecision;
     font-smooth: never;
     -webkit-font-smoothing: none;
-    &::placeholder {
-        font-size: 2rem;
-        color: gray;
-        opacity: 1;
-        font-family: 'Pixelpalm Pro-Input';
-        text-rendering: geometricPrecision;
-        font-smooth: never;
-        -webkit-font-smoothing: none;
-      }
+  }
   &:enabled {
     padding-left: 1rem;
-		padding-top: 1.6rem;
-		padding-right: 0.4rem;
   }
 	resize: none;
 }

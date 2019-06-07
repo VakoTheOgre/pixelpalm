@@ -74,17 +74,9 @@ export default {
       }
 
       try {
-        let ret = await this.$store.dispatch('auth/register', {email: this.email, password: this.password, name: this.firstName + ' ' + this.lastName})
-        setTimeout(() => {
-              this.$router.push('/')
-          }, 3000) 
-          this.$store.commit("menuIcon/close")
-          this.$store.commit("exploreIcon/close")
-          this.$store.commit("searchIcon/close")
-          this.$store.commit("accountIcon/close")
-          this.$store.commit("cartIcon/close")
-          this.$store.commit("legalsIcon/close")
-          this.$store.commit("accountIcon/setCrumbs", ['FREE WORLDWIDE SHIPPING FOR ORDERS ABOVE $50'])
+        let ret = await this.$store.dispatch('auth/register', {email: this.email, password: this.password, name: `${this.firstName} ${this.lastName}`})
+        this.$store.commit("menuIcon/open")
+        this.$store.commit("accountIcon/close")
       } catch(e) {
         this.error = e.response.data.message
       }
@@ -105,7 +97,7 @@ export default {
   <input v-model="lastName" type="text" placeholder="Last Name*" class="input">
   <!-- <span v-model="nameErr" class="error"> {{ nameErr }} </span> -->
 
-  <input v-model="email" type="email" placeholder="Email Address*" class="input">
+  <input v-model="email" type="email" placeholder="Email Address*" class="input" :class="{ redError: emailErr != '' }"> 
   <!-- <span v-model="emailErr" class="error"> {{ emailErr }} </span> -->
 
   <input autocomplete="password"  v-model="password" type="password" placeholder="Password*" class="input">

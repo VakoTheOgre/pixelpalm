@@ -1,4 +1,6 @@
 import CartItem from '../../services/CartService/cartService'
+import axios from '../../main'
+import Cookie from 'js-cookie'
 export default {
   namespaced: true,
 
@@ -31,7 +33,7 @@ export default {
 
   mutations: {
 
-    addToCart(state, payload) {
+    addToCart (state, payload) {
       for (let item of state.cart) {
         console.log(item.product._id == payload.product._id && item.variant.size == payload.variant.size)
         if (item.product._id == payload.product._id && item.variant.size == payload.variant.size) {
@@ -48,27 +50,40 @@ export default {
       }
     },
 
-    clearCart(state) {
+    clearCart (state) {
       state.cart = []
     },
 
-    removeFromCart(state, payload) {
+    removeFromCart (state, payload) {
       state.cart.splice(payload, 1)
     },
 
-    async checkout() {
-      try {
-        
-      } catch (e) {
-        console.log(e)
-      }
-    }
   },
 
   actions: {
 
-    checkout({state}) {
-
+    checkout ({ commit, state }, payload) {
+      return new Promise(async (resolve, reject) => {
+        try {
+          let res = await axios.post(`/shop/checkout`, {
+            recipient: {
+              name: payload.name,
+              address1: payload.address,
+              city: payload.city,
+              state_code: payload.state_code,
+              country_code: payload.country_code,
+              zip: payload.zip
+            },
+            items: state.cart.map(item => {
+              return { variant_id: item.variant.order_id, quantity: item.quantity }
+            })
+          }, { headers: { 'Authorization': `Bearer ${Cookie.get('token')}` } })
+          commit('clearCart')
+          resolve(res)
+        } catch (e) {
+          reject(e)
+        }
+      })
     }
   }
 }

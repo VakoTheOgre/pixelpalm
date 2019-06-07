@@ -15,54 +15,28 @@ export default {
     },
     watch: {
         logged () {
-            if (this.$store.getters['loggedUser/loggedState']) {
-                this.userStatusUpdate = true
-            } else {
-                this.userStatusUpdate = false 
-            }
+            return !!this.$store.getters['auth/user']
         }
     },
     computed: {
         user () {
             return this.$store.getters['auth/user']
         },
-            history () {
-                return this.$store.getters['history/historyState']
-            },
-            pass () {
-                return this.$store.getters['password/passState']
-            },
-            info () {
-                return this.$store.getters['information/infoState']
-            },
-            logged () {
-                return this.$store.getters['loggedUser/loggedState']
-            }
+        togglePass () {
+            this.$router.push( '/users/change-password' )
         },
-        methods: {
-            toggleInfo () {
-                this.$store.commit('information/open')
-                this.$store.commit('loggedUser/close')
-            },
-            toggleHistory () {
-                this.$store.commit('history/open')
-                this.$store.commit('loggedUser/close')
-            },
-            togglePass () {
-                this.$store.commit('password/open')
-                this.$store.commit('loggedUser/close')
-            },
-            toggleLogged () {
-                this.$store.commit('loggedUser/open')
-                this.$store.commit('password/close')
-                this.$store.commit('history/close')
-                this.$store.commit('information/close')
-            },
-            loggout () {
-                this.$store.dispatch('auth/loggout')
-                this.$store.commit('menuIcon/open')
-            }
+        toggleLogged () {
+            this.$store.commit('loggedUser/open')
+            this.$store.commit('password/close')
+            this.$store.commit('history/close')
+            this.$store.commit('information/close')
+        },
+        loggout () {
+            this.$store.dispatch('auth/loggout')
+            this.$store.commit('menuIcon/open')
+            this.$store.commit('accountIcon/close')
         }
+    }
 }
 </script>
 

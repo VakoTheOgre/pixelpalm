@@ -1,6 +1,6 @@
 <template>
     <div class="root">
-        kokos
+        
     </div>
 </template>
 
