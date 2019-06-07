@@ -33,7 +33,7 @@ export default {
     <transition name="slide-right">
       <router-view/>
     </transition>
-    <!-- <div class="spacer"></div> -->
+    <div class="spacer"></div>
     <Footer v-if='device == "mobile"'></Footer>
   </div>
 </template>
@@ -126,24 +126,6 @@ html {
       url(https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/fonts/input-font/PixelpalmProRegular.ttf) format('truetype');
     font-weight: 100;
     font-style: normal;
-}
-
-.slide-right-enter-active,
-.slide-right-leave-active {
-  transition-duration: 0.5s;
-  transition-property: height, opacity, transform;
-  transition-timing-function: cubic-bezier(0.55, 0, 0.1, 1);
-  overflow: hidden;
-}
-
-.slide-right-leave-active {
-  opacity: 0;
-  transform: translate(2em, 0);
-}
-
-.slide-right-enter {
-  opacity: 0;
-  transform: translate(-2em, 0);
 }
 
 

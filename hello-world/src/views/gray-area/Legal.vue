@@ -1,6 +1,10 @@
 <script>
 export default {
-
+  metaInfo: {
+        title: 'PixelPalm',
+        // override the parent template and just use the above title only
+        titleTemplate: '%s - Legal Area'
+      }
 
 }
 </script>

@@ -65,6 +65,7 @@ export default {
         toggleMenu() {
             if(this.menuState) {
                 this.$store.commit("menuIcon/close")
+                this.$store.commit("accountIcon/setCrumbs", null)
             } else {
                 this.$store.commit("menuIcon/open")
                 this.$store.commit("exploreIcon/close")
@@ -78,6 +79,7 @@ export default {
         toggleCart() {
             if(this.cartState) {
                 this.$store.commit("cartIcon/close")
+                this.$store.commit("accountIcon/setCrumbs", null)
             } else {
                 this.$store.commit("cartIcon/open")
                 this.$store.commit("exploreIcon/close")

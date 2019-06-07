@@ -137,6 +137,10 @@ export default {
   margin-top: 0.1rem;
   transform: translate(-50%, -50%);
   white-space: nowrap;
+  font-family: 'Pixelpalm-text';
+  text-rendering: geometricPrecision;
+  font-smooth: never;
+	-webkit-font-smoothing: none;
 }
 </style>
 

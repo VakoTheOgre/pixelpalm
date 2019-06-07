@@ -41,7 +41,7 @@ export default {
       }
     },
     password(newValue) {
-      if(newValue.split("").length < 8) {
+      if(newValue.split("").length < 3) {
         this.passwordErr = 'Passwords need to have 8 or more characters'
       } else {
         this.passwordErr = ''
@@ -56,9 +56,6 @@ export default {
     }
   },
   methods: {
-    closeCurrentTab() {
-      this.$emit('closeCurrentTab')
-    },
 
     async register() {
       if(!(this.firstName || this.lastName || this.email || this.password || this.password2) || (this.nameErr || this.passwordErr || this.passwordErr)) {
@@ -68,9 +65,26 @@ export default {
         this.error = ''
       }
 
+      if (!this.boxChecked) {
+        this.error = 'Please agree to the terms of use'
+      }
+
+      if (this.password != this.password2) {
+        this.error = "Passwords don't match"
+      }
+
       try {
-        let ret = await this.$store.dispatch('auth/register', {email: this.email, password: this.password, fullName: `${this.firstName} ${this.lastName}`})
-        this.error = 'All good'
+        let ret = await this.$store.dispatch('auth/register', {email: this.email, password: this.password, name: this.firstName + ' ' + this.lastName})
+        setTimeout(() => {
+              this.$router.push('/')
+          }, 3000) 
+          this.$store.commit("menuIcon/close")
+          this.$store.commit("exploreIcon/close")
+          this.$store.commit("searchIcon/close")
+          this.$store.commit("accountIcon/close")
+          this.$store.commit("cartIcon/close")
+          this.$store.commit("legalsIcon/close")
+          this.$store.commit("accountIcon/setCrumbs", ['FREE WORLDWIDE SHIPPING FOR ORDERS ABOVE $50'])
       } catch(e) {
         this.error = e.response.data.message
       }
@@ -85,7 +99,7 @@ export default {
 
 <template>
 <form class="inner-form flex-col">
-  <input autocomplete="username" v-model="firstName" type="text" placeholder="First Name*" class="input">
+  <input  v-model="firstName" type="text" placeholder="First Name*" class="input">
   <!-- <span v-model="nameErr" class="error"> {{ nameErr }} </span> -->
   
   <input v-model="lastName" type="text" placeholder="Last Name*" class="input">
@@ -100,9 +114,9 @@ export default {
   
   <div class="terms flex AL-center">
     <div @click="checkUncheck" class="checkbox">
-      <img  v-if="boxChecked" src="https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/tick.svg" alt="ok" class="checkbox-tick">
+      <img  v-if="boxChecked" src="https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/tick.svg" alt="Agreed" class="checkbox-tick">
     </div>
-    <span class="agree-txt">I Agree to the Terms of Use.</span>
+    <span class="agree-txt">I Agree to the Terms of Use</span>
   </div>
   <button @click.prevent="register" class="btn pointer">SUBMIT</button>
   <!-- <span class="btn-error"> {{error}} </span> -->

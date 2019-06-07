@@ -2,7 +2,8 @@
 export default {
   data() {
     return {
-      filteredItems: []
+      filteredItems: [],
+      itemRoute: ''
     }
   },
   methods: {
@@ -27,10 +28,14 @@ export default {
           }
           if (matchesName || matchesColor || matchesCategory) {
             return true
+            
           } else {
             return false
           }
         })
+      },
+      routeId (id) {
+        this.itemRoute = '/shop/:category/' + `${id}`
       }
   }
 
@@ -44,10 +49,10 @@ export default {
   <input @input="search" type="text" placeholder="Enter Keyword" class="search-input">
   <img src="https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/search-icon.svg" alt="" class="search-img pixecon">
   <div v-if="filteredItems.length" class="dropdown">
-    <div @click="selected(item)" v-for="(item, index) in filteredItems" :key="index" class="item flex pointer AL-center JF-spaceBE">
+    <router-link tag="div" :to="routeId( item._id )"  v-for="(item, index) in filteredItems" :key="index" class="item flex pointer AL-center JF-spaceBE">
       <img :src="item.images[0]" class="thumb">
       {{ item.name }}
-    </div>
+    </router-link>
   </div>
 </div>
 </template>

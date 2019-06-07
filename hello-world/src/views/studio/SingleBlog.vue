@@ -21,7 +21,7 @@ export default {
 
 <template>
     <div v-if="blog" class="form flex-col center">
-        <span class="heading">BLOG</span>
+        <span v-if="this.device == 'desktop'" class="heading">BLOG</span>
         <div class="blog-box flex-col">
         <span v-html="blog.title" class="title"></span>
 
@@ -149,6 +149,85 @@ v
   @media only screen and (max-width: 1200px) {
     .carousel-navigation_dot.active-image {
     opacity: 1;
+  }
+  .form {
+    min-width: calc(100vw - 2rem);
+  }
+.title {
+    width: 86rem;
+    text-align: left;
+    padding-left: 1rem;
+    height: 4rem;
+    font-family: 'Pixelpalm Pro';
+    text-rendering: geometricPrecision;
+    font-smooth: never;
+	-webkit-font-smoothing: none;
+    position: static;
+    font-size: 1.5rem;
+}
+.paragraph {
+    padding-right:2rem;
+  padding-left:2rem;
+  padding-bottom:2rem;
+  margin-top: 1.6rem;
+  max-width: 100%;
+  text-align: justify;
+  font-size: 2rem;
+  font-family: 'Pixelpalm-text';
+  text-rendering: geometricPrecision;
+  font-smooth: never;
+	-webkit-font-smoothing: none;
+}
+
+.blog-box {
+    width: calc( 100vw - 2rem);
+  position: static;
+  transform: translateX(0);
+  margin-left: 0;
+  margin-bottom: 1rem;
+  margin-top: 8.2rem;
+  text-align: justify;
+  // margin-left: 33rem;
+  font-size: 2rem;
+  font-family: 'Pixelpalm-text';
+  text-rendering: geometricPrecision;
+  font-smooth: never;
+	-webkit-font-smoothing: none;
+    // border: 0.1rem solid black;
+}
+#carousela {
+    width: calc( 100vw - 2rem);
+    height: auto;
+    border: 0.1rem solid black;
+  }
+  .carousel-wrap {
+    position: relative;
+    width: calc( 100vw - 2rem);
+    height: auto;
+  }
+  .carousel {
+    width: calc( 100vw - 2rem);
+    height: auto;
+    // border: 0.1rem solid black;
+    &-navigation {
+      position: absolute;
+      left: 50%;
+      bottom: 0.6rem;
+      transform: translate(-50%, -50%);
+      margin-left: 1rem;
+      // z-index: 3;
+      z-index: 3;
+      &_dot {
+        margin-right: 1rem;
+        background-color: black;
+        height: 1rem;
+        width: 1rem;
+        opacity: 0.5;
+        cursor: pointer;
+        user-select: none;
+        color: transparent;
+      }
+    } 
   }
 }
 </style>

@@ -135,63 +135,18 @@
 </template>
 
 <script>
-import { Editor, EditorContent, EditorMenuBar } from 'tiptap'
-import {
-  Blockquote,
-  CodeBlock,
-  HardBreak,
-  Heading,
-  HorizontalRule,
-  OrderedList,
-  BulletList,
-  ListItem,
-  TodoItem,
-  TodoList,
-  Bold,
-  Code,
-  Italic,
-  Link,
-  Strike,
-  Underline,
-  History,
-} from 'tiptap-extensions'
 import Cookie from 'js-cookie'
 export default {
-  components: {
-    EditorContent,
-    EditorMenuBar,
-  },
+
   data() {
     return {
       images: [],
       title: "",
-      editor: new Editor({
-        extensions: [
-          new Blockquote(),
-          new BulletList(),
-          new CodeBlock(),
-          new HardBreak(),
-          new Heading({ levels: [1, 2, 3] }),
-          new HorizontalRule(),
-          new ListItem(),
-          new OrderedList(),
-          new TodoItem(),
-          new TodoList(),
-          new Link(),
-          new Bold(),
-          new Code(),
-          new Italic(),
-          new Strike(),
-          new Underline(),
-          new History(),
-        ],
-        content: `
-          <h1>Write Here!</h1>
-        `,
-      }),
+      text: ''
     }
   },
-  beforeDestroy() {
+
+  beforeDestroy () {
     this.editor.destroy()
   },
   
@@ -203,9 +158,9 @@ export default {
         this.images.forEach((img, i) => {
           formD.append(`preview`, img.file)
         })
-        let html = this.editor.getHTML()
-        formD.append('text', html)
-        formD.append('title', `<h1>${this.title}</h1>`)
+        
+        formD.append('text', this.text)
+        formD.append('title', this.title)
         let res = await this.$axios.post('/blog', formD, { headers: { 'Authorization': `Bearer ${Cookie.get('token')}` }})
       } catch (e) {
         console.log(e)

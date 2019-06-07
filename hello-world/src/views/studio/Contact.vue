@@ -1,12 +1,48 @@
 <script>
 export default {
+	data() {
+    return {
+      firstName: '',
+      lastName: '',
+			nameErr: '',
+			message: '',
 
+      email: '',
+      emailErr: '',
+
+      error: ''
+    }
+  },
+  watch: {
+    firstName(newValue) {
+      if(newValue.split("").length <= 1) {
+        this.nameErr = 'Name too small'
+      } else {
+        this.nameErr = ''
+      }
+    },
+    lastName(newValue) {
+      if(newValue.split("").length <= 1) {
+        this.nameErr = 'Name too small'
+      } else {
+        this.nameErr = ''
+      }
+    },
+    email(newValue) {
+      var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+      if(!re.test(newValue)) {
+        this.emailErr = 'Please provide a correct email address'
+      } else {
+        this.emailErr = ''
+      }
+    }
+  }
 }
 </script>
 
 <template>
 	<div class="form flex-col center">
-		<span class="heading">CONTACT</span>
+		<span v-if="this.device == 'desktop'" class="heading">CONTACT</span>
 		<div class="names-wrapper flex-row JF-spaceBE">
 				<input autocomplete="username" v-model="firstName" type="text" placeholder="First Name*" class="names input">
 			<!-- <span v-model="nameErr" class="error"> {{ nameErr }} </span> -->
@@ -143,21 +179,14 @@ export default {
   font-smooth: never;
 	-webkit-font-smoothing: none;
 }
-@media only screen and (max-width: 1400px) {
+@media only screen and (max-width: 1200px) {
 .form {
 	width: 100vw;
 	justify-content: flex-start !important;
   background-color: white;
-	height: auto;
-	padding-bottom: 2rem;
-}
-.heading {
-	font-size: 1.8rem;
-	padding-top: 3rem;
-	width: 100vw;
-	text-align: left;
-	padding-left: 1rem;
-	padding-bottom: 1rem;
+	min-height: auto;
+	margin-top: 13.2rem;
+	padding-bottom: 13rem;
 }
 .names-wrapper {
 	width: calc(100vw - 2rem);
@@ -168,10 +197,22 @@ export default {
 	border: 0.2rem solid black;
 	height: 4rem;
 	margin-bottom: 2rem;
-	&::placeholder {
-    font-size: 1.4rem;
+	font-size: 2rem;
     color: black;
-  }
+    opacity: 1;
+    font-family: 'Pixelpalm Pro-Input';
+    text-rendering: geometricPrecision;
+    font-smooth: never;
+    -webkit-font-smoothing: none;
+    &::placeholder {
+        font-size: 2rem;
+        color: gray;
+        opacity: 1;
+        font-family: 'Pixelpalm Pro-Input';
+        text-rendering: geometricPrecision;
+        font-smooth: never;
+        -webkit-font-smoothing: none;
+      }
   &:enabled {
     padding-left: 1rem;
   }
@@ -190,10 +231,22 @@ export default {
 	width: calc(100vw - 2rem);
 	height: 20rem; 
 	border: 0.2rem solid black;
-	&::placeholder {
-    font-size: 1.4rem;
+	font-size: 2rem;
     color: black;
-  }
+    opacity: 1;
+    font-family: 'Pixelpalm Pro-Input';
+    text-rendering: geometricPrecision;
+    font-smooth: never;
+    -webkit-font-smoothing: none;
+    &::placeholder {
+        font-size: 2rem;
+        color: gray;
+        opacity: 1;
+        font-family: 'Pixelpalm Pro-Input';
+        text-rendering: geometricPrecision;
+        font-smooth: never;
+        -webkit-font-smoothing: none;
+      }
   &:enabled {
     padding-left: 1rem;
 		padding-top: 1.6rem;

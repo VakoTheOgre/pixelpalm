@@ -59,7 +59,24 @@ export default {
           return
         }
         this.filteredItems = this.$store.getters['products/getAllProducts'].filter(product => {
-          return product.name.toLowerCase().includes(e.target.value.toLowerCase())
+          const matchesName = product.name.toLowerCase().includes(e.target.value.toLowerCase())
+          let matchesColor = false
+          let matchesCategory = false
+          for (let variant of product.variants) {
+            if (variant.color.toLowerCase().includes(e.target.value.toLowerCase())) {
+              matchesColor = true
+              break
+            }
+          }
+          if (product.subcategory.toLowerCase().includes(e.target.value.toLowerCase())) {
+            matchesCategory = true
+            
+          }
+          if (matchesName || matchesColor || matchesCategory) {
+            return true
+          } else {
+            return false
+          }
         })
       }
     }
@@ -73,8 +90,11 @@ export default {
             <input @input="search" @focus="toggleSocials" @blur="toggleSocials" type="text" placeholder="SEARCH" class="search-input">
             <img src="https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/search_icon_mobile.svg" alt="search" class="search-icon">
         </div>
-        <div v-for="(item, i) in filteredItems" :key="i">
-          {{ item.name }}
+        <div v-if="filteredItems.length" class="dropdown">
+            <div @click="$router.push(`/shop/${item.subcategory.toLowerCase()}/${item._id}`)" :key="index" v-for="(item, index) in filteredItems"  class="item flex pointer AL-center JF-spaceBE">
+                <img :src="item.images[0]" class="thumb">
+                {{ item.name }}
+            </div>
         </div>
     </div>
 </template>
@@ -109,14 +129,24 @@ export default {
             outline-color: transparent;
             outline-width: 0;
         }
+        font-size: 2rem;
+        line-height: 0.7;
+        padding-bottom: 0.2rem;
+        color: black;
+        opacity: 1;
+        font-family: 'Pixelpalm Pro-Input';
+        text-rendering: geometricPrecision;
+        font-smooth: never;
+        -webkit-font-smoothing: none;
         &::placeholder {
-            color: black;
+            font-size: 2rem;
+            color: gray;
+            opacity: 1;
+            font-family: 'Pixelpalm Pro-Input';
             text-rendering: geometricPrecision;
-            font-family: 'Pixelpalm-category-font';
             font-smooth: never;
             -webkit-font-smoothing: none;
-            font-size: 1rem !important;
-        }
+          }
         &:enabled {
             padding-left: 1rem;
             color: black;
@@ -130,5 +160,41 @@ export default {
 .user-icon {
     width: 3rem; 
     height: 3rem;
+}
+.item {
+  width: 100%;
+  height: 4rem;
+  font-size: 2rem;
+  padding-left: 1rem;
+  color: black;
+  border-bottom: 0.1rem solid black;
+  opacity: 1;
+  white-space: nowrap;
+  font-family: 'Pixelpalm Pro-Input';
+  text-rendering: geometricPrecision;
+  font-smooth: never;
+  -webkit-font-smoothing: none;
+  padding-right: 5rem;
+
+}
+.thumb {
+  height: 3.8rem;
+  width: 3.8rem;
+}
+.dropdown {
+  max-height: 30rem;
+  width: 100%;
+  max-width: calc(100vw - 6rem);
+  overflow-y: scroll;
+  overflow-x: hidden;
+  position: absolute;
+  top: 4rem;
+  left: 50%;
+  margin-left: 2rem;
+  transform: translateX(-50%);
+  background-color: white;
+  border: 0.2rem solid black;
+  border-top: none !important;
+  z-index: 2;
 }
 </style>
