@@ -382,14 +382,15 @@ export default {
 .root-checkout {
   flex-direction: column;
   justify-content: flex-start;
-    min-width: 0;
-    width: 100%;
-    min-height: 0;
-    position: relative;
+  min-width: 0;
+  width: 100%;
+  min-height: 0;
+  position: relative; 
+  margin-left: 0;
 }
 .wrapper {
   flex-direction: column;
-    padding-top: 12.8rem;
+    padding-top: 8.8rem;
     min-height: auto;
     // border: 0.1rem solid black;
 

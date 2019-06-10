@@ -22,14 +22,48 @@ export default {
         user () {
             return this.$store.getters['auth/user']
         },
-        togglePass () {
+
+        history () {
+            return this.$store.getters['history/historyState']
+        },
+        
+        loggedTab () {
+          return this.$store.getters['loggedUser/loggedState']
+        },
+        
+        pass () {
+            return this.$store.getters['password/passState']
+        },
+
+        info () {
+            return this.$store.getters['information/infoState']
+        },
+
+        logged () {
+            return !!this.$store.getters['auth/user']
+        }
+    },
+    methods: {
+      togglePass () {
             this.$router.push( '/users/change-password' )
         },
+
+        toggleInfo () {
+            this.$store.commit('information/open')
+            this.$store.commit('loggedUser/close')
+        },
+        
         toggleLogged () {
             this.$store.commit('loggedUser/open')
             this.$store.commit('password/close')
             this.$store.commit('history/close')
             this.$store.commit('information/close')
+        },
+        toggleHistory () {
+            this.$store.commit('history/open')
+            this.$store.commit('password/close')
+            this.$store.commit('information/close')
+            this.$store.commit('loggedUser/close')
         },
         loggout () {
             this.$store.dispatch('auth/loggout')
@@ -42,33 +76,31 @@ export default {
 
 <template>
 <div>
+  <div @click="toggleLogged" class="name-wrapper flex pointer JF-spaceBE">
+      <img src="https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/account-logged-in-icon.svg">
+      <span class="username flex AL-center"> {{ user.name }} </span>
+      <img @click="loggout" src="https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/logout.svg">
+  </div>
+  <div v-if="logged && loggedTab" class="logged-root flex-col">
+      <span class="option-span">ACCOUNT INFORMATION</span>
+      <div @click="toggleInfo" class="option-btn flex center pointer">
+          VIEW DETAILS
+      </div>
+      <hr class="hr">
+      <span class="option-span">ACCOUNT HISTORY</span>
+      <div @click="toggleHistory" class="option-btn flex center pointer">
+          SHOW ORDERS
+      </div>
+      <hr class="hr">
+      <span class="option-span">ACCOUNT PASSWORD</span>
+      <div @click="togglePass" class="option-btn flex center pointer">
+          CHANGE PASSWORD
+      </div>
 
-
-<div @click="toggleLogged" class="name-wrapper flex pointer JF-spaceBE">
-    <img src="https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/account-logged-in-icon.svg">
-    <span class="username flex AL-center"> {{ user.name }} </span>
-    <img @click="loggout" src="https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/logout.svg">
-</div>
-<div v-if="logged" class="logged-root flex-col">
-    <span class="option-span">ACCOUNT INFORMATION</span>
-    <div @click="toggleInfo" class="option-btn flex center pointer">
-        VIEW DETAILS
-    </div>
-    <hr class="hr">
-    <span class="option-span">ACCOUNT HISTORY</span>
-    <div @click="toggleHistory" class="option-btn flex center pointer">
-        SHOW ORDERS
-    </div>
-    <hr class="hr">
-    <span class="option-span">ACCOUNT PASSWORD</span>
-    <div @click="togglePass" class="option-btn flex center pointer">
-        CHANGE PASSWORD
-    </div>
-
-</div>
-<information v-if="info"></information>
-<password v-if="pass"></password>
-<history v-if="history"></history>
+  </div>
+  <information v-if="info"></information>
+  <password v-if="pass"></password>
+  <history v-if="history"></history>
 </div>
 </template>
 

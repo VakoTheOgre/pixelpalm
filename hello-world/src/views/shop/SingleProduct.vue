@@ -42,23 +42,27 @@ export default {
       if (v.length > 0) {
         this.getProduct()
       }
+    },
+
+    $route (v) {
+      this.getProduct()
     }
   },
 
   methods: {
-    storeurl() {
-      let url = document.URL
-      const input = document.createElement('input')
-      input.style.display = 'none'
-      input.id = 'shadow-input'
-      input.type = 'text'
-      input.value = url
-      document.body.appendChild(input)
-      const sel = document.getElementById('shadow-input')
-      sel.select()
-      document.execCommand("copy")
-      console.log(url)
-    },
+    // storeurl() {
+    //   let url = document.URL
+    //   const input = document.createElement('input')
+    //   input.style.display = 'none'
+    //   input.id = 'shadow-input'
+    //   input.type = 'text'
+    //   input.value = url
+    //   document.body.appendChild(input)
+    //   const sel = document.getElementById('shadow-input')
+    //   sel.select()
+    //   document.execCommand("copy")
+    //   console.log(url)
+    // },
     selectSize(p) {
       this.selectedSize = p
     },
@@ -106,7 +110,7 @@ export default {
 
 <template> 
   <div v-if="product" class="root">
-    
+    <div style="height: 8rem !important; color: transparent;">.</div>
     <div class="carousel-wrap">
 
       <carousel id="carousela" @page-change="function (e) { currentImage = e }" :per-page="1" :autoplay="false" :autoplayHoverPause="false" :mouseDrag="true" :touchDrag="true"  :loop="false" :paginationEnabled="false" :value="currentImage">
@@ -235,7 +239,7 @@ export default {
   #carousela {
     width: 56rem;
     height: 56rem;
-    border: 0.1rem solid black;
+    // border: 0.1rem solid black;
   }
   .carousel-wrap {
     position: relative;
@@ -325,11 +329,12 @@ export default {
   }
   .root {
     display: flex;
-    padding-top: 8rem;
+    margin-top: 0;
     align-items: center;
-    min-width: calc(100vw - 33rem);
-    min-height: 100vh;
+    min-width: auto;
+    min-height: auto;
     flex-direction: column;
+    margin-left: 0;
   }
   .details {
     justify-content: center;

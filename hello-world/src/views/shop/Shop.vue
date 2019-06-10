@@ -15,6 +15,6 @@ export default {
 
 <style lang="scss" scoped>
 .shop-root {
-    padding-top: 7.4rem !important;
+    padding-top: 0.3rem !important;
 }
 </style>

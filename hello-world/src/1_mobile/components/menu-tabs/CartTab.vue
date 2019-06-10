@@ -67,7 +67,7 @@ export default {
           </div> -->
       </div>
       <div class="spacer"></div>
-      <div v-if="amount == 0" class="empty">Opps your cart is empty...</div>
+      <div v-if="amount == 0" class="empty">Oops! Your cart is empty...</div>
       <checkout-btn backColor="red" margin="3"></checkout-btn>
   </div>
 </template>

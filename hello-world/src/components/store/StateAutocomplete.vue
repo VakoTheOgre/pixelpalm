@@ -47,7 +47,6 @@
   width: 27rem;
   height: 4rem;
   font-size: 2rem;
-  padding-left: 1rem;
   color: black;
   border-bottom: 0.1rem solid black;
   opacity: 1;

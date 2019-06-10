@@ -78,7 +78,6 @@ export default {
 	margin-bottom: 2rem;
 	font-size: 2rem;
 	color: black;
-  line-height: 1.3;
   opacity: 1;
   font-family: 'Pixelpalm Pro-Input';
   text-rendering: geometricPrecision;
@@ -192,6 +191,7 @@ export default {
 	margin-bottom: 2rem;
 	color: black;
   opacity: 1;
+  line-height: 2.2 !important;
   font-family: 'Pixelpalm Pro-Input';
   text-rendering: geometricPrecision;
   font-smooth: never;
@@ -205,9 +205,11 @@ export default {
     text-rendering: geometricPrecision;
     font-smooth: never;
     -webkit-font-smoothing: none;
+    line-height: 2.2 !important;
   }
   &:enabled {
     padding-left: 1rem;
+    line-height: 2.2 !important;
   }
 
 }

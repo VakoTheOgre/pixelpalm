@@ -60,6 +60,8 @@ export default {
   height: 4rem;
   padding: 0 !important;
   background-color: #15CD72 !important;
+  outline-offset: -0.2rem;
+  outline: 0.2rem solid #15CD72;
   margin: 0 !important;
 }
 @media only screen and (max-width: 1200px) {

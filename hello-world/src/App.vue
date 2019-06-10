@@ -4,6 +4,7 @@ import sidebar from '@/components/navigation/SideBar'
 import ViewportListener from '@/helpers/mixins/ViewportListener.js'
 import Navbar from '@/1_mobile/components/Navbar'
 import Footer from '@/1_mobile/components/Footer'
+import { setTimeout } from 'timers';
 export default {
   components: {
     sidebar,
@@ -16,14 +17,42 @@ export default {
       await this.$store.dispatch('auth/me')
       await this.$store.dispatch('products/getAllProducts')
       await this.$store.dispatch('blogs/GET')
+      this.cookieAfterTimeout()
     } catch (e) {
       console.log(e)
     }
   },
 
+  data () {
+    return {
+      cookieReady: false
+    }
+  },
+
+  computed: {
+    showCookies() {
+      if ( Cookie.get('cookie-policy') ) {
+        return false
+      } else if ( this.cookieReady ) {
+        return true
+      }
+    }
+  },
+
   methods: {
     acceptCookies () {
-      Cookies.set( 'cookie-policy', 'accept' )
+      Cookie.set( 'cookie-policy', 'accept' )
+    },
+
+    cookieAfterTimeout () {
+      setTimeout(() => {
+        this.cookieReady = true
+      }, 5000)
+    },
+
+    closeCookies () {
+      this.cookieReady = false
+      this.acceptCookies()
     }
   }
 }
@@ -33,23 +62,119 @@ export default {
   <div id="app">
     <sidebar v-if='device == "desktop" && $route.name != "admin"'></sidebar>
     <navbar v-if='device == "mobile"'></navbar>
+    <transition mode="out-in" name="slide">
       <router-view/>
-      <!-- <div class="cookies">
-        <span>This site uses cookies.Please accept them to proceed</span>
-        <div></div>
-      </div> -->
+    </transition>
+    <transition name="cookies" mode="in-out">
+     <div v-if="showCookies" class="cookies flex JF-spaceBE">
+        <span>This website uses cookies to ensure you get the best experience. <a style="color: black;" class="pointer" href="https://pixelpalm.co/grayarea/policies">More Info</a></span>
+        <div @click="closeCookies" class="pointer ok">ΟΚ</div>
+      </div>
+    </transition>
+     
     <!-- <div class="spacer"></div> -->
     <Footer v-if='device == "mobile"'></Footer>
   </div>
 </template>
 
 <style lang="scss">
+.ok {
+  background-color: black; color: white; 
+  margin-left: 3rem; 
+  font-size: 2rem !important; 
+  padding: 0.95rem 2rem 0.95rem 2rem; 
+  margin-right: 2rem; 
+  font-family: 'Pixelpalm Pro-Input';
+  text-rendering: geometricPrecision;
+  font-smooth: never;
+	-webkit-font-smoothing: none;
+}
+@media only screen and (max-width: 1199px) {
+  .cookies {
+    justify-content: flex-start;
+    background-color: white;
+    align-items: center;
+    width: 100% !important;
+    padding-left: 1rem !important;
+    font-size: 1rem !important;
+    white-space: normal !important;
+    min-height: 5.2rem !important;
+    height: auto !important;
+    position: fixed !important;
+    left: 0 !important;
+    z-index: 10000 !important;
+    top: auto !important;
+    bottom: 0rem !important;
+    font-family: 'Pixelpalm-text';
+    text-rendering: geometricPrecision;
+    font-smooth: never;
+    -webkit-font-smoothing: none;
+  }
+  .ok {
+    background-color: black; color: 
+    white; margin-left: 3rem; 
+    padding: 0.45rem 1rem 0.45rem 1rem; 
+    margin-right: 1rem; 
+    font-family: 'Pixelpalm Pro-Input';
+    text-rendering: geometricPrecision;
+    font-smooth: never;
+    -webkit-font-smoothing: none;
+  }
+  .cookies-enter-active {
+    transition: transform 0.5s ease;
+  }
+  .cookies-leave-active {
+    transition: transform 0.5s ease;
+  }
+  .cookies-enter {
+    transform: translateY(100%);
+  }
+  .cookies-leave-to {
+    transform: translateY(100%) !important;
+  }
+}
+
+.slide-enter-active {
+  transition: transform 0.5s ease;
+}
+.slide-leave-active {
+  transition: transform 0.5s ease;
+}
+.slide-enter {
+  transform: translateX(100%);
+}
+.slide-leave-to {
+  transform: translateX(100%);
+}
+ 
+@media only screen and (min-width: 1200px) {
+  .cookies-enter-active {
+    transition: transform 0.5s ease;
+  }
+  .cookies-leave-active {
+    transition: transform 0.5s ease;
+  }
+  .cookies-enter {
+    transform: translateY(-100%);
+  }
+  .cookies-leave-to {
+    transform: translateY(-100%);
+  }
+}
 .cookies {
+  justify-content: flex-start;
+  align-items: center;
   width: calc( 100vw - 35rem );
-  height: 10rem;
+  font-size: 2rem;
+  white-space: nowrap;
+  height: 6.4rem;
   position: absolute;
   right: 0;
   top: 1rem;
+  font-family: 'Pixelpalm-text';
+  text-rendering: geometricPrecision;
+  font-smooth: never;
+	-webkit-font-smoothing: none;
 }
 .redError {
   border-color: red !important;

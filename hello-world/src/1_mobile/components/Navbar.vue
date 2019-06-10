@@ -98,8 +98,9 @@ export default {
     <div class="root">
         <div class="menu-wrapper flex JF-spaceBE AL-center">
             <img @click="toggleMenu" :src="menuIcon"  title="Menu"    alt="MENU" class="menu-burger pointer">
-            <router-link tag="img"  to="/" src="https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/pixelpalm_logo_big.svg" 
-                          alt="PIXELPALM-LOGO" class="text-logo pointer"></router-link>
+            <!-- <a href="https://pixelpalm.co/" class="text-logo pointer"> -->
+              <img src="https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/pixelpalm_logo_big.svg"  alt="PIXELPALM-LOGO" class="text-logo pointer">
+            <!-- </a> -->
             <div class="menu-cart pointer flex center">
                 <span v-if="!this.cartState" class="cart-nums">{{ this.amount }}</span>
                 <img @click="toggleCart" :src="cartIcon"  title="Cart" alt="CART" class="cart-img">

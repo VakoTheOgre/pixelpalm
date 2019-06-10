@@ -44,6 +44,7 @@ export default {
     async login() {
       try{
         await this.$store.dispatch('auth/login', {email: this.email, password: this.password})
+        this.$store.commit('loggedUser/open')
         this.error = "Successfully signed in"
       } catch(e) {
         this.error = e.response.data.message

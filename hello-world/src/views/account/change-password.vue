@@ -23,8 +23,8 @@ export default {
 <template>
     <form class="root-change flex-col center">
       <span v-if="this.device == 'desktop'" class="title">CHANGE PASSWORD</span>
-        <input type="text" v-model="email" placeholder="Email" class="input">
-        <button @click.prevent="send" class="btn pointer">SEND</button>
+        <input type="text" v-model="email" placeholder="Enter your email" class="input">
+        <button @click.prevent="send" class="btn pointer">SUBMIT</button>
         <span>{{ error }}</span>
     </form>
 </template>

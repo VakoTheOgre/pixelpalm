@@ -67,7 +67,7 @@ export default {
           </div> -->
       </div>
       <div class="spacer"></div>
-      <div v-if="amount == 0" class="empty">Opps your cart is empty...</div>
+      <div v-if="amount == 0" class="empty">Oops! Your cart is empty...</div>
       <checkout-btn backColor="red" margin="3"></checkout-btn>
   </div>
 </template>
@@ -123,6 +123,8 @@ export default {
 .spans {
   padding: 0.3rem 0.2rem 0.2rem 0.2rem;
   font-size: 2rem;
+  line-height: 0.9;
+  margin-bottom: 0.1rem;
   font-family: 'Pixelpalm-text';
   text-rendering: geometricPrecision;
   font-smooth: never;

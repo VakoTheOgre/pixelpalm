@@ -14,5 +14,7 @@ export default {
 </template>
 
 <style lang="scss" scoped>
-
+.category-root {
+  padding-top: 0.3rem;
+}
 </style>

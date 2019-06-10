@@ -14,6 +14,7 @@ export default {
             this.$store.commit("accountIcon/close")
             this.$store.commit("menuIcon/close")
             this.$store.commit("legalsIcon/close")
+            this.$store.commit("accountIcon/setCrumbs", ['CART'])
         }
     }
 }
@@ -30,11 +31,11 @@ export default {
   margin-top: 3rem !important;
   background-color: white;
   width: 27rem;
-  
-        outline: 0.2rem solid black;
+  outline: 0.2rem solid black;
   height: 4rem;
   padding: 0 !important;
   margin-top: 0rem !important;
+  outline-offset: -0.2rem;
   margin-bottom: 2rem !important;
   opacity: 0.9;
 }
@@ -44,6 +45,7 @@ export default {
         margin-top: 0rem !important;
         color: black;
         background-color: white;
+        outline-offset: -0.2rem;
         outline: 0.2rem solid black;
         height: 4rem;
     }

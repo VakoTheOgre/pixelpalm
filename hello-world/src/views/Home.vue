@@ -10,7 +10,7 @@ export default {
 <template>
   <div class="home">
     <div v-if='device == "mobile"' class="carousel-wrapper">
-      <carousel :per-page="1" :autoplay="true" :autoplayHoverPause="false" :mouseDrag="false" :touchDrag="false" :autoplayTimeout="3000" :loop="true" :paginationEnabled="false" >
+      <carousel id="carousela" :per-page="1" :autoplay="true" :autoplayHoverPause="false" :mouseDrag="false" :touchDrag="false" :autoplayTimeout="3000" :loop="true" :paginationEnabled="false" >
             <slide id="slide">
               <div class="slide">
               
@@ -45,12 +45,17 @@ export default {
     flex-direction: column;
     padding-top: 7rem;
   }
+  #carousela {
+    height: calc(100vh - 7rem) !important;
+    margin-top: 7rem;
+  }
   #slide,#slide2,#slide3 {
     width: 100vw;
-    height: calc(100vh - 7rem);
+    height: calc(100vh - 7rem) !important;
   }
   .carousel-wrapper {
     position: relative;
+    height: calc(100vh - 4rem) !important;
   }
   .slide {
     display: block;
@@ -58,7 +63,7 @@ export default {
     background-size: cover;
     background-position: center center;
     width: 100vw;
-    height: calc(100vh - 7rem);
+    height: calc(100vh - 7rem) !important;
   }
   .logo-float {
     position: absolute !important;

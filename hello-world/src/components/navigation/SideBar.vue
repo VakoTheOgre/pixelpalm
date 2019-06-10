@@ -42,8 +42,9 @@ export default {
 <template>
   <div class="sidebar">
     <div class="sidebar-logo flex-col AL-center">
-      <router-link tag="img"  to="/" src="https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/pixelpalm_logo_big.svg" 
-                          alt="PIXELPALM-LOGO" class="text-logo pointer"></router-link>
+      <!-- <a href="https://pixelpalm.co/" class="text-logo pointer"> -->
+        <img src="https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/pixelpalm_logo_big.svg"  alt="PIXELPALM-LOGO" class="text-logo pointer">
+      <!-- </a> -->
     </div>
     <main-menu></main-menu>
     <carousel id="carousela" :per-page="1" :autoplay="true" :autoplayHoverPause="false" :mouseDrag="false" :touchDrag="false" :autoplayTimeout="3000" :loop="true" :paginationEnabled="false" >

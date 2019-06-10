@@ -78,6 +78,13 @@ export default {
             return false
           }
         })
+      },
+
+      clicked(item) {
+        this.$router.push(`/shop/${item.subcategory.toLowerCase()}/${item._id}`)
+        this.$store.commit("menuIcon/close")
+        this.$store.commit("accountIcon/setCrumbs", null)
+        this.form.reset()
       }
     }
 }
@@ -87,19 +94,24 @@ export default {
     <div class="root-search flex JF-spaceBE AL-center">
         <img @click="toggleAccount" :src="accountIcon" alt="login" class="user-icon pointer">
         <div class="search-wrapper flex JF-spaceBE">
-            <input @input="search" @focus="toggleSocials" @blur="toggleSocials" type="text" placeholder="SEARCH" class="search-input">
+            <input @input="search" @focus="toggleSocials" @blur="toggleSocials" type="text" placeholder="Enter Keyword" class="search-input">
             <img src="https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/search_icon_mobile.svg" alt="search" class="search-icon">
         </div>
         <div v-if="filteredItems.length" class="dropdown">
-            <div @click="$router.push(`/shop/${item.subcategory.toLowerCase()}/${item._id}`)" :key="index" v-for="(item, index) in filteredItems"  class="item flex pointer AL-center JF-spaceBE">
+            <div @click="clicked(item)" :key="index" v-for="(item, index) in filteredItems" class="item flex pointer AL-center">
                 <img :src="item.images[0]" class="thumb">
-                {{ item.name }}
+                <span style="margin-top: 0.2rem;">{{ item.name }}</span>
             </div>
         </div>
     </div>
 </template>
 
 <style lang="scss" scoped>
+.thumb {
+  height: 3.9rem;
+  width: 3.9rem;
+  margin-right: 1rem;
+}
 .root-search
  {
     width: 100vw;
@@ -137,7 +149,6 @@ export default {
         }
         font-size: 2rem;
         line-height: 0.7;
-        padding-bottom: 0.2rem;
         color: black;
         opacity: 1;
         font-family: 'Pixelpalm Pro-Input';
@@ -145,17 +156,16 @@ export default {
         font-smooth: never;
         -webkit-font-smoothing: none;
         &::placeholder {
-            font-size: 2rem;
-            color: gray;
-            opacity: 1;
-            font-family: 'Pixelpalm Pro-Input';
-            text-rendering: geometricPrecision;
-            font-smooth: never;
-            -webkit-font-smoothing: none;
-          }
+          color: gray;
+          font-family: 'Pixelpalm Pro-Input';
+          text-rendering: geometricPrecision;
+          font-smooth: never;
+          -webkit-font-smoothing: none;
+        }
         &:enabled {
             padding-left: 1rem;
             color: black;
+            
         }
     }
     &-icon {
@@ -171,9 +181,9 @@ export default {
   width: 100%;
   height: 4rem;
   font-size: 2rem;
-  padding-left: 1rem;
   color: black;
   border-bottom: 0.1rem solid black;
+  border-right: 0.1rem solid black;
   opacity: 1;
   white-space: nowrap;
   font-family: 'Pixelpalm Pro-Input';
@@ -181,26 +191,20 @@ export default {
   font-smooth: never;
   -webkit-font-smoothing: none;
   padding-right: 5rem;
-
-}
-.thumb {
-  height: 3.8rem;
-  width: 3.8rem;
+  &:first-of-type {
+    border-top: 0.1rem solid black;
+  }
 }
 .dropdown {
-  max-height: 30rem;
-  width: 100%;
-  max-width: calc(100vw - 6rem);
+  min-height: 100vh;
+  max-height: 812px;
+  width: calc(100vw - 2rem);
   overflow-y: scroll;
   overflow-x: hidden;
   position: absolute;
-  top: 4rem;
-  left: 50%;
-  margin-left: 2rem;
-  transform: translateX(-50%);
+  top: 5.3rem;
+  left: 1rem;
   background-color: white;
-  border: 0.2rem solid black;
-  border-top: none !important;
   z-index: 2;
 }
 </style>

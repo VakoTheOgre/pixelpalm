@@ -23,7 +23,7 @@ watch: {
     <div class="root flex-col AL-center">
         <h3 class="heading">NEWSLETTER</h3>
         <div class="email-wrapper flex JF-spaceBE AL-center">
-            <input v-model="email" type="email" placeholder="Email" class="newsletter-input">
+            <input v-model="email" type="email" placeholder="Email Address" class="newsletter-input">
             <img src="https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/newsletter-icon.svg" alt="Envelope" class="newsletter-icon">
         </div>
         <div class="socials flex JF-spaceBE">
@@ -66,6 +66,7 @@ watch: {
         width: 87%;
         height: 4rem;
         border: none;
+        background-color: transparent;
         font-size: 2rem;
         color: black;
         opacity: 1;
@@ -74,9 +75,9 @@ watch: {
         font-smooth: never;
         -webkit-font-smoothing: none;
         &::placeholder {
+          background-color: transparent !important;
             font-size: 2rem;
             color: gray;
-            opacity: 1;
             font-family: 'Pixelpalm Pro-Input';
             text-rendering: geometricPrecision;
             font-smooth: never;

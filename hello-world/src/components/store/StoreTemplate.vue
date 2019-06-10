@@ -48,8 +48,13 @@ export default {
                   :key="index" v-for="(product, index) in products" :class="{ relative: (infoBox.title == product.name) }">
         <img :src="product.images[0]" alt="img" class="photo pointer" :class="{ blur: (infoBox.title == product.name) }">
         <div v-if="infoBox.title == product.name" class="info flex-col">
-          <span style="padding-bottom: 0.5rem;">{{ infoBox.title }}</span> 
-          <span>{{ infoBox.price }}</span>
+          <span style="padding-bottom: 0.5rem;">{{ infoBox.title }}</span>
+          <span>${{ infoBox.price }}</span>
+        </div>
+
+        <div v-if="infoBox.title == product.name" class="info flex-col">
+          <span style="padding-bottom: 0.5rem;">{{ infoBox.title }}</span>
+          <span>${{ infoBox.price }}</span>
         </div>
     </router-link>
   </div>
@@ -58,8 +63,9 @@ export default {
 
 <style lang="scss" scoped>
 .blur {
-  filter: blur(0.2rem);
+  opacity: 0.4;
   transition: all 0.2s;
+
 }
 .info {
   color: black;
@@ -73,6 +79,8 @@ export default {
   font-smooth: never;
 	-webkit-font-smoothing: none;
   text-align: center;
+  user-select: none;
+  cursor: pointer;
 }
 
 .photo {
@@ -81,7 +89,11 @@ export default {
 .relative {
   position: relative !important;
 }
-
+@media only screen and (max-width: 1200px) {
+  .whole-store {
+    margin-top: 5rem !important;
+  }
+}
 
 @media only screen and (max-width: 768px) {
   .marginTop {
@@ -94,9 +106,9 @@ export default {
     column-gap: 1rem;
     grid-row-gap: 1rem;
     grid-auto-rows: calc(50vw - 1.5rem);
-    margin-left: 2.6667vw;
+    margin-left: 1rem;
     margin-top: 1rem;
-    margin-bottom: 1.4rem;
+    margin-bottom: 1rem;
   }
   .store-item {
     // background-color: black;

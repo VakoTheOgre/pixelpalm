@@ -37,6 +37,9 @@ export default {
 
       clicked(item) {
         this.$router.push(`/shop/${item.subcategory.toLowerCase()}/${item._id}`)
+        this.$store.commit("menuIcon/close")
+        this.$store.commit("accountIcon/setCrumbs", null)
+        this.form.reset()
       }
   }
 
@@ -50,9 +53,9 @@ export default {
   <input @input="search" type="text" placeholder="Enter Keyword" class="search-input">
   <img src="https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/search-icon.svg" alt="" class="search-img pixecon">
   <div v-if="filteredItems.length" class="dropdown">
-    <div tag="div" @click="clicked(item)" v-for="(item, index) in filteredItems"  :key="index" class="item flex pointer AL-center JF-spaceBE">
+    <div tag="div" @click="clicked(item)" v-for="(item, index) in filteredItems"  :key="index" class="item flex pointer AL-center">
       <img :src="item.images[0]" class="thumb">
-        {{ item.name }}
+        <span style="margin-top: 0.2rem;">{{ item.name }}</span>
     </div>
   </div>
 </div>
@@ -61,8 +64,9 @@ export default {
 
 <style lang="scss" scoped>
 .thumb {
-  height: 3.8rem;
-  width: 3.8rem;
+  height: 3.9rem;
+  width: 3.9rem;
+  margin-right: 1rem;
 }
 .dropdown {
   max-height: 30rem;
@@ -74,17 +78,19 @@ export default {
   left: 50%;
   transform: translateX(-50%);
   background-color: white;
-  border: 0.2rem solid black;
-  border-top: none !important;
   z-index: 2;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 .item {
   width: 27rem;
   height: 4rem;
   font-size: 2rem;
-  padding-left: 1rem;
   color: black;
   border-bottom: 0.1rem solid black;
+  border-right: 0.1rem solid black;
   opacity: 1;
   white-space: nowrap;
   font-family: 'Pixelpalm Pro-Input';
