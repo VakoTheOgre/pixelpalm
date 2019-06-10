@@ -35,6 +35,22 @@ export default {
       boxChecked: false
     }
   },
+
+  mounted () {
+    const user = this.$store.getters['auth/user']
+    if (user) {
+      const name = user.name.split(" ")
+      this.name = name[0]
+      this.lastName = name[1]
+      this.email = user.email
+      this.address1 = user.address1
+      this.city = user.city
+      this.phone = user.phone
+      this.zip = user.zip
+
+    }
+  },
+
   methods: {
     checkUncheck() {
       this.boxChecked = !this.boxChecked
