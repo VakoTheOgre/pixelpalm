@@ -4,19 +4,23 @@ import sidebar from '@/components/navigation/SideBar'
 import ViewportListener from '@/helpers/mixins/ViewportListener.js'
 import Navbar from '@/1_mobile/components/Navbar'
 import Footer from '@/1_mobile/components/Footer'
+import Loader from './components/Loader'
 import { setTimeout } from 'timers';
 export default {
   components: {
     sidebar,
     Navbar,
-    Footer
+    Footer,
+    Loader
   },
   mixins: [ViewportListener],
   async mounted () {
     try {
+      this.$store.commit('setLoading', true)
       await this.$store.dispatch('auth/me')
       await this.$store.dispatch('products/getAllProducts')
       await this.$store.dispatch('blogs/GET')
+      this.$store.commit('setLoading', false)
       this.cookieAfterTimeout()
     } catch (e) {
       console.log(e)
@@ -36,6 +40,10 @@ export default {
       } else if ( this.cookieReady ) {
         return true
       }
+    },
+
+    loading () {
+      return this.$store.getters['loading']
     }
   },
 
@@ -60,20 +68,23 @@ export default {
 
 <template>
   <div id="app">
-    <sidebar v-if='device == "desktop" && $route.name != "admin"'></sidebar>
-    <navbar v-if='device == "mobile"'></navbar>
-    <transition mode="out-in" name="slide">
-      <router-view/>
-    </transition>
-    <transition name="cookies" mode="in-out">
-     <div v-if="showCookies" class="cookies flex JF-spaceBE">
-        <span>This website uses cookies to ensure you get the best experience. <a style="color: black;" class="pointer" href="https://pixelpalm.co/grayarea/policies">More Info</a></span>
-        <div @click="closeCookies" class="pointer ok">ΟΚ</div>
-      </div>
-    </transition>
-     
-    <!-- <div class="spacer"></div> -->
-    <Footer v-if='device == "mobile"'></Footer>
+    <div v-if="!loading">
+      <sidebar v-if='device == "desktop" && $route.name != "admin"'></sidebar>
+      <navbar v-if='device == "mobile"'></navbar>
+      <transition mode="out-in" name="slide">
+        <router-view/>
+      </transition>
+      <transition name="cookies" mode="in-out">
+      <div v-if="showCookies" class="cookies flex JF-spaceBE">
+          <span>This website uses cookies to ensure you get the best experience. <a style="color: black;" class="pointer" href="https://pixelpalm.co/grayarea/policies">More Info</a></span>
+          <div @click="closeCookies" class="pointer ok">ΟΚ</div>
+        </div>
+      </transition>
+      
+      <!-- <div class="spacer"></div> -->
+      <Footer v-if='device == "mobile"'></Footer>
+    </div>
+    <loader v-else></loader>
   </div>
 </template>
 
