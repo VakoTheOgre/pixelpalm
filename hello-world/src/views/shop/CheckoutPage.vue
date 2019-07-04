@@ -37,6 +37,9 @@ export default {
   },
 
   mounted () {
+    if ( !this.$store.getter['auth/user'] ) {
+      return
+    }
     const user = this.$store.getters['auth/user']
     if (user) {
       const name = user.name.split(" ")
@@ -145,20 +148,20 @@ export default {
         <div class="wrapper flex JF-spaceBE AL-center">
             <form class="form flex-col" autocomplete="on">
                 <div class="horizontal-wrap flex JF-spaceBE">
-                    <input  v-model="name" type="text" placeholder="First Name*" id="mobile-input" :class="{ errorBorder: this.nameErr != '' }"  class="input-h-l ">
+                    <input  v-model="name" type="text" placeholder="First Name*" id="mobile-input" class="input-h-l ">
 
-                    <input v-model="lastName" type="text" placeholder="Last Name*" :class="{ errorBorder: this.lastNameErr != '' }" class="input-h">
+                    <input v-model="lastName" type="text" placeholder="Last Name*" class="input-h">
                 </div>
 
                 <div >
-                  <input v-model="address1" type="text" placeholder="Street Name*" :class="{ errorBorder: this.address1Err != '' }" class="input-street">
+                  <input v-model="address1" type="text" placeholder="Street Name*" class="input-street">
                 </div>
                 
 
                 <div class="horizontal-wrap flex JF-spaceBE">
-                    <input v-model="city" type="text" placeholder="City*" id="mobile-input" :class="{ errorBorder: this.cityErr != '' }" class="input-h-l ">
+                    <input v-model="city" type="text" placeholder="City*" id="mobile-input" class="input-h-l ">
 
-                    <input v-model="zip" type="text" placeholder="Zip/Postal Code*" :class="{ errorBorder: this.zipErr != '' }" class="input-h">
+                    <input v-model="zip" type="text" placeholder="Zip/Postal Code*" class="input-h">
                 </div>
                 
                 <div class="horizontal-wrap flex JF-spaceBE">
@@ -170,7 +173,7 @@ export default {
 
                     <input v-model="email" type="text" placeholder="Email Address*" :class="{ errorBorder: this.emailErr != '' }" title="" class="input-h-l">
 
-                    <input v-model="phone" type="text" placeholder="Phone Number*" :class="{ errorBorder: this.phoneErr != '' }" title="" class="input-h">
+                    <input v-model="phone" type="text" placeholder="Phone Number*" title="" class="input-h">
 
                 </div>
                 <div @click="checkout" class="final-btn flex center">
@@ -207,7 +210,7 @@ export default {
   transform: translateX(-50%);
   border-bottom: 0.2rem solid black;
   padding: 1rem;
-  line-height: 1;
+  line-height: 2.2 !important;
 }
 .errorBorder {
   border: 0.2rem solid red !important;
@@ -260,16 +263,17 @@ export default {
     margin-bottom: 2rem;
     position: relative;
     font-size: 2rem;
+    line-height: 2.2 !important; 
     color: black;
-    opacity: 1;
     font-family: 'Pixelpalm Pro-Input';
     text-rendering: geometricPrecision;
     font-smooth: never;
     -webkit-font-smoothing: none;
     &::placeholder {
         font-size: 2rem;
+        line-height: 2.2 !important; 
         color: gray;
-        opacity: 1;
+        opacity: 0.5;
         font-family: 'Pixelpalm Pro-Input';
         text-rendering: geometricPrecision;
         font-smooth: never;
@@ -277,7 +281,7 @@ export default {
       }
     &:enabled {
         padding-left: 1rem;
-        
+        line-height: 2.2 !important; 
     }
     &-street {
       width: 56rem;
@@ -287,7 +291,6 @@ export default {
       padding-left: 1rem;
       font-size: 2rem;
       color: black;
-      opacity: 1;
       font-family: 'Pixelpalm Pro-Input';
       text-rendering: geometricPrecision;
       font-smooth: never;
@@ -295,7 +298,7 @@ export default {
       &::placeholder {
         font-size: 2rem;
         color: gray;
-        opacity: 1;
+        opacity: 0.5;
         font-family: 'Pixelpalm Pro-Input';
         text-rendering: geometricPrecision;
         font-smooth: never;
@@ -309,7 +312,6 @@ export default {
         position: relative;
         font-size: 2rem;
         color: black;
-        opacity: 1;
         font-family: 'Pixelpalm Pro-Input';
         text-rendering: geometricPrecision;
         font-smooth: never;
@@ -317,7 +319,7 @@ export default {
         &::placeholder {
           font-size: 2rem;
           color: gray;
-          opacity: 1;
+          opacity: 0.5;
           font-family: 'Pixelpalm Pro-Input';
           text-rendering: geometricPrecision;
           font-smooth: never;
@@ -333,7 +335,6 @@ export default {
             height: 4rem;
             font-size: 2rem;
             color: black;
-            opacity: 1;
             font-family: 'Pixelpalm Pro-Input';
             text-rendering: geometricPrecision;
             font-smooth: never;
@@ -341,7 +342,7 @@ export default {
             &::placeholder {
               font-size: 2rem;
               color: gray;
-              opacity: 1;
+              opacity: 0.5;
               font-family: 'Pixelpalm Pro-Input';
               text-rendering: geometricPrecision;
               font-smooth: never;
@@ -362,7 +363,7 @@ export default {
   text-align: left;
   margin-bottom: 1.8rem;
   padding-left: 0.8rem;
-  line-height: 1;
+  line-height: 2.2 !important;
   font-family: 'Pixelpalm-text';
   text-rendering: geometricPrecision;
   font-smooth: never;
@@ -446,11 +447,11 @@ export default {
     border: 0.2rem solid black;
     width: 100%;
     height: 4rem;
+    line-height: 2.2 !important; 
     margin-bottom: 2rem;
     position: relative;
     font-size: 2rem;
     color: black;
-    opacity: 1;
     font-family: 'Pixelpalm Pro-Input';
     text-rendering: geometricPrecision;
     font-smooth: never;
@@ -458,7 +459,8 @@ export default {
     &::placeholder {
         font-size: 2rem;
         color: gray;
-        opacity: 1;
+        opacity: 0.5;
+        line-height: 2.2 !important; 
         font-family: 'Pixelpalm Pro-Input';
         text-rendering: geometricPrecision;
         font-smooth: never;
@@ -466,6 +468,7 @@ export default {
       }
     &:enabled {
         padding-left: 1rem;
+        line-height: 2.2 !important; 
         
     }
     &-street {
@@ -473,10 +476,8 @@ export default {
       border: 0.2rem solid black;
       height: 4rem;
       margin-bottom: 2rem;
-
       font-size: 2rem;
       color: black;
-      opacity: 1;
       font-family: 'Pixelpalm Pro-Input';
       text-rendering: geometricPrecision;
       font-smooth: never;
@@ -484,7 +485,7 @@ export default {
       &::placeholder {
         font-size: 2rem;
         color: gray;
-        opacity: 1;
+        opacity: 0.5;
         font-family: 'Pixelpalm Pro-Input';
         text-rendering: geometricPrecision;
         font-smooth: never;
@@ -498,7 +499,6 @@ export default {
         position: relative;
         font-size: 2rem;
         color: black;
-        opacity: 1;
         font-family: 'Pixelpalm Pro-Input';
         text-rendering: geometricPrecision;
         font-smooth: never;
@@ -506,7 +506,7 @@ export default {
         &::placeholder {
           font-size: 2rem;
           color: gray;
-          opacity: 1;
+          opacity: 0.5;
           font-family: 'Pixelpalm Pro-Input';
           text-rendering: geometricPrecision;
           font-smooth: never;
@@ -522,7 +522,6 @@ export default {
             height: 4rem;
             font-size: 2rem;
             color: black;
-            opacity: 1;
             font-family: 'Pixelpalm Pro-Input';
             text-rendering: geometricPrecision;
             font-smooth: never;
@@ -530,7 +529,7 @@ export default {
             &::placeholder {
               font-size: 2rem;
               color: gray;
-              opacity: 1;
+              opacity: 0.5;
               font-family: 'Pixelpalm Pro-Input';
               text-rendering: geometricPrecision;
               font-smooth: never;

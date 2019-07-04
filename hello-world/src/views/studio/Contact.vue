@@ -51,6 +51,7 @@ export default {
 	min-width: calc(100vw - 33rem);
 	min-height: 100vh;
 	position: static;
+  margin-left: 33rem;
 }
 .heading {
 	font-size: 2rem;
@@ -67,7 +68,7 @@ export default {
   transform: translateX(-50%);
   border-bottom: 0.2rem solid black;
   padding: 1rem;
-  line-height: 1;
+  line-height: 2 !important;
 }
 .names-wrapper {
 	width: 86rem;
@@ -78,7 +79,6 @@ export default {
 	margin-bottom: 2rem;
 	font-size: 2rem;
 	color: black;
-  opacity: 1;
   font-family: 'Pixelpalm Pro-Input';
   text-rendering: geometricPrecision;
   font-smooth: never;
@@ -87,7 +87,8 @@ export default {
   &::placeholder {
     font-size: 2rem;
     color: gray;
-    opacity: 1;
+    opacity: 0.5;
+    line-height: 2 !important; 
     font-family: 'Pixelpalm Pro-Input';
     text-rendering: geometricPrecision;
     font-smooth: never;
@@ -95,27 +96,27 @@ export default {
   }
   &:enabled {
     padding-left: 1rem;
+    line-height: 2 !important; 
   }
 
 }
 .names {
 	width: 42rem;
 	font-size: 2rem;
-    color: black;
-    opacity: 1;
-    font-family: 'Pixelpalm Pro-Input';
-    text-rendering: geometricPrecision;
-    font-smooth: never;
-    -webkit-font-smoothing: none;
-    &::placeholder {
-        font-size: 2rem;
-        color: gray;
-        opacity: 1;
-        font-family: 'Pixelpalm Pro-Input';
-        text-rendering: geometricPrecision;
-        font-smooth: never;
-        -webkit-font-smoothing: none;
-      }
+  color: black;
+  font-family: 'Pixelpalm Pro-Input';
+  text-rendering: geometricPrecision;
+  font-smooth: never;
+  -webkit-font-smoothing: none;
+  &::placeholder {
+      font-size: 2rem;
+      color: gray;
+      opacity: 0.5;
+      font-family: 'Pixelpalm Pro-Input';
+      text-rendering: geometricPrecision;
+      font-smooth: never;
+      -webkit-font-smoothing: none;
+    }
 }
 .mail {
 	width: 86rem;
@@ -130,7 +131,6 @@ export default {
 	font-size: 2rem;
   padding-top: 1rem;
   color: black;
-  opacity: 1;
   font-family: 'Pixelpalm Pro-Input';
   text-rendering: geometricPrecision;
   font-smooth: never;
@@ -139,7 +139,7 @@ export default {
   &::placeholder {
     font-size: 2rem;
     color: gray;
-    opacity: 1;
+    opacity: 0.5;
     font-family: 'Pixelpalm Pro-Input';
     text-rendering: geometricPrecision;
     font-smooth: never;
@@ -171,6 +171,7 @@ export default {
 	height: auto;
 	padding-bottom: 2rem;
   margin-top: 10rem;
+  margin-left: 0;
 }
 .heading {
 	font-size: 1.8rem;
@@ -190,8 +191,7 @@ export default {
 	height: 4rem;
 	margin-bottom: 2rem;
 	color: black;
-  opacity: 1;
-  line-height: 2.2 !important;
+  line-height: 2 !important; 
   font-family: 'Pixelpalm Pro-Input';
   text-rendering: geometricPrecision;
   font-smooth: never;
@@ -200,60 +200,59 @@ export default {
   &::placeholder {
     font-size: 2rem;
     color: gray;
-    opacity: 1;
+    opacity: 0.5;
     font-family: 'Pixelpalm Pro-Input';
     text-rendering: geometricPrecision;
     font-smooth: never;
     -webkit-font-smoothing: none;
-    line-height: 2.2 !important;
+    line-height: 2 !important; 
   }
   &:enabled {
     padding-left: 1rem;
-    line-height: 2.2 !important;
+    line-height: 2 !important; 
   }
 
 }
-.names {
-	width: calc(100vw - 2rem);
-}
-.mail {
-	width: calc(100vw - 2rem); 
-}
-.subject {
-	width: calc(100vw - 2rem);
-}
-.text-box {
-	width: calc(100vw - 2rem);
-	height: 20rem; 
-	border: 0.2rem solid black;
-	color: black;
-  opacity: 1;
-  font-family: 'Pixelpalm Pro-Input';
-  text-rendering: geometricPrecision;
-  font-smooth: never;
-  -webkit-font-smoothing: none;
-  padding: 0;
-  &::placeholder {
-    font-size: 2rem;
-    color: gray;
-    opacity: 1;
+  .names {
+    width: calc(100vw - 2rem);
+  }
+  .mail {
+    width: calc(100vw - 2rem); 
+  }
+  .subject {
+    width: calc(100vw - 2rem);
+  }
+  .text-box {
+    width: calc(100vw - 2rem);
+    height: 20rem; 
+    border: 0.2rem solid black;
+    color: black;
     font-family: 'Pixelpalm Pro-Input';
     text-rendering: geometricPrecision;
     font-smooth: never;
     -webkit-font-smoothing: none;
+    padding: 0;
+    &::placeholder {
+      font-size: 2rem;
+      color: gray;
+      opacity: 0.5;
+      font-family: 'Pixelpalm Pro-Input';
+      text-rendering: geometricPrecision;
+      font-smooth: never;
+      -webkit-font-smoothing: none;
+    }
+    &:enabled {
+      padding-left: 1rem;
+    }
+    resize: none;
   }
-  &:enabled {
-    padding-left: 1rem;
+  .submit {
+    width: calc(100vw - 2rem);
+    background-color: black;
+    height: 4rem;
+    color: white;
+    margin-top: 2rem;
+    font-size: 1.5rem;
   }
-	resize: none;
-}
-.submit {
-	width: calc(100vw - 2rem);
-	background-color: black;
-	height: 4rem;
-	color: white;
-	margin-top: 2rem;
-	font-size: 1.5rem;
-}
 }
 </style>

@@ -175,7 +175,7 @@ export default {
   opacity: 0.8;
 }
   .carousel-navigation_dot.active-image {
-    opacity: 1;
+    opacity: 0.5;
   }
   .root {
     display: flex;
@@ -282,7 +282,7 @@ export default {
   .slideIn-leave-active,
   .slideIn2-enter-active,
   .slideIn2-leave-active {
-    opacity: 1;
+    opacity: 0.5;
     transition: all 0.5s;
   }
   .slideIn-enter,
@@ -294,7 +294,7 @@ export default {
   }
   @media only screen and (max-width: 1200px) {
     .carousel-navigation_dot.active-image {
-    opacity: 1;
+    opacity: 0.5;
   }
   .select-size {
     width: 100%; 
@@ -390,7 +390,7 @@ export default {
     // border: 0.1rem solid black;
     height: 4rem;
     margin-bottom: -1rem;
-    margin-top: -5.7rem;
+    margin-top: -9rem;
   }
   .add-btn {
     width: 100%;

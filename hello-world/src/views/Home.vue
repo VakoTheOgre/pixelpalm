@@ -10,7 +10,7 @@ export default {
 <template>
   <div class="home">
     <div v-if='device == "mobile"' class="carousel-wrapper">
-      <carousel id="carousela" :per-page="1" :autoplay="true" :autoplayHoverPause="false" :mouseDrag="false" :touchDrag="false" :autoplayTimeout="3000" :loop="true" :paginationEnabled="false" >
+      <carousel id="carousela" :per-page="1" :autoplay="true" :autoplayTimeout="3000" :loop="true" :paginationEnabled="false" >
             <slide id="slide">
               <div class="slide">
               
@@ -27,7 +27,7 @@ export default {
             </div>
             </slide>
       </carousel>
-      <img src="https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/logo-pixelpalm.svg" class="logo-float">
+      <!-- <img src="https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/palm-logo.svg" class="logo-float"> -->
     </div>
     <store-template></store-template>
 

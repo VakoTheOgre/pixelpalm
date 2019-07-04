@@ -16,15 +16,14 @@
   height: 4rem;
   font-size: 2rem;
   color: black;
-  opacity: 1;
   font-family: 'Pixelpalm Pro-Input';
   text-rendering: geometricPrecision;
   font-smooth: never;
   -webkit-font-smoothing: none;
-  ::placeholder {
+  &::placeholder {
     font-size: 2rem;
     color: gray;
-    opacity: 1;
+    opacity: 0.5;
     font-family: 'Pixelpalm Pro-Input';
     text-rendering: geometricPrecision;
     font-smooth: never;
@@ -47,9 +46,9 @@
   width: 27rem;
   height: 4rem;
   font-size: 2rem;
+  padding-left: 1rem;
   color: black;
   border-bottom: 0.1rem solid black;
-  opacity: 1;
   white-space: nowrap;
   font-family: 'Pixelpalm Pro-Input';
   text-rendering: geometricPrecision;
@@ -83,15 +82,14 @@
     height: 4rem;
     font-size: 2rem;
     color: black;
-    opacity: 1;
     font-family: 'Pixelpalm Pro-Input';
     text-rendering: geometricPrecision;
     font-smooth: never;
     -webkit-font-smoothing: none;
-    ::placeholder {
+    &::placeholder {
       font-size: 2rem;
       color: gray;
-      opacity: 1;
+      opacity: 0.5;
       font-family: 'Pixelpalm Pro-Input';
       text-rendering: geometricPrecision;
       font-smooth: never;

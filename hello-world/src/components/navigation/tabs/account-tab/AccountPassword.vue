@@ -38,17 +38,19 @@ export default {
   width: calc(100% - 2rem);
   margin-left: 1rem;
   margin-bottom: 2rem;
+  line-height: 2.2 !important; 
   font-size: 2rem;
     color: black;
-    opacity: 1;
+    opacity: 0.5;
     font-family: 'Pixelpalm Pro-Input';
     text-rendering: geometricPrecision;
     font-smooth: never;
     -webkit-font-smoothing: none;
     &::placeholder {
         font-size: 2rem;
+        line-height: 2.2 !important; 
         color: gray;
-        opacity: 1;
+        opacity: 0.5;
         font-family: 'Pixelpalm Pro-Input';
         text-rendering: geometricPrecision;
         font-smooth: never;
@@ -56,6 +58,7 @@ export default {
       }
   &:enabled {
     padding-left: 1rem;
+    line-height: 2.2 !important; 
   }
 }
 .btn {

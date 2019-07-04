@@ -13,7 +13,7 @@
   height: 4rem;
   font-size: 2rem;
   color: black;
-  opacity: 1;
+  opacity: 0.5;
   font-family: 'Pixelpalm Pro-Input';
   text-rendering: geometricPrecision;
   font-smooth: never;
@@ -21,7 +21,7 @@
   ::placeholder {
     font-size: 2rem;
     color: gray;
-    opacity: 1;
+    opacity: 0.5;
     font-family: 'Pixelpalm Pro-Input';
     text-rendering: geometricPrecision;
     font-smooth: never;
@@ -38,7 +38,7 @@
   width: 27rem;
   font-size: 2rem;
   color: black;
-  opacity: 1;
+  opacity: 0.5;
   font-family: 'Pixelpalm Pro-Input';
   text-rendering: geometricPrecision;
   font-smooth: never;

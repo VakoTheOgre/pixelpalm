@@ -47,7 +47,7 @@ export default {
       <!-- </a> -->
     </div>
     <main-menu></main-menu>
-    <carousel id="carousela" :per-page="1" :autoplay="true" :autoplayHoverPause="false" :mouseDrag="false" :touchDrag="false" :autoplayTimeout="3000" :loop="true" :paginationEnabled="false" >
+    <carousel id="carousela" :per-page="1" :autoplay="true"  :autoplayTimeout="3000" :loop="true" :paginationEnabled="false" >
           <slide id="slide">
             <div class="slide">
             
@@ -99,7 +99,7 @@ export default {
 .slideIn-leave-active,
 .slideIn2-enter-active,
 .slideIn2-leave-active {
-  opacity: 1;
+  opacity: 0.5;
   transform: translateX(0) scale(1);
   transition: all 0.5s;
 }

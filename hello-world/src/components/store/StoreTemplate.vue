@@ -45,14 +45,19 @@ export default {
 <template>
   <div :class="{ marginTop: $route.name != 'home', marginTopDesk: this.device == 'desktop' }" class="whole-store">
     <router-link @mouseleave.native="removeInfo" @mousemove.native="function(e) { getInfo(e, product) }" tag="div" :to="`/shop/${product.subcategory.toLowerCase()}/${product._id}`"
-                  :key="index" v-for="(product, index) in products" :class="{ relative: (infoBox.title == product.name) }">
-        <img :src="product.images[0]" alt="img" class="photo pointer" :class="{ blur: (infoBox.title == product.name) }">
-        <div v-if="infoBox.title == product.name" class="info flex-col">
+                  :key="index" v-for="(product, index) in products" :class="{ relative: (infoBox.title == product.name && device == 'desktop') }">
+        <img :src="product.images[0]" alt="img" class="photo pointer" :class="{ blur: (infoBox.title == product.name && device == 'desktop') }">
+        <div v-if="infoBox.title == product.name && device == 'desktop'" class="info flex-col">
           <span style="padding-bottom: 0.5rem;">{{ infoBox.title }}</span>
           <span>${{ infoBox.price }}</span>
         </div>
 
-        <div v-if="infoBox.title == product.name" class="info flex-col">
+        <div v-if="device == 'mobile'" class="disc flex-col AL-center JF-center">
+          <span class="title"> {{ product.name }} </span>
+          <span class="price"> ${{  product.variants[0].price}} </span>
+        </div>
+
+        <div v-if="infoBox.title == product.name && device == 'desktop'" class="info flex-col">
           <span style="padding-bottom: 0.5rem;">{{ infoBox.title }}</span>
           <span>${{ infoBox.price }}</span>
         </div>
@@ -62,6 +67,28 @@ export default {
 
 
 <style lang="scss" scoped>
+.disc {
+  margin-top: -0.3rem;
+  padding-left: 0.2rem;
+  width: calc( 100% - 0.1rem);
+  height: 5rem;
+  // background-color: red;
+}
+.title {
+  font-size: 2rem;
+  padding-top: 0.4rem;
+  font-family: 'Pixelpalm-text';
+  text-rendering: geometricPrecision;
+  font-smooth: never;
+	-webkit-font-smoothing: none;
+}
+.price {
+  font-size: 2rem;
+  font-family: 'Pixelpalm-text';
+  text-rendering: geometricPrecision;
+  font-smooth: never;
+	-webkit-font-smoothing: none;
+}
 .blur {
   opacity: 0.4;
   transition: all 0.2s;
@@ -92,6 +119,7 @@ export default {
 @media only screen and (max-width: 1200px) {
   .whole-store {
     margin-top: 5rem !important;
+    padding-bottom: 5.2rem;
   }
 }
 

@@ -69,7 +69,7 @@ export default {
 <div class="root-account">
   <form v-if="!userSignedIn" class="form-outer flex-col">
     <span class="new-customer-title">
-        NEW CUSTOMER
+        NEW CUSTOMERS
     </span>
     <div v-if="!this.registerPressed" class="new-customer flex-col">
       
@@ -155,21 +155,19 @@ hr {
   color: black;
   margin-bottom: 2rem;
   font-size: 2rem;
-    color: black;
-    opacity: 1;
-    font-family: 'Pixelpalm Pro-Input';
-    text-rendering: geometricPrecision;
-    font-smooth: never;
-    -webkit-font-smoothing: none;
-    &::placeholder {
-        font-size: 2rem;
-        color: gray;
-        opacity: 1;
-        font-family: 'Pixelpalm Pro-Input';
-        text-rendering: geometricPrecision;
-        font-smooth: never;
-        -webkit-font-smoothing: none;
-      }
+  font-family: 'Pixelpalm Pro-Input';
+  text-rendering: geometricPrecision;
+  font-smooth: never;
+  -webkit-font-smoothing: none;
+  &::placeholder {
+      font-size: 2rem;
+      color: gray;
+      opacity: 0.5;
+      font-family: 'Pixelpalm Pro-Input';
+      text-rendering: geometricPrecision;
+      font-smooth: never;
+      -webkit-font-smoothing: none;
+    }
   &:enabled {
     padding-left: 1rem;
   }
@@ -180,7 +178,6 @@ hr {
   background-color: transparent;
   font-size: 2rem;
     color: black;
-    opacity: 1;
     font-family: 'Pixelpalm Pro-Input';
     text-rendering: geometricPrecision;
     font-smooth: never;
@@ -188,7 +185,7 @@ hr {
     &::placeholder {
         font-size: 2rem;
         color: gray;
-        opacity: 1;
+        opacity: 0.5;
         font-family: 'Pixelpalm Pro-Input';
         text-rendering: geometricPrecision;
         font-smooth: never;
@@ -208,7 +205,6 @@ hr {
   cursor: pointer !important;
   font-size: 1rem;
     color: black;
-    opacity: 1;
     font-family: 'Pixelpalm Pro-Input';
     text-rendering: geometricPrecision;
     font-smooth: never;

@@ -90,9 +90,6 @@ export default {
 
       <input v-model="zip" type="text" placeholder="Zip/Postal Code*" :class="{ errorBorder: this.zipErr != '' }" class="input">
 
-      <autocomplete @selectedCountry="function (e) { country = e }" :country="country_code" :type="'Country'" id="component"></autocomplete>
-      <!-- <autocomplete :state="state" :type="'state'"></autocomplete> -->
-
       <input v-model="email" type="text" placeholder="Email Adress*" :class="{ errorBorder: this.emailErr != '' }" title="" class="input">
 
       <input v-model="phone" type="text" placeholder="Phone Number*" :class="{ errorBorder: this.phoneErr != '' }" title="" class="input">
@@ -119,6 +116,7 @@ export default {
   font-size: 2rem;
   width: calc(100% - 2rem);
   color: black;
+  line-height: 2.2 !important; 
   margin-left: 1rem;
   height: 4rem;
   margin-bottom: 2rem;
@@ -127,13 +125,16 @@ export default {
     font-family: 'Pixelpalm Pro-Input';
     text-rendering: geometricPrecision;
     font-smooth: never;
-    opacity: 1;
+    line-height: 2.2 !important; 
+    opacity: 0.5;
 	  -webkit-font-smoothing: none;
     font-size: 2rem;
     color: gray;
+    
   }
   &:enabled {
     padding-left: 1rem;
+    line-height: 2.2 !important; 
   }
 }
 .final-btn {

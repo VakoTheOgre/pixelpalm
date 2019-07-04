@@ -24,7 +24,7 @@ export default {
       // border:0.1rem solid black;
       text-align: left;
       margin-top: 0;
-      line-height: 1;
+      line-height: 2.2 !important;
       font-size: 2rem;
       padding-top: 0.4rem;
       font-family: 'Pixelpalm-text';

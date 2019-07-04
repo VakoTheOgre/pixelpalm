@@ -38,8 +38,14 @@ export default {
     },
 
     methods: {
-      closeCart () {
+      closeSidebar () {
         this.$store.commit("cartIcon/close")
+        this.$store.commit("menuIcon/close")
+        this.$store.commit("exploreIcon/close")
+        this.$store.commit("searchIcon/close")
+        this.$store.commit("accountIcon/close")
+        this.$store.commit("cartIcon/close")
+        this.$store.commit("legalsIcon/close")
       }
     }
     
@@ -47,7 +53,7 @@ export default {
 </script>
 
 <template>
-    <router-link v-if="this.$route.name != 'checkout' && !cartItems" tag="div" to="/checkout" @click.native="closeCart" :style="{ backgroundColor: backColor, marginTop: margin + 'rem' }" class="root-btn pointer flex center">
+    <router-link v-if="this.$route.name != 'checkout' && !cartItems" tag="div" to="/checkout" @click.native="closeSidebar" :style="{ backgroundColor: backColor, marginTop: margin + 'rem' }" class="root-btn pointer flex center">
         <img style="margin: 0 !important;" src="https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/check-out.svg">
     </router-link>
 

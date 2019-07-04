@@ -83,7 +83,7 @@ export default {
     <hr class="hr">
     <form class="flex-col"> 
       <span class="registered">REGISTERED CUSTOMERS</span>
-      <input v-model="email" type="email" placeholder="Email Address*" class="mail" :class="{ redError: error }">
+      <input v-model="email" type="email" placeholder="Email Address*" class="mail input" :class="{ redError: error }">
       <!-- <span class="error">{{ emailErr }}</span> -->
       <input v-model="password" type="password" placeholder="Password*" class="pass">
       <router-link tag="span" to="/users/forgot-password" @click.native="closeEverything" class="forgot-pass pointer">Forgot Your Password?</router-link>
@@ -183,7 +183,7 @@ hr {
   color: black;
   margin-bottom: 2rem;
   font-size: 2rem;
-  line-height: 1;
+  line-height: 2 !important;
   font-family: 'Pixelpalm Pro-Input';
   text-rendering: geometricPrecision;
   font-smooth: never;
@@ -191,10 +191,12 @@ hr {
   &::placeholder {
     font-size: 2rem;
     color: gray;
-    opacity: 1;
+    opacity: 0.5;
+    line-height: 2.2 !important;
   }
   &:enabled {
     padding-left: 1rem;
+    line-height: 2 !important;
   }
 }
 .pass {
@@ -203,7 +205,7 @@ hr {
   background-color: transparent;
   color: black;
   font-size: 2rem;
-  line-height: 1;
+  line-height: 2 !important;
   font-family: 'Pixelpalm Pro-Input';
   text-rendering: geometricPrecision;
   font-smooth: never;
@@ -211,19 +213,21 @@ hr {
   &::placeholder {
     font-size: 2rem;
     color: gray;
-    opacity: 1;
+    opacity: 0.5;
     font-family: 'Pixelpalm Pro-Input';
+    line-height: 2 !important;
     text-rendering: geometricPrecision;
     font-smooth: never;
     -webkit-font-smoothing: none;
   }
   &:enabled {
     padding-left: 1rem;
+    line-height: 2 !important;
   }
 }
 .forgot-pass {
   width: 100%;
-  line-height: 1;
+  line-height: 2 !important;
   text-align: end;
   font-family: 'Pixelpalm-text';
   text-rendering: geometricPrecision;

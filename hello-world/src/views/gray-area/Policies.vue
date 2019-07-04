@@ -75,7 +75,7 @@ please upgrade your browser.</p>
   transform: translateX(-50%);
   border-bottom: 0.2rem solid black;
   padding: 1rem;
-  line-height: 1;
+  line-height: 2.2 !important;
 }
 .text-root {
   min-width: calc(100vw - 33rem);

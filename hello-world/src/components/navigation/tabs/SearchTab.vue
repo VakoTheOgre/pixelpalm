@@ -38,6 +38,11 @@ export default {
       clicked(item) {
         this.$router.push(`/shop/${item.subcategory.toLowerCase()}/${item._id}`)
         this.$store.commit("menuIcon/close")
+        this.$store.commit("exploreIcon/close")
+        this.$store.commit("searchIcon/close")
+        this.$store.commit("accountIcon/close")
+        this.$store.commit("cartIcon/close")
+        this.$store.commit("legalsIcon/close")
         this.$store.commit("accountIcon/setCrumbs", null)
         this.form.reset()
       }
@@ -91,7 +96,6 @@ export default {
   color: black;
   border-bottom: 0.1rem solid black;
   border-right: 0.1rem solid black;
-  opacity: 1;
   white-space: nowrap;
   font-family: 'Pixelpalm Pro-Input';
   text-rendering: geometricPrecision;

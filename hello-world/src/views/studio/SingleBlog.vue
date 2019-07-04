@@ -47,7 +47,7 @@ v
   opacity: 0.8;
 }
   .carousel-navigation_dot.active-image {
-    opacity: 1;
+    opacity: 0.5;
   }
 .form {
 	min-width: calc(100vw - 33rem);
@@ -94,7 +94,7 @@ v
   transform: translateX(-50%);
   border-bottom: 0.2rem solid black;
   padding: 1rem;
-  line-height: 1;
+  line-height: 2.2 !important;
 }
 .blog-box {
     width: 86rem;
@@ -148,7 +148,7 @@ v
   }
   @media only screen and (max-width: 1200px) {
     .carousel-navigation_dot.active-image {
-    opacity: 1;
+    opacity: 0.5;
   }
   .form {
     min-width: calc(100vw - 2rem);

@@ -134,7 +134,7 @@ export default {
   color: black;
   margin-bottom: 2rem;
   font-size: 2rem;
-  opacity: 1;
+  line-height: 2.2 !important; 
   font-family: 'Pixelpalm Pro-Input';
   text-rendering: geometricPrecision;
   font-smooth: never;
@@ -143,14 +143,16 @@ export default {
   &::placeholder {
     font-size: 2rem;
     color: gray;
-    opacity: 1;
+    opacity: 0.5;
     font-family: 'Pixelpalm Pro-Input';
     text-rendering: geometricPrecision;
     font-smooth: never;
+    line-height: 2.2 !important; 
     -webkit-font-smoothing: none;
   }
   &:enabled {
     padding-left: 1rem;
+    line-height: 2.2 !important; 
   }
 }
 .checkbox {
@@ -170,7 +172,7 @@ export default {
   text-align: start;
   margin-bottom: 1.8rem;
   padding-left: 1rem;
-  line-height: 1;
+  line-height: 2.2 !important;
   font-family: 'Pixelpalm-text';
   text-rendering: geometricPrecision;
   font-smooth: never;

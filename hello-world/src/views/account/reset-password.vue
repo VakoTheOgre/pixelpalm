@@ -66,7 +66,7 @@ export default {
   transform: translateX(-50%);
   border-bottom: 0.2rem solid black;
   padding: 1rem;
-  line-height: 1;
+  line-height: 2.2 !important;
 }
 .root-reset {
   width: 100%;
@@ -81,7 +81,8 @@ export default {
   color: black;
   margin-bottom: 2rem;
   font-size: 2rem;
-  opacity: 1;
+  line-height: 2.2 !important; 
+  opacity: 0.5;
   font-family: 'Pixelpalm Pro-Input';
   text-rendering: geometricPrecision;
   font-smooth: never;
@@ -91,8 +92,9 @@ export default {
   width: 100%;
   &::placeholder {
     font-size: 2rem;
+    line-height: 2.2 !important; 
     color: gray;
-    opacity: 1;
+    opacity: 0.5;
     font-family: 'Pixelpalm Pro-Input';
     text-rendering: geometricPrecision;
     font-smooth: never;
@@ -100,6 +102,7 @@ export default {
   }
   &:enabled {
     padding-left: 1rem;
+    line-height: 2.2 !important; 
   }
 }
 .btn {

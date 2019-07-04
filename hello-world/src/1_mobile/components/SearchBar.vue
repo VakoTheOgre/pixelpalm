@@ -150,13 +150,13 @@ export default {
         font-size: 2rem;
         line-height: 0.7;
         color: black;
-        opacity: 1;
         font-family: 'Pixelpalm Pro-Input';
         text-rendering: geometricPrecision;
         font-smooth: never;
         -webkit-font-smoothing: none;
         &::placeholder {
           color: gray;
+          opacity: 0.5;
           font-family: 'Pixelpalm Pro-Input';
           text-rendering: geometricPrecision;
           font-smooth: never;
@@ -184,7 +184,6 @@ export default {
   color: black;
   border-bottom: 0.1rem solid black;
   border-right: 0.1rem solid black;
-  opacity: 1;
   white-space: nowrap;
   font-family: 'Pixelpalm Pro-Input';
   text-rendering: geometricPrecision;
