@@ -11,8 +11,8 @@ export default {
 
 
 <template>
-<div v-if="this.device == 'desktop'" class="text-root flex root center">
-  <span class="heading">LEGAL</span>
+<div  class="text-root flex root center">
+  <span v-if="this.device == 'desktop'" class="heading">LEGAL</span>
   <p class="text-block">
   TERMS OF USE
   <br><br>

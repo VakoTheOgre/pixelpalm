@@ -128,6 +128,7 @@ export default {
     padding-left: 1rem;
     &::placeholder {
       color: gray;
+      opacity: 0.5;
       font-family: 'Pixelpalm Pro-Input';
       text-rendering: geometricPrecision;
       font-smooth: never;

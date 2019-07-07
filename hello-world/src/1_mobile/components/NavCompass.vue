@@ -10,6 +10,10 @@ export default {
     }
   },
 
+  mounted() {
+    this.routeName = this.$route.name
+  },
+
   watch: {
     $route(v) {
       if (v.name) {
@@ -101,17 +105,17 @@ export default {
     </div>
 
     <div v-else-if="menuState || cartState ||  accountState || exploreState || legalsState">
-      <span :key="index" v-for="(crumb, index) in crumbs" class="absolute-span"> {{ crumb }}</span>
+      <span :key="index" v-for="(crumb, index) in crumbs" class="absolute-span"> {{ crumb }} </span>
     </div>
 
-    <div v-else-if="(routeName ==  'legal' || 'payment' || 'policies' || 'returns' || 'shipping') && routeName != 'home'" class="flex center"> 
-      <span class="absolute-span">{{ routeName.toUpperCase() }}</span>
-    </div>
 
-    <div v-else class="flex center"> 
+    <div v-else-if="routeName == 'home'" class="flex center"> 
       <span class="absolute-span">FREE SHIPPING, NO MINIMUM FOR PIXELPALM MEMBERS.</span>
     </div>
 
+    <div v-else class="flex center"> 
+      <span class="absolute-span">{{ routeName.toUpperCase() }} </span>
+    </div>
   </div>
 </template>
 
@@ -132,6 +136,8 @@ export default {
 }
 .absolute-span {
   position: absolute;
+  width: 100%;
+  text-align: center;
   top: 50%;
   left: 50%;
   margin-top: 0.1rem;

@@ -4,6 +4,7 @@ export default {
   components: {
     StoreTemplate
   },
+  
 }
 </script>
 

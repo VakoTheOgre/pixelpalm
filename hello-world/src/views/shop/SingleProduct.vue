@@ -282,15 +282,15 @@ export default {
   .slideIn-leave-active,
   .slideIn2-enter-active,
   .slideIn2-leave-active {
-    opacity: 0.5;
-    transition: all 0.5s;
+    opacity: 0.2;
+    transition: all 0.3s;
   }
   .slideIn-enter,
   .slideIn-leave-to,
   .slideIn2-enter,
   .slideIn2-leave-to {
     opacity: 0;
-    transition: all 0.5s;
+    transition: all 0.3s;
   }
   @media only screen and (max-width: 1200px) {
     .carousel-navigation_dot.active-image {

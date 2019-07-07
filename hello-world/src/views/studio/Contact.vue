@@ -26,6 +26,7 @@ export default {
 <template>
 	<div class="form flex-col center">
 		<span v-if="device == 'desktop'" class="heading">CONTACT</span>
+    <span v-if="device == 'mobile'" class="headingMobile">CONTACT</span>
 		<div class="names-wrapper flex-row JF-spaceBE">
 				<input autocomplete="username" v-model="firstName" type="text" placeholder="First Name*" class="names input" >
 			<!-- <span v-model="nameErr" class="error"> {{ nameErr }} </span> -->
@@ -164,6 +165,7 @@ export default {
 	-webkit-font-smoothing: none;
 }
 @media only screen and (max-width: 1200px) {
+  
 .form {
 	width: 100vw;
 	justify-content: flex-start !important;
@@ -173,13 +175,15 @@ export default {
   margin-top: 10rem;
   margin-left: 0;
 }
-.heading {
-	font-size: 1.8rem;
-	padding-top: 3rem;
-	width: 100vw;
-	text-align: left;
-	padding-left: 1rem;
-	padding-bottom: 1rem;
+.headingMobile {
+  width: calc(100vw - 2rem) ;
+  text-align: left;
+  margin-bottom: 1rem;
+  margin-top: 0 !important;
+  font-size: 1.5rem !important;
+  font-family: 'Pixelpalm-category-font';
+  font-smooth: never;
+  -webkit-font-smoothing : none;
 }
 .names-wrapper {
 	width: calc(100vw - 2rem);

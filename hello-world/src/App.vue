@@ -146,24 +146,24 @@ export default {
 }
 
 .slide-enter-active {
-  transition: transform 0.5s ease;
+  transition: transform 0.1s;
 }
 .slide-leave-active {
-  transition: transform 0.5s ease;
+  transition: transform 0.1s;
 }
 .slide-enter {
-  transform: translateX(100%);
+  opacity: 1;
 }
 .slide-leave-to {
-  transform: translateX(100%);
+  opacity: 0;
 }
  
 @media only screen and (min-width: 1200px) {
   .cookies-enter-active {
-    transition: transform 0.5s ease;
+    transition: transform 0.2s ease;
   }
   .cookies-leave-active {
-    transition: transform 0.5s ease;
+    transition: transform 0.2s ease;
   }
   .cookies-enter {
     transform: translateY(-100%);

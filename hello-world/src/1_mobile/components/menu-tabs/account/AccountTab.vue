@@ -68,9 +68,7 @@ export default {
 <template>
 <div class="root-account">
   <form v-if="!userSignedIn" class="form-outer flex-col">
-    <span class="new-customer-title">
-        NEW CUSTOMERS
-    </span>
+    <span class="new-customer-title">NEW CUSTOMERS</span>
     <div v-if="!this.registerPressed" class="new-customer flex-col">
       
       <button @click="registerRequest" class="btn pointer">
@@ -79,7 +77,7 @@ export default {
     </div>
     <registration v-else></registration>
     <hr>
-    <span  class="registered">REGISTERED CUSTOMERS</span>
+    <span class="registered">REGISTERED CUSTOMERS</span>
     <input  v-model="email" type="email" placeholder="Email Address*" class="mail" :class="{ redError: emailErr != '' }">
     <input  v-model="password" type="password" placeholder="Password*" class="pass">
     <router-link tag="span" to="/users/forgot-password" @click.native="closeEverything" class="forgot-pass pointer">FORGOT YOUR PASSWORD?</router-link>

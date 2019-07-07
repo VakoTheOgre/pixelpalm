@@ -101,7 +101,7 @@ export default {
 .slideIn2-leave-active {
   opacity: 0.5;
   transform: translateX(0) scale(1);
-  transition: all 0.5s;
+  transition: all 0.3s;
 }
 .slideIn-enter,
 .slideIn-leave-to,
@@ -109,7 +109,7 @@ export default {
 .slideIn2-leave-to {
   opacity: 0;
   transform: translateX(-100%);
-  transition: all 0.5s;
+  transition: all 0.3s;
 }
 
 #slide,#slide2,#slide3 {

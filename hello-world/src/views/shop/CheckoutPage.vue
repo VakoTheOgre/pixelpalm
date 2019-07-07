@@ -144,7 +144,8 @@ export default {
 
 <template>
     <div class="root-checkout flex center">
-      <span v-if="this.device == 'desktop'" class="title">CHECKOUT</span>
+      <span v-if="device == 'desktop'" class="title">CHECKOUT</span>
+      <span v-if="device == 'mobile'" class="headingMobile">CHECKOUT</span>
         <div class="wrapper flex JF-spaceBE AL-center">
             <form class="form flex-col" autocomplete="on">
                 <div class="horizontal-wrap flex JF-spaceBE">
@@ -358,6 +359,16 @@ export default {
     position: absolute;
 }
 @media only screen and (max-width: 1200px) {
+.headingMobile {
+  width: calc(100vw - 2rem) ;
+  text-align: left;
+  margin-top: 10rem;
+  z-index: 2;
+  font-size: 1.5rem !important;
+  font-family: 'Pixelpalm-category-font';
+  font-smooth: never;
+  -webkit-font-smoothing : none;
+}
 .agree-txt {
   width: 100%;
   text-align: left;
@@ -407,7 +418,7 @@ export default {
 }
 .wrapper {
   flex-direction: column;
-    padding-top: 8.8rem;
+    padding-top: 1rem;
     min-height: auto;
     // border: 0.1rem solid black;
 

@@ -166,13 +166,13 @@ export default {
 .slideIn2-enter-active,
 .slideIn2-leave-active {
   transform: translateX(0) scale(1);
-  transition: all 0.5s;
+  transition: all 0.3s;
 }
 .slideIn-enter,
 .slideIn-leave-to,
 .slideIn2-enter,
 .slideIn2-leave-to {
   transform: translateX(-100%);
-  transition: all 0.5s;
+  transition: all 0.3s;
 }
 </style>
