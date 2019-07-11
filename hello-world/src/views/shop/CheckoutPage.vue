@@ -37,7 +37,7 @@ export default {
   },
 
   mounted () {
-    if ( !this.$store.getter['auth/user'] ) {
+    if ( !this.$store.getters['auth/user'] ) {
       return
     }
     const user = this.$store.getters['auth/user']

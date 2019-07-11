@@ -129,7 +129,7 @@ export default new Router({
     },
     {
       path: '/users/change-password',
-      name: 'change-password',
+      name: 'edit-password',
       component: ChangePassword
     }
   ]

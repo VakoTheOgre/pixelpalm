@@ -75,12 +75,13 @@ export default {
       }
     }
   }
-};
+}
 </script>
 
 <template>
-  <div style="margin-top: 8rem;">
-      <input  v-model="name" type="text" placeholder="First Name*" :class="{ errorBorder: this.nameErr != '' }"  class="input">
+  <div class="inputs-wrap">
+      <span class="option-span">ACCOUNT INFORMATION</span>
+      <input  v-model="name" type="text" placeholder="First Name*" :class="{ errorBorder: this.nameErr != '' }"  class="input first">
 
       <input v-model="lastName" type="text" placeholder="Last Name*" :class="{ errorBorder: this.lastNameErr != '' }" class="input">
 
@@ -96,17 +97,35 @@ export default {
 
       <span v-if="error">{{ error }}</span>
       <span @click="changeInfo" class="final-btn flex center pointer">
-        Save Changes
+        SAVE CHANGES
       </span>
 
   </div>
 </template>
 
 <style lang='scss' scoped>
+.option-span {
+  font-family: 'Pixelpalm-category-font';
+  text-rendering: geometricPrecision;
+  font-smooth: never;
+  -webkit-font-smoothing: none;
+  color: black;
+  width: 25rem;
+  margin-left: 3rem;
+  padding-top: 4rem;
+  font-size: 1rem;
+}
+.first {
+  margin-top: 0.4rem;
+}
 #component {
   margin-left: 1rem;
   margin-bottom: 2rem;
 
+}
+.inputs-wrap {
+  margin-top: 8rem;
+  position: relative;
 }
 .input {
   font-family: 'Pixelpalm Pro-Input';
@@ -114,10 +133,10 @@ export default {
   font-smooth: never;
 	-webkit-font-smoothing: none;
   font-size: 2rem;
-  width: calc(100% - 2rem);
+  width: calc(100% - 6rem);
   color: black;
   line-height: 2.2 !important; 
-  margin-left: 1rem;
+  margin-left: 3rem;
   height: 4rem;
   margin-bottom: 2rem;
   border: 0.2rem solid black;
@@ -138,8 +157,8 @@ export default {
   }
 }
 .final-btn {
-  width: calc(100% - 2rem);
-  margin-left: 1rem;
+  width: calc(100% - 6rem);
+  margin-left: 3rem;
   height: 4rem;
   font-size: 1.5rem;
   background-color: black;
@@ -148,5 +167,32 @@ export default {
   text-rendering: geometricPrecision;
   font-smooth: never;
 	-webkit-font-smoothing: none;
+}
+@media only screen and (max-width: 1200px) {
+  .input {
+    margin-left: 1rem;
+    width: calc( 100% - 2rem);
+  }
+  .inputs-wrap {
+    margin-top: 6rem;
+  }
+  .final-btn {
+    width: calc(100% - 2rem);
+    margin-left: 1rem;
+  }
+  .option-span {
+    font-family: 'Pixelpalm-category-font';
+    text-rendering: geometricPrecision;
+    font-smooth: never;
+    -webkit-font-smoothing: none;
+    color: black;
+    width: calc(100% - 2rem);
+    margin-left: 1rem;
+    padding-top: 0 !important; 
+    position: absolute; 
+    top: -2rem;
+    left: 0;
+    font-size: 1rem;
+  }
 }
 </style>

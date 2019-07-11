@@ -76,7 +76,7 @@ export default {
       </button>
     </div>
     <registration v-else></registration>
-    <hr>
+    <div class="hr"></div>
     <span class="registered">REGISTERED CUSTOMERS</span>
     <input  v-model="email" type="email" placeholder="Email Address*" class="mail" :class="{ redError: emailErr != '' }">
     <input  v-model="password" type="password" placeholder="Password*" class="pass">
@@ -107,10 +107,9 @@ export default {
   color: white;
   font-size: 1.2rem;
 }
-hr {
+.hr {
   width: 100vw;
-  height: 0.2rem;
-  border-color: black;
+  border-bottom: 0.2rem solid black;
   margin-left: -1rem;
 }
 .form-outer {
@@ -161,6 +160,7 @@ hr {
       font-size: 2rem;
       color: gray;
       opacity: 0.5;
+      padding-top: 0.6rem;
       font-family: 'Pixelpalm Pro-Input';
       text-rendering: geometricPrecision;
       font-smooth: never;
@@ -183,6 +183,7 @@ hr {
     &::placeholder {
         font-size: 2rem;
         color: gray;
+        padding-top: 0.6rem;
         opacity: 0.5;
         font-family: 'Pixelpalm Pro-Input';
         text-rendering: geometricPrecision;

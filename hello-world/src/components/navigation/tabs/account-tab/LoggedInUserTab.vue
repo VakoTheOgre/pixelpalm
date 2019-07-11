@@ -8,6 +8,11 @@ export default {
         Password,
         History
     },
+
+    logged() {
+       return this.$store.getters['loggedUser/loggedState']
+    },
+    
     data () {
         return {
             userStatusUpdate: false
@@ -41,11 +46,17 @@ export default {
 
         logged () {
             return !!this.$store.getters['auth/user']
+        },
+
+        name() {
+            let shortName = this.user.name.split(" ")
+            return shortName
         }
     },
     methods: {
       togglePass () {
             this.$router.push( '/users/change-password' )
+            this.$store.commit('accountIcon/close')
         },
 
         toggleInfo () {
@@ -75,10 +86,10 @@ export default {
 </script>
 
 <template>
-<div>
+<div v-if="logged">
   <div @click="toggleLogged" class="name-wrapper flex pointer JF-spaceBE">
       <img src="https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/account-logged-in-icon.svg">
-      <span class="username flex AL-center"> {{ user.name }} </span>
+      <span class="username flex AL-center"> {{ name[0] }} </span>
       <img @click="loggout" src="https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/logout.svg">
   </div>
   <div v-if="logged && loggedTab" class="logged-root flex-col">
@@ -86,15 +97,15 @@ export default {
       <div @click="toggleInfo" class="option-btn flex center pointer">
           VIEW DETAILS
       </div>
-      <hr class="hr">
+      <div class="hr"></div>
       <span class="option-span">ACCOUNT HISTORY</span>
       <div @click="toggleHistory" class="option-btn flex center pointer">
           SHOW ORDERS
       </div>
-      <hr class="hr">
+      <div class="hr"></div>
       <span class="option-span">ACCOUNT PASSWORD</span>
       <div @click="togglePass" class="option-btn flex center pointer">
-          CHANGE PASSWORD
+          EDIT PASSWORD
       </div>
 
   </div>
@@ -120,13 +131,14 @@ export default {
   left: 0;
 }
 .name-wrapper {
-    width: calc(100% - 2rem);
-    margin-left: 1rem;
-    padding-top: 1rem;
+    width: calc(100% - 3rem);
+    padding-left: 3rem;
+    padding-top: 2rem;
+    position: relative;
 }
 .username {
-    font-size: 1.3rem;
-    font-family: 'Pixelpalm-category-font';
+    font-size: 2rem;
+    font-family: 'Pixelpalm-text';
     text-rendering: geometricPrecision;
     font-smooth: never;
 	-webkit-font-smoothing: none;
@@ -138,8 +150,8 @@ export default {
         font-smooth: never;
         -webkit-font-smoothing: none;
         color: black;
-        width: 27rem;
-        margin-left: 1rem;
+        width: 25rem;
+        margin-left: 3rem;
         padding-top: 4rem;
         font-size: 1rem;
         
@@ -152,18 +164,23 @@ export default {
         color: white;
         background-color: black;
         font-size: 1.5rem;
-        width: calc(100% - 2rem);
+        width: calc(100% - 6rem);
         height: 4rem;
-        margin-left: 1rem;
+        margin-left: 3rem;
         margin-bottom: 3rem;
         margin-top: 1rem
     }
 }
 .hr {
-    widows: 100%;
-    border-bottom: 0.1rem solid black;
+    width: 100%;
+    border-bottom: 0.2rem solid black;
 }
 @media only screen and (max-width: 1200px) {
+.name-wrapper {
+    width: 100%;
+    padding-left: 0;
+    padding-top: 2rem;
+}
 
 .logged-root {
   // background-color: white;
@@ -183,11 +200,16 @@ export default {
     padding-top: 1rem;
 }
 .username {
-    font-size: 1.3rem;
-    font-family: 'Pixelpalm-category-font';
+    font-size: 2rem;
+    padding-top: 1.7rem;
+    font-family: 'Pixelpalm-text';
     text-rendering: geometricPrecision;
     font-smooth: never;
 	-webkit-font-smoothing: none;
+    position: absolute;
+    left: 4rem;
+    top: 50%;
+    transform: translateY(-50%);
 }
 .option {
     &-span {
@@ -219,7 +241,7 @@ export default {
 }
 .hr {
     widows: 100%;
-    border-bottom: 0.1rem solid black;
+    border-bottom: 0.2rem solid black;
 }
 }
 </style>

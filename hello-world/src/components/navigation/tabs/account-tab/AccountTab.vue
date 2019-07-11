@@ -70,8 +70,7 @@ export default {
 <template>
 <div class="root">
   <form v-if="!userSignedIn" class="form flex-col">
-    <span class="new-customer-title">
-        NEW CUSTOMERS
+    <span class="new-customer-title">NEW CUSTOMERS
     </span>
     <div v-if="!this.registerPressed" class="new-customer flex-col">
       
@@ -80,7 +79,7 @@ export default {
       </button>
     </div>
     <registration v-else></registration>
-    <hr class="hr">
+    <div class="hr"></div>
     <form class="flex-col"> 
       <span class="registered">REGISTERED CUSTOMERS</span>
       <input v-model="email" type="email" placeholder="Email Address*" class="mail input" :class="{ redError: error }">
@@ -118,7 +117,7 @@ export default {
   margin-bottom: 14rem;
 }
 .hr {
-  border-bottom: 0.1rem solid black;
+  border-bottom: 0.2rem solid black;
 }
 .error {
   padding: 0;

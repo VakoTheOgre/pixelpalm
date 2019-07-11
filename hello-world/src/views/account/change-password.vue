@@ -21,12 +21,15 @@ export default {
 </script>
 
 <template>
-    <form class="root-change flex-col center">
-      <span v-if="this.device == 'desktop'" class="title">CHANGE PASSWORD</span>
-        <input type="text" v-model="email" placeholder="Enter your email" class="input">
-        <button @click.prevent="send" class="btn pointer">SUBMIT</button>
-        <span>{{ error }}</span>
-    </form>
+<div class="outer-wrap flex center">
+  <span v-if="this.device == 'mobile'" class="option-span">ACCOUNT INFORMATION</span>
+  <span v-if="this.device == 'desktop'" class="title">EDIT PASSWORD</span>
+  <form class="root-change flex-col center">
+      <input type="text" v-model="email" placeholder="Enter your email" class="input">
+      <button @click.prevent="send" class="btn pointer">SUBMIT</button>
+      <span>{{ error }}</span>
+  </form>
+</div>
 </template>
 
 <style lang="scss" scoped>
@@ -41,17 +44,22 @@ export default {
 	-webkit-font-smoothing: none;
   text-align: center;
   top: 8.6rem;
-  left: calc(50% + 16rem);
+  left: 50%;
   transform: translateX(-50%);
   border-bottom: 0.2rem solid black;
   padding: 1rem;
   line-height: 2.2 !important;
 }
+.outer-wrap {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+}
 .root-change {
-  width: 100%;
-  height: 100%;
-  margin-left: 33rem;
-  margin-top: 40rem;
+  // margin-left: 33rem;
+  width: 56rem;
+  height: auto;
+  // margin-top: 40rem;
 }
 .input {
   height: 4rem; 
@@ -62,7 +70,6 @@ export default {
   margin-bottom: 2rem;
   font-size: 2rem;
   padding-bottom: 0.2rem;
-  opacity: 0.5;
   font-family: 'Pixelpalm Pro-Input';
   text-rendering: geometricPrecision;
   font-smooth: never;
@@ -94,7 +101,6 @@ export default {
   background-color: black;
   color: white;
   margin-bottom: 4rem;
-  position: relative;
   font-size: 1.5rem;
   font-family: 'Pixelpalm-category-font';
   font-smooth: never;
@@ -102,11 +108,24 @@ export default {
 }
 @media only screen and (max-width: 1200px) {
   .root-change {
-    margin-left: 1rem;
     max-width: calc(100vw - 2rem);
     width: calc(100vw - 2rem);
-    margin-top: 10rem;
+    margin-bottom: 21rem;
     height: auto;
+  }
+  .option-span {
+    font-family: 'Pixelpalm-category-font';
+    text-rendering: geometricPrecision;
+    font-smooth: never;
+    -webkit-font-smoothing: none;
+    color: black;
+    width: calc(100% - 2rem);
+    margin-left: 1rem;
+    padding-top: 0 !important; 
+    position: absolute; 
+    top: -2rem;
+    left: 0;
+    font-size: 1rem;
   }
 }
 </style>

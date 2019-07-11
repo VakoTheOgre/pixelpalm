@@ -45,7 +45,7 @@ export default {
 
 <template>
   <div>
-    <button style="margin-top: 5rem; padding: 3rem;" @click="newPost">NEW POST</button>
+    <button style="position: absolute; left: 25%; top: 6rem; padding: 3rem;" @click="newPost">NEW POST</button>
     <div class="blog-admin-container flex-col ">
       <span v-for="(blog, i) in blogs" :key="i" class="single-blog flex AL-center JF-spaceBE"> {{ blog.title }} 
                                                                     <span @click="editBlog(blog)" class="edit-blog pointer">EDIT</span>

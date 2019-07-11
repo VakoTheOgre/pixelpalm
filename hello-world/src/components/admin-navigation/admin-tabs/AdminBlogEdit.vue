@@ -76,7 +76,7 @@ export default {
     </div>
     
     <input placeholder="Title" type="text" v-model="title">
-    <textarea v-model="text" rows="auto" cols="auto" class="editor__content" />
+    <textarea v-model="text" rows="auto" cols="auto" style="min-height: 10rem !important;" class="editor__content" />
     <button @click="upload">UPLOAD</button>
   </div>
 </template>
