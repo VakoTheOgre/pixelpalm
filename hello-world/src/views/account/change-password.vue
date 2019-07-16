@@ -43,7 +43,7 @@ export default {
   font-smooth: never;
 	-webkit-font-smoothing: none;
   text-align: center;
-  top: 8.6rem;
+  top: 6.6rem;
   left: 50%;
   transform: translateX(-50%);
   border-bottom: 0.2rem solid black;
@@ -51,15 +51,24 @@ export default {
   line-height: 2.2 !important;
 }
 .outer-wrap {
-  width: 100vw;
-  height: 100vh;
-  position: relative;
+  min-width: calc( 100vw - 33rem );
 }
 .root-change {
+  padding-right:2rem;
+  padding-left:2rem;
+  padding-bottom:2rem;
+  width: 86rem;
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: justify;
   // margin-left: 33rem;
-  width: 56rem;
-  height: auto;
-  // margin-top: 40rem;
+  font-size: 2rem;
+  font-family: 'Pixelpalm-text';
+  text-rendering: geometricPrecision;
+  font-smooth: never;
+	-webkit-font-smoothing: none;
 }
 .input {
   height: 4rem; 
@@ -108,10 +117,22 @@ export default {
 }
 @media only screen and (max-width: 1200px) {
   .root-change {
-    max-width: calc(100vw - 2rem);
-    width: calc(100vw - 2rem);
-    margin-bottom: 21rem;
-    height: auto;
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+    padding-bottom: 320px !important;
+    margin-top: 13rem;
+    width: calc( 100vw - 2rem ) !important;
+    position: static;
+    top: 0;
+    left: 0;
+    transform: translateX(0);
+    text-align: justify;
+    // margin-left: 33rem;
+    font-size: 2rem;
+    font-family: 'Pixelpalm-text';
+    text-rendering: geometricPrecision;
+    font-smooth: never;
+    -webkit-font-smoothing: none;
   }
   .option-span {
     font-family: 'Pixelpalm-category-font';
@@ -119,8 +140,8 @@ export default {
     font-smooth: never;
     -webkit-font-smoothing: none;
     color: black;
-    width: calc(100% - 2rem);
-    margin-left: 1rem;
+    width: 100%;
+    margin-left: 0;
     padding-top: 0 !important; 
     position: absolute; 
     top: -2rem;

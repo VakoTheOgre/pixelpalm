@@ -15,9 +15,7 @@ export default {
     this.checkDevice()
   },
   methods: {
-    toggleDD() {
-      this.descOpen = !this.descOpen
-    },
+
     checkDevice() {
       if(this.device == 'desktop') {
         this.descOpen = true
@@ -34,8 +32,8 @@ export default {
 
   <div class="dropdown-root flex-col">
 
-    <span @click="toggleDD" v-if=" this.device == 'mobile'" class="drop-title flex AL-center pointer">DESCRIPTION
-      <span v-if="descOpen" class="disc-wrapper pointer">
+    <span v-if=" this.device == 'mobile'" class="drop-title flex AL-center pointer">DESCRIPTION
+      <span class="disc-wrapper pointer">
         {{ discription }}
       </span>
     </span>

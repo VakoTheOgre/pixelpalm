@@ -172,7 +172,8 @@ export default {
     }
 }
 .hr {
-    width: 100%;
+    width: 27rem;
+    margin-left: 3rem;
     border-bottom: 0.2rem solid black;
 }
 @media only screen and (max-width: 1200px) {

@@ -42,9 +42,9 @@ export default {
 <template>
   <div class="sidebar">
     <div class="sidebar-logo flex-col AL-center">
-      <!-- <a href="https://pixelpalm.co/" class="text-logo pointer"> -->
+      <a href="/" class="text-logo pointer">
         <img src="https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/pixelpalm_logo_big.svg"  alt="PIXELPALM-LOGO" class="text-logo pointer">
-      <!-- </a> -->
+      </a>
     </div>
     <main-menu></main-menu>
     <carousel id="carousela" :per-page="1" :autoplay="true"  :autoplayTimeout="3000" :loop="true" :paginationEnabled="false" >
@@ -83,6 +83,7 @@ export default {
   width: 33rem;
   min-height: 100vh;
   position: fixed;
+  z-index: 100000000;
   top:0;
   left:0;
   &-logo {
