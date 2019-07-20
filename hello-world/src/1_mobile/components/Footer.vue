@@ -6,6 +6,7 @@ data() {
         emailErr: ''
     }
 },
+
 watch: {
     email(newValue) {
       var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
@@ -16,6 +17,24 @@ watch: {
       }
     }
   },
+
+  methods: {
+     routePush(payload) {
+       if ( payload == 'pp' ) {
+        this.$router.push('/grayarea/policies')
+       } else {
+         this.$router.push('/grayarea/legal')
+       }
+       if ( this.device == 'desktop' ) {
+        this.$store.commit("accountIcon/close")
+        this.$store.commit("exploreIcon/close")
+        this.$store.commit("searchIcon/close")
+        this.$store.commit("menuIcon/close")
+        this.$store.commit("cartIcon/close")
+        this.$store.commit("legalsIcon/open")
+       }
+     }
+  }
 }
 </script>
 
@@ -35,10 +54,26 @@ watch: {
         <div class="rights">
             &copy;2019 PIXELPALM. All rights reserved.
         </div>
+        <div class="terms-wrap flex JF-spaceBE">
+          <span @click="routePush('pp')" class="terms pointer">PP</span>
+          <span @click="routePush('la')" class="terms pointer">LA</span>
+        </div>
     </div>
 </template>
 
 <style lang="scss" scoped>
+.terms {
+  &-wrap {
+    width: 5.5rem;
+    padding-bottom: 0.6rem;
+  }
+  font-size: 1rem;
+  user-select: none;
+  font-family: 'Pixelpalm-category-font';
+  text-rendering: geometricPrecision;
+  font-smooth: never;
+	-webkit-font-smoothing: none;
+}
 .root {
     width: 100vw;
     background-color: white;
@@ -69,7 +104,6 @@ watch: {
         background-color: transparent;
         font-size: 2rem;
         color: black;
-        opacity: 0.5;
         font-family: 'Pixelpalm Pro-Input';
         text-rendering: geometricPrecision;
         font-smooth: never;
@@ -85,6 +119,7 @@ watch: {
         }
         &:enabled {
             padding-left: 1rem;
+            color: black;
         }
     }
     &-icon {

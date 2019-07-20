@@ -55,8 +55,31 @@ export default {
   },
 
   methods: {
+    async changeInfo () {
+      try {
+        let res = await this.$axios.put(`/user/edit/${this.$store.getters['auth/user']._id}`, {
+          name: `${this.name} ${this.lastName}`,
+          address1: this.address1,
+          city: this.city,
+          state_code: this.state_code,
+          country_code: this.country_code,
+          zip: this.zip,
+          email: this.email,
+          phone: this.phone,
+        }, {
+          headers: { 'Authorization': `Bearer ${this.$store.getters['auth/token']}` }
+        })
+        this.error = res.data.message
+        this.$store.dispatch('auth/me')
+      } catch (e) {
+        // this.error = e.response.data.message
+        this.error = ''
+      }
+    },
+  
     checkUncheck() {
       this.boxChecked = !this.boxChecked
+      this.changeInfo()      
     },
 
     selectCountry(e) {
@@ -155,14 +178,14 @@ export default {
                 </div>
 
                 <div >
-                  <input v-model="address1" type="text" placeholder="Street Name*" class="input-street">
+                  <input v-model="address1" type="text" placeholder="Street Address*" class="input-street">
                 </div>
                 
 
                 <div class="horizontal-wrap flex JF-spaceBE">
                     <input v-model="city" type="text" placeholder="City*" id="mobile-input" class="input-h-l ">
 
-                    <input v-model="zip" type="text" placeholder="Zip/Postal Code*" class="input-h">
+                    <input v-model="zip" type="text" placeholder="Postal Code*" class="input-h">
                 </div>
                 
                 <div class="horizontal-wrap flex JF-spaceBE">
@@ -187,7 +210,7 @@ export default {
                   <div @click="checkUncheck" class="checkbox">
                     <img  v-if="boxChecked" src="https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/tick.svg" alt="Agreed" class="checkbox-tick">
                   </div>
-                  <span class="agree-txt">Save shipping info for future checkouts.</span>
+                  <span  class="agree-txt">Save shipping info for future checkouts.</span>
                 </div>
                 <subtotal-checkout></subtotal-checkout>
             </div>
@@ -200,18 +223,20 @@ export default {
 .title {
   font-size: 2rem;
   position: absolute;
-  width: 27rem;
+  width: auto;
+  padding-left: 2rem;
+  padding-right: 2rem;
   font-family: 'Pixelpalm-category-font';
   text-rendering: geometricPrecision;
-  font-smooth: never;
+  white-space: nowrap;
 	-webkit-font-smoothing: none;
   text-align: center;
-  top: 8.6rem;
-  left: calc(50% - 0.5rem);
+  top: 8.7rem;
+  left: 50%;
+	// margin-left: 16.5rem;
   transform: translateX(-50%);
   border-bottom: 0.2rem solid black;
-  padding: 1rem;
-  line-height: 2.2 !important;
+  line-height: 2 !important;
 }
 .errorBorder {
   border: 0.2rem solid red !important;
@@ -471,6 +496,7 @@ export default {
         font-size: 2rem;
         color: gray;
         opacity: 0.5;
+        padding-top: 0.6rem;
         line-height: 2.2 !important; 
         font-family: 'Pixelpalm Pro-Input';
         text-rendering: geometricPrecision;
@@ -496,6 +522,7 @@ export default {
       &::placeholder {
         font-size: 2rem;
         color: gray;
+        padding-top: 0.6rem;
         opacity: 0.5;
         font-family: 'Pixelpalm Pro-Input';
         text-rendering: geometricPrecision;
@@ -517,6 +544,7 @@ export default {
         &::placeholder {
           font-size: 2rem;
           color: gray;
+          padding-top: 0.6rem;
           opacity: 0.5;
           font-family: 'Pixelpalm Pro-Input';
           text-rendering: geometricPrecision;
@@ -540,6 +568,7 @@ export default {
             &::placeholder {
               font-size: 2rem;
               color: gray;
+              padding-top: 0.6rem;
               opacity: 0.5;
               font-family: 'Pixelpalm Pro-Input';
               text-rendering: geometricPrecision;

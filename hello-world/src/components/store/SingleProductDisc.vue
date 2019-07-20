@@ -31,13 +31,8 @@ export default {
 <template>
 
   <div class="dropdown-root flex-col">
-
-    <span v-if=" this.device == 'mobile'" class="drop-title flex AL-center pointer">DESCRIPTION
-      <span class="disc-wrapper pointer">
-        {{ discription }}
-      </span>
-    </span>
-    
+    <span v-if=" this.device == 'mobile'" class="drop-title flex AL-center pointer">DESCRIPTION</span>
+    <span class="disc-wrapper pointer">{{ discription }}</span>
   </div>
 </template>
 
@@ -49,15 +44,8 @@ export default {
   width: 100%;
   margin-bottom: 2rem;
   position: relative;
-  border: 0.1rem solid black;
   padding-top: 1rem;
 
-}
-.drop-title {
-  height: 4rem; 
-  text-align: left;
-  width: 100%;
-  padding-left: 1rem;
 }
 .disc-wrapper {
     // border: 0.1rem solid black;
@@ -65,11 +53,11 @@ export default {
     width: calc(100% - 2rem);
     margin-bottom: 2rem;
     font-size: 2rem;
-      padding-top: 0.4rem;
-      font-family: 'Pixelpalm-text';
-      text-rendering: geometricPrecision;
-      font-smooth: never;
-      -webkit-font-smoothing: none;
+    padding-top: 0.4rem;
+    font-family: 'Pixelpalm-text';
+    text-rendering: geometricPrecision;
+    font-smooth: never;
+    -webkit-font-smoothing: none;
   }
 @media only screen and (max-width: 1200px) {
   .dropdown-root {
@@ -86,26 +74,24 @@ export default {
 
   }
   .drop-title {
+    font-size: 1.5rem;
     height: 4rem; 
     text-align: left;
     width: 100%;
-    padding-left: 1rem;
+    padding: 0 !important;
+    margin: 0 !important;
     position: relative;
   }
   .disc-wrapper {
       // border: 0.1rem solid black;
       height: 4rem;
       width: calc(100% - 2rem);
-      position: absolute;
-      top: 5rem;
-      left: 0;
-      margin-bottom: 2rem;
       font-size: 2rem;
-        padding-top: 0.4rem;
-        font-family: 'Pixelpalm-text';
-        text-rendering: geometricPrecision;
-        font-smooth: never;
-        -webkit-font-smoothing: none;
+      padding-top: 0.4rem;
+      font-family: 'Pixelpalm-text';
+      text-rendering: geometricPrecision;
+      font-smooth: never;
+      -webkit-font-smoothing: none;
     }
 }
 </style>

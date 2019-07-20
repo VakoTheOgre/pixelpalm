@@ -62,9 +62,7 @@ export default {
         let crumbs = this.$route.fullPath.split('/').filter(val => val != '')
         crumbs.forEach((crumb, index) => {
           if (crumb.length > 15) {
-            
             for (let i = 0; i < this.products.length; i++) {
-              console.log('lol')
               if (this.products[i]._id == crumb) {
                 crumbs[index] = this.products[i].name
                 return
@@ -100,7 +98,7 @@ export default {
     <div v-if="isShop && !injectedCrumbs && !menuState && !cartState &&  !accountState && !exploreState && !legalsState" class="flex center">
       <span class="absolute-span">
           <router-link tag="span" to="/"> &ensp;HOME </router-link>
-      <router-link :key="index" tag="span" v-for="(crumb, index) in crumbs" :to="createCrumb(index)" > |&ensp;{{ crumb.toUpperCase() }} </router-link>
+      <router-link :key="index" tag="span" v-for="(crumb, index) in crumbs" :to="createCrumb(index)" :class="{ noTouch: index == 2 }"> |&ensp;{{ crumb.toUpperCase() }} </router-link>
       </span>
     </div>
 
@@ -121,6 +119,11 @@ export default {
 
 
 <style lang="scss" scoped>
+.noTouch {
+  touch-action: none;
+  pointer-events: none;
+  user-select: none;
+}
 .bread-wrapper {
   width: 100%;
   position: relative;

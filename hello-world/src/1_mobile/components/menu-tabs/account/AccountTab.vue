@@ -80,7 +80,7 @@ export default {
     <span class="registered">REGISTERED CUSTOMERS</span>
     <input  v-model="email" type="email" placeholder="Email Address*" class="mail" :class="{ redError: emailErr != '' }">
     <input  v-model="password" type="password" placeholder="Password*" class="pass">
-    <router-link tag="span" to="/users/forgot-password" @click.native="closeEverything" class="forgot-pass pointer">FORGOT YOUR PASSWORD?</router-link>
+    <router-link tag="span" to="/account/password-recovery" @click.native="closeEverything" class="forgot-pass pointer">FORGOT YOUR PASSWORD?</router-link>
     <button  @click.prevent="login" class="btn login pointer">LOGIN</button>
   </form>
   <logged-user-tab v-else />
@@ -111,6 +111,13 @@ export default {
   width: 100vw;
   border-bottom: 0.2rem solid black;
   margin-left: -1rem;
+}
+@media only screen and ( max-width: 1200px ) {
+  .hr {
+    width: 100%;
+    border-bottom: 0.2rem solid black;
+    margin-left: 0;
+  }
 }
 .form-outer {
   padding: 3rem 1rem 0 1rem;

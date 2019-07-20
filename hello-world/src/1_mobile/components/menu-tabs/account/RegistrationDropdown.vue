@@ -108,7 +108,7 @@ export default {
     <div @click="checkUncheck" class="checkbox">
       <img  v-if="boxChecked" src="https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/tick.svg" alt="Agreed" class="checkbox-tick">
     </div>
-    <span class="agree-txt">I Agree to the Terms of Use</span>
+    <span class="agree-txt">I Agree to the Terms of Use.</span>
   </div>
   <button @click.prevent="register" class="btn pointer">SUBMIT</button>
   <!-- <span class="btn-error"> {{error}} </span> -->

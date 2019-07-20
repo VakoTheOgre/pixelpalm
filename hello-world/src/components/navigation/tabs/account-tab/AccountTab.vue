@@ -80,12 +80,12 @@ export default {
     </div>
     <registration v-else></registration>
     <div class="hr"></div>
-    <form class="flex-col"> 
+    <form class="flex-col" > 
       <span class="registered">REGISTERED CUSTOMERS</span>
       <input v-model="email" type="email" placeholder="Email Address*" class="mail input" :class="{ redError: error }">
       <!-- <span class="error">{{ emailErr }}</span> -->
       <input v-model="password" type="password" placeholder="Password*" class="pass">
-      <router-link tag="span" to="/users/forgot-password" @click.native="closeEverything" class="forgot-pass pointer">Forgot Your Password?</router-link>
+      <router-link tag="span" to="/account/password-recovery" @click.native="closeEverything" class="forgot-pass pointer">FORGOT YOUR PASSWORD?</router-link>
       <button @click.prevent="login" class="btn  padding-bot pointer">LOGIN</button>
     </form>
     <!-- <span class="error">{{ error }}</span> -->
@@ -95,6 +95,15 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+@media only screen and (max-width: 1200px) {
+  .hr {
+    border-bottom: 0.2rem solid black;
+    width: calc( 100% - 2rem ) !important;
+  }
+}
+.hr {
+  border-bottom: 0.2rem solid black;
+}
 @media only screen and (min-height: 879px) {
   .root {
     overflow: hidden !important;
@@ -124,12 +133,6 @@ export default {
   margin: -1.5rem 0 0.5rem 0.5rem;
   color: black;
   font-size: 1.2rem;
-}
-hr {
-  width: 33rem;
-  height: 0.2rem;
-  border-color: black;
-  margin-left: -3rem;
 }
 .form {
   padding: 3rem 3rem 0 3rem;
@@ -233,7 +236,7 @@ hr {
   font-smooth: never;
   font-size: 1rem;
 	-webkit-font-smoothing: none;
-  padding-top: 0.7rem;
-  padding-bottom: 2.3rem;
+  margin-top: 0.5rem;
+  margin-bottom: 2.3rem;
 }
 </style>

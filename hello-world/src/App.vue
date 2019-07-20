@@ -89,6 +89,15 @@ export default {
 </template>
 
 <style lang="scss">
+//{
+//   "name": "BLOG",
+//   "svg": "https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/blog-icon.svg"
+// },
+// {
+//   "name": "PROJECTS",
+//   "svg": "https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/projects-icon.svg"
+// },
+    
 .ok {
   background-color: black; color: white; 
   margin-left: 3rem; 

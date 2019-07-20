@@ -7,7 +7,7 @@
   overflow-x: hidden;
   position: absolute;
   background-color: white;
-  z-index: 3;
+  z-index: 2;
   border: 0.2rem solid black;
   border-top: none !important;
 }
@@ -24,6 +24,7 @@
   &::placeholder {
     font-size: 2rem;
     color: gray;
+    padding-top: 0.8rem;
     opacity: 0.5;
     font-family: 'Pixelpalm Pro-Input';
     text-rendering: geometricPrecision;
@@ -51,6 +52,9 @@
   -webkit-font-smoothing: none;
   padding-right: 5rem;
 }
+.item:last-of-type {
+  border-bottom: none !important;
+}
 .flag {
   height: 3rem;
   border: 0.2rem solid black;
@@ -68,7 +72,7 @@
     overflow-x: hidden;
     position: absolute;
     background-color: white;
-    
+    margin-top: -2rem;
   }
   .dropdown-inputs {
     max-width: auto;
@@ -84,6 +88,7 @@
     &::placeholder {
       font-size: 2rem;
       color: gray;
+      padding-top: 0.8rem;
       opacity: 0.5;
       font-family: 'Pixelpalm Pro-Input';
       text-rendering: geometricPrecision;
@@ -92,6 +97,7 @@
     }
     &:enabled {
       padding-left: 1rem;
+      margin-bottom: 2rem;
     }
   }
 .mobile-input {
@@ -104,8 +110,8 @@
 
 <template>
   <div class="root-dropdowns">
-    <input v-if="!selectedSomething" v-model="userInput" :placeholder="type + '*'" type="text" class="dropdown-inputs mobile-input1">
-    <input v-else @input="tryAgain" v-model="userInput2" :placeholder="type + '*'" type="text" class="dropdown-inputs mobile-input2">
+    <input v-if="!selectedSomething" v-model="userInput" autocomplete="off" :placeholder="type + '*'" type="text" class="dropdown-inputs mobile-input1">
+    <input v-else @input="tryAgain" v-model="userInput2" autocomplete="off" :placeholder="type + '*'" type="text" class="dropdown-inputs mobile-input2">
     <div v-if="filteredItems.length" class="dropdown">
       <div @click="selected(item)" v-for="(item, index) in filteredItems" :key="index" class="item flex pointer AL-center JF-spaceBE">
         {{ item.name }}

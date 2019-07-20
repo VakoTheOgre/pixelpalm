@@ -44,7 +44,7 @@ export default {
         text-align: left;
         padding-left: 0;
         margin: 0;
-        font-size: 1.6rem;
+        font-size: 2rem;
         padding-left: 2rem;
         padding-bottom: 20rem;
         margin-top: -1rem;

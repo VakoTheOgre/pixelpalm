@@ -338,11 +338,11 @@ export default {
   }
   .details {
     justify-content: center;
-    height: 46rem;
+    height: 76rem;
     font-size: 1.6rem;
     margin-left: 0;
     margin-right: 0;
-    margin-top: -6.7rem;
+    margin-top: -18.7rem;
     width: calc(100% - 2rem);
     &-short {
           // border: none;

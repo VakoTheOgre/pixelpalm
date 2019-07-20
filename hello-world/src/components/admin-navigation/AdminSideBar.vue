@@ -11,8 +11,8 @@ export default {
 <template>
     <div class="root flex-col AL-center">
         <span @click="changeComponent('admin-products-list')" class="link pointer">PRODUCTS</span>
-        <span      @click="changeComponent('admin-blogs')" class="link pointer">BLOG</span>
-        <span       class="link pointer"></span>
+        <span @click="changeComponent('admin-blogs')" class="link pointer">BLOG</span>
+        <span @click="changeComponent('admin-sliders')" class="link pointer">SLIDERS</span>
     </div>    
 </template>
 

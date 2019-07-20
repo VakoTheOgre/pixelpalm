@@ -23,6 +23,11 @@ export default {
   methods: {
     closeExplore() {
       this.$store.commit("exploreIcon/close")
+      this.$store.commit("menuIcon/close")
+      this.$store.commit("searchIcon/close")
+      this.$store.commit("accountIcon/close")
+      this.$store.commit("cartIcon/close")
+      this.$store.commit("legalsIcon/close")
     }
   }
 }

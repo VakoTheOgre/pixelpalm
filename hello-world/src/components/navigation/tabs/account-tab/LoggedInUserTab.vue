@@ -55,7 +55,7 @@ export default {
     },
     methods: {
       togglePass () {
-            this.$router.push( '/users/change-password' )
+            this.$router.push( '/account/change-password' )
             this.$store.commit('accountIcon/close')
         },
 
@@ -241,8 +241,9 @@ export default {
     }
 }
 .hr {
-    widows: 100%;
+    width: calc( 100% - 2rem );
     border-bottom: 0.2rem solid black;
+    margin-left: 1rem;
 }
 }
 </style>

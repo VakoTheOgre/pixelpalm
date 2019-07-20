@@ -16,6 +16,13 @@ export default {
     SearchTab,
     grayArea
   },
+  watch: {
+    $route(v) {
+      if (v.name) {
+        this.routeName = v.name
+      }
+    }
+  },
   computed: {
     menuState() {
       return this.$store.getters['menuIcon/menuState']
@@ -34,7 +41,15 @@ export default {
     },
     legalsState() {
       return this.$store.getters['legalsIcon/legalsState']
+    },
+    routeChecker() {
+      if ( this.$route.name == 'shopProd' || this.$route.name == 'shop' ||  this.$route.name == 'shopCat' || this.$route.name == 'home'  ) {
+        return true
+      } else {
+        return false
+      }
     }
+
   }
 }
 </script>
@@ -47,7 +62,7 @@ export default {
       </a>
     </div>
     <main-menu></main-menu>
-    <carousel id="carousela" :per-page="1" :autoplay="true"  :autoplayTimeout="3000" :loop="true" :paginationEnabled="false" >
+    <carousel v-show="routeChecker" id="carousela" :per-page="1" :autoplay="true"  :autoplayTimeout="3000" :loop="true" :paginationEnabled="false" >
           <slide id="slide">
             <div class="slide">
             

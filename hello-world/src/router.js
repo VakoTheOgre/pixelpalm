@@ -33,6 +33,11 @@ export default new Router({
       component: Home
     },
     {
+      path: "/account",
+      name: "home",
+      component: Home
+    },
+    {
       path: "/admin",
       name: "admin",
       component: Admin
@@ -108,18 +113,18 @@ export default new Router({
       component: CheckoutPage
     },
     {
-      path: '/users/verify/:token',
+      path: '/account/verify/:token',
       name: 'confirm-email',
       component: Confirm
     },
     {
-      path: '/users/reset/:token',
+      path: '/account/reset/:token',
       name: 'reset-password',
       component: ResetPassword
     },
     {
-      path: '/users/forgot-password',
-      name: 'forgot-password',
+      path: '/account/password-recovery',
+      name: 'password-recovery',
       component: ForgotPassword
     },
     {
@@ -128,9 +133,12 @@ export default new Router({
       component: () => import('./views/CheckoutSuccess')
     },
     {
-      path: '/users/change-password',
+      path: '/account/change-password',
       name: 'edit-password',
       component: ChangePassword
     }
-  ]
+  ],
+  scrollBehavior () {
+    return { x: 0, y: 0 }
+  }
 })

@@ -31,14 +31,6 @@
       "svg": "https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/about-icon.svg"
     },
     {
-      "name": "PROJECTS",
-      "svg": "https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/projects-icon.svg"
-    },
-    {
-      "name": "BLOG",
-      "svg": "https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/blog-icon.svg"
-    },
-    {
       "name": "CONTACT",
       "svg": "https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/contact-icon.svg"
     }

@@ -9,6 +9,16 @@ export default {
     return {
       menus
     }
+  },
+  methods: {
+    closeSidebar() {
+      this.$store.commit("exploreIcon/close")
+      this.$store.commit("menuIcon/close")
+      this.$store.commit("searchIcon/close")
+      this.$store.commit("accountIcon/close")
+      this.$store.commit("cartIcon/close")
+      this.$store.commit("legalsIcon/close")
+    }
   }
 }
 </script>
@@ -16,7 +26,7 @@ export default {
 <template>
 <div class="main-menu">
   <div class="explore-menu">
-    <router-link tag="div" v-for="(category, index) in menus.explore" :key="`${index}`"  
+    <router-link @click.native="closeSidebar" tag="div" v-for="(category, index) in menus.explore" :key="`${index}`"  
     :to="`/studio/${category.name.toLowerCase()}`" class="explore-menu_item">
       <img :src="category.svg" alt="icon" class="menu-icon pointer">
       <span class="menu-option pointer"> {{ category.name }} </span>

@@ -24,6 +24,7 @@
     font-size: 2rem;
     color: gray;
     opacity: 0.5;
+    padding-top: 0.8rem;
     font-family: 'Pixelpalm Pro-Input';
     text-rendering: geometricPrecision;
     font-smooth: never;
@@ -48,6 +49,7 @@
   font-size: 2rem;
   padding-left: 1rem;
   color: black;
+  width: 100%;
   border-bottom: 0.1rem solid black;
   white-space: nowrap;
   font-family: 'Pixelpalm Pro-Input';
@@ -56,6 +58,9 @@
   -webkit-font-smoothing: none;
   padding-right: 5rem;
 
+}
+.item:last-of-type {
+  border-bottom: none !important;
 }
 .flag {
   height: 3rem;
@@ -73,6 +78,7 @@
     overflow-x: hidden;
     position: absolute;
     background-color: white;
+    margin-top: -2rem;
   }
   .dropdown-inputs {
     max-width: auto;
@@ -90,6 +96,7 @@
       font-size: 2rem;
       color: gray;
       opacity: 0.5;
+      padding-top: 0.8rem;
       font-family: 'Pixelpalm Pro-Input';
       text-rendering: geometricPrecision;
       font-smooth: never;

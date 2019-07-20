@@ -63,12 +63,11 @@ export default {
   font-smooth: never;
 	-webkit-font-smoothing: none;
   text-align: center;
-  top: 8.6rem;
+  top: 8.7rem;
   left: 50%;
 	margin-left: 16.5rem;
   transform: translateX(-50%);
   border-bottom: 0.2rem solid black;
-  padding: 1rem;
   line-height: 2 !important;
 }
 .names-wrapper {
