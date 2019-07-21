@@ -35,8 +35,8 @@ export default {
 </script>
 
 <template>
-  <div class="root">
-    <slider v-for="(img, index) in images" :key="index" :cat="images[index].category"></slider>
+  <div v-if="allImages" class="root">
+    <slider v-for="(img, index) in images" :key="index" :cat="images[index].category" :imgSet="images[index].images"></slider>
   </div>
 </template>
 

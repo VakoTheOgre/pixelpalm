@@ -1,25 +1,79 @@
 <script>
 export default {
+
   props: {
     cat: {
       type: String,
       required: true
+    },
+
+    imgSet: {
+      type: Array,
+      required: false
     }
+  },
+
+  data() {
+    return {
+      imagesToSend: [],
+      editedImages: []
+    }
+  },
+
+  methods: {
+
+    addImgInput() {
+      this.imagesToSend.push({image: null, preview: null})
+    },
+
+    removeImgInput() {
+      this.imagesToSend.pop()
+    },
+
+    addImage (e, i) {
+      console.log(e)
+      this.imagesToSend[i].image = e.target.files[0]
+      this.imagesToSend[i].preview = window.URL.createObjectURL(this.imagesToSend[i].image)
+    },
+
+    async sendImages() {
+      let imageForm = new FormData()
+      this.imagesToSend.forEach((file, index) => {
+        imageForm.append('preview', file.image)
+      })
+      try{
+        let res = await this.$axios.put(`/admin/products/uploadImage/${this.product._id}`, imageForm, {headers: { 'Authorization': `Bearer ${Cookie.get('token')}` } })
+        console.log(res)
+        this.refresh()
+        this.imagesToSend = []
+      } catch(e) {
+        console.log(e.response.data.message)
+      }
+    },
+
+    async deleteImg(imagePath) {
+      try {
+        await this.$axios.put(`admin/products/delete/${this.product._id}`, {imagePath}, {headers: { 'Authorization': `Bearer ${Cookie.get('token')}` } })
+        this.refresh()
+      } catch(e) {
+        console.log(e)
+      }
+    }
+
   }
+
 }
-//@click="addImgInput"
-//@click="removeImgInput"
-//@click="sendImages"
+
 </script>
 
 <template>
-  <div class="root flex center">
+  <div v-if="cat" class="root flex center">
     <div id="image-control" class="images-control flex center">
       <span class="placeholder">{{ cat }}</span>  
-      <span  class="plus pointer">ADD</span> 
-      <span  class="minus pointer">DELETE</span>
+      <span @click="addImgInput" class="plus pointer">ADD</span> 
+      <span @click="removeImgInput" class="minus pointer">DELETE</span>
       <div id="imageInputs">
-        <!-- <div :key="index" v-for="(image, index) in images.images" class="image-input-div-new flex AL-center JF-spaceBE">
+        <div :key="index" v-for="(images, index) in imgSet.images" class="image-input-div-new flex AL-center JF-spaceBE">
           <img class="imgPreview oldPreview" :src="image">
           {{ image.split('Z-')[1] }}
           <button @click="deleteImg(image)" class="X pointer">
@@ -29,9 +83,9 @@ export default {
         <div :key="`new=${index}`" v-for="(image, index) in imagesToSend" class="image-input-div-new flex AL-center JF-spaceAR">
           <img class="imgPreview" :src="image.preview">
           <input class="img-input" @change="function (e) { addImage(e, index) }" type="file" accept="image/*">
-        </div> -->
+        </div>
       </div>
-      <button  class="send-img-btn btn pointer">Update Images</button>
+      <button @click="sendImages" class="send-img-btn btn pointer">Update Images</button>
     </div>
   </div>
 </template>
