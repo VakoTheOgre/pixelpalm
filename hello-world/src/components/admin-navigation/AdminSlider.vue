@@ -1,7 +1,12 @@
 <script>
+import Cookie from 'js-cookie'
 export default {
 
   props: {
+    id: {
+      type: String,
+      required: true
+    },
     cat: {
       type: String,
       required: true
@@ -42,12 +47,12 @@ export default {
         imageForm.append('preview', file.image)
       })
       try{
-        let res = await this.$axios.put(`/admin/products/uploadImage/${this.product._id}`, imageForm, {headers: { 'Authorization': `Bearer ${Cookie.get('token')}` } })
+        let res = await this.$axios.put(`/slider/${this.id}`, imageForm, {headers: { 'Authorization': `Bearer ${Cookie.get('token')}` } })
         console.log(res)
         this.refresh()
         this.imagesToSend = []
       } catch(e) {
-        console.log(e.response.data.message)
+        console.log(e)
       }
     },
 
@@ -73,7 +78,7 @@ export default {
       <span @click="addImgInput" class="plus pointer">ADD</span> 
       <span @click="removeImgInput" class="minus pointer">DELETE</span>
       <div id="imageInputs">
-        <div :key="index" v-for="(images, index) in imgSet.images" class="image-input-div-new flex AL-center JF-spaceBE">
+        <div :key="index" v-for="(image, index) in imgSet" class="image-input-div-new flex AL-center JF-spaceBE">
           <img class="imgPreview oldPreview" :src="image">
           {{ image.split('Z-')[1] }}
           <button @click="deleteImg(image)" class="X pointer">
