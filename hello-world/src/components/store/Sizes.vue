@@ -19,7 +19,8 @@ export default {
                     unchecked: "https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/extra-large.svg",
                     checked: "https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/extra-large-chosen.svg"
                 },
-                xxl: {
+                
+                "2xl": {
                     unchecked: "https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/extra-extra-large.svg",
                     checked: "https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/extra-extra-large-chosen.svg"
                 }
@@ -49,7 +50,6 @@ export default {
             let keys = Object.keys(this.sizes)
             this.checked.forEach((el, i) => {
                 let key = keys[i]
-                console.log(key)
                 if (this.checked[i]) {
                     document.getElementById(`size-${i}`).src = this.sizes[key].checked
                 } else {

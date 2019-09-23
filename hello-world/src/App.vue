@@ -77,11 +77,9 @@ export default {
       <transition name="cookies" mode="in-out">
       <div v-if="showCookies" class="cookies flex JF-spaceBE">
           <span>This website uses cookies to ensure you get the best experience. <a style="color: black;" class="pointer" href="https://pixelpalm.co/grayarea/policies">More Info</a></span>
-          <div @click="closeCookies" class="pointer ok">ΟΚ</div>
+          <div @click="closeCookies" class="pointer ok">OK</div>
         </div>
       </transition>
-      
-      <!-- <div class="spacer"></div> -->
       <Footer v-if='device == "mobile"'></Footer>
     </div>
     <loader v-else></loader>
@@ -89,6 +87,10 @@ export default {
 </template>
 
 <style lang="scss">
+input {
+    border-radius: 0 !important;
+    -webkit-appearance: none !important;
+}
 //{
 //   "name": "BLOG",
 //   "svg": "https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/blog-icon.svg"
@@ -101,10 +103,12 @@ export default {
 .ok {
   background-color: black; color: white; 
   margin-left: 3rem; 
+  margin-top: -0.7rem;
   font-size: 2rem !important; 
-  padding: 0.95rem 2rem 0.95rem 2rem; 
+  padding: 0.4rem;
+  padding-left: 0.7rem !important; 
   margin-right: 2rem; 
-  font-family: 'Pixelpalm Pro-Input';
+  font-family: 'Pixelpalm-category-font';
   text-rendering: geometricPrecision;
   font-smooth: never;
 	-webkit-font-smoothing: none;
@@ -131,11 +135,15 @@ export default {
     -webkit-font-smoothing: none;
   }
   .ok {
-    background-color: black; color: 
+    background-color: black; 
+    color: 
     white; margin-left: 3rem; 
-    padding: 0.45rem 1rem 0.45rem 1rem; 
+    padding: 0.5rem !important;
+    margin-top: 0 !important;
+    padding-left: 0.7rem !important; 
     margin-right: 1rem; 
-    font-family: 'Pixelpalm Pro-Input';
+    font-size: 1.5rem !important;
+    font-family: 'Pixelpalm-category-font';
     text-rendering: geometricPrecision;
     font-smooth: never;
     -webkit-font-smoothing: none;

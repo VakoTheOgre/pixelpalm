@@ -22,7 +22,7 @@ export default {
 <template>
 <div class="main-menu">
   <div class="product-menu">
-    <router-link tag="span" @click="closeMenu" v-for="(category, index) in menus.main" :key="`${index}`"  
+    <router-link tag="span" @click.native="closeMenu" v-for="(category, index) in menus.main" :key="`${index}`"  
     :to="`/shop/${category.name.toLowerCase()}`"  class="product-menu_item">
       <img :src="category.svg" alt="icon" class="menu-icon pointer">
       <span class="menu-option pointer"> {{ category.name }} </span>

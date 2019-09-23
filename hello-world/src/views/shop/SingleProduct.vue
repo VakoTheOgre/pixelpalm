@@ -77,6 +77,7 @@ export default {
     },
 
     addToCart() {
+      setTimeout(function () {document.getElementById('hide').style.color='transparent'}, 3000);
       if(!this.selectedSize) {
         this.error = 'E'
         return
@@ -84,7 +85,6 @@ export default {
       this.addedText = true
       let selectedVariant
       for (let variant in this.product.variants) {
-        console.log(variant)
         if (this.product.variants[variant].size.toLowerCase() === this.selectedSize.toLowerCase()) {
           selectedVariant = this.product.variants[variant]
           break
@@ -96,6 +96,9 @@ export default {
         variant: selectedVariant
       })
       this.addedText = true
+      setTimeout(function() {
+        this.addedText = false
+      }, 3000)
     }
   },
   mounted () {
@@ -133,7 +136,7 @@ export default {
 
         <span   v-if="this.device == 'desktop' && !this.addedText" class="select-size flex AL-center">Select Size </span>
         <transition name="slideIn">
-          <span   v-if="this.device == 'desktop' && this.addedText" class="select-size-small flex AL-center">Item added to cart! </span>
+          <span id="hide"  v-show="this.device == 'desktop' && this.addedText" class="select-size-small flex AL-center">Product added to cart! </span>
         </transition>
         <sizes  v-if="this.device == 'desktop' && !this.addedText" @sizeSelect="selectSize"></sizes>
         <transition name="slideIn">
@@ -148,7 +151,7 @@ export default {
         </div>
           <!-- <span   v-if="this.device == 'mobile' && !this.addedText" class="select-size flex AL-center">Select Size </span> -->
         <transition name="slideIn">
-          <span   v-if="this.device == 'mobile' && this.addedText" class="select-size-small AL-center">Item added to cart! </span>
+          <span  id="hide" v-show="this.device == 'mobile' && this.addedText" class="select-size-small AL-center">Product added to cart! </span>
         </transition>
 
         <span   v-if="this.device == 'mobile' && !this.addedText" class="select-size flex AL-center">Select Size </span>
@@ -175,7 +178,8 @@ export default {
   opacity: 0.8;
 }
   .carousel-navigation_dot.active-image {
-    opacity: 0.5;
+    // opacity: 0.5;
+    opacity: 1;
   }
   .root {
     display: flex;
@@ -223,9 +227,11 @@ export default {
     -webkit-font-smoothing: none;
     &-small {
       width: 100%; 
+      transition: all 0.4s;
       height: 4rem;
       text-align: left;
       // border: 0.1rem solid black;
+      user-select: none;
       margin-bottom: 2rem;
       margin-left: 50%;
       transform: translateX(-50%);
@@ -294,7 +300,8 @@ export default {
   }
   @media only screen and (max-width: 1200px) {
     .carousel-navigation_dot.active-image {
-    opacity: 0.5;
+    // opacity: 0.5;
+    opacity: 1;
   }
   .select-size {
     width: 100%; 
@@ -312,6 +319,7 @@ export default {
     text-rendering: geometricPrecision;
     font-smooth: never;
     &-small {
+      transition: all 0.4s;
       width: 100%; 
       height: 4rem;
       text-align: center;
@@ -367,13 +375,13 @@ export default {
       bottom: 1rem;
       transform: translate(-50%, -50%);
       z-index: 1;
-      margin-left: 0;
-      margin-right: 1rem;
+      margin-left: 0.3rem;
+      margin-right: 0;
       &_dot {
-        margin-right: 0.6rem;
+        margin-right: 0.5rem;
         background-color: black;
-        height: 1rem;
-        width: 1rem;
+        height: 0.8rem;
+        width: 0.8rem;
         opacity: 0.5;
         cursor: pointer;
         user-select: none;

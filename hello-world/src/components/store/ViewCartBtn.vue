@@ -22,7 +22,7 @@ export default {
 
 <template>
     <div @click="openCart" class="root-btn pointer flex center">
-        <img  src="https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/view-cat.svg" >
+        <span class="btn-text">SHOW CART</span>
     </div>
 </template>
 
@@ -38,6 +38,11 @@ export default {
   outline-offset: -0.2rem;
   margin-bottom: 2rem !important;
   opacity: 0.9;
+  font-size: 2rem;
+  font-family: 'Pixelpalm-category-font';
+  text-rendering: geometricPrecision;
+  font-smooth: never;
+	-webkit-font-smoothing: none;
 }
 @media only screen and (max-width: 1200px) {
     .root-btn {

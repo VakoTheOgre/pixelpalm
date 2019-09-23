@@ -152,7 +152,6 @@ export default {
   
   methods: {
     async upload () {
-      console.log('Im trying')
       try {
         let formD = new FormData()
         this.images.forEach((img, i) => {

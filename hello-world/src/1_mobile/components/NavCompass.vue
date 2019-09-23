@@ -103,7 +103,7 @@ export default {
     </div>
 
     <div v-else-if="menuState || cartState ||  accountState || exploreState || legalsState">
-      <span :key="index" v-for="(crumb, index) in crumbs" class="absolute-span"> {{ crumb }} </span>
+      <span :key="index" v-for="(crumb, index) in crumbs" class="absolute-span"> {{ crumb.toUpperCase() }} </span>
     </div>
 
 

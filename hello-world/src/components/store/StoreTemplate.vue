@@ -147,7 +147,7 @@ export default {
   }
   .photo {
       // background-color: black;
-      border: 0.1rem solid black;
+      // border: 0.1rem solid black;
       width: calc(50vw - 1.6rem);
       height: auto;
       margin: 0;

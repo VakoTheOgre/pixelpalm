@@ -1,7 +1,8 @@
 <style lang="scss" scoped>
 .dropdown {
   max-height: 30rem;
-  max-width: 27rem;
+  max-width: 42rem;
+  // max-width: 27rem;
   overflow-y: scroll;
   overflow-x: hidden;
   position: absolute;
@@ -11,7 +12,7 @@
   z-index: 2;
 }
 .dropdown-inputs {
-  width: 27rem !important;
+  width: 42rem !important;
   border: 0.2rem solid black;
   height: 4rem;
   font-size: 2rem;
@@ -41,7 +42,7 @@
   }
 }
 .root-dropdowns {
-  width: 27rem !important;
+  width: 42rem !important;
 }
 .item {
   width: 27rem;
@@ -202,7 +203,6 @@ export default {
     },
 
     selectedCountry(v, oldV) {
-      console.log(v)
       this.tryAgain(true)
       switch(v) {
         case 'US':

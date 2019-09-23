@@ -29,4 +29,26 @@ export default {
   border-bottom: 0.2rem solid black;
   line-height: 2 !important;
 }
+@media only screen and (max-width: 1200px) {
+  .form {
+    width: 100vw;
+    justify-content: flex-start !important;
+    background-color: white;
+    height: auto;
+    padding-bottom: 2rem;
+    margin-top: 10rem;
+    margin-left: 0;
+  }
+  .headingMobile {
+    width: calc(100vw - 2rem) ;
+    text-align: left;
+    margin-bottom: 1rem;
+    margin-top: 0 !important;
+    font-size: 1.5rem !important;
+    font-family: 'Pixelpalm-category-font';
+    font-smooth: never;
+    -webkit-font-smoothing : none;
+  }
+}
+
 </style>

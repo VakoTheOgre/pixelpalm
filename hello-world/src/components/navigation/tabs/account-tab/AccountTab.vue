@@ -55,7 +55,6 @@ export default {
     },
 
     closeEverything() {
-      console.log('hi')
       this.$store.commit("menuIcon/close")
       this.$store.commit("exploreIcon/close")
       this.$store.commit("searchIcon/close")

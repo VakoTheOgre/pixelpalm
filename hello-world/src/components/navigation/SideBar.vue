@@ -16,6 +16,13 @@ export default {
     SearchTab,
     grayArea
   },
+
+  data() {
+    return {
+      images: []
+    }
+  },
+
   watch: {
     $route(v) {
       if (v.name) {
@@ -23,7 +30,42 @@ export default {
       }
     }
   },
+  
   computed: {
+
+    async allImages() {
+      try {
+        let res = await this.$axios.get('/slider')
+        this.images = res.data.sliders
+      } catch(e) {
+        console.log(e)
+      }
+    },
+
+    currentImages() {
+      if ( !this.allImages ) {
+        return
+      }
+      console.log('in')
+      for ( let i in this.images ) {
+        if ( this.$route.params.id == 'tanktops' ) {
+          return this.images[i].images
+        } else if ( this.$route.params.id == 't-shirts' ) {
+          return this.images[i].images
+        } else if ( this.$route.params.id == 'hoodies' ) {
+          return this.images[i].images
+        } else if ( this.$route.params.id == 'sweaters' ) {
+          return this.images[i].images
+        } else if ( this.$route.params.id == 'hats' ) {
+          return this.images[i].images
+        } else if ( this.$route.name == 'home' ) {
+          return this.images[i].images
+        } else {
+          return this.images[i].images
+        }
+      }
+    },
+
     menuState() {
       return this.$store.getters['menuIcon/menuState']
     },
@@ -43,7 +85,8 @@ export default {
       return this.$store.getters['legalsIcon/legalsState']
     },
     routeChecker() {
-      if ( this.$route.name == 'shopProd' || this.$route.name == 'shop' ||  this.$route.name == 'shopCat' || this.$route.name == 'home'  ) {
+      if ( this.$route.name == 'home'  ) {
+        // this.$route.name == 'shopProd' || this.$route.name == 'shop' ||this.$route.name == 'shopCat'
         return true
       } else {
         return false
@@ -62,18 +105,8 @@ export default {
       </a>
     </div>
     <main-menu></main-menu>
-    <carousel v-show="routeChecker" id="carousela" :per-page="1" :autoplay="true"  :autoplayTimeout="3000" :loop="true" :paginationEnabled="false" >
-          <slide id="slide">
-            <div class="slide">
-            
-          </div>
-          </slide>
-          <slide id="slide2">
-            <div class="slide">
-            
-          </div>
-          </slide>
-          <slide id="slide3">
+    <carousel v-show="routeChecker" id="carousela" :per-page="1" :autoplay="true"  :autoplayTimeout="2000" :mouseDrag="false" :touchDrag="false" :loop="true" :paginationEnabled="false" >
+          <slide v-for="(img, index) in currentImages" :key="index" id="slide" :style="{ backgroundImage: 'url(' + img + ')' }">
             <div class="slide">
             
           </div>
@@ -128,24 +161,12 @@ export default {
   transition: all 0.3s;
 }
 
-#slide,#slide2,#slide3 {
+  
+#slide {
+  background-size: cover;
+  background-position: center center;
   width: 100vw;
   height: calc(100vh - 12.8rem);
-}
-#slide {
-  background-image: url(https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/sidebar/header-images/index.jpg);
-  background-size: cover;
-  background-position: center center;
-}
-#slide2 {
-  background-image: url(https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/sidebar/header-images/index2.jpg);
-  background-size: cover;
-  background-position: center center;
-}
-#slide3 {
-  background-image: url(https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/sidebar/header-images/index3.jpg);
-  background-size: cover;
-  background-position: center center;
 }
 .slide {
   display: block;

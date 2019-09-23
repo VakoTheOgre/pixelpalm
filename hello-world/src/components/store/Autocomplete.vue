@@ -1,8 +1,7 @@
 <style lang="scss" scoped>
 .dropdown {
   max-height: 30rem;
-  width: 100%;
-  max-width: 56rem;
+  width: 86rem;
   overflow-y: scroll;
   overflow-x: hidden;
   position: absolute;
@@ -12,7 +11,7 @@
   border-top: none !important;
 }
 .dropdown-inputs {
-  width: 27rem !important;
+  width: 42rem !important;
   border: 0.2rem solid black;
   height: 4rem;
   font-size: 2rem;
@@ -178,7 +177,6 @@ export default {
       let res = await this.$axios.get(
         "https://restcountries.eu/rest/v2/all?fields=name;alpha2Code;flag;"
       );
-      console.log(res);
       this.items = res.data;
     }
     if (this.country) {

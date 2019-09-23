@@ -94,11 +94,9 @@ export default {
       })
       try{
         let res = await this.$axios.put(`/admin/products/uploadImage/${this.product._id}`, imageForm, {headers: { 'Authorization': `Bearer ${Cookie.get('token')}` } })
-        console.log(res)
         this.refresh()
         this.imagesToSend = []
       } catch(e) {
-        console.log(e.response.data.message)
       }
     },
     async deleteImg(imagePath) {

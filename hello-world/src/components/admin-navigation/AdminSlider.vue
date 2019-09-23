@@ -48,7 +48,6 @@ export default {
       })
       try{
         let res = await this.$axios.put(`/slider/${this.id}`, imageForm, {headers: { 'Authorization': `Bearer ${Cookie.get('token')}` } })
-        console.log(res)
         this.refresh()
         this.imagesToSend = []
       } catch(e) {

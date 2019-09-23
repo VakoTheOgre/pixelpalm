@@ -1,14 +1,15 @@
 <script>
-import checkoutCart from '@/components/navigation/tabs/CheckoutCartTab'
+
 import SubtotalCheckout from '@/components/navigation/tabs/SubtotalCheckout'
 import Autocomplete from '@/components/store/Autocomplete.vue'
 import StateAutocomplete from '@/components/store/StateAutocomplete'
+import ppla from '@/components/navigation/PolicesLetters'
 export default {
     components: {
-        checkoutCart,
         SubtotalCheckout,
         Autocomplete,
-        StateAutocomplete
+        StateAutocomplete,
+        ppla
     },
     data() {
     return {
@@ -200,21 +201,24 @@ export default {
                     <input v-model="phone" type="text" placeholder="Phone Number*" title="" class="input-h">
 
                 </div>
+                <subtotal-checkout v-if="device == 'mobile'"></subtotal-checkout>
                 <div @click="checkout" class="final-btn flex center">
                   <span>PURCHASE NOW</span>
                 </div>
             </form>
             <div class="order-sum">
-                <checkout-cart v-if="this.device == 'desktop'"></checkout-cart>
                 <div v-if="this.device == 'mobile'" class="terms flex AL-center">
                   <div @click="checkUncheck" class="checkbox">
                     <img  v-if="boxChecked" src="https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/tick.svg" alt="Agreed" class="checkbox-tick">
                   </div>
                   <span  class="agree-txt">Save shipping info for future checkouts.</span>
                 </div>
-                <subtotal-checkout></subtotal-checkout>
+                <!-- <subtotal-checkout v-if="device == 'mobile'"></subtotal-checkout> -->
             </div>
+            
         </div>
+        
+        <ppla v-if="device == 'desktop'"></ppla>
     </div>
 </template>
     
@@ -247,16 +251,16 @@ export default {
     position: relative;
     margin-left: 33rem;
     // margin-right: 16.5rem;
+    flex-direction: column;
 }
 .wrapper {
-    
+    max-width: 85rem !important;
     min-height: 53rem;
     // border: 0.1rem solid black;
 
 }
 .form {
-    width: 56rem;
-    height: 34rem;
+    min-width: 86rem;
     // border: 0.1rem solid black;
     margin-right: 2rem;
     margin-bottom: 4rem;
@@ -277,9 +281,10 @@ export default {
     height: 100%;
     width: 28rem;
     margin-bottom: 5.4rem;
+    padding-bottom: 20rem;
 }
 .horizontal-wrap {
-    width: 56rem;
+    width: 100%;
     margin-bottom: 2rem;
 }
 .input {
@@ -310,7 +315,7 @@ export default {
         line-height: 2.2 !important; 
     }
     &-street {
-      width: 56rem;
+      width: 100%;
       border: 0.2rem solid black;
       height: 4rem;
       margin-bottom: 2rem;
@@ -333,7 +338,7 @@ export default {
     }
     &-h {
         border: 0.2rem solid black;
-        width: 27rem;
+        width: 100%;
         height: 4rem;
         position: relative;
         font-size: 2rem;
@@ -356,7 +361,7 @@ export default {
         }
         &-l {
             border: 0.2rem solid black;
-            width: 27rem;
+            width: 100%;
             margin-right: 2rem;
             height: 4rem;
             font-size: 2rem;
@@ -408,8 +413,8 @@ export default {
 }
 .terms {
   // padding-top: 0.8rem;
-  padding-left: 2rem;
-  
+  padding-left: 1rem;
+  width: 100%;
   margin-top:0;
   margin-bottom: 0;
   // padding-bottom: 0.6rem;
@@ -454,6 +459,7 @@ export default {
     margin-left: 2rem;
     // border: 0.1rem solid black;
     margin-bottom: 2rem;
+    min-width: auto !important;
 }
 .final-btn {
   width: 100%;
@@ -472,6 +478,7 @@ export default {
     // border: 0.1rem solid black;
     height: 100%;
     width: 100%;
+    max-width: 100vw;;
     margin-bottom: 3.2rem;
 }
 .horizontal-wrap {

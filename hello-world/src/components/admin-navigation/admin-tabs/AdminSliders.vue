@@ -17,7 +17,6 @@ export default {
       try {
         let res = await this.$axios.get('/slider')
         this.images = res.data.sliders
-        console.log(res.data.sliders)
       } catch(e) {
         console.log(e)
       }

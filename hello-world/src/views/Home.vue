@@ -1,27 +1,39 @@
 <script>
 import StoreTemplate from '@/components/store/StoreTemplate'
+import ppla from '@/components/navigation/PolicesLetters'
 export default {
   components: {
-    StoreTemplate
+    StoreTemplate,
+    ppla
+  },
+
+  data() {
+    return {
+      images: []
+    }
   },
   
-  methods: {
-     routePush(payload) {
-       if ( payload == 'pp' ) {
-        this.$router.push('/grayarea/policies')
-       } else {
-         this.$router.push('/grayarea/legal')
-       }
-       if ( this.device == 'desktop' ) {
-        this.$store.commit("accountIcon/close")
-        this.$store.commit("exploreIcon/close")
-        this.$store.commit("searchIcon/close")
-        this.$store.commit("menuIcon/close")
-        this.$store.commit("cartIcon/close")
-        this.$store.commit("legalsIcon/open")
-       }
-     }
+  computed: {
+    async allImages() {
+      try {
+        let res = await this.$axios.get('/slider')
+        this.images = res.data.sliders
+      } catch(e) {
+        console.log(e)
+      }
+    },
+
+    currentImages() {
+      if ( !this.allImages ) {
+        return
+      }
+      console.log('in')
+      for ( let i in this.images ) {
+          return this.images[i].images
+      }
+    },
   }
+  
 
 }
 </script>
@@ -29,48 +41,22 @@ export default {
 <template>
   <div class="home">
     <div v-if='device == "mobile"' class="carousel-wrapper">
-      <carousel id="carousela" :per-page="1" :autoplay="true" :autoplayTimeout="3000" :loop="true" :paginationEnabled="false" >
-            <slide id="slide">
-              <div class="slide">
+      <carousel id="carousela" :per-page="1" :autoplay="true"  :autoplayTimeout="2000" :mouseDrag="false" :touchDrag="false" :loop="true" :paginationEnabled="false" >
+          <slide v-for="(img, index) in currentImages" :key="index" id="slide" :style="{ backgroundImage: 'url(' + img + ')' }">
+            <div class="slide">
               
             </div>
-            </slide>
-            <slide id="slide2">
-              <div class="slide">
-              
-            </div>
-            </slide>
-            <slide id="slide3">
-              <div class="slide">
-              
-            </div>
-            </slide>
-      </carousel>
+          </slide>
+    </carousel>
       <!-- <img src="https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/palm-logo.svg" class="logo-float"> -->
     </div>
     <store-template></store-template>
-    <div class="terms-wrap flex JF-spaceBE">
-      <span @click="routePush('pp')" class="terms pointer">PP</span>
-      <span @click="routePush('la')" class="terms pointer">LA</span>
-    </div>
+    <ppla v-if="device == 'desktop'"></ppla>
   </div>
 </template>
 
 <style lang="scss" scoped>
-.terms {
-  &-wrap {
-    width: 5.5rem;
-    position: absolute;
-    bottom: 0.5rem;
-    right: 1rem;
-  }
-  font-size: 1rem;
-  user-select: none;
-  font-family: 'Pixelpalm-category-font';
-  text-rendering: geometricPrecision;
-  font-smooth: never;
-	-webkit-font-smoothing: none;
-}
+
 .home {
   display: flex;
   margin: 0 !important;
@@ -95,7 +81,6 @@ export default {
   }
   .slide {
     display: block;
-    background-image: url(https://images.unsplash.com/photo-1539601591461-2a5e0edb6915?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80);
     background-size: cover;
     background-position: center center;
     width: 100vw;

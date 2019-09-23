@@ -78,8 +78,8 @@ export default {
     <registration v-else></registration>
     <div class="hr"></div>
     <span class="registered">REGISTERED CUSTOMERS</span>
-    <input  v-model="email" type="email" placeholder="Email Address*" class="mail" :class="{ redError: emailErr != '' }">
-    <input  v-model="password" type="password" placeholder="Password*" class="pass">
+    <input  v-model="email" type="email" placeholder="Email Address*" class="mail" :class="{ redError: emailErr != '' }" autocomplete="false">
+    <input  v-model="password" type="password" placeholder="Password*" class="pass" autocomplete="false">
     <router-link tag="span" to="/account/password-recovery" @click.native="closeEverything" class="forgot-pass pointer">FORGOT YOUR PASSWORD?</router-link>
     <button  @click.prevent="login" class="btn login pointer">LOGIN</button>
   </form>
@@ -135,7 +135,7 @@ export default {
   }
 }
 .btn {
-  height: 4rem; 
+  min-height: 4rem !important;  
   border: none;
   background-color: black;
   color: white;
@@ -153,7 +153,7 @@ export default {
   -webkit-font-smoothing : none;
 }
 .mail {
-  height: 4rem; 
+  min-height: 4rem !important; 
   border: 0.2rem solid black;
   background-color: transparent;
   color: black;
@@ -164,10 +164,11 @@ export default {
   font-smooth: never;
   -webkit-font-smoothing: none;
   &::placeholder {
+      padding-top: 0.3rem;
+      height: 100%;
       font-size: 2rem;
       color: gray;
       opacity: 0.5;
-      padding-top: 0.6rem;
       font-family: 'Pixelpalm Pro-Input';
       text-rendering: geometricPrecision;
       font-smooth: never;
@@ -178,7 +179,7 @@ export default {
   }
 }
 .pass {
-  height: 4rem; 
+  min-height: 4rem !important; 
   border: 0.2rem solid black;
   background-color: transparent;
   font-size: 2rem;
@@ -188,9 +189,10 @@ export default {
     font-smooth: never;
     -webkit-font-smoothing: none;
     &::placeholder {
+      padding-top: 0.2rem;
         font-size: 2rem;
+        height: 100%;
         color: gray;
-        padding-top: 0.6rem;
         opacity: 0.5;
         font-family: 'Pixelpalm Pro-Input';
         text-rendering: geometricPrecision;

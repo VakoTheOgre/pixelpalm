@@ -40,7 +40,8 @@ export default {
 
 <template>
 <div class="cart-wrapper flex-col AL-center">
-  <span class="heading">CART</span>
+  <div class="scrollable-wrap flex-col AL-center">
+      <span class="heading">CART</span>
       <div :key="index" v-for="(item,index) in cart" class="cart-item flex ">
           <img :src="item.product.images[0]" class="thumb">
 
@@ -66,13 +67,57 @@ export default {
             </button>
           </div> -->
       </div>
-      <div class="spacer"></div>
-      <div v-if="amount == 0" class="empty">Oops! Your cart is empty...</div>
-      <checkout-btn backColor="red" margin="3"></checkout-btn>
+      <!-- <div class="spacer">.</div> -->
+      <div v-if="amount === 0" class="empty">Oops! Your cart is empty...</div>
+      <div v-if="amount !== 0" class="subtotal-checkout-root flex ">
+          <!-- <span class="subtotal">SUBTOTAL: ${{ subtotal }}.00 </span> -->
+          <span class="total flex AL-center">Order Total:</span>
+          <span class="num flex AL-center"> ${{ subtotal }}.00</span>
+      </div>
+      <checkout-btn backColor="red" margin="4"></checkout-btn>
+  </div>
+  
   </div>
 </template>
 
 <style lang="scss" scoped>
+.subtotal-checkout-root {
+  justify-content: flex-end;
+    padding-top: 1rem;
+    padding-bottom: 0.6rem;
+    width: 27rem ;
+    border-top: none !important;
+    padding-top: 1.4rem !important;
+    padding-bottom: 1.4rem !important;
+}
+.total {
+  padding-top: 0rem;
+  width: auto;
+  text-align: left;
+  font-size: 2rem;
+  font-family: 'Pixelpalm Pro';
+  text-rendering: geometricPrecision;
+  font-smooth: never;
+  -webkit-font-smoothing: none;
+   padding-top:0rem !important;
+  text-align: left !important;
+  padding-left: 0 !important;
+  margin: 0 !important;
+  font-size: 2rem !important;
+  margin-top: -1rem !important;
+}
+.num {
+  padding-bottom: 1rem !important;
+  padding-top: 0rem;
+  width: auto;
+  height: 3rem;
+  margin-left: 1rem;
+  font-size: 2rem;
+  font-family: 'Pixelpalm Pro';
+  text-rendering: geometricPrecision;
+  font-smooth: never;
+  -webkit-font-smoothing: none;
+}
 .empty {
   font-size: 2rem;
   font-family: 'Pixelpalm Pro-Input';
@@ -81,7 +126,10 @@ export default {
 	-webkit-font-smoothing: none;
 }
 .spacer {
-  height: 2rem;
+  height: 0.1rem;
+  margin-bottom: 2rem;
+  color: transparent;
+  user-select: none;
 }
 
 .heading {
@@ -90,15 +138,28 @@ export default {
   position: relative;
   padding-top: 3rem;
   padding-bottom: 1rem;
+  margin-bottom: -1rem;
   margin-top: 0 !important;
   font-size: 1.5rem !important;
   font-family: 'Pixelpalm-category-font';
   font-smooth: never;
   -webkit-font-smoothing : none;
 }
+.scrollable-wrap {
+  overflow: auto;
+  max-height: 100%;
+  height: 100%;
+  padding-bottom: 20rem;
+  width: 100%;
+  overflow-x: hidden !important;
+
+}
 .cart-wrapper {
   background-color: white;
   min-height: calc(100vh - 12.8rem);
+  max-height: 100%;
+  overflow: auto;
+  overflow-x: hidden !important;
   width: 33rem;
   position: absolute;
   top: 12.8rem;
@@ -106,9 +167,6 @@ export default {
   z-index: 4;
   margin-bottom: 0 !important;
   // overflow-y: scroll;
-  :first-of-type {
-    margin-top: 1rem;
-  }
 }
 .cart-item {
   width: 27rem;
@@ -119,6 +177,7 @@ export default {
   :first-of-type {
     margin-top: 0;
   }
+  
 }
 .spans {
   padding: 0.3rem 0.2rem 0.2rem 0.2rem;

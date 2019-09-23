@@ -35,7 +35,6 @@ export default {
 
     addToCart (state, payload) {
       for (let item of state.cart) {
-        console.log(item.product._id == payload.product._id && item.variant.size == payload.variant.size)
         if (item.product._id == payload.product._id && item.variant.size == payload.variant.size) {
           CartItem.changeAmount(item, '+')
           return

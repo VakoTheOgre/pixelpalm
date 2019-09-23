@@ -4,74 +4,48 @@ export default {
 }
 </script>
 <template>
-  <div class="fulfilling-square-spinner">
-    <div class="spinner-inner"></div>
+  <div class="loader-wrap flex center">
+    <div class="spinner"></div>
   </div>
 </template>
 
 <style>
-.fulfilling-square-spinner , .fulfilling-square-spinner * {
-        box-sizing: border-box;
-      }
 
-      .fulfilling-square-spinner {
-        height: 50px;
-        width: 50px;
-        position: relative;
-        border: 4px solid #ff1d5e;
-        animation: fulfilling-square-spinner-animation 4s infinite ease;
-      }
+.loader-wrap {
+  width: 100%;
+  height: 100vh;
+}
+.spinner {
+  width: 100px;
+  height: 100px;
+  background-color: #000;
+  -webkit-animation: sk-rotateplane 1.2s infinite ease-in-out;
+  animation: sk-rotateplane 1.2s infinite ease-in-out;
+}
+@media only screen and (max-width: 768px) {
+  .spinner {
+    width: 50px;
+    height: 50px;
+    margin-top: -100px;
+  }
+}
 
-      .fulfilling-square-spinner .spinner-inner {
-        vertical-align: top;
-        display: inline-block;
-        background-color: #ff1d5e;
-        width: 100%;
-        opacity: 1;
-        animation: fulfilling-square-spinner-inner-animation 4s infinite ease-in;
-      }
+@-webkit-keyframes sk-rotateplane {
+  0% { -webkit-transform: perspective(120px) }
+  50% { -webkit-transform: perspective(120px) rotateY(180deg) }
+  100% { -webkit-transform: perspective(120px) rotateY(180deg)  rotateX(180deg) }
+}
 
-      @keyframes fulfilling-square-spinner-animation {
-        0% {
-          transform: rotate(0deg);
-        }
-
-        25% {
-          transform: rotate(180deg);
-        }
-
-        50% {
-          transform: rotate(180deg);
-        }
-
-        75% {
-          transform: rotate(360deg);
-        }
-
-        100% {
-          transform: rotate(360deg);
-        }
-      }
-
-      @keyframes fulfilling-square-spinner-inner-animation {
-        0% {
-          height: 0%;
-        }
-
-        25% {
-          height: 0%;
-        }
-
-        50% {
-          height: 100%;
-        }
-
-        75% {
-          height: 100%;
-        }
-
-        100% {
-          height: 0%;
-        }
-      }
+@keyframes sk-rotateplane {
+  0% { 
+    transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+    -webkit-transform: perspective(120px) rotateX(0deg) rotateY(0deg) 
+  } 50% { 
+    transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);
+    -webkit-transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg) 
+  } 100% { 
+    transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+    -webkit-transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+  }
+}
 </style>
