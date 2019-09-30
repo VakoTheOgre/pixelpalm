@@ -78,8 +78,8 @@ export default {
     <registration v-else></registration>
     <div class="hr"></div>
     <span class="registered">REGISTERED CUSTOMERS</span>
-    <input  v-model="email" type="email" placeholder="Email Address*" class="mail" :class="{ redError: emailErr != '' }" autocomplete="false">
-    <input  v-model="password" type="password" placeholder="Password*" class="pass" autocomplete="false">
+    <input  v-model="email" type="email" placeholder="Email Address*" class="mail" :class="{ redError: emailErr != '' }">
+    <input  v-model="password" type="password" placeholder="Password*" class="pass">
     <router-link tag="span" to="/account/password-recovery" @click.native="closeEverything" class="forgot-pass pointer">FORGOT YOUR PASSWORD?</router-link>
     <button  @click.prevent="login" class="btn login pointer">LOGIN</button>
   </form>
