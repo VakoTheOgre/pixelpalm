@@ -24,7 +24,7 @@ export default {
 <div class="root-wrapper">
   <span v-if="this.device == 'desktop'" class="title">PASSWORD RECOVERY</span>
   <span v-if="device == 'mobile'" class="headingMobile">PASSWORD RECOVERY</span>
-  <form class="root-forgot flex-col center">
+  <form   class="root-forgot flex-col center">
       <input type="text" v-model="email" placeholder="Enter your email address" class="input">
       <button @click.prevent="send" class="btn pointer">SUBMIT</button>
       <span>{{ error }}</span>

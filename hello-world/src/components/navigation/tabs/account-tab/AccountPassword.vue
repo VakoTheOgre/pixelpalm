@@ -20,7 +20,7 @@ export default {
 }
 </script>
 <template>
-    <form class="reset-root flex-col">
+    <form   class="reset-root flex-col">
         <input type="text" v-model="email" placeholder="Email" class="input">
         <div @click.prevent="send" class="btn flex center pointer">SUBMIT</div>
         <!-- <span>{{ error }}</span> -->

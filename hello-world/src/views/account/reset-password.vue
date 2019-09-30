@@ -40,7 +40,7 @@ export default {
 </script>
 
 <template>
-    <form v-if="verified" class="root-reset flex-col center">
+    <form   v-if="verified" class="root-reset flex-col center">
         <span v-if="this.device == 'desktop'" class="title">RESET PASSWORD</span>
         <input v-model="password" type="password" placeholder="Enter new password*" class="input">
         <input v-model="password2" type="password" placeholder="Confirm Password*" class="input">

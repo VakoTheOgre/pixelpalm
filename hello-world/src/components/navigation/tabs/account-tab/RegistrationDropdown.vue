@@ -90,7 +90,7 @@ export default {
 
 
 <template>
-<form class="inner-form flex-col">
+<form   class="inner-form flex-col">
   <input  v-model="firstName" type="text" placeholder="First Name*" class="input">
   <!-- <span v-model="nameErr" class="error"> {{ nameErr }} </span> -->
   

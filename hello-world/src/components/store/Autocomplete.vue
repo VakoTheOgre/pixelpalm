@@ -109,8 +109,8 @@
 
 <template>
   <div class="root-dropdowns">
-    <input v-if="!selectedSomething" v-model="userInput" autocomplete="off" :placeholder="type + '*'" type="text" class="dropdown-inputs mobile-input1">
-    <input v-else @input="tryAgain" v-model="userInput2" autocomplete="off" :placeholder="type + '*'" type="text" class="dropdown-inputs mobile-input2">
+    <input v-if="!selectedSomething" v-model="userInput"   :placeholder="type + '*'" type="text" class="dropdown-inputs mobile-input1">
+    <input v-else @input="tryAgain" v-model="userInput2"   :placeholder="type + '*'" type="text" class="dropdown-inputs mobile-input2">
     <div v-if="filteredItems.length" class="dropdown">
       <div @click="selected(item)" v-for="(item, index) in filteredItems" :key="index" class="item flex pointer AL-center JF-spaceBE">
         {{ item.name }}

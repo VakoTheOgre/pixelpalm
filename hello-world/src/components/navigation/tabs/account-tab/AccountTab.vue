@@ -68,7 +68,7 @@ export default {
 
 <template>
 <div class="root">
-  <form v-if="!userSignedIn" class="form flex-col">
+  <form   v-if="!userSignedIn" class="form flex-col">
     <span class="new-customer-title">NEW CUSTOMERS
     </span>
     <div v-if="!this.registerPressed" class="new-customer flex-col">
@@ -79,7 +79,7 @@ export default {
     </div>
     <registration v-else></registration>
     <div class="hr"></div>
-    <form class="flex-col" > 
+    <form   class="flex-col" > 
       <span class="registered">REGISTERED CUSTOMERS</span>
       <input v-model="email" type="email" placeholder="Email Address*" class="mail input" :class="{ redError: error }">
       <!-- <span class="error">{{ emailErr }}</span> -->

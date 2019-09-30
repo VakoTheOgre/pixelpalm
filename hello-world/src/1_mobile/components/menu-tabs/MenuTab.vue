@@ -37,7 +37,7 @@ export default {
       <img @click="closeMenu" :src="category.svg" alt="icon" class="menu-icon pointer">
       <span @click="closeMenu" class="menu-option pointer"> {{ category.name }} </span>
     </router-link>
-    <a style="postition: absolute; z-index: 99999999;" href="googlechrome://navigate?url=pixelpalm.co" class="product-menu_item">OPEN IN GOOGLE</a>
+    <!-- <a style="postition: absolute; z-index: 99999999;" href="googlechrome://navigate?url=pixelpalm.co" class="product-menu_item">OPEN IN GOOGLE</a> -->
   </div>
   <div v-if="!this.socialsState" class="socials flex JF-spaceBE">
     <studioIcon id="studioIcon"></studioIcon>

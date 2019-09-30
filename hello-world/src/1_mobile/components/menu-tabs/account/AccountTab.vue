@@ -67,7 +67,7 @@ export default {
 
 <template>
 <div class="root-account">
-  <form v-if="!userSignedIn" class="form-outer flex-col">
+  <form v-if="!userSignedIn"   class="form-outer flex-col">
     <span class="new-customer-title">NEW CUSTOMERS</span>
     <div v-if="!this.registerPressed" class="new-customer flex-col">
       
@@ -83,7 +83,7 @@ export default {
     <router-link tag="span" to="/account/password-recovery" @click.native="closeEverything" class="forgot-pass pointer">FORGOT YOUR PASSWORD?</router-link>
     <button  @click.prevent="login" class="btn login pointer">LOGIN</button>
   </form>
-  <logged-user-tab v-else />
+  <logged-user-tab v-else :key="userSignedIn" />
 </div>
 </template>
 

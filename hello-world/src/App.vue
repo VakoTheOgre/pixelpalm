@@ -90,7 +90,25 @@ export default {
 input {
     border-radius: 0 !important;
     -webkit-appearance: none !important;
+    -webkit-tap-highlight-color: transparent;
+    outline:none !important;
 }
+input:focus {
+  outline-color: transparent!important;
+  outline-width: 0!important;
+}
+input:enabled {
+  outline-color: transparent!important;
+  outline-width: 0!important;
+}
+:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px white inset !important;
+    background-color: white !important;
+ }
+
+ :-webkit-autofill {
+    -webkit-text-fill-color: black !important;
+ }
 //{
 //   "name": "BLOG",
 //   "svg": "https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/blog-icon.svg"

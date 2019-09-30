@@ -171,7 +171,7 @@ export default {
       <span v-if="device == 'desktop'" class="title">CHECKOUT</span>
       <span v-if="device == 'mobile'" class="headingMobile">CHECKOUT</span>
         <div class="wrapper flex JF-spaceBE AL-center">
-            <form class="form flex-col" autocomplete="on">
+            <form   class="form flex-col">
                 <div class="horizontal-wrap flex JF-spaceBE">
                     <input  v-model="name" type="text" placeholder="First Name*" id="mobile-input" class="input-h-l ">
 

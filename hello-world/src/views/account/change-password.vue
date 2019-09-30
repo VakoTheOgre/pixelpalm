@@ -24,7 +24,7 @@ export default {
 <div class="outer-wrap flex center">
   <span v-if="this.device == 'mobile'" class="option-span">ACCOUNT INFORMATION</span>
   <span v-if="this.device == 'desktop'" class="title">EDIT PASSWORD</span>
-  <form class="root-change flex-col center">
+  <form   class="root-change flex-col center">
       <input type="text" v-model="email" placeholder="Enter your email" class="input">
       <button @click.prevent="send" class="btn pointer">SUBMIT</button>
       <span>{{ error }}</span>

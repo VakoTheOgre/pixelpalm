@@ -78,6 +78,7 @@ export default {
 
     addToCart() {
       setTimeout(function () {document.getElementById('hide').style.color='transparent'}, 3000);
+      setTimeout(function () {document.getElementById('hidemobile').style.color='transparent'}, 3000);
       if(!this.selectedSize) {
         this.error = 'E'
         return
@@ -151,7 +152,7 @@ export default {
         </div>
           <!-- <span   v-if="this.device == 'mobile' && !this.addedText" class="select-size flex AL-center">Select Size </span> -->
         <transition name="slideIn">
-          <span  id="hide" v-show="this.device == 'mobile' && this.addedText" class="select-size-small AL-center">Product added to cart! </span>
+          <span  id="hidemobile" v-show="this.device != 'desktop' && this.addedText" class="select-size-small AL-center">Product added to cart! </span>
         </transition>
 
         <span   v-if="this.device == 'mobile' && !this.addedText" class="select-size flex AL-center">Select Size </span>

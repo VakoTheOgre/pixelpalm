@@ -41,7 +41,7 @@ export default {
 <template>
   <div class="home">
     <div v-if='device == "mobile"' class="carousel-wrapper">
-      <carousel id="carousela" :per-page="1" :autoplay="true"  :autoplayTimeout="2000" :mouseDrag="false" :touchDrag="false" :loop="true" :paginationEnabled="false" >
+      <carousel id="carousela" :per-page="1" :autoplay="true"  :autoplayTimeout="2000" :loop="true" :paginationEnabled="false" >
           <slide v-for="(img, index) in currentImages" :key="index" id="slide" :style="{ backgroundImage: 'url(' + img + ')' }">
             <div class="slide">
               
