@@ -162,13 +162,13 @@ export default {
 
 <template>
   <div class="nav flex JF-spaceBE">
-    <img @click="toggleMenu" :src="menuIcon"       title="Menu"    alt="" class="pointer pixecon">
-    <img @click="toggleExplore" :src="exploreIcon" title="Studio" alt="" class="pointer pixecon">
-    <img @click="toggleSearch" :src="searchIcon"   title="Search"  alt="" class="pointer pixecon">
-    <img @click="toggleAccount" :src="accountIcon" title="Account" alt="" class="pointer pixecon">
-    <div class="pointer flex center">
-        <span v-if="!this.cartState" class="cart-nums">{{ this.amount }}</span>
-        <img @click="toggleCart" :src="cartIcon"  title="Cart" alt="CART" class="cart-img pixecon">
+    <img @click="toggleMenu" :src="menuIcon"       title="Menu"    alt="" class="pointer ">
+    <img @click="toggleExplore" :src="exploreIcon" title="Studio" alt="" class="pointer ">
+    <img @click="toggleSearch" :src="searchIcon"   title="Search"  alt="" class="pointer ">
+    <img @click="toggleAccount" :src="accountIcon" title="Account" alt="" class="pointer ">
+    <div class=" parent-cart-btn pointer flex center">
+        <p v-if="!this.cartState" class="cart-nums">{{ this.amount }}</p>
+        <img @click="toggleCart" :src="cartIcon"  title="Cart" alt="CART" class="pixecon">
     </div>
   </div>
 </template>
@@ -183,13 +183,30 @@ export default {
     width: 3rem;
   }
 }
-.cart-nums{
+.pixecon {
     position: absolute;
+}
+.parent-cart-btn {
+  position: relative;
+  z-index: 1;
+}
+@media not all and (min-resolution:.001dpcm)
+{ @supports (-webkit-appearance:none) {
+
+    .pixecon { 
+
+        padding-top: 0.2rem;
+
+    }
+}}
+.cart-nums{
     font-size: 1rem;
-    z-index: -1;
-    font-family: 'new_cart_font';
-    text-rendering: geometricPrecision;
+    // z-index: -1;
+    // line-height: 0.7;
+    font-family: 'iphoneCart';
+    text-rendering: unset !important;
     font-smooth: never;
     -webkit-font-smoothing: none;
+    -webkit-font-feature-settings: "kern";
 }
 </style>

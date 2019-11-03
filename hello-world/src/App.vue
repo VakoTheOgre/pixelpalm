@@ -243,6 +243,9 @@ input:enabled {
 html {
   font-size: 62.5%;
 }
+body {
+  box-sizing:border-box;
+}
 // @media only screen and (min-width: 1200px) and (max-height: 872px) {
 //   html {
 //     font-size: 42.5%;
@@ -301,6 +304,18 @@ html {
       url(https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/fonts/cart-font/newcartfont.woff2) format('woff2'),
       url(https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/fonts/cart-font/newcartfont.woff) format('woff'),
       url(https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/fonts/cart-font/newcartfont.ttf) format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'iphoneCart';
+    src:
+      url(https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/fonts/iphoneFontCartTest/newcartfont.svg) format('svg'),
+      url(https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/fonts/iphoneFontCartTest/newcartfont.eot) format('embedded-opentype'),
+      url(https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/fonts/iphoneFontCartTest/newcartfont.eot#iefix) format('embedded-opentype'),
+      url(https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/fonts/iphoneFontCartTest/newcartfont.woff2) format('woff2'),
+      url(https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/fonts/iphoneFontCartTest/newcartfont.woff) format('woff'),
+      url(https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/fonts/iphoneFontCartTest/newcartfont.ttf) format('truetype');
     font-weight: normal;
     font-style: normal;
 }

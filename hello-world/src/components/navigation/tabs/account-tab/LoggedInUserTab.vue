@@ -15,7 +15,7 @@ export default {
     
     data () {
         return {
-            userStatusUpdate: false
+            userStatusUpdate: false,
         }
     },
     watch: {
@@ -54,6 +54,7 @@ export default {
         }
     },
     methods: {
+
       togglePass () {
             this.$router.push( '/account/change-password' )
             this.$store.commit('accountIcon/close')

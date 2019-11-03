@@ -18,8 +18,10 @@ export default {
       state.cart.forEach(item => {
         let itemTotal = item.amount * item.variant.price
         sub += itemTotal
+        
+        console.log(sub.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,'))
       })
-      return sub
+      return sub.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
     },
 
     getAmount (state) {
@@ -64,6 +66,7 @@ export default {
     checkout ({ commit, state }, payload) {
       return new Promise(async (resolve, reject) => {
         try {
+          console.log(Cookie.get('token'))
           let res = await axios.post(`/shop/checkout`, {
             recipient: {
               name: payload.name,

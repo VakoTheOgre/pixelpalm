@@ -93,11 +93,13 @@ export default {
 		getHistory ({ commit, state }) {
 			return new Promise(async (resolve,reject) => {
 				try {
-					let res = await axios.get(`/user/getOrders/${state.user._id}`, { headers: { 'Authorization': `Bearer ${state.token}` } })
-					commit('setHistory', res.data.orders)
+          let res = await axios.get(`/user/getOrders/${state.user._id}`, { headers: { 'Authorization': `Bearer ${Cookie.get('token')}` } })
+          console.log(res.data.orders)
+          commit('setHistory', res.data.orders)
+          console.log(res)
 					resolve(true)
 				} catch (e) {
-					console.log(e.response.data.message)
+					console.log(e)
 					reject(e)
 				}
 			})

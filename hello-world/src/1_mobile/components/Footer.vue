@@ -3,7 +3,8 @@ export default {
 data() {
     return {
         email: '',
-        emailErr: ''
+        emailErr: '',
+        loading: false
     }
 },
 
@@ -19,6 +20,18 @@ watch: {
   },
 
   methods: {
+    submitMsg() {
+      this.loading = true
+      setTimeout(() => {
+        this.loading = false
+        this.sent = true
+        setTimeout(() => {
+          this.$router.push('/')
+        },3000)
+      },3000)
+      
+    },
+
      routePush(payload) {
        if ( payload == 'pp' ) {
         this.$router.push('/grayarea/policies')
@@ -43,7 +56,7 @@ watch: {
         <h3 class="heading">NEWSLETTER</h3>
         <div class="email-wrapper flex JF-spaceBE AL-center">
             <input v-model="email" type="email" placeholder="Email Address" class="newsletter-input">
-            <img src="https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/newsletter-icon.svg" alt="Envelope" class="newsletter-icon">
+            <img @click="submitMsg" src="https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/newsletter-icon.svg" alt="Envelope" class="newsletter-icon">
         </div>
         <div class="socials flex JF-spaceBE">
           <a target="_blank" href="https://www.pinterest.com/pixelpalm/">  <img src="https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/pinterest-icon.svg" alt="Pinterest-icon" class="left pointer"></a>
@@ -98,28 +111,30 @@ watch: {
 }
 .newsletter {
     &-input {
-        width: 87%;
-        height: 4rem;
+        height: 4rem; 
         border: none;
         background-color: transparent;
+        width: calc(100% - 2rem);
+        line-height: 2.2 !important; 
         font-size: 2rem;
-        color: black;
-        font-family: 'Pixelpalm Pro-Input';
-        text-rendering: geometricPrecision;
-        font-smooth: never;
-        -webkit-font-smoothing: none;
-        &::placeholder {
-          background-color: transparent !important;
-            font-size: 2rem;
-            color: gray;
-            font-family: 'Pixelpalm Pro-Input';
-            text-rendering: geometricPrecision;
-            font-smooth: never;
-            -webkit-font-smoothing: none;
-        }
+          color: black;
+          font-family: 'Pixelpalm Pro-Input';
+          text-rendering: geometricPrecision;
+          font-smooth: never;
+          -webkit-font-smoothing: none;
+          &::placeholder {
+              font-size: 2rem;
+              line-height: 2.2 !important; 
+              color: gray;
+              opacity: 0.5;
+              font-family: 'Pixelpalm Pro-Input';
+              text-rendering: geometricPrecision;
+              font-smooth: never;
+              -webkit-font-smoothing: none;
+            }
         &:enabled {
-            padding-left: 1rem;
-            color: black;
+          padding-left: 1rem;
+          line-height: 2.2 !important; 
         }
     }
     &-icon {

@@ -12,7 +12,7 @@ export default {
     <div class="subtotal-checkout-root flex ">
         <!-- <span class="subtotal">SUBTOTAL: ${{ subtotal }}.00 </span> -->
         <span class="total flex AL-center">Order Total:</span>
-        <span class="num flex AL-center"> ${{ subtotal }}.00</span>
+        <span class="num flex AL-center"> ${{ subtotal }}</span>
     </div>
 </template>
 

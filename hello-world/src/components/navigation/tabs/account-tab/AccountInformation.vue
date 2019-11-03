@@ -32,7 +32,9 @@ export default {
       phone: '',
       phoneErr: '',
 
-      error: ''
+      error: '',
+
+      sent: false,
     }
   },
 
@@ -65,15 +67,18 @@ export default {
         }, {
           headers: { 'Authorization': `Bearer ${this.$store.getters['auth/token']}` }
         })
+        this.sent = true
         this.$store.commit('information/close')
         this.$store.commit('loggedUser/open')
         this.error = res.data.message
         this.$store.dispatch('auth/me')
       } catch (e) {
         // this.error = e.response.data.message
+        console.log(e.response.data.message)
         this.error = ''
       }
     }
+  
   }
 }
 </script>
@@ -96,14 +101,19 @@ export default {
       <input v-model="phone" type="text" placeholder="Phone Number*" :class="{ errorBorder: this.phoneErr != '' }" title="" class="input">
 
       <span v-if="error">{{ error }}</span>
-      <span @click="changeInfo" class="final-btn flex center pointer">
-        SAVE CHANGES
+      <span @click="changeInfo" :class="{ greenBtn: sent }" class="final-btn flex center pointer">
+        <span v-if="!sent">SAVE</span> 
+        <span v-if="sent">CHANGES SAVED</span>
       </span>
 
   </div>
 </template>
 
 <style lang='scss' scoped>
+.greenBtn {
+  background-color: #15CD72 !important;
+  color: white !important;
+}
 .option-span {
   font-family: 'Pixelpalm-category-font';
   text-rendering: geometricPrecision;

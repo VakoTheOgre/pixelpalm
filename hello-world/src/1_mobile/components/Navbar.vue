@@ -102,7 +102,7 @@ export default {
               <img src="https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/pixelpalm_logo_big.svg"  alt="PIXELPALM-LOGO" class="text-logo pointer">
             </a>
             <div class="menu-cart pointer flex center">
-                <span v-if="!this.cartState" class="cart-nums">{{ this.amount }}</span>
+                <p v-if="!this.cartState" class="cart-nums flex center">{{ this.amount }}</p>
                 <img @click="toggleCart" :src="cartIcon"  title="Cart" alt="CART" class="cart-img">
             </div>
         </div>
@@ -145,18 +145,34 @@ export default {
         width: 3rem;
         height: 3rem;
         margin-right: 1rem;
+        position: relative;
+        z-index: 1;
     }
 }
-.cart-nums{
+.menu-cart img {
     position: absolute;
+}
+@media not all and (min-resolution:.001dpcm)
+{ @supports (-webkit-appearance:none) {
+
+    .cart-nums { 
+
+        padding-top: 0.2rem;
+
+    }
+}}
+.cart-nums{
     font-size: 1rem;
-    z-index: -1;
-    font-family: 'new_cart_font';
-    text-rendering: geometricPrecision;
+    // line-height: 0.7;
+    // z-index: -1;
+    font-family: 'iphoneCart';
+    text-rendering: unset !important;
     font-smooth: never;
-	-webkit-font-smoothing: none;
+    -webkit-font-smoothing: none;
+    -webkit-font-feature-settings: "kern";
 
 }
+
 .text-logo {
     height: 3rem;
     width: auto;

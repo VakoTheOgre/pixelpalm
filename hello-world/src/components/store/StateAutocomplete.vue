@@ -1,4 +1,27 @@
 <style lang="scss" scoped>
+input::placeholder {
+  font-size: 2rem;
+  color: gray;
+  line-height: 1.3333 !important; 
+  opacity: 0.5;
+  font-family: 'Pixelpalm Pro-Input';
+  text-rendering: geometricPrecision;
+  font-smooth: never;
+  -webkit-font-smoothing: none;
+}
+input:disabled {
+  padding-left: 1rem;
+  padding-top: 0.6rem;
+  line-height: 2.2 !important; 
+}
+input:enabled {
+  padding-left: 1rem;
+}
+@media only screen and (max-width: 1200px) {
+  input:enabled {
+    // padding-top: 0.8rem;
+  }
+}
 .dropdown {
   max-height: 30rem;
   max-width: 42rem;
@@ -21,21 +44,7 @@
   text-rendering: geometricPrecision;
   font-smooth: never;
   -webkit-font-smoothing: none;
-  &::placeholder {
-    font-size: 2rem;
-    color: gray;
-    opacity: 0.5;
-    padding-top: 0.8rem;
-    font-family: 'Pixelpalm Pro-Input';
-    text-rendering: geometricPrecision;
-    font-smooth: never;
-    -webkit-font-smoothing: none;
-  }
-  &:enabled {
-    padding-left: 1rem;
-  }
   &:disabled {
-    padding-left: 1rem;
     background-color: white;
     // opacity: 0.3;
     border-color: rgba(0, 0, 0, 0.3)
@@ -93,26 +102,10 @@
     text-rendering: geometricPrecision;
     font-smooth: never;
     -webkit-font-smoothing: none;
-    &::placeholder {
-      font-size: 2rem;
-      color: gray;
-      opacity: 0.5;
-      padding-top: 0.8rem;
-      font-family: 'Pixelpalm Pro-Input';
-      text-rendering: geometricPrecision;
-      font-smooth: never;
-      -webkit-font-smoothing: none;
-    }
-    &:enabled {
-      padding-left: 1rem;
-    }
-    &:disabled {
-      padding-left: 1rem;
-    }
   }
 .mobile-input {
   &1 {
-    margin-bottom: 2rem;
+    margin-bottom: 2rem !important;
   }
 }
 }
@@ -121,7 +114,7 @@
 <template>
   <div class="root-dropdowns">
     <input v-if="!selectedSomething" :disabled="disabled" v-model="userInput" placeholder="State*" type="text" class="dropdown-inputs mobile-input1">
-    <input v-else @input="tryAgain(false)" :disabled="disabled" v-model="userInput2" placeholder="State*" type="text" class="dropdown-inputs mobile-input1">
+    <input v-else @input="tryAgain(false)" :disabled="disabled" v-model="userInput2" type="text" class="dropdown-inputs mobile-input1">
     <div v-if="filteredItems.length" class="dropdown">
       <div @click="selected(item)" v-for="(item, index) in filteredItems" :key="index" class="item flex pointer AL-center JF-spaceBE">
         {{ item.name }}

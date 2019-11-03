@@ -6,7 +6,9 @@ export default {
       email: '',
       emailErr: '',
       password: '',
-      error: ''
+      error: '',
+      sent: false,
+      loading: false
     }
   },
 
@@ -18,6 +20,20 @@ export default {
       } else {
         this.emailErr = ''
       }
+    }
+  },
+
+  methods: {
+    submit() {
+      this.loading = true
+      setTimeout(() => {
+        this.loading = false
+        this.sent = true
+        setTimeout(() => {
+          this.$router.push('/')
+        },3000)
+      },3000)
+      
     }
   }
 }
@@ -41,13 +57,19 @@ export default {
 		<input v-model="message" type="text" placeholder="Subject*" class="subject input">
 
 		<textarea rows="10"  placeholder="Message*" class="text-box"></textarea>
-		<div class="submit flex center">
-			SUBMIT
+		<div @click="submit" :class="{ greenBtn: sent }" class="submit flex center pointer">
+			<span v-if="!sent && !loading">SUBMIT</span> 
+      <span v-if="loading">LOADING...</span>
+      <span v-if="sent">MESSAGE SUBMITTED</span>
 		</div>
 	</div>
 </template>
 
 <style lang="scss" scoped>
+.greenBtn {
+  background-color: #15CD72 !important;
+  color: white !important;
+}
 .form {
 	min-width: calc(100vw - 33rem);
 	min-height: 100vh;

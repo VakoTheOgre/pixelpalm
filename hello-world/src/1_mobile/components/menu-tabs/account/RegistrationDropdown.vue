@@ -14,7 +14,9 @@ export default {
       passwordErr: '',
 
       error: '',
-      boxChecked: false
+      boxChecked: false,
+
+      loading: false
     }
   },
   watch: {
@@ -74,11 +76,15 @@ export default {
       }
 
       try {
-        let ret = await this.$store.dispatch('auth/register', {email: this.email, password: this.password, fullName: `${this.firstName} ${this.lastName}`})
+        this.loading = true
+        let ret = await this.$store.dispatch('auth/register', {email: this.email, password: this.password, name: `${this.firstName} ${this.lastName}`})
         this.$store.commit("menuIcon/open")
         this.$store.commit("accountIcon/close")
+        this.loading = false
       } catch(e) {
+        this.loading = false
         this.error = e.response.data.message
+        window.alert(e.response.data.message)
       }
     },
     checkUncheck() {
@@ -110,7 +116,7 @@ export default {
     </div>
     <span class="agree-txt">I Agree to the Terms of Use.</span>
   </div>
-  <button @click.prevent="register" class="btn pointer">SUBMIT</button>
+  <button @click.prevent="register" class="btn pointer"><span v-if="loading == false">REGISTER</span> <span v-if="loading == true"> LOADING </span> </button>
   <!-- <span class="btn-error"> {{error}} </span> -->
 </form>
 </template>

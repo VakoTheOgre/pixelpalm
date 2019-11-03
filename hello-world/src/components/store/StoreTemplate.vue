@@ -44,7 +44,7 @@ export default {
 
 <template>
   <div :class="{ marginTop: $route.name != 'home', marginTopDesk: this.device == 'desktop' }" class="whole-store">
-    <router-link @mouseleave.native="removeInfo" @mousemove.native="function(e) { getInfo(e, product) }" tag="div" :to="`/shop/${product.subcategory.toLowerCase()}/${product._id}`"
+    <router-link class="product-box flex-col" @mouseleave.native="removeInfo" @mousemove.native="function(e) { getInfo(e, product) }" tag="div" :to="`/shop/${product.subcategory.toLowerCase()}/${product._id}`"
                   :key="index" v-for="(product, index) in products" :class="{ relative: (infoBox.title == product.name && device == 'desktop') }">
         <img :src="product.images[0]" alt="img" class="photo pointer" :class="{ blur: (infoBox.title == product.name && device == 'desktop') }">
         <div v-if="infoBox.title == product.name && device == 'desktop'" class="info flex-col">
@@ -52,7 +52,7 @@ export default {
           <span>${{ infoBox.price }}</span>
         </div>
 
-        <div v-if="device == 'mobile'" class="disc flex-col AL-center JF-center">
+        <div v-if="device == 'mobile'" class="disc flex-col AL-center JF-spaceBE">
           <span class="title"> {{ product.name }} </span>
           <span class="price"> ${{  product.variants[0].price}} </span>
         </div>
@@ -67,6 +67,9 @@ export default {
 
 
 <style lang="scss" scoped>
+.product-box {
+  height: 100%;
+}
 .disc {
   margin-top: -0.3rem;
   padding-left: 0.2rem;
@@ -128,11 +131,12 @@ export default {
     margin-top: 7.8rem !important; 
   }
   .whole-store {
+    overflow: hidden;
     min-width: 144rem;
     display: grid;
     grid-template-columns: calc(50vw - 1.5rem) calc(50vw - 1.5rem);
     column-gap: 1rem;
-    grid-row-gap: 1rem;
+    grid-row-gap: 6rem;
     grid-auto-rows: calc(50vw - 1.5rem);
     margin-left: 1rem;
     margin-top: 1rem;
@@ -205,11 +209,12 @@ export default {
     padding-top: 11.6rem;
   }
   .whole-store {
+    min-height: calc(96vh - 10px);
     min-width: 32rem;
     display: grid;
     grid-template-columns: calc( 16.6666667vw - 7rem) calc( 16.6666667vw - 7rem) calc( 16.6666667vw - 7rem) calc( 16.6666667vw - 7rem) calc( 16.6666667vw - 7rem) calc( 16.6666667vw - 7rem)  ;
     column-gap: 1rem;
-    grid-auto-rows: calc( 16.6666667vw - 7rem);
+    grid-auto-rows: calc( 16.6666667vw - 6rem);
     margin-left: 35rem;
     margin-top: 1rem;
     margin-bottom: 1rem;

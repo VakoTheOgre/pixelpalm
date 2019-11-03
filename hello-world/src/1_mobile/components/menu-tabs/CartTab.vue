@@ -72,7 +72,7 @@ export default {
         <div v-if="amount !== 0" class="subtotal-checkout-root flex ">
             <!-- <span class="subtotal">SUBTOTAL: ${{ subtotal }}.00 </span> -->
             <span class="total flex AL-center">Order Total:</span>
-            <span class="num flex AL-center"> ${{ subtotal }}.00</span>
+            <span class="num flex AL-center"> ${{ subtotal }}</span>
         </div>
         <checkout-btn backColor="red" margin="3"></checkout-btn>
     </div>

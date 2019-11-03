@@ -3,36 +3,59 @@ export default {
     data () {
         return {
             email: '',
-            error: ''
+            error: '',
+            sent: false
         }
     },
 
     methods: {
         async send () {
             try {
+                this.sent = true
                 let res = await this.$axios.post(`/user/reset`, { email: this.email })
-                this.error = res.data.message                
+                this.$router.push('/')
             } catch (e) {
                 this.error = e.reponse.data.message
+                console.log(e.reponse.data.message)
             }
-        }
+        },
     }
 }
 </script>
 
 <template>
 <div class="outer-wrap flex center">
+  <span v-if="device== 'mobile'" class="bs">RESET PASSWORD</span>
   <span v-if="this.device == 'mobile'" class="option-span">ACCOUNT INFORMATION</span>
   <span v-if="this.device == 'desktop'" class="title">EDIT PASSWORD</span>
-  <form   class="root-change flex-col center">
+  <form class="root-change flex-col center">
       <input type="text" v-model="email" placeholder="Enter your email" class="input">
-      <button @click.prevent="send" class="btn pointer">SUBMIT</button>
+      <button @click.prevent="send" :class="{ greenBtn: sent }" class="btn pointer">
+        <span v-if="!sent">SUBMIT</span>
+        <span v-if="sent">CHECK YOUR INBOX</span>
+      </button>
       <span>{{ error }}</span>
   </form>
 </div>
 </template>
 
 <style lang="scss" scoped>
+.bs {
+  font-family: 'Pixelpalm-category-font';
+  text-rendering: geometricPrecision;
+  font-smooth: never;
+  -webkit-font-smoothing: none;
+  color: black;
+  width: 25rem;
+  position: absolute; 
+  left: 1rem;
+  top: 10.8rem;
+  font-size: 1rem;
+}
+.greenBtn {
+  background-color: #15CD72 !important;
+  color: white !important;
+}
 .title {
   font-size: 2rem;
   position: absolute;

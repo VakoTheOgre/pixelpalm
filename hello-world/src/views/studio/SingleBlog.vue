@@ -33,7 +33,7 @@ export default {
                         </slide>
 v
                 </carousel>
-                <div class="carousel-navigation flex JF-spaceBE">
+                <div v-if="blog.images.length > 1" class="carousel-navigation flex JF-spaceBE">
                     <div :key="index" @click="currentImage = index" v-for="(thumbnail, index) in blog.images" class="carousel-navigation_dot" :class="{'active-image': currentImage === index}">.</div>
                 </div>
             </div>

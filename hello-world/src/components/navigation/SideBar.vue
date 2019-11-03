@@ -46,7 +46,6 @@ export default {
       if ( !this.allImages ) {
         return
       }
-      console.log('in')
       for ( let i in this.images ) {
         if ( this.$route.params.id == 'tanktops' ) {
           return this.images[i].images

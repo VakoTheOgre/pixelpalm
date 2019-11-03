@@ -13,7 +13,8 @@ export default {
       password: '',
       error: '',
       registerPressed: false,
-      forgotPassword: false
+      forgotPassword: false,
+      loading: false
     }
   },
 
@@ -43,11 +44,14 @@ export default {
     },
     async login() {
       try{
+        this.loading = true
         await this.$store.dispatch('auth/login', {email: this.email, password: this.password})
-        this.$store.commit('loggedUser/open')
         this.error = "Successfully signed in"
+        this.loading = false
       } catch(e) {
+        this.loading = false
         this.error = e.response.data.message
+        window.alert(e.response.data.message)
       }
     },
     registerRequest() {
@@ -68,7 +72,7 @@ export default {
 
 <template>
 <div class="root">
-  <form   v-if="!userSignedIn" class="form flex-col">
+  <form v-if="!userSignedIn" class="form flex-col">
     <span class="new-customer-title">NEW CUSTOMERS
     </span>
     <div v-if="!this.registerPressed" class="new-customer flex-col">
@@ -79,13 +83,13 @@ export default {
     </div>
     <registration v-else></registration>
     <div class="hr"></div>
-    <form   class="flex-col" > 
+    <form class="flex-col" > 
       <span class="registered">REGISTERED CUSTOMERS</span>
       <input v-model="email" type="email" placeholder="Email Address*" class="mail input" :class="{ redError: error }">
       <!-- <span class="error">{{ emailErr }}</span> -->
       <input v-model="password" type="password" placeholder="Password*" class="pass">
       <router-link tag="span" to="/account/password-recovery" @click.native="closeEverything" class="forgot-pass pointer">FORGOT YOUR PASSWORD?</router-link>
-      <button @click.prevent="login" class="btn  padding-bot pointer">LOGIN</button>
+      <button @click.prevent="login" class="btn  padding-bot pointer"><span v-if="loading == false">LOGIN</span> <span v-if="loading == true"> LOADING </span></button>
     </form>
     <!-- <span class="error">{{ error }}</span> -->
   </form>

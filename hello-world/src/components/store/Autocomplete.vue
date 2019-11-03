@@ -1,4 +1,22 @@
 <style lang="scss" scoped>
+input::placeholder {
+  font-size: 2rem;
+  color: gray;
+  line-height: 1.3333 !important; 
+  opacity: 0.5;
+  font-family: 'Pixelpalm Pro-Input';
+  text-rendering: geometricPrecision;
+  font-smooth: never;
+  -webkit-font-smoothing: none;
+}
+input:enabled {
+  padding-left: 1rem;
+}
+@media only screen and (max-width: 1200px) {
+  input:enabled {
+    // padding-top: 0.8rem;
+  }
+}
 .dropdown {
   max-height: 30rem;
   width: 86rem;
@@ -20,19 +38,6 @@
   text-rendering: geometricPrecision;
   font-smooth: never;
   -webkit-font-smoothing: none;
-  &::placeholder {
-    font-size: 2rem;
-    color: gray;
-    padding-top: 0.8rem;
-    opacity: 0.5;
-    font-family: 'Pixelpalm Pro-Input';
-    text-rendering: geometricPrecision;
-    font-smooth: never;
-    -webkit-font-smoothing: none;
-  }
-  &:enabled {
-    padding-left: 1rem;
-  }
 }
 .root-dropdowns {
   width: 27rem !important;
@@ -84,20 +89,6 @@
     text-rendering: geometricPrecision;
     font-smooth: never;
     -webkit-font-smoothing: none;
-    &::placeholder {
-      font-size: 2rem;
-      color: gray;
-      padding-top: 0.8rem;
-      opacity: 0.5;
-      font-family: 'Pixelpalm Pro-Input';
-      text-rendering: geometricPrecision;
-      font-smooth: never;
-      -webkit-font-smoothing: none;
-    }
-    &:enabled {
-      padding-left: 1rem;
-      margin-bottom: 2rem;
-    }
   }
 .mobile-input {
   &1 {
@@ -110,7 +101,7 @@
 <template>
   <div class="root-dropdowns">
     <input v-if="!selectedSomething" v-model="userInput"   :placeholder="type + '*'" type="text" class="dropdown-inputs mobile-input1">
-    <input v-else @input="tryAgain" v-model="userInput2"   :placeholder="type + '*'" type="text" class="dropdown-inputs mobile-input2">
+    <input v-else @input="tryAgain" v-model="userInput2"   :placeholder="type + '*'" type="text" class="dropdown-inputs mobile-input1">
     <div v-if="filteredItems.length" class="dropdown">
       <div @click="selected(item)" v-for="(item, index) in filteredItems" :key="index" class="item flex pointer AL-center JF-spaceBE">
         {{ item.name }}

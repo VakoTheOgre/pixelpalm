@@ -33,7 +33,9 @@ export default {
       zipErr: '',
 
       error: '',
-      boxChecked: false
+      boxChecked: false,
+
+      loading: false
     }
   },
 
@@ -93,6 +95,7 @@ export default {
 
     async checkout() {
       try {
+        this.loading = true 
         let url = await this.$store.dispatch('cart/checkout', {
           name: this.name + ' ' + this.lastName,
           address: this.address1,
@@ -102,8 +105,10 @@ export default {
           zip: this.zip
         })
         window.location.replace(url)
+        this.loading = false
       } catch (e) {
-        console.log(e)
+        this.loading = false
+        window.alert(e.response.data.message)
       }
     }
   },
@@ -202,8 +207,8 @@ export default {
 
                 </div>
                 <subtotal-checkout v-if="device == 'mobile'"></subtotal-checkout>
-                <div @click="checkout" class="final-btn flex center">
-                  <span>PURCHASE NOW</span>
+                <div @click="checkout" class="final-btn flex center pointer ">
+                  <span v-if="loading == false">PURCHASE NOW</span> <span v-if="loading == true"> LOADING </span>
                 </div>
             </form>
             <div class="order-sum">
@@ -223,7 +228,26 @@ export default {
 </template>
     
 <style lang="scss" scoped>
-
+input::placeholder {
+  font-size: 2rem;
+  color: gray;
+  line-height: 1.3333 !important; 
+  opacity: 0.5;
+  font-family: 'Pixelpalm Pro-Input';
+  text-rendering: geometricPrecision;
+  font-smooth: never;
+  -webkit-font-smoothing: none;
+}
+input:enabled {
+  padding-left: 1rem;
+  padding-top: 0.6rem;
+  line-height: 2.2 !important; 
+}
+@media only screen and (max-width: 1200px) {
+  input:enabled {
+    padding-top: 0.8rem;
+  }
+}
 .title {
   font-size: 2rem;
   position: absolute;
@@ -296,45 +320,22 @@ export default {
     font-size: 2rem;
     line-height: 2.2 !important; 
     color: black;
+    padding-top: 0.5rem !important;
     font-family: 'Pixelpalm Pro-Input';
     text-rendering: geometricPrecision;
     font-smooth: never;
     -webkit-font-smoothing: none;
-    &::placeholder {
-        font-size: 2rem;
-        line-height: 2.2 !important; 
-        color: gray;
-        opacity: 0.5;
-        font-family: 'Pixelpalm Pro-Input';
-        text-rendering: geometricPrecision;
-        font-smooth: never;
-        -webkit-font-smoothing: none;
-      }
-    &:enabled {
-        padding-left: 1rem;
-        line-height: 2.2 !important; 
-    }
     &-street {
       width: 100%;
       border: 0.2rem solid black;
       height: 4rem;
       margin-bottom: 2rem;
-      padding-left: 1rem;
       font-size: 2rem;
       color: black;
       font-family: 'Pixelpalm Pro-Input';
       text-rendering: geometricPrecision;
       font-smooth: never;
       -webkit-font-smoothing: none;
-      &::placeholder {
-        font-size: 2rem;
-        color: gray;
-        opacity: 0.5;
-        font-family: 'Pixelpalm Pro-Input';
-        text-rendering: geometricPrecision;
-        font-smooth: never;
-        -webkit-font-smoothing: none;
-      }
     }
     &-h {
         border: 0.2rem solid black;
@@ -347,18 +348,6 @@ export default {
         text-rendering: geometricPrecision;
         font-smooth: never;
         -webkit-font-smoothing: none;
-        &::placeholder {
-          font-size: 2rem;
-          color: gray;
-          opacity: 0.5;
-          font-family: 'Pixelpalm Pro-Input';
-          text-rendering: geometricPrecision;
-          font-smooth: never;
-          -webkit-font-smoothing: none;
-        }
-        &:enabled {
-            padding-left: 1rem;
-        }
         &-l {
             border: 0.2rem solid black;
             width: 100%;
@@ -370,18 +359,6 @@ export default {
             text-rendering: geometricPrecision;
             font-smooth: never;
             -webkit-font-smoothing: none;
-            &::placeholder {
-              font-size: 2rem;
-              color: gray;
-              opacity: 0.5;
-              font-family: 'Pixelpalm Pro-Input';
-              text-rendering: geometricPrecision;
-              font-smooth: never;
-              -webkit-font-smoothing: none;
-            }
-            &:enabled {
-                padding-left: 1rem;
-            }
         }
     }
 }
@@ -499,22 +476,6 @@ export default {
     text-rendering: geometricPrecision;
     font-smooth: never;
     -webkit-font-smoothing: none;
-    &::placeholder {
-        font-size: 2rem;
-        color: gray;
-        opacity: 0.5;
-        padding-top: 0.6rem;
-        line-height: 2.2 !important; 
-        font-family: 'Pixelpalm Pro-Input';
-        text-rendering: geometricPrecision;
-        font-smooth: never;
-        -webkit-font-smoothing: none;
-      }
-    &:enabled {
-        padding-left: 1rem;
-        line-height: 2.2 !important; 
-        
-    }
     &-street {
       width: 100%;
       border: 0.2rem solid black;
@@ -526,16 +487,6 @@ export default {
       text-rendering: geometricPrecision;
       font-smooth: never;
       -webkit-font-smoothing: none;
-      &::placeholder {
-        font-size: 2rem;
-        color: gray;
-        padding-top: 0.6rem;
-        opacity: 0.5;
-        font-family: 'Pixelpalm Pro-Input';
-        text-rendering: geometricPrecision;
-        font-smooth: never;
-        -webkit-font-smoothing: none;
-      }
     }
     &-h {
         border: 0.2rem solid black;
@@ -548,19 +499,6 @@ export default {
         text-rendering: geometricPrecision;
         font-smooth: never;
         -webkit-font-smoothing: none;
-        &::placeholder {
-          font-size: 2rem;
-          color: gray;
-          padding-top: 0.6rem;
-          opacity: 0.5;
-          font-family: 'Pixelpalm Pro-Input';
-          text-rendering: geometricPrecision;
-          font-smooth: never;
-          -webkit-font-smoothing: none;
-        }
-        &:enabled {
-            padding-left: 1rem;
-        }
         &-l {
             border: 0.2rem solid black;
             width: 100%;
@@ -572,19 +510,6 @@ export default {
             text-rendering: geometricPrecision;
             font-smooth: never;
             -webkit-font-smoothing: none;
-            &::placeholder {
-              font-size: 2rem;
-              color: gray;
-              padding-top: 0.6rem;
-              opacity: 0.5;
-              font-family: 'Pixelpalm Pro-Input';
-              text-rendering: geometricPrecision;
-              font-smooth: never;
-              -webkit-font-smoothing: none;
-            }
-            &:enabled {
-                padding-left: 1rem;
-            }
         }
     }
 }

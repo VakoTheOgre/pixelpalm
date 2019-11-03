@@ -27,7 +27,6 @@ export default {
       if ( !this.allImages ) {
         return
       }
-      console.log('in')
       for ( let i in this.images ) {
           return this.images[i].images
       }
@@ -39,7 +38,7 @@ export default {
 </script>
 
 <template>
-  <div class="home">
+  <div class="home flex-col">
     <div v-if='device == "mobile"' class="carousel-wrapper">
       <carousel id="carousela" :per-page="1" :autoplay="true"  :autoplayTimeout="2000" :loop="true" :paginationEnabled="false" >
           <slide v-for="(img, index) in currentImages" :key="index" id="slide" :style="{ backgroundImage: 'url(' + img + ')' }">
@@ -51,12 +50,30 @@ export default {
       <!-- <img src="https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/palm-logo.svg" class="logo-float"> -->
     </div>
     <store-template></store-template>
-    <ppla v-if="device == 'desktop'"></ppla>
+    <div v-if="device == 'desktop'" class="terms-wrap flex JF-spaceBE">
+      <span @click="routePush('pp')" class="terms pointer">PP</span>
+      <span @click="routePush('la')" class="terms pointer">LA</span>
+    </div>
   </div>
 </template>
 
 <style lang="scss" scoped>
-
+.terms {
+  &-wrap {
+    width: 5.5rem;
+    margin-left: 100%;
+    transform: translateX(-95%);
+    // position: absolute;
+    // bottom: 0.5rem;
+    // right: 1rem;
+  }
+  font-size: 1rem;
+  user-select: none;
+  font-family: 'Pixelpalm-category-font';
+  text-rendering: geometricPrecision;
+  font-smooth: never;
+	-webkit-font-smoothing: none;
+}
 .home {
   display: flex;
   margin: 0 !important;
