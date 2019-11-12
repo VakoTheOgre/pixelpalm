@@ -228,6 +228,9 @@ export default {
 </template>
     
 <style lang="scss" scoped>
+input {
+  height: 4rem !important;
+}
 input::placeholder {
   font-size: 2rem;
   color: gray;
@@ -239,8 +242,8 @@ input::placeholder {
   -webkit-font-smoothing: none;
 }
 input:enabled {
-  padding-left: 1rem;
-  padding-top: 0.6rem;
+  padding-left: 1rem !important;
+  padding-top: 0.6rem !important;
   line-height: 2.2 !important; 
 }
 @media only screen and (max-width: 1200px) {
@@ -314,7 +317,6 @@ input:enabled {
 .input {
     border: 0.2rem solid black;
     width: 27rem;
-    height: 4rem;
     margin-bottom: 2rem;
     position: relative;
     font-size: 2rem;
@@ -328,7 +330,6 @@ input:enabled {
     &-street {
       width: 100%;
       border: 0.2rem solid black;
-      height: 4rem;
       margin-bottom: 2rem;
       font-size: 2rem;
       color: black;
@@ -340,7 +341,6 @@ input:enabled {
     &-h {
         border: 0.2rem solid black;
         width: 100%;
-        height: 4rem;
         position: relative;
         font-size: 2rem;
         color: black;
@@ -352,7 +352,6 @@ input:enabled {
             border: 0.2rem solid black;
             width: 100%;
             margin-right: 2rem;
-            height: 4rem;
             font-size: 2rem;
             color: black;
             font-family: 'Pixelpalm Pro-Input';
@@ -466,8 +465,6 @@ input:enabled {
 .input {
     border: 0.2rem solid black;
     width: 100%;
-    height: 4rem;
-    line-height: 2.2 !important; 
     margin-bottom: 2rem;
     position: relative;
     font-size: 2rem;
@@ -479,7 +476,6 @@ input:enabled {
     &-street {
       width: 100%;
       border: 0.2rem solid black;
-      height: 4rem;
       margin-bottom: 2rem;
       font-size: 2rem;
       color: black;
@@ -491,7 +487,6 @@ input:enabled {
     &-h {
         border: 0.2rem solid black;
         width: 100%;
-        height: 4rem;
         position: relative;
         font-size: 2rem;
         color: black;
@@ -503,7 +498,6 @@ input:enabled {
             border: 0.2rem solid black;
             width: 100%;
             margin-right: 0;
-            height: 4rem;
             font-size: 2rem;
             color: black;
             font-family: 'Pixelpalm Pro-Input';

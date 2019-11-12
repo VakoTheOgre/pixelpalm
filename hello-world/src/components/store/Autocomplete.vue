@@ -1,4 +1,8 @@
 <style lang="scss" scoped>
+
+input {
+  height: 4rem !important;
+}
 input::placeholder {
   font-size: 2rem;
   color: gray;
@@ -10,13 +14,28 @@ input::placeholder {
   -webkit-font-smoothing: none;
 }
 input:enabled {
-  padding-left: 1rem;
+  padding-left: 1rem !important;
+  padding-top: 0.6rem !important;
+  line-height: 2.2 !important; 
 }
-@media only screen and (max-width: 1200px) {
-  input:enabled {
-    // padding-top: 0.8rem;
-  }
-}
+// input::placeholder {
+//   font-size: 2rem;
+//   color: gray;
+//   line-height: 1.3333 !important; 
+//   opacity: 0.5;
+//   font-family: 'Pixelpalm Pro-Input';
+//   text-rendering: geometricPrecision;
+//   font-smooth: never;
+//   -webkit-font-smoothing: none;
+// }
+// input:enabled {
+//   padding-left: 1rem;
+// }
+// @media only screen and (max-width: 1200px) {
+//   input:enabled {
+//     // padding-top: 0.8rem;
+//   }
+// }
 .dropdown {
   max-height: 30rem;
   width: 86rem;
@@ -31,7 +50,6 @@ input:enabled {
 .dropdown-inputs {
   width: 42rem !important;
   border: 0.2rem solid black;
-  height: 4rem;
   font-size: 2rem;
   color: black;
   font-family: 'Pixelpalm Pro-Input';

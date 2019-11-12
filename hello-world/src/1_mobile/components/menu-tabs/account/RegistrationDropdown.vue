@@ -78,6 +78,7 @@ export default {
       try {
         this.loading = true
         let ret = await this.$store.dispatch('auth/register', {email: this.email, password: this.password, name: `${this.firstName} ${this.lastName}`})
+        await this.$store.dispatch('auth/login', {email: this.email, password: this.password})
         this.$store.commit("menuIcon/open")
         this.$store.commit("accountIcon/close")
         this.loading = false

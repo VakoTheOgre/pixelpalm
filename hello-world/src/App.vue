@@ -87,17 +87,20 @@ export default {
 </template>
 
 <style lang="scss">
-input {
+input,
+textarea {
     border-radius: 0 !important;
     -webkit-appearance: none !important;
     -webkit-tap-highlight-color: transparent;
     outline:none !important;
 }
-input:focus {
+input:focus,
+textarea:focus {
   outline-color: transparent!important;
   outline-width: 0!important;
 }
-input:enabled {
+input:enabled,
+textarea:enabled {
   outline-color: transparent!important;
   outline-width: 0!important;
 }
