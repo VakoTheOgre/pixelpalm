@@ -246,11 +246,6 @@ input:enabled {
   padding-top: 0.6rem !important;
   line-height: 2.2 !important; 
 }
-@media only screen and (max-width: 1200px) {
-  input:enabled {
-    padding-top: 0.8rem;
-  }
-}
 .title {
   font-size: 2rem;
   position: absolute;
