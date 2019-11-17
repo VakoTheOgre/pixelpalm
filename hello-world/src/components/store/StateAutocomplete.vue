@@ -17,11 +17,6 @@ input:disabled {
 input:enabled {
   padding-left: 1rem;
 }
-@media only screen and (max-width: 1200px) {
-  input:enabled {
-    // padding-top: 0.8rem;
-  }
-}
 .dropdown {
   max-height: 30rem;
   max-width: 42rem;
