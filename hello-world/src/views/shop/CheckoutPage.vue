@@ -245,6 +245,7 @@ input:disabled {
 }
 input:enabled {
   padding-left: 1rem;
+  height: 4rem;
 }
 .title {
   font-size: 2rem;
