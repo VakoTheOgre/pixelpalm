@@ -49,7 +49,7 @@ export default {
     </carousel>
       <!-- <img src="https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/palm-logo.svg" class="logo-float"> -->
     </div>
-    <store-template></store-template>
+    <!-- <store-template></store-template> -->
     <div v-if="device == 'desktop'" class="terms-wrap flex JF-spaceBE">
       <span @click="routePush('pp')" class="terms pointer">PP</span>
       <span @click="routePush('la')" class="terms pointer">LA</span>

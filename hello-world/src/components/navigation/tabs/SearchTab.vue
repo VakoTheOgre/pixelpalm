@@ -68,6 +68,29 @@ export default {
 
 
 <style lang="scss" scoped>
+input {
+  height: 4rem !important;
+}
+input::placeholder {
+  font-size: 2rem;
+  color: gray;
+  line-height: 1.3333 !important; 
+  opacity: 0.5;
+  font-family: 'Pixelpalm Pro-Input';
+  text-rendering: geometricPrecision;
+  font-smooth: never;
+  -webkit-font-smoothing: none;
+}
+input:enabled {
+  padding-left: 1rem !important;
+  padding-top: 0.6rem !important;
+  line-height: 2.2 !important; 
+}
+@media only screen and (max-width: 1200px) {
+  input:enabled {
+    padding-top: 0.8rem;
+  }
+}
 .thumb {
   height: 3.9rem;
   width: 3.9rem;
@@ -114,7 +137,6 @@ export default {
 }
 .search-input {
   position: relative;
-  height: 4rem;
   width: calc(100% - 6rem);
   font-size: 2rem;
   font-family: 'Pixelpalm Pro-Input';
@@ -124,17 +146,6 @@ export default {
   color: black;
   // margin-top: 6rem;
   border: 0.2rem solid black;
-  &:enabled {
-    padding-left: 1rem;
-    &::placeholder {
-      color: gray;
-      opacity: 0.5;
-      font-family: 'Pixelpalm Pro-Input';
-      text-rendering: geometricPrecision;
-      font-smooth: never;
-      -webkit-font-smoothing: none;
-    }
-  }
 }
 .title {
   width: calc(100% - 6rem);

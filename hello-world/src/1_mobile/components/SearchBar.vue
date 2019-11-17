@@ -93,10 +93,8 @@ export default {
 <template>
     <div class="root-search flex JF-spaceBE AL-center">
         <img @click="toggleAccount" :src="accountIcon" alt="login" class="user-icon pointer">
-        <div class="search-wrapper flex JF-spaceBE">
-            <input @input="search" @focus="toggleSocials" @blur="toggleSocials" type="text" placeholder="Enter Keyword" class="search-input">
-            <img src="https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/search_icon_mobile.svg" alt="search" class="search-icon">
-        </div>
+        <input @input="search" @focus="toggleSocials" @blur="toggleSocials" type="text" placeholder="Enter Keyword" class="search-input">
+        <img src="https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/search_icon_mobile.svg" alt="search" class="search-icon">
         <div v-if="filteredItems.length" class="dropdown">
             <div @click="clicked(item)" :key="index" v-for="(item, index) in filteredItems" class="item flex pointer AL-center">
                 <img :src="item.images[0]" class="thumb">
@@ -107,6 +105,37 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+input {
+  height: 3.1rem !important;
+}
+input::placeholder {
+  font-size: 2rem;
+  color: gray;
+  opacity: 0.5;
+  font-family: 'Pixelpalm Pro-Input';
+  text-rendering: geometricPrecision;
+  font-smooth: never;
+  -webkit-font-smoothing: none;
+}
+input:enabled {
+  padding-left: 1rem !important;
+  padding-top: 0.2rem !important;
+}
+.search-input {
+  position: relative;
+  font-size: 2rem;
+  font-family: 'Pixelpalm Pro-Input';
+  color: black;
+  border: 0.2rem solid black;
+  width: calc(100vw - 1rem);
+  margin-left: 1rem;
+}
+
+.search-icon {
+  position: absolute;
+  right: 2rem;
+}
+
 .thumb {
   height: 3.9rem;
   width: 3.9rem;
@@ -124,54 +153,6 @@ export default {
     position: absolute;
     top: 0;
     left: 0;
-}
-.search {
-    &-wrapper {
-        height: 3.1rem;
-        border: 0.2rem solid black;
-        width: calc(100vw - 3rem);
-        margin-left: 1rem;
-        
-    }
-    &-input {
-        height: 2.6rem;
-        border: none;
-        width: 100%;
-        font-size: 2rem;
-        padding-top: 0.25rem;
-        font-family: 'Pixelpalm Pro-Input';
-        text-rendering: geometricPrecision;
-        font-smooth: never;
-        -webkit-font-smoothing: none;
-        &:focus {
-            outline-color: transparent;
-            outline-width: 0;
-        }
-        font-size: 2rem;
-        line-height: 0.7;
-        color: black;
-        font-family: 'Pixelpalm Pro-Input';
-        text-rendering: geometricPrecision;
-        font-smooth: never;
-        -webkit-font-smoothing: none;
-        &::placeholder {
-          color: gray;
-          opacity: 0.5;
-          font-family: 'Pixelpalm Pro-Input';
-          text-rendering: geometricPrecision;
-          font-smooth: never;
-          -webkit-font-smoothing: none;
-        }
-        &:enabled {
-            padding-left: 1rem;
-            color: black;
-            
-        }
-    }
-    &-icon {
-        padding-right: 0.4rem;
-    } 
-
 }
 .user-icon {
     width: 3rem; 

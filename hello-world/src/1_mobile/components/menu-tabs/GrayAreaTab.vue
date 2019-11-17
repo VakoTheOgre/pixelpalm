@@ -33,7 +33,7 @@ export default {
 <div class="main-menu">
   <div class="product-menu">
     <router-link tag="span" v-for="(category, index) in menus.grayarea" :key="`${index}`"  
-    :to="`/grayarea/${category.name.toLowerCase()}`" @click="closeLegals(menus.grayarea.name)" class="product-menu_item">
+    :to="`/grayarea/${category.name.toLowerCase()}`" @click.native="closeLegals(menus.grayarea.name)" class="product-menu_item">
       <img @click="closeLegals" :src="category.svg" alt="icon" class="menu-icon pointer">
       <span @click="closeLegals" class="menu-option pointer"> {{ category.name }} </span>
     </router-link>
