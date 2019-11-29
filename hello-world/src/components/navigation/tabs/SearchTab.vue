@@ -53,7 +53,7 @@ export default {
 
 
 <template>
-<div class="root flex-col AL-center">
+<div class="root flex-col AL-center"
   <span class="title">SEARCH</span>
   <input @input="search" type="text" placeholder="Enter Keyword" class="search-input">
   <img src="https://static-pixelpalm.sfo2.cdn.digitaloceanspaces.com/static/svgs/search-icon.svg" alt="" class="search-img pixecon">
